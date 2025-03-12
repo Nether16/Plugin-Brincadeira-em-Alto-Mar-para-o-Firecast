@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" title="Brincadeiras Em Alto Mar" name="InfoGerais">
+    <script>
+		-- Listas de dados
+		Organizacoes = {'Kurokage', 'Revolucionario', 'Governo Mundial', 'Marinha', 'Pirata', 'Não Definido'}
+		
+		EstilosDeLuta = {
+			'Atirador', 'Karatê Tritão', 'Okama Kenpo', 'Rokushiki', 'Boxe', 
+			'Hasshoken', 'Merman Combat', 'Tontatta Combat', 'Black Leg', 
+			'Ramen Kenpo', 'Jao Kun Do', 'Ryusoken', 'Jio-Ken', 'Santoryu', 
+			'Nitoryu', 'Ittoryu', 'Hachitoryu', 'Yontoryu', 'Kappa-ryu', 
+			'Kitsunebi-ryu', 'Rokutoryu', 'Ningyo Gujutsu', 'Son Goku no Ugoki', 
+			'Kurobara-Ryū', 'Street Brawling', 'Demonharubādo', 'Sumo-Ryu', 
+			'Senritsuken', 'Kikai Kōbō-Ryū', 'Kōsenjū-Ryū', 'Tenshi Nunchaku-Ryū', 
+			'Kyokugi', 'Koe no Ensei-Ryū', 'Tōkaradō', 'Reitetsu no Ken', 
+			'Kenki no Gattsu', 'Teppanyaki no Ken', 'Seigi no Tōken-Ryū', 
+			'Tsuinburēdo', 'Sakejutsu', 'Rairyū-Ryū', 'Frog Leg'
+		}
+		
+		Profissoes = {
+			'Escolher', 'Armador', 'Artista', 'Atirador', 'Biologo', 'Cientista',
+			'Cozinheiro', 'Espadachim', 'Ferreiro', 'Lutador', 'Navegador', 'Timoneiro'
+		}
+		
+		Racas = {
+			'🏆Amigo dos Elementos', '🏆Andarilhos do Sol', 'Anfites', '🏆Anões', 
+			'Braços-Longos', 'Ciborgues', 'Cinzentos', '🏆Devotos da Chama Sombria', 
+			'Dolkins', '🏆Drakos', '🏆Drakumiras', 'Gigantes', '🏆Gladios', 
+			'🏆Glacies', '🏆Hamonianos', 'Humanos', 'Humanos-Mink', 'Humanos-Tritoes', 
+			'Kujas', 'Kumates', 'Licantropos', '🔒Lunares', 'Meios-Gigante', 
+			'Minks', '🏆Místicos', '🏆Nórdicos', '🔒Onis', 'Pernas-Longas', 
+			'Sereianos', 'Serpentiuns', 'Skypeanos', '🔒Tenryūbitos', 'Tontattas', 
+			'Torinos', '🔒Três Olhos', 'Tritões', '🏆Viridianos', '🔒Vulcanuns', 
+			'Wotans'
+		}
+
+		RacasSemCaracteresEspeciais = {
+			'Amigo dos Elementos', 'Andarilhos do Sol', 'Anfites', 'Anoes', 
+			'Braços-Longos', 'Ciborgues', 'Cinzentos', 'Devotos da Chama Sombria', 
+			'Dolkins', 'Drakos', 'Drakumiras', 'Gigantes', 'Gladios', 
+			'Glacies', 'Hamonianos', 'Humanos', 'Humanos-Mink', 'Humanos-Tritoes', 
+			'Kujas', 'Kumates', 'Licantropos', 'Lunares', 'Meios-Gigante', 
+			'Minks', 'Misticos', 'Nordicos', 'Onis', 'Pernas-Longas', 
+			'Sereianos', 'Serpentiuns', 'Skypeanos', 'Tenryubitos', 'Tontattas', 
+			'Torinos', 'Tres Olhos', 'Tritoes', 'Viridianos', 'Vulcanuns', 
+			'Wotans'
+		}
+			
+		-- Informações das profissões
+		ProfissoesImagens = {
+			Armador = {
+				imagem = "https://i.pinimg.com/originals/b6/a0/a4/b6a0a41ec6037bf11a744626f346a325.gif"
+			},
+			Artista = {
+				imagem = "https://blob.firecast.com.br/blobs/GQSBFKNR_3714276/one-piece-brook.gif"
+			},
+			Atirador = {
+				imagem = "https://blob.firecast.com.br/blobs/QFIOHLHK_3700975/pont.gif"
+			},
+			Biologo = {
+				imagem = "https://blob.firecast.com.br/blobs/COLJVQKI_3714278/1VTa.gif"
+			},
+			Cientista = {
+				imagem = "https://media.tenor.com/uLEe97tKW2UAAAAM/vegapunk-vegapunk-one-piece.gif"
+			},
+			Cozinheiro = {
+				imagem = "https://blob.firecast.com.br/blobs/JDMTSCLP_3714279/f0436d2a80aebd709b98574d859fa915.gif"
+			},
+			Espadachim = {
+				imagem = "https://i.pinimg.com/originals/4d/64/08/4d6408285378256a5080815dad34d608.gif"
+			},
+			Ferreiro = {
+				imagem = "https://blob.firecast.com.br/blobs/FKKGJJIJ_3714281/V_deo_sem_t_tulo___Feito_com_o_Clipchamp.gif"
+			},
+			Lutador = {
+				imagem = "https://i.pinimg.com/originals/d3/78/9f/d3789ff69a5bc82b336720427dcccc61.gif"
+			},
+			Navegador = {
+				imagem = "https://pa1.narvii.com/6407/0f7d976a3661b43b1dc25c3184c3827067f00262_hq.gif"
+			},
+			Timoneiro = {
+				imagem = "https://blob.firecast.com.br/blobs/MLPVAMDG_3725527/jinbe-jinbei.gif"
+			}
+		}
+		
+		RacasInfo = {
+			Escolher = {
+				nomeNormal = "Raça",
+				imagem = ""
+			},
+			["Amigo dos Elementos"] = {
+				nomeNormal = "🏆Amigo dos Elementos",
+				imagem = "http://blob.firecast.com.br/blobs/AKJNPEBO_3026397/ezgif.com-webp-to-gif-converter__1_.gif"
+			},
+			Anoes = {
+				nomeNormal = "🏆Anão",
+				imagem = "https://images-ext-1.discordapp.net/external/7rvZLr84IAZ7qOGl3NQz48Y4thlyU4O8uCD-MuJeAP8/https/media.tenor.com/C9SwE0VKTD4AAAPo/dungeon-meshi-delicious-in-dungeon.mp4"
+			},
+			Anfites = {
+				nomeNormal = "Anfite",
+				imagem = "https://media.tenor.com/FB4WqTRDZrEAAAAd/therealnasa00-frogman.gif"
+			},
+			["Andarilhos do Sol"] = {
+				nomeNormal = "🏆Andarilho do Sol",
+				imagem = "http://blob.firecast.com.br/blobs/RIMDBFTN_3026303/ezgif.com-webp-to-gif-converter.gif"
+			},
+			["Braços-Longos"] = {
+				nomeNormal = "Braços-Longos",
+				imagem = "https://pa1.narvii.com/6730/ad80c9d7f57af0152da7401400f87e332dad2032_00.gif"
+			},
+			Ciborgues = {
+				nomeNormal = "Ciborgue",
+				imagem = "https://media.tenor.com/0Y_xLi0iSTwAAAAM/one-piece-franky.gif"
+			},
+			Cinzentos = {
+				nomeNormal = "Cinzento",
+				imagem = "https://blob.firecast.com.br/blobs/BADKHRKG_3425901/dark-souls-defeated.gif"
+			},
+			["Devotos da Chama Sombria"] = {
+				nomeNormal = "🏆Devoto da Chama Sombria",
+				imagem = "http://blob.firecast.com.br/blobs/SHOSLLVI_3135008/rio-yudha-img-1365-min.jpg"
+			},
+			Dolkins = {
+				nomeNormal = "Dolkin",
+				imagem = "https://i.pinimg.com/originals/f5/ff/37/f5ff37f9e1137b7e566210c2873ba8a9.gif"
+			},
+			Drakos = {
+				nomeNormal = "🏆Drako",
+				imagem = "http://blob.firecast.com.br/blobs/EIMETCIH_3316406/dragon-of-monsters-and-men.gif"
+			},
+			Drakumiras = {
+				nomeNormal = "🏆Drakumira",
+				imagem = "http://blob.firecast.com.br/blobs/QHGKJPQI_3082970/cuh.gif"
+			},
+			Gigantes = {
+				nomeNormal = "Gigante",
+				imagem = "https://media1.tenor.com/m/UfaHN5D9rJ8AAAAd/one-piece-dorry.gif"
+			},
+			Gladios = {
+				nomeNormal = "🏆Gladio",
+				imagem = "http://blob.firecast.com.br/blobs/COPONBWV_3316431/pantheon.gif"
+			},
+			Glacies = {
+				nomeNormal = "🏆Glacie",
+				imagem = "http://blob.firecast.com.br/blobs/MOISFJPV_3026252/0_GrZ1IQ4IHbQR-5GQ.gif"
+			},
+			Hamonianos = {
+				nomeNormal = "🏆Hamoniano",
+				imagem = "https://static.jojowiki.com/images/thumb/e/e0/latest/20200524193436/JonathanAfterimages.gif/250px-JonathanAfterimages.gif"
+			},
+			Humanos = {
+				nomeNormal = "Humano",
+				imagem = "https://64.media.tumblr.com/cb105c77e69b7068c3dd661944fc270f/0497d47c1bc6752f-98/s1280x1920/1b08f2170ffad9496d5e03815511e92311499c37.gif"
+			},
+			["Humanos-Mink"] = {
+				nomeNormal = "Humano-Mink",
+				imagem = "http://blob.firecast.com.br/blobs/KPNIINQL_3308446/Screenshot_20.png"
+			},
+			["Humanos-Tritoes"] = {
+				nomeNormal = "Humano-Tritão",
+				imagem = "https://media.tenor.com/Ca0iC11GAFkAAAAC/dellinger-one-piece.gif"
+			},
+			Kujas = {
+				nomeNormal = "Kuja",
+				imagem = "https://images-ext-1.discordapp.net/external/MVPZL2GeryxoyZH1RN4s6dEe9T74B2Ijo9q3DmHb8Do/https/media.tenor.com/2zWJP0TIePIAAAAC/boa-hancock.gif"
+			},
+			Kumates = {
+				nomeNormal = "Kumate",
+				imagem = "http://blob.firecast.com.br/blobs/DALGOJJL_2627760/643711f79f3d3e1e010403db.jpg"
+			},
+			Licantropos = {
+				nomeNormal = "Licantropo",
+				imagem = "https://media.tenor.com/VTMN5X21O-8AAAAM/howling-at-the-moon-werewolf.gif"
+			},
+			Lunares = {
+				nomeNormal = "🔒Lunar",
+				imagem = "https://images-ext-1.discordapp.net/external/Oz-YmmCCnGUU8FM-_OjOOKv86EdAgQXVKYvGX66vw-s/https/media.tenor.com/WfKU_0sXvJwAAAAC/king-one-piece.gif"
+			},
+			["Meios-Gigante"] = {
+				nomeNormal = "Meio-Gigante",
+				imagem = "https://blob.firecast.com.br/blobs/DOBARCJU_3725786/barba-branca.gif"
+			},
+			Minks = {
+				nomeNormal = "Mink",
+				imagem = "https://images-ext-2.discordapp.net/external/nqRj_UwWzjol3Z2vCB1Zcgce077Lv_prrTSlNqlxbFI/https/64.media.tumblr.com/3cd7f4799ff4190c8f27ee7d59f83fa4/tumblr_opxctfm0E91rcufwuo1_540.gif"
+			},
+			Misticos = {
+				nomeNormal = "🏆Místico",
+				imagem = "https://c.tenor.com/paKd0EMDnr4AAAAC/zatanna-eyes.gif"
+			},
+			Nordicos = {
+				nomeNormal = "🏆Nórdico",
+				imagem = "https://media.tenor.com/T2MSu5tf8S4AAAAd/vinland-saga-askeladd.gif"
+			},
+			Onis = {
+				nomeNormal = "🔒Oni",
+				imagem = "https://media.tenor.com/arj97lLhyvAAAAAC/one-piece-kaido.gif"
+			},
+			["Pernas-Longas"] = {
+				nomeNormal = "Pernas-Longas",
+				imagem = "https://pm1.aminoapps.com/6323/7a4334b7d7ce056d4c185f635504ded2a2a027fa_hq.jpg"
+			},
+			Sereianos = {
+				nomeNormal = "Sereiano",
+				imagem = "http://blob.firecast.com.br/blobs/AIFPWVFH_2627741/one-piece-shirahoshi.gif"
+			},
+			Serpentiuns = {
+				nomeNormal = "Serpentiun",
+				imagem = "https://64.media.tumblr.com/909c5cf9002393d7bcab74f5dc05edb5/0400c12e3f9cf8cc-52/s640x960/e5cb9bd41464fd648789ab18e25ff2f95bc649c0.gif"
+			},
+			Skypeanos = {
+				nomeNormal = "Skypeano",
+				imagem = "https://64.media.tumblr.com/55681e5d535093a8b6cd9dcf5f3dcb02/tumblr_pefwi8cuuK1v6xsm2o1_540.gif"
+			},
+			Tenryubitos = {
+				nomeNormal = "🔒Tenryūbito",
+				imagem = "https://images-ext-1.discordapp.net/external/H9zFmOc4ej5QbAKLlbJkpOIFDQOB8vNUpnM8vmRf7yk/https/media.tenor.com/uKO85l53TEIAAAPo/one-piece-charlos.mp4"
+			},
+			Tontattas = {
+				nomeNormal = "Tontatta",
+				imagem = "https://images-ext-2.discordapp.net/external/mNM2otNbmuKVIFN2Hg9J2UdcqncRaCADCjUnjhj7ihc/https/media.tenor.com/bUotCR7LG1kAAAAC/one-piece-leo.gif"
+			},
+			Torinos = {
+				nomeNormal = "Torino",
+				imagem = "http://blob.firecast.com.br/blobs/MDCNWMUU_3109027/Torinos.gif"
+			},
+			["Tres Olhos"] = {
+				nomeNormal = "🔒Três Olhos",
+				imagem = "https://images-ext-2.discordapp.net/external/QSZTQpsrk7WvNrblxg0JIYEzPktEMsqXH8fxTHPq0ro/https/pa1.narvii.com/6503/f71368136f3b6fa78a073cb2b9eeec1c436504e1_hq.gif"
+			},
+			Tritoes = {
+				nomeNormal = "Tritão",
+				imagem = "https://images-ext-1.discordapp.net/external/vxj7LXyrQ9ZGtPLUgRXzpXt7k1UQpRDB3D9oUNRYnEk/https/64.media.tumblr.com/d8e94dd736ae88cff02ebf5839f380b3/c488971a5f8c309d-b7/s540x810/3425fffb424bf5a06f83fc878c4d0c53d92a3b78.gif"
+			},
+			Viridianos = {
+				nomeNormal = "🏆Viridiano",
+				imagem = "https://blob.firecast.com.br/blobs/AMTACKQR_3695064/IMAGE03.gif"
+			},
+			Vulcanuns = {
+				nomeNormal = "🏆Vulcanun",
+				imagem = "https://blob.firecast.com.br/blobs/EASVBAKK_3716525/V_deo_sem_t_tulo___Feito_com_o_Clipchamp__.gif"
+			},
+			Wotans = {
+				nomeNormal = "Wotan",
+				imagem = "https://images-ext-1.discordapp.net/external/s8aFm9Q57Ip2r5o3lf5ieqmpUZAmy0gl1Mgr1a8mVHo/https/media.tenor.com/hS7oFvsjIEwAAAAC/sanji-zoro.gif"
+			}
+		}
+		
+		--Função Para Atualizar o Xp
+		function AtualizarExp()
+			local nivel = tonumber(self.Nivel.text) or 1
+
+			if nivel > 0 then
+				self.Exp.text = tostring(300 + (100 * (nivel - 1)))
+			end
+			
+			if not(self.ExpAtual.text) then  self.ExpAtual.text = "0" end
+			if not(self.Nivel.text) then  self.Nivel.text = "1" end
+		end
+		
+		--Função Para Tier da Profissao
+		function AtualizarTier(Tier, Exp)
+			local tier = tonumber(self[Tier].text) or 1
+			
+			if (tier > 0) and not(tier > 10) then 
+				self[Exp].text = tostring(100 * (tier))
+			end
+			
+			if (self[Tier].text == "") then self[Tier].text = "0"; self[Exp].text = "10" end
+			if (tier == 0) then self[Exp].text = "10" end
+		end
+		
+		-- Função para mudar a bandeira
+		bandeiras = {Kurokage = "https://blob.firecast.com.br/blobs/BUJUONIQ_3579179/_82bd8847-4e74-4b5b-80aa-a03f51baf153.jpg",
+			Revolucionario = "https://blob.firecast.com.br/blobs/LDWMSERB_3713983/revolutionary_army_jolly_roger_by_jormxdos.jpg",
+			["Governo Mundial"] = "https://blob.firecast.com.br/blobs/CJTSDRKM_3713984/eba.png",
+			Marinha = "https://blob.firecast.com.br/blobs/FIMRMEGR_3713982/marine_jolly_roger_by_jormxdos_dfgi7jt-pre.jpg"
+		}
+
+		function MudarBandeira()
+			organizacao = self.listaOrganizacoes.value
+			
+			if organizacao then
+				self.ImagemBandeira.src = bandeiras[organizacao]
+				
+				if (self.ImagemBandeira.src == "") then
+					self.ImagemBandeira.editable = true
+				else
+					self.ImagemBandeira.editable = false
+				end
+			end
+		end
+
+		-- Função para mudar profissão
+		function MudarProfissao(profissaoId, nomeProfissao, profissaoField, imagemField, layoutField, fotoField, nomeField)
+			local profissaoSelecionada = self[profissaoField].value
+			local profissao = ProfissoesImagens[profissaoSelecionada]
+			
+			
+			self[nomeProfissao].text = self[profissaoField].value
+			if profissao then
+				self[imagemField].src = profissao.imagem
+				self[layoutField].visible = true
+				
+				self[fotoField].src = profissao.imagem
+				self[nomeField].text = self[profissaoField].value
+			else
+				self[layoutField].visible = false
+				self[fotoField].src = ""
+				self[nomeField].text = "Profissão "..profissaoId
+			end
+		end
+
+		-- Funções específicas para cada profissão
+		function MudarProfissao1()
+			MudarProfissao("1", "ProfissaoPrincipal", "ComboProfissaoPrincipal", "FotoProfissaoPrincipal", "LayoutProfissaoPrincipal", "ImagemProfissaoPrincipal", "NomeProfissaoPrincipal")
+		end
+
+		function MudarProfissao2()
+			MudarProfissao("2", "ProfissaoSecundaria", "ComboProfissaoSecundaria", "FotoProfissaoSecundaria", "LayoutProfissaoSecundaria", "ImagemProfissaoSecundaria", "NomeProfissaoSecundaria")
+		end
+		
+		function MudarRaca()
+			local racaSelecionada = self.ComboRaca.value
+			local raca = RacasInfo[racaSelecionada]
+
+			self.Raca.text = raca.nomeNormal
+			if raca then
+				self.FotoRaca.src = ""
+				self.FotoRaca.src = raca.imagem
+				
+				self.ImagemRaca.src = ""
+				self.ImagemRaca.src = raca.imagem
+				self.NomeRaca.text = raca.nomeNormal
+			end
+		end
+		
+		function CheckIfEmpregado(profissao)
+			if not(profissao == "Escolher") then
+				self.LayoutProfissaoPrincipal.visible = true
+				self.LayoutProfissaoSecundaria.visible = true
+				
+				self.FotoProfissaoPrincipal.visible = true	
+				self.FotoProfissaoSecundaria.visible = true
+			else
+				self.LayoutProfissaoPrincipal.visible = false
+				self.LayoutProfissaoSecundaria.visible = false
+				
+				self.FotoProfissaoPrincipal.visible = false		
+				self.FotoProfissaoSecundaria.visible = false	
+			end
+		end
+	</script>
+
+	<rectangle width="10000" height="10000" color="black"/>
+	
+	<layout left="5" top="-20" width="5000" height="1800"> --Informações Gerais
+		<layout left="5" top="10" width="1000" height="1800"> -- Imagens
+			-- Imagem Personagem
+			<rectangle left="2" top="22" width="177" height="255" color="#4169E1"/>
+			<rectangle left="4" top="24" width="173" height="251" color="black"/>
+			<label left="27" top="120" text="Clique para adicionar seu personagem" fontSize="12.5" fontStyle="bold" fontColor="#4169E1" autoSize="true" horzTextAlign="center"/>
+			
+			<image field="imagemDoPersonagem" editable="true" style="autoFit" 
+				left="6" top="29" width="169" height="244"/>
+				
+			-- Imagem Cartaz De Recompensa    
+			<rectangle left="2" top="292" width="177" height="255" color="#4169E1"/>
+			<rectangle left="4" top="294" width="173" height="251" color="black"/>
+			<label left="27" top="387" text="Clique para adicionar seu cartaz de recompensa" fontSize="12.5" fontStyle="bold" fontColor="#4169E1" autoSize="true" horzTextAlign="center"/>
+			
+			<image field="cartazDeRecompensa" editable="true" style="autoFit" 
+				left="6" top="297" width="169" height="244"/>
+		</layout>
+			
+		<layout left="5" top="10" width="1000" height="1800"> -- Dados do Personagem
+		
+			<rectangle left="192" top="22" width="460" height="255" color="#4169E1"/>
+			<rectangle left="194" top="24" width="456" height="251" color="black"/>
+			
+			-- Nome
+			<edit field="nomePersonagem" name="nomeDoPersonagem" left="200" top="30" width="450" height="50" textPrompt="Nome do Personagem" transparent="true" fontColor="#5F9EA0" fontSize="25" fontStyle="bold" horzTextAlign="center"/>
+			
+			-- Titulo
+			<edit field="tituloPersonagem" name="tituloDoPersonagem" left="200" top="70" width="450" height="23" text="" transparent="true" fontColor="#5F9EA0" fontSize="15" fontStyle="bold" horzTextAlign="center"/>
+			
+			-- Dados Basicos
+			<label left="285" top="95" width="260" height="50" text="Dados Basicos" fontColor="#5F9EA0" fontSize="20" fontStyle="bold underline" horzTextAlign="center"/>
+			
+			-- Nível
+			<label left="215" top="128" width="110" height="50" text="Nível:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
+			<rectangle left="315" top="145" width="80" height="18" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			<rectangle left="275" top="145" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			
+			<edit field="nivel" name="Nivel" left="275" top="146" width="35" height="17" text="sheet.nivel" fontColor="black" fontSize="12" horzTextAlign="center" type="number" transparent="true" onChange="AtualizarExp()"/>
+			<edit field="expAtual" name="ExpAtual" left="315" top="146" width="40" height="17" fontColor="black" fontSize="12" horzTextAlign="center" type="number" transparent="true" onChange="AtualizarExp()"/>
+			<edit field="expMax" name="Exp" left="356" top="146" width="40" height="17" fontColor="black" fontSize="12" readOnly="true" horzTextAlign="center" transparent="true"/>
+			<edit left="350" top="146" width="17" height="17" text="/" fontColor="black" fontSize="12" readOnly="true" transparent="true"/>
+			
+			-- Idade
+			<label left="215" top="158" width="100" height="50" text="Idade:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
+			<rectangle left="275" top="176" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			<edit field="idade" name="idade" left="275" top="173" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center" keyboardType="NumberPad"/>
+			
+			-- Gênero
+			<label left="215" top="188" width="100" height="50" text="Gênero:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
+			<rectangle left="275" top="206" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			<edit field="genero" name="genero" left="275" top="203" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"/>
+			
+			-- Moedas
+			<label left="215" top="218" width="100" height="50" text="Moedas:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
+			<rectangle left="275" top="236" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			<edit field="moedas" name="moedas" left="275" top="233" width="120" height="20" transparent="true" text="0" fontColor="black" fontSize="12" horzTextAlign="center" keyboardType="numbersAndPunctuation"/>
+			
+			-- Tripulação
+			<label left="415" top="128" width="100" height="50" text="Tripulação:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
+			<rectangle left="505" top="146" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			<edit field="tripulacao" name="tripulacao" left="505" top="143" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"/>
+			
+			-- Estilo de Luta
+			<label left="415" top="158" width="100" height="50" text="Est. de Luta:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
+			<rectangle left="505" top="176" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			<comboBox field="estiloDeLuta" name="estluta" left="505" top="176" width="120" height="17" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"
+			items="EstilosDeLuta"/>
+			
+			-- Sexualidade
+			<label left="415" top="188" width="100" height="50" text="Sexualidade:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
+			<rectangle left="505" top="206" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			<edit field="sexualidade" name="sex" left="505" top="203" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"/>
+			
+			-- Organização
+			<label left="415" top="218" width="100" height="50" text="Organização:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
+			<rectangle left="505" top="236" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
+			<comboBox field="organizacao" name="listaOrganizacoes" left="505" top="236" width="120" height="17" transparent="true" text="0" fontColor="black" fontSize="12" horzTextAlign="center"
+			items="Organizacoes" values="Organizacoes" onChange="MudarBandeira()"/>
+		</layout>
+		
+		<layout left="5" top="10" width="1000" height="1800"> -- Perfil do Personagem            
+			-- Profissão Principal    
+			<rectangle left="192" top="292" width="97" height="123" color="#4169E1"/>
+			<rectangle left="194" top="294" width="93" height="119" color="black"/>
+			<rectangle left="196" top="296" width="89" height="115" color="#F5F5DC"/>
+			
+			<label field="nomePrincipal" name="NomeProfissaoPrincipal" left="196" top="392" width="89" height="113" text="Profissão 1" fontSize="13" fontStyle="bold" fontColor="black" autoSize="true" horzTextAlign="center"/>
+			<image field="imagemPrincipal" name="ImagemProfissaoPrincipal" left="199" top="300" width="82" height="92" style="autoFit" animate="true"/>
+			
+			<button left="192" top="292" width="97" height="123" opacity="0" cursor="handpoint" onClick="self.AbaProfissaoPrincipal.visible = true; self.AbaProfissaoSecundaria.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
+				CheckIfEmpregado(self.ProfissaoPrincipal.text); sheet.fotoProfissaoPrincipal = self.ImagemProfissaoPrincipal.src"/>
+			
+			-- Profissão Secundaria
+			<rectangle left="555" top="292" width="97" height="123" color="#4169E1"/>
+			<rectangle left="557" top="294" width="93" height="119" color="black"/>
+			<rectangle left="559" top="296" width="89" height="115" color="#F5F5DC"/>
+			
+			<label field="nomeSecundaria" name="NomeProfissaoSecundaria" left="559" top="392" width="89" height="113" text="Profissão 2" fontSize="13" fontStyle="bold" fontColor="black" autoSize="true" horzTextAlign="center"/>
+			<image field="imagemSecundaria" name="ImagemProfissaoSecundaria" left="562" top="300" width="82" height="92" style="autoFit" animate="true" />
+				
+			<button left="555" top="292" width="97" height="123" opacity="0" cursor="handpoint" onClick="self.AbaProfissaoSecundaria.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
+				CheckIfEmpregado(self.ProfissaoSecundaria.text); sheet.fotoProfissaoSecundaria = self.ImagemProfissaoSecundaria.src"/>
+			
+			-- Raça
+			<rectangle left="302" top="292" width="240" height="123" color="#4169E1"/>
+			<rectangle left="304" top="294" width="236" height="119" color="black"/>
+			<rectangle left="306" top="296" width="232" height="115" color="#F5F5DC"/>
+			
+			<label field="nomeRaca" name="NomeRaca" left="306" top="392" width="232" height="113" text="Raça" fontSize="13" fontStyle="bold" fontColor="black" autoSize="true" horzTextAlign="center"/>
+			<image field="imagemRaca" name="ImagemRaca" left="310" top="300" width="225" height="92" style="autoFit" animate="true"/>
+			
+			<button left="302" top="292" width="240" height="123" opacity="0" cursor="handpoint" onClick="self.AbaRaca.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
+				sheet.fotoRaca= self.ImagemRaca.src"/>
+			
+			-- Bandeira
+			<rectangle left="302" top="424" width="240" height="123" color="#4169E1"/>
+			<rectangle left="304" top="426" width="236" height="119" color="black"/>
+			<label left="304" top="473" width="236" height="119" text="Clique para adicionar sua bandeira" fontSize="12.5" fontStyle="bold" fontColor="#4169E1" autoSize="true" horzTextAlign="center"/>
+			
+			<image field="imagemBandeira" name="ImagemBandeira" left="306" top="428" width="232" height="115" style="autoFit" animate="true" 
+				onLoad="sheet.imagemBandeira = self.ImagemBandeira.src"/>
+			
+			-- Historia
+			<rectangle left="192" top="424" width="97" height="123" color="#4169E1"/>
+			<rectangle left="194" top="426" width="93" height="119" color="black"/>
+			<rectangle left="196" top="428" width="89" height="115" color="#F5F5DC"/>
+			
+			<label field="nomeHistoria" left="196" top="526" width="89" height="115" text="História" fontSize="13" fontStyle="bold" fontColor="black" autoSize="true" horzTextAlign="center"/>
+			<image field="imagemHistoria" left="199" top="434" width="82" height="92" style="autoFit" animate="true"
+				src="https://i.pinimg.com/originals/90/44/71/904471579390183b95e3b6e0595bce46.gif"/>
+				
+			<button left="192" top="424" width="97" height="123" opacity="0" cursor="handpoint" onClick="self.AbaHistoria.visible = true;self.AbaRaca.visible = false; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false; self.AbaAnotacoes.visible = false"/>
+				
+			-- Anotações
+			<rectangle left="555" top="424" width="97" height="123" color="#4169E1"/>
+			<rectangle left="557" top="426" width="93" height="119" color="black"/>
+			<rectangle left="559" top="428" width="89" height="115" color="#F5F5DC"/>
+			
+			<label field="nomeAnotacoes" left="559" top="526" width="89" height="115" text="Anotações" fontSize="13" fontStyle="bold" fontColor="black" autoSize="true" horzTextAlign="center"/>
+			<image field="imagemAnotacoes" left="562" top="434" width="82" height="92" style="autoFit" animate="true"
+				src="https://i.pinimg.com/originals/3b/13/8c/3b138cfbb52c29b1aab2f55fbdd7f473.gif"/>
+			
+			<button left="555" top="424" width="97" height="123" onClick="self.AbaAnotacoes.visible = true;self.AbaHistoria.visible = false;self.AbaRaca.visible = false; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false" opacity="0" cursor="handpoint"/>
+		</layout>
+
+		<layout name="AbaProfissaoPrincipal" left="5" top="10" width="5000" height="1800" visible="false"> -- Aba da Profissão
+			<rectangle left="665" top="22" width="608" height="525" color="#4169E1"/>
+			<rectangle left="667" top="24" width="604" height="521" color="black"/>
+
+			<tabControl left="667" top="26" width="604" height="520"> 
+				<tab title="Informações Profissionais">
+					<label field="profissaoPrincipal" name="ProfissaoPrincipal" left="160" top="5" width="270" height="35" text="Escolher" fontSize="28" fontStyle="bold" fontColor="#F5F5DC" autoSize="true" horzTextAlign="center"/>
+					<image field="fotoProfissaoPrincipal" name="FotoProfissaoPrincipal" left="118" top="50" width="250" height="140" scaleX="1.4" style="autoFit" animate="true"/>
+					<comboBox field="comboProfissaoPrincipal" name="ComboProfissaoPrincipal" left="160" top="5" width="270" height="35" items="Profissoes" value="Profissoes" horzTextAlign="center" fontStyle="bold" fontSize="16" transparent="true" opacity="0" onChange="
+						MudarProfissao1(); self.DetalhamentoPrimario.field = self.ComboProfissaoPrincipal.value; self.DescricaoProfissionalPrimaria.field = self.ComboProfissaoPrincipal.value..'descri'"/>
+
+					<layout name="LayoutProfissaoPrincipal" width="5000" height="1800" visible="false">
+						-- Tier
+						<label left="205" top="193" width="40" height="30" text="Tier:" fontStyle="bold" fontColor="white" horzTextAlign="center"/>
+						<rectangle left="245" top="201" width="27" height="15" color="white" xradius="7" yradius="7" cornerType="Round"/>
+						<edit field="tierProfissaoPrincipal" name="TierPrincipal" left="245" top="201" width="27" height="15" fontColor="black" fontSize="12" horzTextAlign="center" transparent="true" type="number" onChange="AtualizarTier('TierPrincipal','XpMaxPrincipal')"/>
+
+						-- %Xp
+						<label left="285" top="193" width="40" height="30" text="%Xp:" fontStyle="bold" fontColor="white" horzTextAlign="center"/>
+						<rectangle left="325" top="201" width="80" height="15" color="white" xradius="7" yradius="7" cornerType="Round"/>
+						<label left="354" top="192" width="17" height="30" text="/" fontColor="black" horzTextAlign="center"/>
+
+						<edit field="xpAtualProfissaoPrincipal" left="325" top="201" width="38" height="15" fontColor="black" fontSize="12" horzTextAlign="center" type="number" transparent="true"/>
+						<edit field="xpMaximaProfissaoPrincipal" name="XpMaxPrincipal" left="364" top="201" width="38" height="15" fontColor="black" fontSize="12" horzTextAlign="center" type="number" transparent="true" readOnly="true"/>
+
+						-- Expecialização
+						<label left="25" top="221" width="102" height="30" text="Expecialização:" fontStyle="bold" fontColor="white" horzTextAlign="center"/>
+						<rectangle left="129" top="228" width="143" height="17" color="white" xradius="7" yradius="7" cornerType="Round"/>
+						<edit field="especializacaoProfissaoPrincipal" left="129" top="226" width="143" height="19" fontColor="black" fontSize="12" horzTextAlign="center" transparent="true"/>
+
+						-- Dominio
+						<label left="285" top="221" width="70" height="30" text="Dominio:" fontStyle="bold" fontColor="white" horzTextAlign="center"/>
+						<rectangle left="355" top="228" width="160" height="17" color="white" xradius="7" yradius="7" cornerType="Round"/>
+						<edit field="dominioProfissaoPrincipal" left="355" top="226" width="160" height="19" fontColor="black" fontSize="12" horzTextAlign="center" transparent="true"/>
+
+						-- Descrição Profissao
+						<richEdit top="255" width="604" scaleX="1" height="521" scaleY="1" name="DescricaoProfissionalPrimaria" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="true" showToolbar="false"/>
+					</layout>
+				</tab>
+
+				<tab title="Detalhamento">
+					<richEdit name="DetalhamentoPrimario" align="client" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="true" showToolbar="false"/>
+				</tab>
+			</tabControl>
+		</layout>
+
+		<layout name="AbaProfissaoSecundaria" left="5" top="10" width="5000" height="1800" visible="false"> -- Aba da Profissão
+			<rectangle left="665" top="22" width="608" height="525" color="#4169E1"/>
+			<rectangle left="667" top="24" width="604" height="521" color="black"/>
+
+			<tabControl left="667" top="26" width="604" height="520"> 
+				<tab title="Informações Profissionais">
+					<label field="profissaoSecundaria" name="ProfissaoSecundaria" left="160" top="5" width="270" height="35" text="Escolher" fontSize="28" fontStyle="bold" fontColor="#F5F5DC" autoSize="true" horzTextAlign="center"/>
+					<image field="fotoProfissaoSecundaria" name="FotoProfissaoSecundaria" left="118" top="50" width="250" height="140" scaleX="1.4" style="autoFit" animate="true"/>
+					<comboBox field="comboProfissaoSecundaria" name="ComboProfissaoSecundaria" left="160" top="5" width="270" height="35" items="Profissoes" value="Profissoes" horzTextAlign="center" fontStyle="bold" fontSize="16" transparent="true" opacity="0" 
+						onChange="MudarProfissao2();"/>
+					
+					<layout name="LayoutProfissaoSecundaria" width="5000" height="1800" visible="false">
+						-- Tier
+						<label left="205" top="193" width="40" height="30" text="Tier:" fontStyle="bold" fontColor="white" horzTextAlign="center"/>
+						<rectangle left="245" top="201" width="27" height="15" color="white" xradius="7" yradius="7" cornerType="Round"/>
+						<edit field="tierProfissaoSecundaria" name="TierSecundaria" left="245" top="201" width="27" height="15" fontColor="black" fontSize="12" horzTextAlign="center" transparent="true" type="number" onChange="AtualizarTier('TierSecundaria','XpMaxSecundaria')"/>
+
+						-- %Xp
+						<label left="285" top="193" width="40" height="30" text="%Xp:" fontStyle="bold" fontColor="white" horzTextAlign="center"/>
+						<rectangle left="325" top="201" width="80" height="15" color="white" xradius="7" yradius="7" cornerType="Round"/>
+						<label left="354" top="192" width="17" height="30" text="/" fontColor="black" horzTextAlign="center"/>
+
+						<edit field="xpAtualProfissaoSecundaria" left="325" top="201" width="38" height="15" fontColor="black" fontSize="12" horzTextAlign="center" type="number" transparent="true"/>
+						<edit field="xpMaximaProfissaoSecundaria" name="XpMaxSecundaria" left="364" top="201" width="38" height="15" fontColor="black" fontSize="12" horzTextAlign="center" type="number" transparent="true" readOnly="true"/>
+
+						-- Expecialização
+						<label left="25" top="221" width="102" height="30" text="Expecialização:" fontStyle="bold" fontColor="white" horzTextAlign="center"/>
+						<rectangle left="129" top="228" width="143" height="17" color="white" xradius="7" yradius="7" cornerType="Round"/>
+						<edit field="especializacaoProfissaoSecundaria" left="129" top="226" width="143" height="19" fontColor="black" fontSize="12" horzTextAlign="center" transparent="true"/>
+
+						-- Dominio
+						<label left="285" top="221" width="70" height="30" text="Dominio:" fontStyle="bold" fontColor="white" horzTextAlign="center"/>
+						<rectangle left="355" top="228" width="160" height="17" color="white" xradius="7" yradius="7" cornerType="Round"/>
+						<edit field="dominioProfissaoSecundaria" left="355" top="226" width="160" height="19" fontColor="black" fontSize="12" horzTextAlign="center" transparent="true"/>
+
+						-- Descrição Profissao
+						<richEdit top="255" width="604" scaleX="1" height="521" scaleY="1" name="DescricaoProfissionalSecundaria" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="true" showToolbar="false"/>
+					</layout>
+				</tab>
+
+				<tab title="Detalhamento">
+					<richEdit name="DetalhamentoSecundario" align="client" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="true" showToolbar="false"/>
+				</tab>
+			</tabControl>
+		</layout>
+
+		<layout name="AbaRaca" left="5" top="10" width="5000" height="1800" visible="false"> -- Aba Raças
+			<rectangle left="665" top="22" width="608" height="525" color="#4169E1"/>
+			<rectangle left="667" top="24" width="604" height="521" color="black"/>
+
+			<tabControl left="667" top="26" width="604" height="520"> 
+				<tab title="Caracteristicas Raciais">
+					<label field="raca" name="Raca" left="-5" top="5" width="604" height="35" text="Escolher" fontSize="28" fontStyle="bold" fontColor="#F5F5DC" autoSize="true" horzTextAlign="center" visible="true"/>
+					<comboBox field="comboRaca" name="ComboRaca" left="170" top="5" width="250" height="35" items="Racas" values="RacasSemCaracteresEspeciais" horzTextAlign="center" fontStyle="bold" fontSize="16" transparent="true" opacity="0" 
+					onChange="MudarRaca(); self.DescricaoRacial.field = self.ComboRaca.value"/>
+
+					<image field="fotoRaca" name="FotoRaca" left="125" top="50" width="250" height="140" scaleX="1.4" style="autoFit" animate="true"/>
+					
+					-- Descrição Racial
+					<richEdit top="205" width="604" scaleX="1" height="521" scaleY="1" name="DescricaoRacial" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="false" showToolbar="false"/>
+				</tab>
+
+				<tab title="Habilidades Raciais">
+					<richEdit field="habilidadesRaciais" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>
+				</tab>
+			</tabControl>
+		</layout>
+
+		<layout name="AbaHistoria" left="670" top="10" width="2000" height="1800" visible="false"> -- Aba Historia
+			<rectangle left="0" top="22" width="608" height="525" color="#4169E1"/>
+			<rectangle left="2" top="24" width="604" height="521" color="black"/>
+
+			<label left="-2" top="30" width="604" height="521" text="História" fontSize="24" fontStyle="bold underline" fontColor="#F5F5DC" autoSize="true" horzTextAlign="center"/>
+			<layout left="2" top="65" width="604" height="480" visible="true">
+				<richEdit name="editHistoria" top="35" align="client" backgroundColor="black" defaultFontColor="white" field="Historia" animateImages="true"/>
+				<button onClick="showMessage(self.editHistoria:getText())"/>
+			</layout>
+		</layout>
+
+		<layout name="AbaAnotacoes" left="670" top="10" width="2000" height="1800" visible="false"> -- Aba Anotação
+			<rectangle left="0" top="22" width="608" height="525" color="#4169E1"/>
+			<rectangle left="2" top="24" width="604" height="521" color="black"/>
+
+			<label left="-2" top="30" width="604" height="521" text="Anotações" fontSize="24" fontStyle="bold underline" fontColor="#F5F5DC" autoSize="true" horzTextAlign="center"/>
+			<layout left="2" top="65" width="604" height="480" visible="true">
+				<richEdit top="35" align="client" backgroundColor="black" defaultFontColor="white" field="Anotacao" animateImages="true"/>
+			</layout>
+		</layout>
+	</layout>
+	
+	<group> --DataLink
+	<dataLink field="nomePersonagem" defaultValue="Nome do Personagem">
+		<event name="onChange">
+			if sheet.nomePersonagem == "" then sheet.nomePersonagem = "Nome do Personagem" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="tituloPersonagem" defaultValue="Titulo">
+		<event name="onChange">
+			if sheet.tituloPersonagem == "" then sheet.tituloPersonagem = "Titulo" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="nivel" defaultValue="1">
+		<event name="onChange">
+			if sheet.nivel == "" then sheet.nivel = "1" end
+			AlterarValorTotal("Carisma")
+		</event>
+	</dataLink>
+	
+	<dataLink field="expAtual" defaultValue="0">
+		<event name="onChange">
+			if sheet.expAtual == "" then sheet.expAtual = "0" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="expMax" defaultValue="300">
+		<event name="onChange">
+			if sheet.expMax == "" then sheet.expMax = "300" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="nomeRaca" defaultValue="Raça">
+		<event name="onChange">
+			if sheet.nomeRaca == "" then sheet.nomeRaca = "Raça" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="raca" defaultValue="Escolher">
+		<event name="onChange">
+			if sheet.raca == "" then sheet.raca = "Escolher" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="comboProfissaoPrincipal">
+		<event name="onChange">
+			self.DetalhamentoPrimario.field = self.ComboProfissaoPrincipal.value
+			self.DescricaoProfissionalPrimaria.field = self.ComboProfissaoPrincipal.value..'descri'
+			
+			self.DetalhamentoSecundario.field = CheckIfEmpregado(self.ProfissaoPrincipal.text)
+			sheet.imagemPrincipal = self.ImagemProfissaoPrincipal.src
+			sheet.nomePrincipal = self.NomeProfissaoPrincipal.text
+			if (sheet.nomePrincipal == "Profissão 1") then sheet.profissaoPrincipal = "Escolher" else
+			sheet.profissaoPrincipal = sheet.nomePrincipal end
+		</event>
+	</dataLink>
+	
+	<dataLink field="comboProfissaoSecundaria">
+		<event name="onChange">
+			self.DetalhamentoSecundario.field = self.ComboProfissaoSecundaria.value
+			self.DescricaoProfissionalSecundaria.field = self.ComboProfissaoSecundaria.value..'descri'
+			
+			CheckIfEmpregado(self.ProfissaoSecundaria.text)
+			sheet.imagemSecundaria = self.ImagemProfissaoSecundaria.src
+			sheet.nomeSecundaria = self.NomeProfissaoSecundaria.text
+			if (sheet.nomeSecundaria == "Profissão 2") then sheet.profissaoSecundaria = "Escolher" else
+			sheet.profissaoSecundaria = sheet.nomeSecundaria end
+		</event>
+	</dataLink>
+	
+	<dataLink field="comboRaca">
+		<event name="onChange">
+			self.DescricaoRacial.field = self.ComboRaca.value
+			
+			sheet.ImagemRaca = self.ImagemRaca.src
+			sheet.nomeRaca = self.NomeRaca.text
+			sheet.raca = (RacasInfo[self.ComboRaca.value]).nomeNormal
+			sheet.fotoRaca = self.ImagemRaca.src
+		</event>
+	</dataLink>
+	
+	<dataLink field="tierProfissaoPrincipal" defaultValue="0">
+		<event name="onChange">
+			if sheet.tierProfissaoPrincipal == "" then sheet.tierProfissaoPrincipal = "0" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="tierProfissaoSecundaria" defaultValue="0">
+		<event name="onChange">
+			if sheet.tierProfissaoSecundaria == "" then sheet.tierProfissaoSecundaria = "0" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="xpAtualProfissaoPrincipal" defaultValue="0">
+		<event name="onChange">
+			if sheet.xpAtualProfissaoPrincipal == "" then sheet.xpAtualProfissaoPrincipal = "0" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="xpAtualProfissaoSecundaria" defaultValue="0">
+		<event name="onChange">
+			if sheet.xpAtualProfissaoSecundaria == "" then sheet.xpAtualProfissaoSecundaria = "0" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="xpMaximaProfissaoPrincipal" defaultValue="10">
+		<event name="onChange">
+			if sheet.xpMaximaProfissaoPrincipal == "" then sheet.xpMaximaProfissaoPrincipal = "10" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="xpMaximaProfissaoSecundaria" defaultValue="10">
+		<event name="onChange">
+			if sheet.xpMaximaProfissaoPrincipal == "" then sheet.xpMaximaProfissaoPrincipal = "10" end
+		</event>
+	</dataLink>
+	</group>
+</form>

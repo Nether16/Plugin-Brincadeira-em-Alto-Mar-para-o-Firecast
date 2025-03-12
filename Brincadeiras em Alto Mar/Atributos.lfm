@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" title="Brincadeiras Em Alto Mar" name="Atributos">
+	
+	<rectangle left="0" top="0" width="10000" height="10000" color="black"/>
+	
+	<script>
+		function AlterarValorTotal(valor)
+			local valorBase = valor .."Base"
+			local valorPassivo = valor .."Passivo"
+			local valorEquips = valor .."Equips"
+			local valorTreino = valor .."Treino"
+			local valorTotal = valor .."Total"
+			
+			local soma = tonumber(sheet[valorBase]) + tonumber(sheet[valorPassivo]) + tonumber(sheet[valorEquips]) + tonumber(sheet[valorTreino])
+			self[valorTotal].text = tostring(soma)
+			sheet.Defesa = tostring(math.floor(sheet.VigorBase / 2))
+			
+			sheet.PontosDisponiveis = tostring(23 + (sheet.nivel * 2) -sheet.ForcaBase - sheet.AgilidadeBase -sheet.VigorBase -sheet.CombateBase -sheet.PercepcaoBase -sheet.CarismaBase -sheet.InteligenciaBase -sheet.PrecisaoBase -sheet.ForcaDeVontadeBase)
+			sheet.PontosDistribuidos = tostring(sheet.ForcaBase + sheet.AgilidadeBase + sheet.VigorBase + sheet.CombateBase + sheet.PercepcaoBase + sheet.CarismaBase + sheet.InteligenciaBase + sheet.PrecisaoBase + sheet.ForcaDeVontadeBase - 9)
+			sheet.PontosOutros = tostring(tonumber(sheet.ForcaPassivo) + tonumber(sheet.ForcaEquips) + tonumber(sheet.ForcaTreino) +
+										  tonumber(sheet.AgilidadePassivo) + tonumber(sheet.AgilidadeEquips) + tonumber(sheet.AgilidadeTreino) +
+										  tonumber(sheet.VigorPassivo) + tonumber(sheet.VigorEquips) + tonumber(sheet.VigorTreino) +
+										  tonumber(sheet.CombatePassivo) + tonumber(sheet.CombateEquips) + tonumber(sheet.CombateTreino) +
+										  tonumber(sheet.PercepcaoPassivo) + tonumber(sheet.PercepcaoEquips) + tonumber(sheet.PercepcaoTreino) +
+										  tonumber(sheet.CarismaPassivo) + tonumber(sheet.CarismaEquips) + tonumber(sheet.CarismaTreino) +
+										  tonumber(sheet.InteligenciaPassivo) + tonumber(sheet.InteligenciaEquips) + tonumber(sheet.InteligenciaTreino) +
+										  tonumber(sheet.PrecisaoPassivo) + tonumber(sheet.PrecisaoEquips) + tonumber(sheet.PrecisaoTreino) +
+										  tonumber(sheet.ForcaDeVontadePassivo) + tonumber(sheet.ForcaDeVontadeEquips) + tonumber(sheet.ForcaDeVontadeTreino)
+										 ) 
+			sheet.PontosTotais = tostring(sheet.ForcaTotal + sheet.AgilidadeTotal + sheet.VigorTotal + sheet.CombateTotal + sheet.PercepcaoTotal + sheet.CarismaTotal + sheet.InteligenciaTotal + sheet.PrecisaoTotal + sheet.ForcaDeVontadeTotal)
+
+			sheet.hp = (sheet.VigorTotal * 7) + 45 + (5 * sheet.nivel)
+			sheet.eng = (sheet.VigorTotal * 7) + 57 + (5 * sheet.nivel)
+			if (sheet.ForcaDeVontadeTotal >= 20) then sheet.haki = sheet.ForcaDeVontadeTotal * 5 else sheet.haki = 0 end
+		end
+		
+		function RolarAtributo(valor)
+			local valorTotal = valor .."Total"
+			if (valor == "Forca") then valor = "Força" end
+			if (valor == "Precisao") then valor = "Precisão" end
+			if (valor == "Percepcao") then valor = "Percepção" end
+			if (valor == "Inteligencia") then valor = "Inteligência" end
+	
+			local mesas = Firecast.getRooms();
+			if (valor == "Defesa") then mesas[1].chat:rolarDados("1d20 + " .. sheet.Defesa, "Teste de ".. valor) else
+			                            mesas[1].chat:rolarDados("1d20 + " .. sheet[valorTotal], "Teste de ".. valor) end
+		end
+	</script>
+	
+	<layout left="12" top="12" width="430" height="525"> --Atributos
+	
+		<rectangle left="0" top="0" width="430" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="426" height="521" color="black"/>
+		
+		<label left="2" top="2" width="426" height="36" text="Atributos" fontColor="#5F9EA0" fontStyle="bold underline" horzTextAlign="center" fontSize="23"/>
+		
+		<label left="130" top="54" width="45" height="20" text="Base" fontColor="#5F9EA0" fontStyle="bold" horzTextAlign="center" fontSize="15"/>
+		<label left="180" top="54" width="65" height="20" text="Passivo" fontColor="#5F9EA0" fontStyle="bold" horzTextAlign="center" fontSize="15"/>
+		<label left="240" top="54" width="65" height="20" text="Equips" fontColor="#5F9EA0" fontStyle="bold" horzTextAlign="center" fontSize="15"/>
+		<label left="300" top="54" width="65" height="20" text="Treino" fontColor="#5F9EA0" fontStyle="bold" horzTextAlign="center" fontSize="15"/>
+		<label left="360" top="54" width="65" height="20" text="Total" fontColor="#5F9EA0" fontStyle="bold" horzTextAlign="center" fontSize="15"/>
+		
+		<button name="ForcaButton" left="10" top="80" text="Força" width="110" onMouseEnter="self.ForcaButton.text = 'Rolar FOR'" onMouseLeave="self.ForcaButton.text = 'Força'" onClick="RolarAtributo('Forca')"/>
+		<button name="AgilButton" left="10" top="110" text="Agilidade" width="110" onMouseEnter="self.AgilButton.text = 'Rolar AGI'" onMouseLeave="self.AgilButton.text = 'Agilidade'" onClick="RolarAtributo('Agilidade')"/>
+		<button name="VigorButton" left="10" top="140" text="Vigor" width="110" onMouseEnter="self.VigorButton.text = 'Rolar VIG'" onMouseLeave="self.VigorButton.text = 'Vigor'" onClick="RolarAtributo('Vigor')"/>
+		<button name="ComButton" left="10" top="170" text="Combate" width="110" onMouseEnter="self.ComButton.text = 'Rolar COM'" onMouseLeave="self.ComButton.text = 'Combate'" onClick="RolarAtributo('Combate')"/>
+		<button name="PercepButton" left="10" top="200" text="Percepção" width="110" onMouseEnter="self.PercepButton.text = 'Rolar PER'" onMouseLeave="self.PercepButton.text = 'Percepção'" onClick="RolarAtributo('Percepcao')"/>
+		<button name="CarisButton" left="10" top="230" text="Carisma" width="110" onMouseEnter="self.CarisButton.text = 'Rolar CAR'" onMouseLeave="self.CarisButton.text = 'Carisma'" onClick="RolarAtributo('Carisma')"/>
+		<button name="IntButton" left="10" top="260" text="Intelegência" width="110" onMouseEnter="self.IntButton.text = 'Rolar INT'" onMouseLeave="self.IntButton.text = 'Intelegência'" onClick="RolarAtributo('Inteligencia')"/>
+		<button name="PrecButton" left="10" top="290" text="Precisão" width="110" onMouseEnter="self.PrecButton.text = 'Rolar PRE'" onMouseLeave="self.PrecButton.text = 'Precisão'" onClick="RolarAtributo('Precisao')"/>
+		<button name="ForDVonButton" left="10" top="320" text="Força de Vontade" width="110" onMouseEnter="self.ForDVonButton.text = 'Rolar FDV'" onMouseLeave="self.ForDVonButton.text = 'Força de Vontade'" onClick="RolarAtributo('ForcaDeVontade')"/>
+		
+		--Base
+		<rectangle left="130" top="79" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaBase" left="130" top="79" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="130" top="109" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="AgilidadeBase" left="130" top="109" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="130" top="139" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="VigorBase" left="130" top="139" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="130" top="169" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CombateBase" left="130" top="169" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="130" top="199" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PercepcaoBase" left="130" top="199" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="130" top="229" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CarismaBase" left="130" top="229" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="130" top="259" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="InteligenciaBase" left="130" top="259" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="130" top="289" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PrecisaoBase" left="130" top="289" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="130" top="319" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaDeVontadeBase" left="130" top="319" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+
+		--Passivo
+		<rectangle left="190" top="79" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaPassivo" left="190" top="79" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="190" top="109" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="AgilidadePassivo" left="190" top="109" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="190" top="139" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="VigorPassivo" left="190" top="139" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="190" top="169" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CombatePassivo" left="190" top="169" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="190" top="199" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PercepcaoPassivo" left="190" top="199" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="190" top="229" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CarismaPassivo" left="190" top="229" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="190" top="259" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="InteligenciaPassivo" left="190" top="259" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="190" top="289" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PrecisaoPassivo" left="190" top="289" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="190" top="319" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaDeVontadePassivo" left="190" top="319" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+
+		--Equips
+		<rectangle left="250" top="79" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaEquips" left="250" top="79" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="250" top="109" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="AgilidadeEquips" left="250" top="109" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="250" top="139" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="VigorEquips" left="250" top="139" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="250" top="169" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CombateEquips" left="250" top="169" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="250" top="199" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PercepcaoEquips" left="250" top="199" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="250" top="229" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CarismaEquips" left="250" top="229" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="250" top="259" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="InteligenciaEquips" left="250" top="259" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="250" top="289" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PrecisaoEquips" left="250" top="289" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="250" top="319" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaDeVontadeEquips" left="250" top="319" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+
+		--Treino
+		<rectangle left="310" top="79" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaTreino" left="310" top="79" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="310" top="109" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="AgilidadeTreino" left="310" top="109" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="310" top="139" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="VigorTreino" left="310" top="139" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="310" top="169" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CombateTreino" left="310" top="169" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="310" top="199" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PercepcaoTreino" left="310" top="199" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="310" top="229" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CarismaTreino" left="310" top="229" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="310" top="259" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="InteligenciaTreino" left="310" top="259" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="310" top="289" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PrecisaoTreino" left="310" top="289" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="310" top="319" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaDeVontadeTreino" left="310" top="319" width="45" height="24" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+
+		--Total
+		<rectangle left="370" top="79" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaTotal" name="ForcaTotal" left="370" top="79" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="370" top="109" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="AgilidadeTotal" name="AgilidadeTotal" left="370" top="109" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="370" top="139" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="VigorTotal" name="VigorTotal" left="370" top="139" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="370" top="169" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CombateTotal" name="CombateTotal" left="370" top="169" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="370" top="199" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PercepcaoTotal" name="PercepcaoTotal" left="370" top="199" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="370" top="229" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="CarismaTotal" name="CarismaTotal" left="370" top="229" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="370" top="259" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="InteligenciaTotal" name="InteligenciaTotal" left="370" top="259" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="370" top="289" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="PrecisaoTotal" name="PrecisaoTotal" left="370" top="289" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+		<rectangle left="370" top="319" width="45" height="24" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/> <edit field="ForcaDeVontadeTotal" name="ForcaDeVontadeTotal" left="370" top="319" width="45" height="22" transparent="true" fontColor="black" fontSize="17" horzTextAlign="center" type="number" fontStyle="bold"/>
+
+		--Pontos	
+		<label left="15" top="355" width="110" text="Disponíveis:" fontColor="#5F9EA0" fontStyle="underline" fontSize="12"/> 
+		<rectangle left="83" top="355" width="40" height="19" color="#5F9EA0" xradius="7" yradius="7" cornerType="Round"/> <label field="PontosDisponiveis" left="83" top="354" width="40" height="20" fontColor="black" fontSize="15" horzTextAlign="center"/>
+		
+		<label left="131" top="355" width="110" text="Distribuídos:" fontColor="#5F9EA0" fontStyle="underline" fontSize="12"/> 
+		<rectangle left="202" top="355" width="40" height="19" color="#5F9EA0" xradius="7" yradius="7" cornerType="Round"/> <label field="PontosDistribuidos" left="202" top="354" width="40" height="20" fontColor="black" fontSize="15" horzTextAlign="center"/>
+		
+		<label left="249" top="355" width="110" text="Outros:" fontColor="#5F9EA0" fontStyle="underline" fontSize="12"/> 
+		<rectangle left="293" top="355" width="40" height="19" color="#5F9EA0" xradius="7" yradius="7" cornerType="Round"/> <label field="PontosOutros" left="293" top="354" width="40" height="20" fontColor="black" fontSize="15" horzTextAlign="center"/>
+		
+		<label left="341" top="355" width="110" text="Total:" fontColor="#5F9EA0" fontStyle="underline" fontSize="12"/> 
+		<rectangle left="375" top="355" width="40" height="19" color="#5F9EA0" xradius="7" yradius="7" cornerType="Round"/> <label field="PontosTotais" left="375" top="354" width="40" height="20" fontColor="black" fontSize="15" horzTextAlign="center"/>
+	
+		--Defesa
+		<button name="DefButton" left="10" top="386" text="Defesa" width="110" onMouseEnter="self.DefButton.text = 'Rolar Defesa'" onMouseLeave="self.DefButton.text = 'Defesa'" onClick="RolarAtributo('Defesa')"/>
+		<rectangle left="130" top="385" width="45" height="24" color="#5F9EA0" xradius="7" yradius="7" cornerType="Round"/> <label field="Defesa"  left="130" top="386" width="45" height="22" fontColor="black" fontSize="17" horzTextAlign="center" fontStyle="bold"/>
+		<label left="175" top="384" width="250" height="24" text=" = 1d20 + Vigor/2" fontColor="#D1B27E" fontStyle="bold" fontSize="15"/> 
+		
+		--Atributos das Barras
+		<label left="10" top="425" width="100" height="24" text="HP:" fontColor="#D70000" fontSize="13" fontStyle="bold"/>
+		
+		<rectangle left="75" top="426" width="45" height="20" color="#5F9EA0" xradius="7" yradius="7" cornerType="Round"/> <label field="hp" left="75" top="425" width="45" height="20" text="" fontColor="black" fontSize="15" horzTextAlign="center"/>
+		<label left="120" top="425" width="300" height="24" text=" = (Vigor X 7) + 50 | A cada nv. = +5" fontColor="#D1B27E" fontStyle="bold" fontSize="15"/> 
+		
+		<label left="10" top="449" width="100" height="24" text="ENERGIA:" fontColor="#0080FF" fontSize="13" fontStyle="bold"/>
+		<rectangle left="75" top="450" width="45" height="20" color="#5F9EA0" xradius="7" yradius="7" cornerType="Round"/> <label field="eng" left="75" top="450" width="45" height="20" text="" fontColor="black" fontSize="15" horzTextAlign="center"/>
+		<label left="120" top="448" width="300" height="24" text=" = (Vigor X 7) + 62 | A cada nv. = +5" fontColor="#D1B27E" fontStyle="bold" fontSize="15"/> 
+		
+		<label left="10" top="473" width="100" height="24" text="HAKI:" fontColor="#FAB609" fontSize="13" fontStyle="bold"/>
+		<rectangle left="75" top="474" width="45" height="20" color="#5F9EA0" xradius="7" yradius="7" cornerType="Round"/> <label field="haki" left="75" top="474" width="45" height="20" text="" fontColor="black" fontSize="15" horzTextAlign="center"/>
+		<label left="120" top="472" width="300" height="24" text=" = FDV x 5 (apartir de FDV = 20)" fontColor="#D1B27E" fontStyle="bold" fontSize="15"/> 
+	
+	</layout>
+
+	<layout left="455" top="12" width="450" height="525"> --Equipamentos
+		<rectangle left="0" top="0" width="250" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="246" height="521" color="black"/>
+		
+		<rectangle left="12" top="19" width="73" height="73" color="#F5F5DC"/>
+		<rectangle left="13" top="20" width="71" height="71" color="black"/>
+		<image field="FotoChapeu" left="13" top="20" width="71" height="71"/>
+		
+		<rectangle left="12" top="102" width="73" height="73" color="#F5F5DC"/>
+		<rectangle left="13" top="103" width="71" height="71" color="black"/>
+		<image field="FotoColar" left="13" top="103" width="71" height="71"/>
+		
+		<rectangle left="12" top="185" width="73" height="73" color="#F5F5DC"/>
+		<rectangle left="13" top="186" width="71" height="71" color="black"/>
+		<image field="FotoRoupa" left="13" top="186" width="71" height="71"/>
+		
+		<rectangle left="12" top="268" width="73" height="73" color="#F5F5DC"/>
+		<rectangle left="13" top="269" width="71" height="71" color="black"/>
+		<image field="FotoMaoPrimaria" left="13" top="269" width="71" height="71"/>
+		
+		<rectangle left="12" top="351" width="73" height="73" color="#F5F5DC" />
+		<rectangle left="13" top="352" width="71" height="71" color="black" />
+		<image field="FotoCalca" left="13" top="352" width="71" height="71"/>
+		
+		<rectangle left="12" top="434" width="73" height="73" color="#F5F5DC"/>
+		<rectangle left="13" top="435" width="71" height="71" color="black"/>
+		<image field="FotoBota" left="13" top="435" width="71" height="71"/>
+		
+	</layout>
+
+	<group> --DataLink	
+	--Base
+	<dataLink field="ForcaBase" defaultValue="1">
+	<event name="onChange">
+		if sheet.ForcaBase == "" then sheet.ForcaBase = 1 end
+		AlterarValorTotal("Forca")
+	</event>
+	</dataLink>
+
+	<dataLink field="AgilidadeBase" defaultValue="1">
+		<event name="onChange">
+			if sheet.AgilidadeBase == "" then sheet.AgilidadeBase = 1 end
+			AlterarValorTotal("Agilidade")
+		</event>
+	</dataLink>
+
+	<dataLink field="VigorBase" defaultValue="1">
+		<event name="onChange">
+			if sheet.VigorBase == "" then sheet.VigorBase = 1 end
+			AlterarValorTotal("Vigor")
+		</event>
+	</dataLink>
+
+	<dataLink field="CombateBase" defaultValue="1">
+		<event name="onChange">
+			if sheet.CombateBase == "" then sheet.CombateBase = 1 end
+			AlterarValorTotal("Combate")
+		</event>
+	</dataLink>
+
+	<dataLink field="PercepcaoBase" defaultValue="1">
+		<event name="onChange">
+			if sheet.PercepcaoBase == "" then sheet.PercepcaoBase = 1 end
+			AlterarValorTotal("Percepcao")
+		</event>
+	</dataLink>
+
+	<dataLink field="CarismaBase" defaultValue="1">
+		<event name="onChange">
+			if sheet.CarismaBase == "" then sheet.CarismaBase = 1 end
+			AlterarValorTotal("Carisma")
+		</event>
+	</dataLink>
+
+	<dataLink field="InteligenciaBase" defaultValue="1">
+		<event name="onChange">
+			if sheet.InteligenciaBase == "" then sheet.InteligenciaBase = 1 end
+			AlterarValorTotal("Inteligencia")
+		</event>
+	</dataLink>
+
+	<dataLink field="PrecisaoBase" defaultValue="1">
+		<event name="onChange">
+			if sheet.PrecisaoBase == "" then sheet.PrecisaoBase = 1 end
+			AlterarValorTotal("Precisao")
+		</event>
+	</dataLink>
+
+	<dataLink field="ForcaDeVontadeBase" defaultValue="1">
+		<event name="onChange">
+			if sheet.ForcaDeVontadeBase == "" then sheet.ForcaDeVontadeBase = 1 end
+			AlterarValorTotal("ForcaDeVontade")
+		</event>
+	</dataLink>
+	
+	
+	-- Passivo
+	<dataLink field="ForcaPassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.ForcaPassivo == "" then sheet.ForcaPassivo = 0 end
+			AlterarValorTotal("Forca")
+		</event>
+	</dataLink>
+
+	<dataLink field="AgilidadePassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.AgilidadePassivo == "" then sheet.AgilidadePassivo = 0 end
+			AlterarValorTotal("Agilidade")
+		</event>
+	</dataLink>
+
+	<dataLink field="VigorPassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.VigorPassivo == "" then sheet.VigorPassivo = 0 end
+			AlterarValorTotal("Vigor")
+		</event>
+	</dataLink>
+
+	<dataLink field="CombatePassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.CombatePassivo == "" then sheet.CombatePassivo = 0 end
+			AlterarValorTotal("Combate")
+		</event>
+	</dataLink>
+
+	<dataLink field="PercepcaoPassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.PercepcaoPassivo == "" then sheet.PercepcaoPassivo = 0 end
+			AlterarValorTotal("Percepcao")
+		</event>
+	</dataLink>
+
+	<dataLink field="CarismaPassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.CarismaPassivo == "" then sheet.CarismaPassivo = 0 end
+			AlterarValorTotal("Carisma")
+		</event>
+	</dataLink>
+
+	<dataLink field="InteligenciaPassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.InteligenciaPassivo == "" then sheet.InteligenciaPassivo = 0 end
+			AlterarValorTotal("Inteligencia")
+		</event>
+	</dataLink>
+
+	<dataLink field="PrecisaoPassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.PrecisaoPassivo == "" then sheet.PrecisaoPassivo = 0 end
+			AlterarValorTotal("Precisao")
+		</event>
+	</dataLink>
+
+	<dataLink field="ForcaDeVontadePassivo" defaultValue="0">
+		<event name="onChange">
+			if sheet.ForcaDeVontadePassivo == "" then sheet.ForcaDeVontadePassivo = 0 end
+			AlterarValorTotal("ForcaDeVontade")
+		</event>
+	</dataLink>
+	
+
+	-- Equips
+	<dataLink field="ForcaEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.ForcaEquips == "" then sheet.ForcaEquips = 0 end
+			AlterarValorTotal("Forca")
+		</event>
+	</dataLink>
+
+	<dataLink field="AgilidadeEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.AgilidadeEquips == "" then sheet.AgilidadeEquips = 0 end
+			AlterarValorTotal("Agilidade")
+		</event>
+	</dataLink>
+
+	<dataLink field="VigorEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.VigorEquips == "" then sheet.VigorEquips = 0 end
+			AlterarValorTotal("Vigor")
+		</event>
+	</dataLink>
+
+	<dataLink field="CombateEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.CombateEquips == "" then sheet.CombateEquips = 0 end
+			AlterarValorTotal("Combate")
+		</event>
+	</dataLink>
+
+	<dataLink field="PercepcaoEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.PercepcaoEquips == "" then sheet.PercepcaoEquips = 0 end
+			AlterarValorTotal("Percepcao")
+		</event>
+	</dataLink>
+
+	<dataLink field="CarismaEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.CarismaEquips == "" then sheet.CarismaEquips = 0 end
+			AlterarValorTotal("Carisma")
+		</event>
+	</dataLink>
+
+	<dataLink field="InteligenciaEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.InteligenciaEquips == "" then sheet.InteligenciaEquips = 0 end
+			AlterarValorTotal("Inteligencia")
+		</event>
+	</dataLink>
+
+	<dataLink field="PrecisaoEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.PrecisaoEquips == "" then sheet.PrecisaoEquips = 0 end
+			AlterarValorTotal("Precisao")
+		</event>
+	</dataLink>
+
+	<dataLink field="ForcaDeVontadeEquips" defaultValue="0">
+		<event name="onChange">
+			if sheet.ForcaDeVontadeEquips == "" then sheet.ForcaDeVontadeEquips = 0 end
+			AlterarValorTotal("ForcaDeVontade")
+		</event>
+	</dataLink>
+	
+
+	-- Treino
+	<dataLink field="ForcaTreino" defaultValue="0">
+		<event name="onChange">
+			if sheet.ForcaTreino == "" then sheet.ForcaTreino = 0 end
+			AlterarValorTotal("Forca")
+		</event>
+	</dataLink>
+
+	<dataLink field="AgilidadeTreino" defaultValue="0">
+		<event name="onChange">
+			if sheet.AgilidadeTreino == "" then sheet.AgilidadeTreino = 0 end
+			AlterarValorTotal("Agilidade")
+		</event>
+	</dataLink>
+
+	<dataLink field="VigorTreino" defaultValue="0">
+		<event name="onChange">
+			if sheet.VigorTreino == "" then sheet.VigorTreino = 0 end
+			AlterarValorTotal("Vigor")
+		</event>
+	</dataLink>
+
+	<dataLink field="CombateTreino" defaultValue="0">
+		<event name="onChange">
+			if sheet.CombateTreino == "" then sheet.CombateTreino = 0 end
+			AlterarValorTotal("Combate")
+		</event>
+	</dataLink>
+
+	<dataLink field="PercepcaoTreino" defaultValue="0">
+		<event name="onChange">
+			if sheet.PercepcaoTreino == "" then sheet.PercepcaoTreino = 0 end
+			AlterarValorTotal("Percepcao")
+		</event>
+	</dataLink>
+
+	<dataLink field="CarismaTreino" defaultValue="0">
+		<event name="onChange">
+			if sheet.CarismaTreino == "" then sheet.CarismaTreino = 0 end
+			AlterarValorTotal("Carisma")
+		</event>
+	</dataLink>
+
+	<dataLink field="InteligenciaTreino" defaultValue="0">
+		<event name="onChange">
+			if sheet.InteligenciaTreino == "" then sheet.InteligenciaTreino = 0 end
+			AlterarValorTotal("Inteligencia")
+		</event>
+	</dataLink>
+
+	<dataLink field="PrecisaoTreino" defaultValue="0">
+		<event name="onChange">
+			if sheet.PrecisaoTreino == "" then sheet.PrecisaoTreino = 0 end
+			AlterarValorTotal("Precisao")
+		</event>
+	</dataLink>
+	
+	
+	--Pontos
+	<dataLink field="PontosDisponiveis" defaultValue="16"> </dataLink>
+	<dataLink field="PontosDistribuidos" defaultValue="0"> </dataLink>
+	<dataLink field="PontosOutros" defaultValue="0"> </dataLink>
+	<dataLink field="PontosTotais" defaultValue="0"> </dataLink>
+	
+	--Equips
+	<dataLink field="FotoChapeu" defaultValue="https://blob.firecast.com.br/blobs/BSEWIEVG_3735362/Chapeu.png">
+		<event name="onChange">
+			if sheet.FotoChapeu == nil then sheet.FotoChapeu = "https://blob.firecast.com.br/blobs/BSEWIEVG_3735362/Chapeu.png" end
+		</event>
+	</dataLink>
+	
+		<dataLink field="FotoColar" defaultValue="https://blob.firecast.com.br/blobs/ELGUBICD_3735361/Colar.png">
+		<event name="onChange">
+			if sheet.FotoColar == nil then sheet.FotoColar = "https://blob.firecast.com.br/blobs/ELGUBICD_3735361/Colar.png" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="FotoRoupa" defaultValue="https://blob.firecast.com.br/blobs/SIRPGIRT_3735359/Ropa.png">
+		<event name="onChange">
+			if sheet.FotoRoupa == nil then sheet.FotoRoupa = "https://blob.firecast.com.br/blobs/SIRPGIRT_3735359/Ropa.png" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="FotoMaoPrimaria" defaultValue="https://blob.firecast.com.br/blobs/SMOQJGJO_3735363/M_o.png">
+		<event name="onChange">
+			if sheet.FotoMaoPrimaria == nil then sheet.FotoMaoPrimaria = "https://blob.firecast.com.br/blobs/SMOQJGJO_3735363/M_o.png" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="FotoCalca" defaultValue="https://blob.firecast.com.br/blobs/TQPAWOQT_3735360/Car_a.png">
+		<event name="onChange">
+			if sheet.FotoCalca == nil then sheet.FotoCalca = "https://blob.firecast.com.br/blobs/TQPAWOQT_3735360/Car_a.png" end
+		</event>
+	</dataLink>
+	
+	<dataLink field="FotoBota" defaultValue="https://blob.firecast.com.br/blobs/OHNVCDNS_3735367/Bota.png">
+		<event name="onChange">
+			if sheet.FotoBota == nil then sheet.FotoBota = "https://blob.firecast.com.br/blobs/OHNVCDNS_3735367/Bota.png" end
+		</event>
+	</dataLink>
+	
+	</group>
+	
+	
+</form>

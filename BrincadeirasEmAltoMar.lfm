@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form title="Brincadeiras Em Alto Mar" name="fmlBrincadeirasEmAltoMar" dataType="B.A.M" formType="sheetTemplate">
+
+	<rectangle left="0" top="0" width="10000" height="10000" color="black"/>
+	<tabControl left="1" top="5" width="10000" height="8000">
+
+		<tab title="Informações Gerais"> 
+			<import file="Brincadeiras em Alto Mar/InformaçõesGerais.lfm"/>
+		</tab>
+		
+		<tab title="Atributos &amp; Haki"> 
+			<import file="Brincadeiras em Alto Mar/Atributos.lfm"/>
+		</tab>
+		
+		<tab title="Estilo de Luta &amp; Akuma"> 
+			<import file="Brincadeiras em Alto Mar/EdLAkuma.lfm"/>
+		</tab>
+		
+		<tab title="Inventario"> 
+			
+		</tab>
+		
+	</tabControl>
+	
+	<layout name="ExportImport" left="0" top="0" width="100" height="1000" visible="false">
+		<button width="100" top="800" text="Exportar Ficha">
+			<event name="onClick">
+				-- Criar uma tabela com as informações específicas
+				local node = NDB.createChildNode(sheet, "listaNodes")
+
+				-- Preenchendo a tabela com os valores de RacasSemCaracteresEspeciais
+				for _, raca in ipairs(RacasSemCaracteresEspeciais) do
+					node[raca] = sheet[raca]
+				end
+
+				-- Preenchendo a tabela com os valores de Profissoes
+				for _, profissao in ipairs(Profissoes) do
+					node[profissao] = sheet[profissao]
+					node[profissao .. "descri"] = sheet[profissao .. "descri"]
+				end
+
+				-- Converter essa tabela para XML
+				local xml = NDB.exportXML(node)
+
+				local export = {}
+				local bytes = Utils.binaryEncode(export, "utf8", xml)
+
+				local stream = Utils.newMemoryStream()
+				stream:write(export)
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml", function()
+					stream:close()
+					showMessage("Ficha Exportada.")
+				end)
+			</event>
+		</button>
+		
+		<button width="100" top="830" text="Importar Ficha">
+			<event name="onClick">
+			Dialogs.openFile("Importar Ficha", "application/xml", false, 
+			function(arquivos)
+			local arq = arquivos[1];
+
+			local import = {};
+			local bytes = arq.stream:read(import, arq.stream.size);
+
+			local xml = Utils.binaryDecode(import, "utf8");
+			
+			NDB.createChildNode(sheet, "listaInformacoes")
+			NDB.importXML(sheet.listaInformacoes, xml);
+			
+			-- Preenchendo a tabela com os valores de RacasSemCaracteresEspeciais
+				for _, raca in ipairs(RacasSemCaracteresEspeciais) do
+					sheet[raca] = sheet.listaInformacoes[raca]
+				end
+
+				-- Preenchendo a tabela com os valores de Profissoes
+				for _, profissao in ipairs(Profissoes) do
+					sheet[profissao] = sheet.listaInformacoes[profissao]
+					sheet[profissao .. "descri"] = sheet.listaInformacoes[profissao .. "descri"]
+				end
+			end);
+			</event>
+		</button>
+	</layout>
+	
+	<script>
+		mesas = Firecast.getMesas()
+		local mesa = mesas[1]
+
+		if mesa.me.isMestre then
+			self.ExportImport.visible = true
+		else
+			self.ExportImport.visible = false
+		end    
+	</script>
+</form>
