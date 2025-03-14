@@ -2003,7 +2003,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.DescricaoRacial:setField("");
     obj.DescricaoRacial.animateImages = true;
     obj.DescricaoRacial.readOnly = false;
-    obj.DescricaoRacial.showToolbar = false;
+    obj.DescricaoRacial.showToolbar = true;
 
     obj.tab7 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab7:setParent(obj.tabControl4);
@@ -2256,35 +2256,105 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle53:setColor("black");
     obj.rectangle53:setName("rectangle53");
 
-
+	
 		function AlterarValorTotal(valor)
-			local valorBase = valor .."Base"
-			local valorPassivo = valor .."Passivo"
-			local valorEquips = valor .."Equips"
-			local valorTreino = valor .."Treino"
-			local valorTotal = valor .."Total"
-			
-			local soma = tonumber(sheet[valorBase]) + tonumber(sheet[valorPassivo]) + tonumber(sheet[valorEquips]) + tonumber(sheet[valorTreino])
-			self[valorTotal].text = tostring(soma)
-			sheet.Defesa = tostring(math.floor(sheet.VigorBase / 2))
-			
-			sheet.PontosDisponiveis = tostring(23 + (sheet.nivel * 2) -sheet.ForcaBase - sheet.AgilidadeBase -sheet.VigorBase -sheet.CombateBase -sheet.PercepcaoBase -sheet.CarismaBase -sheet.InteligenciaBase -sheet.PrecisaoBase -sheet.ForcaDeVontadeBase)
-			sheet.PontosDistribuidos = tostring(sheet.ForcaBase + sheet.AgilidadeBase + sheet.VigorBase + sheet.CombateBase + sheet.PercepcaoBase + sheet.CarismaBase + sheet.InteligenciaBase + sheet.PrecisaoBase + sheet.ForcaDeVontadeBase - 9)
-			sheet.PontosOutros = tostring(tonumber(sheet.ForcaPassivo) + tonumber(sheet.ForcaEquips) + tonumber(sheet.ForcaTreino) +
-										  tonumber(sheet.AgilidadePassivo) + tonumber(sheet.AgilidadeEquips) + tonumber(sheet.AgilidadeTreino) +
-										  tonumber(sheet.VigorPassivo) + tonumber(sheet.VigorEquips) + tonumber(sheet.VigorTreino) +
-										  tonumber(sheet.CombatePassivo) + tonumber(sheet.CombateEquips) + tonumber(sheet.CombateTreino) +
-										  tonumber(sheet.PercepcaoPassivo) + tonumber(sheet.PercepcaoEquips) + tonumber(sheet.PercepcaoTreino) +
-										  tonumber(sheet.CarismaPassivo) + tonumber(sheet.CarismaEquips) + tonumber(sheet.CarismaTreino) +
-										  tonumber(sheet.InteligenciaPassivo) + tonumber(sheet.InteligenciaEquips) + tonumber(sheet.InteligenciaTreino) +
-										  tonumber(sheet.PrecisaoPassivo) + tonumber(sheet.PrecisaoEquips) + tonumber(sheet.PrecisaoTreino) +
-										  tonumber(sheet.ForcaDeVontadePassivo) + tonumber(sheet.ForcaDeVontadeEquips) + tonumber(sheet.ForcaDeVontadeTreino)
-										 ) 
-			sheet.PontosTotais = tostring(sheet.ForcaTotal + sheet.AgilidadeTotal + sheet.VigorTotal + sheet.CombateTotal + sheet.PercepcaoTotal + sheet.CarismaTotal + sheet.InteligenciaTotal + sheet.PrecisaoTotal + sheet.ForcaDeVontadeTotal)
+			-- Variáveis para os campos relacionados ao valor passado como parâmetro
+			local valorBase = valor .. "Base"
+			local valorPassivo = valor .. "Passivo"
+			local valorEquips = valor .. "Equips"
+			local valorTreino = valor .. "Treino"
+			local valorTotal = valor .. "Total"
 
-			sheet.hp = (sheet.VigorTotal * 7) + 45 + (5 * sheet.nivel)
-			sheet.eng = (sheet.VigorTotal * 7) + 57 + (5 * sheet.nivel)
-			if (sheet.ForcaDeVontadeTotal >= 20) then sheet.haki = sheet.ForcaDeVontadeTotal * 5 else sheet.haki = 0 end
+			-- Variáveis para os atributos passivos, equipamentos e treino
+			local forcaBase = tonumber(sheet.ForcaBase) or 0
+			local forcaPassivo = tonumber(sheet.ForcaPassivo) or 0
+			local forcaEquips = tonumber(sheet.ForcaEquips) or 0
+			local forcaTreino = tonumber(sheet.ForcaTreino) or 0
+
+			local agilidadeBase = tonumber(sheet.AgilidadeBase) or 0
+			local agilidadePassivo = tonumber(sheet.AgilidadePassivo) or 0
+			local agilidadeEquips = tonumber(sheet.AgilidadeEquips) or 0
+			local agilidadeTreino = tonumber(sheet.AgilidadeTreino) or 0
+
+			local vigorBase = tonumber(sheet.VigorBase) or 0
+			local vigorPassivo = tonumber(sheet.VigorPassivo) or 0
+			local vigorEquips = tonumber(sheet.VigorEquips) or 0
+			local vigorTreino = tonumber(sheet.VigorTreino) or 0
+
+			local combateBase = tonumber(sheet.CombateBase) or 0
+			local combatePassivo = tonumber(sheet.CombatePassivo) or 0
+			local combateEquips = tonumber(sheet.CombateEquips) or 0
+			local combateTreino = tonumber(sheet.CombateTreino) or 0
+			
+			local percepcaoBase = tonumber(sheet.PercepcaoBase) or 0
+			local percepcaoPassivo = tonumber(sheet.PercepcaoPassivo) or 0
+			local percepcaoEquips = tonumber(sheet.PercepcaoEquips) or 0
+			local percepcaoTreino = tonumber(sheet.PercepcaoTreino) or 0
+
+			local carismaBase = tonumber(sheet.CarismaBase) or 0
+			local carismaPassivo = tonumber(sheet.CarismaPassivo) or 0
+			local carismaEquips = tonumber(sheet.CarismaEquips) or 0
+			local carismaTreino = tonumber(sheet.CarismaTreino) or 0
+
+			local inteligenciaBase = tonumber(sheet.InteligenciaBase) or 0
+			local inteligenciaPassivo = tonumber(sheet.InteligenciaPassivo) or 0
+			local inteligenciaEquips = tonumber(sheet.InteligenciaEquips) or 0
+			local inteligenciaTreino = tonumber(sheet.InteligenciaTreino) or 0
+
+			local precisaoBase = tonumber(sheet.PrecisaoBase) or 0
+			local precisaoPassivo = tonumber(sheet.PrecisaoPassivo) or 0
+			local precisaoEquips = tonumber(sheet.PrecisaoEquips) or 0
+			local precisaoTreino = tonumber(sheet.PrecisaoTreino) or 0
+
+			local forcaDeVontadeBase = tonumber(sheet.ForcaDeVontadeBase) or 0
+			local forcaDeVontadePassivo = tonumber(sheet.ForcaDeVontadePassivo) or 0
+			local forcaDeVontadeEquips = tonumber(sheet.ForcaDeVontadeEquips) or 0
+			local forcaDeVontadeTreino = tonumber(sheet.ForcaDeVontadeTreino) or 0
+			
+			-- Cálculo dos pontos de outros (passivos, equipamentos e treino)
+			sheet.PontosOutros = tostring(
+				forcaPassivo + forcaEquips + forcaTreino +
+				agilidadePassivo + agilidadeEquips + agilidadeTreino +
+				vigorPassivo + vigorEquips + vigorTreino +
+				combatePassivo + combateEquips + combateTreino +
+				percepcaoPassivo + percepcaoEquips + percepcaoTreino +
+				carismaPassivo + carismaEquips + carismaTreino +
+				inteligenciaPassivo + inteligenciaEquips + inteligenciaTreino +
+				precisaoPassivo + precisaoEquips + precisaoTreino +
+				forcaDeVontadePassivo + forcaDeVontadeEquips + forcaDeVontadeTreino
+			)
+
+			-- Soma dos valores para o total
+			local soma = tonumber(sheet[valorBase] or 0) + tonumber(sheet[valorPassivo] or 0) + tonumber(sheet[valorEquips] or 0) + tonumber(sheet[valorTreino] or 0)
+			self[valorTotal].text = tostring(soma)
+			
+			-- Cálculo dos pontos disponíveis
+			local nivel = tonumber(sheet.nivel) or 1
+			sheet.PontosDisponiveis = tostring(23 + (nivel * 2) - forcaBase - agilidadeBase - vigorBase - combateBase - percepcaoBase - carismaBase - inteligenciaBase - precisaoBase - forcaDeVontadeBase)
+
+			-- Cálculo dos pontos distribuídos
+			sheet.PontosDistribuidos = tostring(forcaBase + agilidadeBase + vigorBase + combateBase + percepcaoBase + carismaBase + inteligenciaBase + precisaoBase + forcaDeVontadeBase - 9)
+			
+			-- Cálculo da defesa
+			sheet.Defesa = tostring(math.floor((tonumber(sheet.VigorBase) or 0) / 2))
+			
+		end
+		
+		function CalcularPontosTotais()
+			sheet.PontosTotais = (sheet.ForcaTotal or 0) + (sheet.AgilidadeTotal or 0) + (sheet.VigorTotal or 0) + 
+								 (sheet.CombateTotal or 0) + (sheet.PercepcaoTotal or 0) + (sheet.CarismaTotal or 0) + 
+								 (sheet.InteligenciaTotal or 0) + (sheet.PrecisaoTotal or 0) + (sheet.ForcaDeVontadeTotal or 0)
+		end
+
+		function CalcularHpEngHaki()
+			sheet.hp = ((sheet.VigorTotal or 0) * 7) + 45 + (5 * (sheet.nivel or 0))
+			sheet.eng = ((sheet.VigorTotal or 0) * 7) + 57 + (5 * (sheet.nivel or 0))
+			
+			if ((sheet.ForcaDeVontadeTotal or 0) >= 20) then 
+				sheet.haki = (sheet.ForcaDeVontadeTotal or 0) * 5 
+			else 
+				sheet.haki = 0 
+			end
 		end
 		
 		function RolarAtributo(valor)
@@ -2297,7 +2367,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 			local mesas = Firecast.getRooms();
 			if (valor == "Defesa") then mesas[1].chat:rolarDados("1d20 + " .. sheet.Defesa, "Teste de ".. valor) else
 			                            mesas[1].chat:rolarDados("1d20 + " .. sheet[valorTotal], "Teste de ".. valor) end
-		end
+	end
 	
 
 
@@ -2305,8 +2375,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.layout7:setParent(obj.Atributos);
     obj.layout7:setLeft(12);
     obj.layout7:setTop(12);
-    obj.layout7:setWidth(430);
-    obj.layout7:setHeight(525);
+    obj.layout7:setWidth(4300);
+    obj.layout7:setHeight(5250);
     obj.layout7:setName("layout7");
 
     obj.rectangle54 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -2334,7 +2404,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label27:setWidth(426);
     obj.label27:setHeight(36);
     obj.label27:setText("Atributos");
-    obj.label27:setFontColor("#5F9EA0");
+    obj.label27:setFontColor("#D1B27E");
     lfm_setPropAsString(obj.label27, "fontStyle", "bold underline");
     obj.label27:setHorzTextAlign("center");
     obj.label27:setFontSize(23);
@@ -2489,20 +2559,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle56:setCornerType("round");
     obj.rectangle56:setName("rectangle56");
 
-    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit8:setParent(obj.layout7);
-    obj.edit8:setField("ForcaBase");
-    obj.edit8:setLeft(130);
-    obj.edit8:setTop(79);
-    obj.edit8:setWidth(45);
-    obj.edit8:setHeight(24);
-    obj.edit8:setTransparent(true);
-    obj.edit8:setFontColor("black");
-    obj.edit8:setFontSize(17);
-    obj.edit8:setHorzTextAlign("center");
-    obj.edit8:setType("number");
-    lfm_setPropAsString(obj.edit8, "fontStyle", "bold");
-    obj.edit8:setName("edit8");
+    obj.ForcaBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.ForcaBase:setParent(obj.layout7);
+    obj.ForcaBase:setField("ForcaBase");
+    obj.ForcaBase:setName("ForcaBase");
+    obj.ForcaBase:setLeft(130);
+    obj.ForcaBase:setTop(79);
+    obj.ForcaBase:setWidth(45);
+    obj.ForcaBase:setHeight(24);
+    obj.ForcaBase:setTransparent(true);
+    obj.ForcaBase:setFontColor("black");
+    obj.ForcaBase:setFontSize(17);
+    obj.ForcaBase:setHorzTextAlign("center");
+    obj.ForcaBase:setType("number");
+    lfm_setPropAsString(obj.ForcaBase, "fontStyle", "bold");
 
     obj.rectangle57 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle57:setParent(obj.layout7);
@@ -2516,20 +2586,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle57:setCornerType("round");
     obj.rectangle57:setName("rectangle57");
 
-    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit9:setParent(obj.layout7);
-    obj.edit9:setField("AgilidadeBase");
-    obj.edit9:setLeft(130);
-    obj.edit9:setTop(109);
-    obj.edit9:setWidth(45);
-    obj.edit9:setHeight(24);
-    obj.edit9:setTransparent(true);
-    obj.edit9:setFontColor("black");
-    obj.edit9:setFontSize(17);
-    obj.edit9:setHorzTextAlign("center");
-    obj.edit9:setType("number");
-    lfm_setPropAsString(obj.edit9, "fontStyle", "bold");
-    obj.edit9:setName("edit9");
+    obj.AgilidadeBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.AgilidadeBase:setParent(obj.layout7);
+    obj.AgilidadeBase:setField("AgilidadeBase");
+    obj.AgilidadeBase:setName("AgilidadeBase");
+    obj.AgilidadeBase:setLeft(130);
+    obj.AgilidadeBase:setTop(109);
+    obj.AgilidadeBase:setWidth(45);
+    obj.AgilidadeBase:setHeight(24);
+    obj.AgilidadeBase:setTransparent(true);
+    obj.AgilidadeBase:setFontColor("black");
+    obj.AgilidadeBase:setFontSize(17);
+    obj.AgilidadeBase:setHorzTextAlign("center");
+    obj.AgilidadeBase:setType("number");
+    lfm_setPropAsString(obj.AgilidadeBase, "fontStyle", "bold");
 
     obj.rectangle58 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle58:setParent(obj.layout7);
@@ -2543,20 +2613,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle58:setCornerType("round");
     obj.rectangle58:setName("rectangle58");
 
-    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit10:setParent(obj.layout7);
-    obj.edit10:setField("VigorBase");
-    obj.edit10:setLeft(130);
-    obj.edit10:setTop(139);
-    obj.edit10:setWidth(45);
-    obj.edit10:setHeight(24);
-    obj.edit10:setTransparent(true);
-    obj.edit10:setFontColor("black");
-    obj.edit10:setFontSize(17);
-    obj.edit10:setHorzTextAlign("center");
-    obj.edit10:setType("number");
-    lfm_setPropAsString(obj.edit10, "fontStyle", "bold");
-    obj.edit10:setName("edit10");
+    obj.VigorBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.VigorBase:setParent(obj.layout7);
+    obj.VigorBase:setField("VigorBase");
+    obj.VigorBase:setName("VigorBase");
+    obj.VigorBase:setLeft(130);
+    obj.VigorBase:setTop(139);
+    obj.VigorBase:setWidth(45);
+    obj.VigorBase:setHeight(24);
+    obj.VigorBase:setTransparent(true);
+    obj.VigorBase:setFontColor("black");
+    obj.VigorBase:setFontSize(17);
+    obj.VigorBase:setHorzTextAlign("center");
+    obj.VigorBase:setType("number");
+    lfm_setPropAsString(obj.VigorBase, "fontStyle", "bold");
 
     obj.rectangle59 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle59:setParent(obj.layout7);
@@ -2570,20 +2640,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle59:setCornerType("round");
     obj.rectangle59:setName("rectangle59");
 
-    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit11:setParent(obj.layout7);
-    obj.edit11:setField("CombateBase");
-    obj.edit11:setLeft(130);
-    obj.edit11:setTop(169);
-    obj.edit11:setWidth(45);
-    obj.edit11:setHeight(24);
-    obj.edit11:setTransparent(true);
-    obj.edit11:setFontColor("black");
-    obj.edit11:setFontSize(17);
-    obj.edit11:setHorzTextAlign("center");
-    obj.edit11:setType("number");
-    lfm_setPropAsString(obj.edit11, "fontStyle", "bold");
-    obj.edit11:setName("edit11");
+    obj.CombateBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.CombateBase:setParent(obj.layout7);
+    obj.CombateBase:setField("CombateBase");
+    obj.CombateBase:setName("CombateBase");
+    obj.CombateBase:setLeft(130);
+    obj.CombateBase:setTop(169);
+    obj.CombateBase:setWidth(45);
+    obj.CombateBase:setHeight(24);
+    obj.CombateBase:setTransparent(true);
+    obj.CombateBase:setFontColor("black");
+    obj.CombateBase:setFontSize(17);
+    obj.CombateBase:setHorzTextAlign("center");
+    obj.CombateBase:setType("number");
+    lfm_setPropAsString(obj.CombateBase, "fontStyle", "bold");
 
     obj.rectangle60 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle60:setParent(obj.layout7);
@@ -2597,20 +2667,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle60:setCornerType("round");
     obj.rectangle60:setName("rectangle60");
 
-    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit12:setParent(obj.layout7);
-    obj.edit12:setField("PercepcaoBase");
-    obj.edit12:setLeft(130);
-    obj.edit12:setTop(199);
-    obj.edit12:setWidth(45);
-    obj.edit12:setHeight(24);
-    obj.edit12:setTransparent(true);
-    obj.edit12:setFontColor("black");
-    obj.edit12:setFontSize(17);
-    obj.edit12:setHorzTextAlign("center");
-    obj.edit12:setType("number");
-    lfm_setPropAsString(obj.edit12, "fontStyle", "bold");
-    obj.edit12:setName("edit12");
+    obj.PercepcaoBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.PercepcaoBase:setParent(obj.layout7);
+    obj.PercepcaoBase:setField("PercepcaoBase");
+    obj.PercepcaoBase:setName("PercepcaoBase");
+    obj.PercepcaoBase:setLeft(130);
+    obj.PercepcaoBase:setTop(199);
+    obj.PercepcaoBase:setWidth(45);
+    obj.PercepcaoBase:setHeight(24);
+    obj.PercepcaoBase:setTransparent(true);
+    obj.PercepcaoBase:setFontColor("black");
+    obj.PercepcaoBase:setFontSize(17);
+    obj.PercepcaoBase:setHorzTextAlign("center");
+    obj.PercepcaoBase:setType("number");
+    lfm_setPropAsString(obj.PercepcaoBase, "fontStyle", "bold");
 
     obj.rectangle61 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle61:setParent(obj.layout7);
@@ -2624,20 +2694,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle61:setCornerType("round");
     obj.rectangle61:setName("rectangle61");
 
-    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit13:setParent(obj.layout7);
-    obj.edit13:setField("CarismaBase");
-    obj.edit13:setLeft(130);
-    obj.edit13:setTop(229);
-    obj.edit13:setWidth(45);
-    obj.edit13:setHeight(24);
-    obj.edit13:setTransparent(true);
-    obj.edit13:setFontColor("black");
-    obj.edit13:setFontSize(17);
-    obj.edit13:setHorzTextAlign("center");
-    obj.edit13:setType("number");
-    lfm_setPropAsString(obj.edit13, "fontStyle", "bold");
-    obj.edit13:setName("edit13");
+    obj.CarismaBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.CarismaBase:setParent(obj.layout7);
+    obj.CarismaBase:setField("CarismaBase");
+    obj.CarismaBase:setName("CarismaBase");
+    obj.CarismaBase:setLeft(130);
+    obj.CarismaBase:setTop(229);
+    obj.CarismaBase:setWidth(45);
+    obj.CarismaBase:setHeight(24);
+    obj.CarismaBase:setTransparent(true);
+    obj.CarismaBase:setFontColor("black");
+    obj.CarismaBase:setFontSize(17);
+    obj.CarismaBase:setHorzTextAlign("center");
+    obj.CarismaBase:setType("number");
+    lfm_setPropAsString(obj.CarismaBase, "fontStyle", "bold");
 
     obj.rectangle62 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle62:setParent(obj.layout7);
@@ -2651,20 +2721,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle62:setCornerType("round");
     obj.rectangle62:setName("rectangle62");
 
-    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit14:setParent(obj.layout7);
-    obj.edit14:setField("InteligenciaBase");
-    obj.edit14:setLeft(130);
-    obj.edit14:setTop(259);
-    obj.edit14:setWidth(45);
-    obj.edit14:setHeight(24);
-    obj.edit14:setTransparent(true);
-    obj.edit14:setFontColor("black");
-    obj.edit14:setFontSize(17);
-    obj.edit14:setHorzTextAlign("center");
-    obj.edit14:setType("number");
-    lfm_setPropAsString(obj.edit14, "fontStyle", "bold");
-    obj.edit14:setName("edit14");
+    obj.InteligenciaBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.InteligenciaBase:setParent(obj.layout7);
+    obj.InteligenciaBase:setField("InteligenciaBase");
+    obj.InteligenciaBase:setName("InteligenciaBase");
+    obj.InteligenciaBase:setLeft(130);
+    obj.InteligenciaBase:setTop(259);
+    obj.InteligenciaBase:setWidth(45);
+    obj.InteligenciaBase:setHeight(24);
+    obj.InteligenciaBase:setTransparent(true);
+    obj.InteligenciaBase:setFontColor("black");
+    obj.InteligenciaBase:setFontSize(17);
+    obj.InteligenciaBase:setHorzTextAlign("center");
+    obj.InteligenciaBase:setType("number");
+    lfm_setPropAsString(obj.InteligenciaBase, "fontStyle", "bold");
 
     obj.rectangle63 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle63:setParent(obj.layout7);
@@ -2678,20 +2748,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle63:setCornerType("round");
     obj.rectangle63:setName("rectangle63");
 
-    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit15:setParent(obj.layout7);
-    obj.edit15:setField("PrecisaoBase");
-    obj.edit15:setLeft(130);
-    obj.edit15:setTop(289);
-    obj.edit15:setWidth(45);
-    obj.edit15:setHeight(24);
-    obj.edit15:setTransparent(true);
-    obj.edit15:setFontColor("black");
-    obj.edit15:setFontSize(17);
-    obj.edit15:setHorzTextAlign("center");
-    obj.edit15:setType("number");
-    lfm_setPropAsString(obj.edit15, "fontStyle", "bold");
-    obj.edit15:setName("edit15");
+    obj.PrecisaoBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.PrecisaoBase:setParent(obj.layout7);
+    obj.PrecisaoBase:setField("PrecisaoBase");
+    obj.PrecisaoBase:setName("PrecisaoBase");
+    obj.PrecisaoBase:setLeft(130);
+    obj.PrecisaoBase:setTop(289);
+    obj.PrecisaoBase:setWidth(45);
+    obj.PrecisaoBase:setHeight(24);
+    obj.PrecisaoBase:setTransparent(true);
+    obj.PrecisaoBase:setFontColor("black");
+    obj.PrecisaoBase:setFontSize(17);
+    obj.PrecisaoBase:setHorzTextAlign("center");
+    obj.PrecisaoBase:setType("number");
+    lfm_setPropAsString(obj.PrecisaoBase, "fontStyle", "bold");
 
     obj.rectangle64 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle64:setParent(obj.layout7);
@@ -2705,20 +2775,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle64:setCornerType("round");
     obj.rectangle64:setName("rectangle64");
 
-    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit16:setParent(obj.layout7);
-    obj.edit16:setField("ForcaDeVontadeBase");
-    obj.edit16:setLeft(130);
-    obj.edit16:setTop(319);
-    obj.edit16:setWidth(45);
-    obj.edit16:setHeight(24);
-    obj.edit16:setTransparent(true);
-    obj.edit16:setFontColor("black");
-    obj.edit16:setFontSize(17);
-    obj.edit16:setHorzTextAlign("center");
-    obj.edit16:setType("number");
-    lfm_setPropAsString(obj.edit16, "fontStyle", "bold");
-    obj.edit16:setName("edit16");
+    obj.ForcaDeVontadeBase = GUI.fromHandle(_obj_newObject("edit"));
+    obj.ForcaDeVontadeBase:setParent(obj.layout7);
+    obj.ForcaDeVontadeBase:setField("ForcaDeVontadeBase");
+    obj.ForcaDeVontadeBase:setName("ForcaDeVontadeBase");
+    obj.ForcaDeVontadeBase:setLeft(130);
+    obj.ForcaDeVontadeBase:setTop(319);
+    obj.ForcaDeVontadeBase:setWidth(45);
+    obj.ForcaDeVontadeBase:setHeight(24);
+    obj.ForcaDeVontadeBase:setTransparent(true);
+    obj.ForcaDeVontadeBase:setFontColor("black");
+    obj.ForcaDeVontadeBase:setFontSize(17);
+    obj.ForcaDeVontadeBase:setHorzTextAlign("center");
+    obj.ForcaDeVontadeBase:setType("number");
+    lfm_setPropAsString(obj.ForcaDeVontadeBase, "fontStyle", "bold");
 
     obj.rectangle65 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle65:setParent(obj.layout7);
@@ -2732,20 +2802,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle65:setCornerType("round");
     obj.rectangle65:setName("rectangle65");
 
-    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit17:setParent(obj.layout7);
-    obj.edit17:setField("ForcaPassivo");
-    obj.edit17:setLeft(190);
-    obj.edit17:setTop(79);
-    obj.edit17:setWidth(45);
-    obj.edit17:setHeight(24);
-    obj.edit17:setTransparent(true);
-    obj.edit17:setFontColor("black");
-    obj.edit17:setFontSize(17);
-    obj.edit17:setHorzTextAlign("center");
-    obj.edit17:setType("number");
-    lfm_setPropAsString(obj.edit17, "fontStyle", "bold");
-    obj.edit17:setName("edit17");
+    obj.ForcaPassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.ForcaPassivo:setParent(obj.layout7);
+    obj.ForcaPassivo:setField("ForcaPassivo");
+    obj.ForcaPassivo:setName("ForcaPassivo");
+    obj.ForcaPassivo:setLeft(190);
+    obj.ForcaPassivo:setTop(79);
+    obj.ForcaPassivo:setWidth(45);
+    obj.ForcaPassivo:setHeight(24);
+    obj.ForcaPassivo:setTransparent(true);
+    obj.ForcaPassivo:setFontColor("black");
+    obj.ForcaPassivo:setFontSize(17);
+    obj.ForcaPassivo:setHorzTextAlign("center");
+    obj.ForcaPassivo:setType("number");
+    lfm_setPropAsString(obj.ForcaPassivo, "fontStyle", "bold");
 
     obj.rectangle66 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle66:setParent(obj.layout7);
@@ -2759,20 +2829,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle66:setCornerType("round");
     obj.rectangle66:setName("rectangle66");
 
-    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit18:setParent(obj.layout7);
-    obj.edit18:setField("AgilidadePassivo");
-    obj.edit18:setLeft(190);
-    obj.edit18:setTop(109);
-    obj.edit18:setWidth(45);
-    obj.edit18:setHeight(24);
-    obj.edit18:setTransparent(true);
-    obj.edit18:setFontColor("black");
-    obj.edit18:setFontSize(17);
-    obj.edit18:setHorzTextAlign("center");
-    obj.edit18:setType("number");
-    lfm_setPropAsString(obj.edit18, "fontStyle", "bold");
-    obj.edit18:setName("edit18");
+    obj.AgilidadePassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.AgilidadePassivo:setParent(obj.layout7);
+    obj.AgilidadePassivo:setField("AgilidadePassivo");
+    obj.AgilidadePassivo:setName("AgilidadePassivo");
+    obj.AgilidadePassivo:setLeft(190);
+    obj.AgilidadePassivo:setTop(109);
+    obj.AgilidadePassivo:setWidth(45);
+    obj.AgilidadePassivo:setHeight(24);
+    obj.AgilidadePassivo:setTransparent(true);
+    obj.AgilidadePassivo:setFontColor("black");
+    obj.AgilidadePassivo:setFontSize(17);
+    obj.AgilidadePassivo:setHorzTextAlign("center");
+    obj.AgilidadePassivo:setType("number");
+    lfm_setPropAsString(obj.AgilidadePassivo, "fontStyle", "bold");
 
     obj.rectangle67 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle67:setParent(obj.layout7);
@@ -2786,20 +2856,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle67:setCornerType("round");
     obj.rectangle67:setName("rectangle67");
 
-    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit19:setParent(obj.layout7);
-    obj.edit19:setField("VigorPassivo");
-    obj.edit19:setLeft(190);
-    obj.edit19:setTop(139);
-    obj.edit19:setWidth(45);
-    obj.edit19:setHeight(24);
-    obj.edit19:setTransparent(true);
-    obj.edit19:setFontColor("black");
-    obj.edit19:setFontSize(17);
-    obj.edit19:setHorzTextAlign("center");
-    obj.edit19:setType("number");
-    lfm_setPropAsString(obj.edit19, "fontStyle", "bold");
-    obj.edit19:setName("edit19");
+    obj.VigorPassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.VigorPassivo:setParent(obj.layout7);
+    obj.VigorPassivo:setField("VigorPassivo");
+    obj.VigorPassivo:setName("VigorPassivo");
+    obj.VigorPassivo:setLeft(190);
+    obj.VigorPassivo:setTop(139);
+    obj.VigorPassivo:setWidth(45);
+    obj.VigorPassivo:setHeight(24);
+    obj.VigorPassivo:setTransparent(true);
+    obj.VigorPassivo:setFontColor("black");
+    obj.VigorPassivo:setFontSize(17);
+    obj.VigorPassivo:setHorzTextAlign("center");
+    obj.VigorPassivo:setType("number");
+    lfm_setPropAsString(obj.VigorPassivo, "fontStyle", "bold");
 
     obj.rectangle68 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle68:setParent(obj.layout7);
@@ -2813,20 +2883,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle68:setCornerType("round");
     obj.rectangle68:setName("rectangle68");
 
-    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit20:setParent(obj.layout7);
-    obj.edit20:setField("CombatePassivo");
-    obj.edit20:setLeft(190);
-    obj.edit20:setTop(169);
-    obj.edit20:setWidth(45);
-    obj.edit20:setHeight(24);
-    obj.edit20:setTransparent(true);
-    obj.edit20:setFontColor("black");
-    obj.edit20:setFontSize(17);
-    obj.edit20:setHorzTextAlign("center");
-    obj.edit20:setType("number");
-    lfm_setPropAsString(obj.edit20, "fontStyle", "bold");
-    obj.edit20:setName("edit20");
+    obj.CombatePassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.CombatePassivo:setParent(obj.layout7);
+    obj.CombatePassivo:setField("CombatePassivo");
+    obj.CombatePassivo:setName("CombatePassivo");
+    obj.CombatePassivo:setLeft(190);
+    obj.CombatePassivo:setTop(169);
+    obj.CombatePassivo:setWidth(45);
+    obj.CombatePassivo:setHeight(24);
+    obj.CombatePassivo:setTransparent(true);
+    obj.CombatePassivo:setFontColor("black");
+    obj.CombatePassivo:setFontSize(17);
+    obj.CombatePassivo:setHorzTextAlign("center");
+    obj.CombatePassivo:setType("number");
+    lfm_setPropAsString(obj.CombatePassivo, "fontStyle", "bold");
 
     obj.rectangle69 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle69:setParent(obj.layout7);
@@ -2840,20 +2910,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle69:setCornerType("round");
     obj.rectangle69:setName("rectangle69");
 
-    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit21:setParent(obj.layout7);
-    obj.edit21:setField("PercepcaoPassivo");
-    obj.edit21:setLeft(190);
-    obj.edit21:setTop(199);
-    obj.edit21:setWidth(45);
-    obj.edit21:setHeight(24);
-    obj.edit21:setTransparent(true);
-    obj.edit21:setFontColor("black");
-    obj.edit21:setFontSize(17);
-    obj.edit21:setHorzTextAlign("center");
-    obj.edit21:setType("number");
-    lfm_setPropAsString(obj.edit21, "fontStyle", "bold");
-    obj.edit21:setName("edit21");
+    obj.PercepcaoPassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.PercepcaoPassivo:setParent(obj.layout7);
+    obj.PercepcaoPassivo:setField("PercepcaoPassivo");
+    obj.PercepcaoPassivo:setName("PercepcaoPassivo");
+    obj.PercepcaoPassivo:setLeft(190);
+    obj.PercepcaoPassivo:setTop(199);
+    obj.PercepcaoPassivo:setWidth(45);
+    obj.PercepcaoPassivo:setHeight(24);
+    obj.PercepcaoPassivo:setTransparent(true);
+    obj.PercepcaoPassivo:setFontColor("black");
+    obj.PercepcaoPassivo:setFontSize(17);
+    obj.PercepcaoPassivo:setHorzTextAlign("center");
+    obj.PercepcaoPassivo:setType("number");
+    lfm_setPropAsString(obj.PercepcaoPassivo, "fontStyle", "bold");
 
     obj.rectangle70 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle70:setParent(obj.layout7);
@@ -2867,20 +2937,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle70:setCornerType("round");
     obj.rectangle70:setName("rectangle70");
 
-    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit22:setParent(obj.layout7);
-    obj.edit22:setField("CarismaPassivo");
-    obj.edit22:setLeft(190);
-    obj.edit22:setTop(229);
-    obj.edit22:setWidth(45);
-    obj.edit22:setHeight(24);
-    obj.edit22:setTransparent(true);
-    obj.edit22:setFontColor("black");
-    obj.edit22:setFontSize(17);
-    obj.edit22:setHorzTextAlign("center");
-    obj.edit22:setType("number");
-    lfm_setPropAsString(obj.edit22, "fontStyle", "bold");
-    obj.edit22:setName("edit22");
+    obj.CarismaPassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.CarismaPassivo:setParent(obj.layout7);
+    obj.CarismaPassivo:setField("CarismaPassivo");
+    obj.CarismaPassivo:setName("CarismaPassivo");
+    obj.CarismaPassivo:setLeft(190);
+    obj.CarismaPassivo:setTop(229);
+    obj.CarismaPassivo:setWidth(45);
+    obj.CarismaPassivo:setHeight(24);
+    obj.CarismaPassivo:setTransparent(true);
+    obj.CarismaPassivo:setFontColor("black");
+    obj.CarismaPassivo:setFontSize(17);
+    obj.CarismaPassivo:setHorzTextAlign("center");
+    obj.CarismaPassivo:setType("number");
+    lfm_setPropAsString(obj.CarismaPassivo, "fontStyle", "bold");
 
     obj.rectangle71 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle71:setParent(obj.layout7);
@@ -2894,20 +2964,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle71:setCornerType("round");
     obj.rectangle71:setName("rectangle71");
 
-    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit23:setParent(obj.layout7);
-    obj.edit23:setField("InteligenciaPassivo");
-    obj.edit23:setLeft(190);
-    obj.edit23:setTop(259);
-    obj.edit23:setWidth(45);
-    obj.edit23:setHeight(24);
-    obj.edit23:setTransparent(true);
-    obj.edit23:setFontColor("black");
-    obj.edit23:setFontSize(17);
-    obj.edit23:setHorzTextAlign("center");
-    obj.edit23:setType("number");
-    lfm_setPropAsString(obj.edit23, "fontStyle", "bold");
-    obj.edit23:setName("edit23");
+    obj.InteligenciaPassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.InteligenciaPassivo:setParent(obj.layout7);
+    obj.InteligenciaPassivo:setField("InteligenciaPassivo");
+    obj.InteligenciaPassivo:setName("InteligenciaPassivo");
+    obj.InteligenciaPassivo:setLeft(190);
+    obj.InteligenciaPassivo:setTop(259);
+    obj.InteligenciaPassivo:setWidth(45);
+    obj.InteligenciaPassivo:setHeight(24);
+    obj.InteligenciaPassivo:setTransparent(true);
+    obj.InteligenciaPassivo:setFontColor("black");
+    obj.InteligenciaPassivo:setFontSize(17);
+    obj.InteligenciaPassivo:setHorzTextAlign("center");
+    obj.InteligenciaPassivo:setType("number");
+    lfm_setPropAsString(obj.InteligenciaPassivo, "fontStyle", "bold");
 
     obj.rectangle72 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle72:setParent(obj.layout7);
@@ -2921,20 +2991,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle72:setCornerType("round");
     obj.rectangle72:setName("rectangle72");
 
-    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit24:setParent(obj.layout7);
-    obj.edit24:setField("PrecisaoPassivo");
-    obj.edit24:setLeft(190);
-    obj.edit24:setTop(289);
-    obj.edit24:setWidth(45);
-    obj.edit24:setHeight(24);
-    obj.edit24:setTransparent(true);
-    obj.edit24:setFontColor("black");
-    obj.edit24:setFontSize(17);
-    obj.edit24:setHorzTextAlign("center");
-    obj.edit24:setType("number");
-    lfm_setPropAsString(obj.edit24, "fontStyle", "bold");
-    obj.edit24:setName("edit24");
+    obj.PrecisaoPassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.PrecisaoPassivo:setParent(obj.layout7);
+    obj.PrecisaoPassivo:setField("PrecisaoPassivo");
+    obj.PrecisaoPassivo:setName("PrecisaoPassivo");
+    obj.PrecisaoPassivo:setLeft(190);
+    obj.PrecisaoPassivo:setTop(289);
+    obj.PrecisaoPassivo:setWidth(45);
+    obj.PrecisaoPassivo:setHeight(24);
+    obj.PrecisaoPassivo:setTransparent(true);
+    obj.PrecisaoPassivo:setFontColor("black");
+    obj.PrecisaoPassivo:setFontSize(17);
+    obj.PrecisaoPassivo:setHorzTextAlign("center");
+    obj.PrecisaoPassivo:setType("number");
+    lfm_setPropAsString(obj.PrecisaoPassivo, "fontStyle", "bold");
 
     obj.rectangle73 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle73:setParent(obj.layout7);
@@ -2948,20 +3018,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle73:setCornerType("round");
     obj.rectangle73:setName("rectangle73");
 
-    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit25:setParent(obj.layout7);
-    obj.edit25:setField("ForcaDeVontadePassivo");
-    obj.edit25:setLeft(190);
-    obj.edit25:setTop(319);
-    obj.edit25:setWidth(45);
-    obj.edit25:setHeight(24);
-    obj.edit25:setTransparent(true);
-    obj.edit25:setFontColor("black");
-    obj.edit25:setFontSize(17);
-    obj.edit25:setHorzTextAlign("center");
-    obj.edit25:setType("number");
-    lfm_setPropAsString(obj.edit25, "fontStyle", "bold");
-    obj.edit25:setName("edit25");
+    obj.ForcaDeVontadePassivo = GUI.fromHandle(_obj_newObject("edit"));
+    obj.ForcaDeVontadePassivo:setParent(obj.layout7);
+    obj.ForcaDeVontadePassivo:setField("ForcaDeVontadePassivo");
+    obj.ForcaDeVontadePassivo:setName("ForcaDeVontadePassivo");
+    obj.ForcaDeVontadePassivo:setLeft(190);
+    obj.ForcaDeVontadePassivo:setTop(319);
+    obj.ForcaDeVontadePassivo:setWidth(45);
+    obj.ForcaDeVontadePassivo:setHeight(24);
+    obj.ForcaDeVontadePassivo:setTransparent(true);
+    obj.ForcaDeVontadePassivo:setFontColor("black");
+    obj.ForcaDeVontadePassivo:setFontSize(17);
+    obj.ForcaDeVontadePassivo:setHorzTextAlign("center");
+    obj.ForcaDeVontadePassivo:setType("number");
+    lfm_setPropAsString(obj.ForcaDeVontadePassivo, "fontStyle", "bold");
 
     obj.rectangle74 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle74:setParent(obj.layout7);
@@ -2975,20 +3045,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle74:setCornerType("round");
     obj.rectangle74:setName("rectangle74");
 
-    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit26:setParent(obj.layout7);
-    obj.edit26:setField("ForcaEquips");
-    obj.edit26:setLeft(250);
-    obj.edit26:setTop(79);
-    obj.edit26:setWidth(45);
-    obj.edit26:setHeight(24);
-    obj.edit26:setTransparent(true);
-    obj.edit26:setFontColor("black");
-    obj.edit26:setFontSize(17);
-    obj.edit26:setHorzTextAlign("center");
-    obj.edit26:setType("number");
-    lfm_setPropAsString(obj.edit26, "fontStyle", "bold");
-    obj.edit26:setName("edit26");
+    obj.ForcaEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.ForcaEquips:setParent(obj.layout7);
+    obj.ForcaEquips:setField("ForcaEquips");
+    obj.ForcaEquips:setName("ForcaEquips");
+    obj.ForcaEquips:setLeft(250);
+    obj.ForcaEquips:setTop(79);
+    obj.ForcaEquips:setWidth(45);
+    obj.ForcaEquips:setHeight(24);
+    obj.ForcaEquips:setTransparent(true);
+    obj.ForcaEquips:setFontColor("black");
+    obj.ForcaEquips:setFontSize(17);
+    obj.ForcaEquips:setHorzTextAlign("center");
+    obj.ForcaEquips:setType("number");
+    lfm_setPropAsString(obj.ForcaEquips, "fontStyle", "bold");
 
     obj.rectangle75 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle75:setParent(obj.layout7);
@@ -3002,20 +3072,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle75:setCornerType("round");
     obj.rectangle75:setName("rectangle75");
 
-    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit27:setParent(obj.layout7);
-    obj.edit27:setField("AgilidadeEquips");
-    obj.edit27:setLeft(250);
-    obj.edit27:setTop(109);
-    obj.edit27:setWidth(45);
-    obj.edit27:setHeight(24);
-    obj.edit27:setTransparent(true);
-    obj.edit27:setFontColor("black");
-    obj.edit27:setFontSize(17);
-    obj.edit27:setHorzTextAlign("center");
-    obj.edit27:setType("number");
-    lfm_setPropAsString(obj.edit27, "fontStyle", "bold");
-    obj.edit27:setName("edit27");
+    obj.AgilidadeEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.AgilidadeEquips:setParent(obj.layout7);
+    obj.AgilidadeEquips:setField("AgilidadeEquips");
+    obj.AgilidadeEquips:setName("AgilidadeEquips");
+    obj.AgilidadeEquips:setLeft(250);
+    obj.AgilidadeEquips:setTop(109);
+    obj.AgilidadeEquips:setWidth(45);
+    obj.AgilidadeEquips:setHeight(24);
+    obj.AgilidadeEquips:setTransparent(true);
+    obj.AgilidadeEquips:setFontColor("black");
+    obj.AgilidadeEquips:setFontSize(17);
+    obj.AgilidadeEquips:setHorzTextAlign("center");
+    obj.AgilidadeEquips:setType("number");
+    lfm_setPropAsString(obj.AgilidadeEquips, "fontStyle", "bold");
 
     obj.rectangle76 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle76:setParent(obj.layout7);
@@ -3029,20 +3099,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle76:setCornerType("round");
     obj.rectangle76:setName("rectangle76");
 
-    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit28:setParent(obj.layout7);
-    obj.edit28:setField("VigorEquips");
-    obj.edit28:setLeft(250);
-    obj.edit28:setTop(139);
-    obj.edit28:setWidth(45);
-    obj.edit28:setHeight(24);
-    obj.edit28:setTransparent(true);
-    obj.edit28:setFontColor("black");
-    obj.edit28:setFontSize(17);
-    obj.edit28:setHorzTextAlign("center");
-    obj.edit28:setType("number");
-    lfm_setPropAsString(obj.edit28, "fontStyle", "bold");
-    obj.edit28:setName("edit28");
+    obj.VigorEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.VigorEquips:setParent(obj.layout7);
+    obj.VigorEquips:setField("VigorEquips");
+    obj.VigorEquips:setName("VigorEquips");
+    obj.VigorEquips:setLeft(250);
+    obj.VigorEquips:setTop(139);
+    obj.VigorEquips:setWidth(45);
+    obj.VigorEquips:setHeight(24);
+    obj.VigorEquips:setTransparent(true);
+    obj.VigorEquips:setFontColor("black");
+    obj.VigorEquips:setFontSize(17);
+    obj.VigorEquips:setHorzTextAlign("center");
+    obj.VigorEquips:setType("number");
+    lfm_setPropAsString(obj.VigorEquips, "fontStyle", "bold");
 
     obj.rectangle77 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle77:setParent(obj.layout7);
@@ -3056,20 +3126,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle77:setCornerType("round");
     obj.rectangle77:setName("rectangle77");
 
-    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit29:setParent(obj.layout7);
-    obj.edit29:setField("CombateEquips");
-    obj.edit29:setLeft(250);
-    obj.edit29:setTop(169);
-    obj.edit29:setWidth(45);
-    obj.edit29:setHeight(24);
-    obj.edit29:setTransparent(true);
-    obj.edit29:setFontColor("black");
-    obj.edit29:setFontSize(17);
-    obj.edit29:setHorzTextAlign("center");
-    obj.edit29:setType("number");
-    lfm_setPropAsString(obj.edit29, "fontStyle", "bold");
-    obj.edit29:setName("edit29");
+    obj.CombateEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.CombateEquips:setParent(obj.layout7);
+    obj.CombateEquips:setField("CombateEquips");
+    obj.CombateEquips:setName("CombateEquips");
+    obj.CombateEquips:setLeft(250);
+    obj.CombateEquips:setTop(169);
+    obj.CombateEquips:setWidth(45);
+    obj.CombateEquips:setHeight(24);
+    obj.CombateEquips:setTransparent(true);
+    obj.CombateEquips:setFontColor("black");
+    obj.CombateEquips:setFontSize(17);
+    obj.CombateEquips:setHorzTextAlign("center");
+    obj.CombateEquips:setType("number");
+    lfm_setPropAsString(obj.CombateEquips, "fontStyle", "bold");
 
     obj.rectangle78 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle78:setParent(obj.layout7);
@@ -3083,20 +3153,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle78:setCornerType("round");
     obj.rectangle78:setName("rectangle78");
 
-    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit30:setParent(obj.layout7);
-    obj.edit30:setField("PercepcaoEquips");
-    obj.edit30:setLeft(250);
-    obj.edit30:setTop(199);
-    obj.edit30:setWidth(45);
-    obj.edit30:setHeight(24);
-    obj.edit30:setTransparent(true);
-    obj.edit30:setFontColor("black");
-    obj.edit30:setFontSize(17);
-    obj.edit30:setHorzTextAlign("center");
-    obj.edit30:setType("number");
-    lfm_setPropAsString(obj.edit30, "fontStyle", "bold");
-    obj.edit30:setName("edit30");
+    obj.PercepcaoEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.PercepcaoEquips:setParent(obj.layout7);
+    obj.PercepcaoEquips:setField("PercepcaoEquips");
+    obj.PercepcaoEquips:setName("PercepcaoEquips");
+    obj.PercepcaoEquips:setLeft(250);
+    obj.PercepcaoEquips:setTop(199);
+    obj.PercepcaoEquips:setWidth(45);
+    obj.PercepcaoEquips:setHeight(24);
+    obj.PercepcaoEquips:setTransparent(true);
+    obj.PercepcaoEquips:setFontColor("black");
+    obj.PercepcaoEquips:setFontSize(17);
+    obj.PercepcaoEquips:setHorzTextAlign("center");
+    obj.PercepcaoEquips:setType("number");
+    lfm_setPropAsString(obj.PercepcaoEquips, "fontStyle", "bold");
 
     obj.rectangle79 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle79:setParent(obj.layout7);
@@ -3110,20 +3180,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle79:setCornerType("round");
     obj.rectangle79:setName("rectangle79");
 
-    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit31:setParent(obj.layout7);
-    obj.edit31:setField("CarismaEquips");
-    obj.edit31:setLeft(250);
-    obj.edit31:setTop(229);
-    obj.edit31:setWidth(45);
-    obj.edit31:setHeight(24);
-    obj.edit31:setTransparent(true);
-    obj.edit31:setFontColor("black");
-    obj.edit31:setFontSize(17);
-    obj.edit31:setHorzTextAlign("center");
-    obj.edit31:setType("number");
-    lfm_setPropAsString(obj.edit31, "fontStyle", "bold");
-    obj.edit31:setName("edit31");
+    obj.CarismaEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.CarismaEquips:setParent(obj.layout7);
+    obj.CarismaEquips:setField("CarismaEquips");
+    obj.CarismaEquips:setName("CarismaEquips");
+    obj.CarismaEquips:setLeft(250);
+    obj.CarismaEquips:setTop(229);
+    obj.CarismaEquips:setWidth(45);
+    obj.CarismaEquips:setHeight(24);
+    obj.CarismaEquips:setTransparent(true);
+    obj.CarismaEquips:setFontColor("black");
+    obj.CarismaEquips:setFontSize(17);
+    obj.CarismaEquips:setHorzTextAlign("center");
+    obj.CarismaEquips:setType("number");
+    lfm_setPropAsString(obj.CarismaEquips, "fontStyle", "bold");
 
     obj.rectangle80 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle80:setParent(obj.layout7);
@@ -3137,20 +3207,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle80:setCornerType("round");
     obj.rectangle80:setName("rectangle80");
 
-    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit32:setParent(obj.layout7);
-    obj.edit32:setField("InteligenciaEquips");
-    obj.edit32:setLeft(250);
-    obj.edit32:setTop(259);
-    obj.edit32:setWidth(45);
-    obj.edit32:setHeight(24);
-    obj.edit32:setTransparent(true);
-    obj.edit32:setFontColor("black");
-    obj.edit32:setFontSize(17);
-    obj.edit32:setHorzTextAlign("center");
-    obj.edit32:setType("number");
-    lfm_setPropAsString(obj.edit32, "fontStyle", "bold");
-    obj.edit32:setName("edit32");
+    obj.InteligenciaEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.InteligenciaEquips:setParent(obj.layout7);
+    obj.InteligenciaEquips:setField("InteligenciaEquips");
+    obj.InteligenciaEquips:setName("InteligenciaEquips");
+    obj.InteligenciaEquips:setLeft(250);
+    obj.InteligenciaEquips:setTop(259);
+    obj.InteligenciaEquips:setWidth(45);
+    obj.InteligenciaEquips:setHeight(24);
+    obj.InteligenciaEquips:setTransparent(true);
+    obj.InteligenciaEquips:setFontColor("black");
+    obj.InteligenciaEquips:setFontSize(17);
+    obj.InteligenciaEquips:setHorzTextAlign("center");
+    obj.InteligenciaEquips:setType("number");
+    lfm_setPropAsString(obj.InteligenciaEquips, "fontStyle", "bold");
 
     obj.rectangle81 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle81:setParent(obj.layout7);
@@ -3164,20 +3234,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle81:setCornerType("round");
     obj.rectangle81:setName("rectangle81");
 
-    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit33:setParent(obj.layout7);
-    obj.edit33:setField("PrecisaoEquips");
-    obj.edit33:setLeft(250);
-    obj.edit33:setTop(289);
-    obj.edit33:setWidth(45);
-    obj.edit33:setHeight(24);
-    obj.edit33:setTransparent(true);
-    obj.edit33:setFontColor("black");
-    obj.edit33:setFontSize(17);
-    obj.edit33:setHorzTextAlign("center");
-    obj.edit33:setType("number");
-    lfm_setPropAsString(obj.edit33, "fontStyle", "bold");
-    obj.edit33:setName("edit33");
+    obj.PrecisaoEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.PrecisaoEquips:setParent(obj.layout7);
+    obj.PrecisaoEquips:setField("PrecisaoEquips");
+    obj.PrecisaoEquips:setName("PrecisaoEquips");
+    obj.PrecisaoEquips:setLeft(250);
+    obj.PrecisaoEquips:setTop(289);
+    obj.PrecisaoEquips:setWidth(45);
+    obj.PrecisaoEquips:setHeight(24);
+    obj.PrecisaoEquips:setTransparent(true);
+    obj.PrecisaoEquips:setFontColor("black");
+    obj.PrecisaoEquips:setFontSize(17);
+    obj.PrecisaoEquips:setHorzTextAlign("center");
+    obj.PrecisaoEquips:setType("number");
+    lfm_setPropAsString(obj.PrecisaoEquips, "fontStyle", "bold");
 
     obj.rectangle82 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle82:setParent(obj.layout7);
@@ -3191,20 +3261,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle82:setCornerType("round");
     obj.rectangle82:setName("rectangle82");
 
-    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit34:setParent(obj.layout7);
-    obj.edit34:setField("ForcaDeVontadeEquips");
-    obj.edit34:setLeft(250);
-    obj.edit34:setTop(319);
-    obj.edit34:setWidth(45);
-    obj.edit34:setHeight(24);
-    obj.edit34:setTransparent(true);
-    obj.edit34:setFontColor("black");
-    obj.edit34:setFontSize(17);
-    obj.edit34:setHorzTextAlign("center");
-    obj.edit34:setType("number");
-    lfm_setPropAsString(obj.edit34, "fontStyle", "bold");
-    obj.edit34:setName("edit34");
+    obj.ForcaDeVontadeEquips = GUI.fromHandle(_obj_newObject("edit"));
+    obj.ForcaDeVontadeEquips:setParent(obj.layout7);
+    obj.ForcaDeVontadeEquips:setField("ForcaDeVontadeEquips");
+    obj.ForcaDeVontadeEquips:setName("ForcaDeVontadeEquips");
+    obj.ForcaDeVontadeEquips:setLeft(250);
+    obj.ForcaDeVontadeEquips:setTop(319);
+    obj.ForcaDeVontadeEquips:setWidth(45);
+    obj.ForcaDeVontadeEquips:setHeight(24);
+    obj.ForcaDeVontadeEquips:setTransparent(true);
+    obj.ForcaDeVontadeEquips:setFontColor("black");
+    obj.ForcaDeVontadeEquips:setFontSize(17);
+    obj.ForcaDeVontadeEquips:setHorzTextAlign("center");
+    obj.ForcaDeVontadeEquips:setType("number");
+    lfm_setPropAsString(obj.ForcaDeVontadeEquips, "fontStyle", "bold");
 
     obj.rectangle83 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle83:setParent(obj.layout7);
@@ -3218,20 +3288,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle83:setCornerType("round");
     obj.rectangle83:setName("rectangle83");
 
-    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit35:setParent(obj.layout7);
-    obj.edit35:setField("ForcaTreino");
-    obj.edit35:setLeft(310);
-    obj.edit35:setTop(79);
-    obj.edit35:setWidth(45);
-    obj.edit35:setHeight(24);
-    obj.edit35:setTransparent(true);
-    obj.edit35:setFontColor("black");
-    obj.edit35:setFontSize(17);
-    obj.edit35:setHorzTextAlign("center");
-    obj.edit35:setType("number");
-    lfm_setPropAsString(obj.edit35, "fontStyle", "bold");
-    obj.edit35:setName("edit35");
+    obj.ForcaTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.ForcaTreino:setParent(obj.layout7);
+    obj.ForcaTreino:setField("ForcaTreino");
+    obj.ForcaTreino:setName("ForcaTreino");
+    obj.ForcaTreino:setLeft(310);
+    obj.ForcaTreino:setTop(79);
+    obj.ForcaTreino:setWidth(45);
+    obj.ForcaTreino:setHeight(24);
+    obj.ForcaTreino:setTransparent(true);
+    obj.ForcaTreino:setFontColor("black");
+    obj.ForcaTreino:setFontSize(17);
+    obj.ForcaTreino:setHorzTextAlign("center");
+    obj.ForcaTreino:setType("number");
+    lfm_setPropAsString(obj.ForcaTreino, "fontStyle", "bold");
 
     obj.rectangle84 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle84:setParent(obj.layout7);
@@ -3245,20 +3315,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle84:setCornerType("round");
     obj.rectangle84:setName("rectangle84");
 
-    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit36:setParent(obj.layout7);
-    obj.edit36:setField("AgilidadeTreino");
-    obj.edit36:setLeft(310);
-    obj.edit36:setTop(109);
-    obj.edit36:setWidth(45);
-    obj.edit36:setHeight(24);
-    obj.edit36:setTransparent(true);
-    obj.edit36:setFontColor("black");
-    obj.edit36:setFontSize(17);
-    obj.edit36:setHorzTextAlign("center");
-    obj.edit36:setType("number");
-    lfm_setPropAsString(obj.edit36, "fontStyle", "bold");
-    obj.edit36:setName("edit36");
+    obj.AgilidadeTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.AgilidadeTreino:setParent(obj.layout7);
+    obj.AgilidadeTreino:setField("AgilidadeTreino");
+    obj.AgilidadeTreino:setName("AgilidadeTreino");
+    obj.AgilidadeTreino:setLeft(310);
+    obj.AgilidadeTreino:setTop(109);
+    obj.AgilidadeTreino:setWidth(45);
+    obj.AgilidadeTreino:setHeight(24);
+    obj.AgilidadeTreino:setTransparent(true);
+    obj.AgilidadeTreino:setFontColor("black");
+    obj.AgilidadeTreino:setFontSize(17);
+    obj.AgilidadeTreino:setHorzTextAlign("center");
+    obj.AgilidadeTreino:setType("number");
+    lfm_setPropAsString(obj.AgilidadeTreino, "fontStyle", "bold");
 
     obj.rectangle85 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle85:setParent(obj.layout7);
@@ -3272,20 +3342,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle85:setCornerType("round");
     obj.rectangle85:setName("rectangle85");
 
-    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit37:setParent(obj.layout7);
-    obj.edit37:setField("VigorTreino");
-    obj.edit37:setLeft(310);
-    obj.edit37:setTop(139);
-    obj.edit37:setWidth(45);
-    obj.edit37:setHeight(24);
-    obj.edit37:setTransparent(true);
-    obj.edit37:setFontColor("black");
-    obj.edit37:setFontSize(17);
-    obj.edit37:setHorzTextAlign("center");
-    obj.edit37:setType("number");
-    lfm_setPropAsString(obj.edit37, "fontStyle", "bold");
-    obj.edit37:setName("edit37");
+    obj.VigorTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.VigorTreino:setParent(obj.layout7);
+    obj.VigorTreino:setField("VigorTreino");
+    obj.VigorTreino:setName("VigorTreino");
+    obj.VigorTreino:setLeft(310);
+    obj.VigorTreino:setTop(139);
+    obj.VigorTreino:setWidth(45);
+    obj.VigorTreino:setHeight(24);
+    obj.VigorTreino:setTransparent(true);
+    obj.VigorTreino:setFontColor("black");
+    obj.VigorTreino:setFontSize(17);
+    obj.VigorTreino:setHorzTextAlign("center");
+    obj.VigorTreino:setType("number");
+    lfm_setPropAsString(obj.VigorTreino, "fontStyle", "bold");
 
     obj.rectangle86 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle86:setParent(obj.layout7);
@@ -3299,20 +3369,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle86:setCornerType("round");
     obj.rectangle86:setName("rectangle86");
 
-    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit38:setParent(obj.layout7);
-    obj.edit38:setField("CombateTreino");
-    obj.edit38:setLeft(310);
-    obj.edit38:setTop(169);
-    obj.edit38:setWidth(45);
-    obj.edit38:setHeight(24);
-    obj.edit38:setTransparent(true);
-    obj.edit38:setFontColor("black");
-    obj.edit38:setFontSize(17);
-    obj.edit38:setHorzTextAlign("center");
-    obj.edit38:setType("number");
-    lfm_setPropAsString(obj.edit38, "fontStyle", "bold");
-    obj.edit38:setName("edit38");
+    obj.CombateTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.CombateTreino:setParent(obj.layout7);
+    obj.CombateTreino:setField("CombateTreino");
+    obj.CombateTreino:setName("CombateTreino");
+    obj.CombateTreino:setLeft(310);
+    obj.CombateTreino:setTop(169);
+    obj.CombateTreino:setWidth(45);
+    obj.CombateTreino:setHeight(24);
+    obj.CombateTreino:setTransparent(true);
+    obj.CombateTreino:setFontColor("black");
+    obj.CombateTreino:setFontSize(17);
+    obj.CombateTreino:setHorzTextAlign("center");
+    obj.CombateTreino:setType("number");
+    lfm_setPropAsString(obj.CombateTreino, "fontStyle", "bold");
 
     obj.rectangle87 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle87:setParent(obj.layout7);
@@ -3326,20 +3396,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle87:setCornerType("round");
     obj.rectangle87:setName("rectangle87");
 
-    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit39:setParent(obj.layout7);
-    obj.edit39:setField("PercepcaoTreino");
-    obj.edit39:setLeft(310);
-    obj.edit39:setTop(199);
-    obj.edit39:setWidth(45);
-    obj.edit39:setHeight(24);
-    obj.edit39:setTransparent(true);
-    obj.edit39:setFontColor("black");
-    obj.edit39:setFontSize(17);
-    obj.edit39:setHorzTextAlign("center");
-    obj.edit39:setType("number");
-    lfm_setPropAsString(obj.edit39, "fontStyle", "bold");
-    obj.edit39:setName("edit39");
+    obj.PercepcaoTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.PercepcaoTreino:setParent(obj.layout7);
+    obj.PercepcaoTreino:setField("PercepcaoTreino");
+    obj.PercepcaoTreino:setName("PercepcaoTreino");
+    obj.PercepcaoTreino:setLeft(310);
+    obj.PercepcaoTreino:setTop(199);
+    obj.PercepcaoTreino:setWidth(45);
+    obj.PercepcaoTreino:setHeight(24);
+    obj.PercepcaoTreino:setTransparent(true);
+    obj.PercepcaoTreino:setFontColor("black");
+    obj.PercepcaoTreino:setFontSize(17);
+    obj.PercepcaoTreino:setHorzTextAlign("center");
+    obj.PercepcaoTreino:setType("number");
+    lfm_setPropAsString(obj.PercepcaoTreino, "fontStyle", "bold");
 
     obj.rectangle88 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle88:setParent(obj.layout7);
@@ -3353,20 +3423,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle88:setCornerType("round");
     obj.rectangle88:setName("rectangle88");
 
-    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit40:setParent(obj.layout7);
-    obj.edit40:setField("CarismaTreino");
-    obj.edit40:setLeft(310);
-    obj.edit40:setTop(229);
-    obj.edit40:setWidth(45);
-    obj.edit40:setHeight(24);
-    obj.edit40:setTransparent(true);
-    obj.edit40:setFontColor("black");
-    obj.edit40:setFontSize(17);
-    obj.edit40:setHorzTextAlign("center");
-    obj.edit40:setType("number");
-    lfm_setPropAsString(obj.edit40, "fontStyle", "bold");
-    obj.edit40:setName("edit40");
+    obj.CarismaTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.CarismaTreino:setParent(obj.layout7);
+    obj.CarismaTreino:setField("CarismaTreino");
+    obj.CarismaTreino:setName("CarismaTreino");
+    obj.CarismaTreino:setLeft(310);
+    obj.CarismaTreino:setTop(229);
+    obj.CarismaTreino:setWidth(45);
+    obj.CarismaTreino:setHeight(24);
+    obj.CarismaTreino:setTransparent(true);
+    obj.CarismaTreino:setFontColor("black");
+    obj.CarismaTreino:setFontSize(17);
+    obj.CarismaTreino:setHorzTextAlign("center");
+    obj.CarismaTreino:setType("number");
+    lfm_setPropAsString(obj.CarismaTreino, "fontStyle", "bold");
 
     obj.rectangle89 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle89:setParent(obj.layout7);
@@ -3380,20 +3450,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle89:setCornerType("round");
     obj.rectangle89:setName("rectangle89");
 
-    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit41:setParent(obj.layout7);
-    obj.edit41:setField("InteligenciaTreino");
-    obj.edit41:setLeft(310);
-    obj.edit41:setTop(259);
-    obj.edit41:setWidth(45);
-    obj.edit41:setHeight(24);
-    obj.edit41:setTransparent(true);
-    obj.edit41:setFontColor("black");
-    obj.edit41:setFontSize(17);
-    obj.edit41:setHorzTextAlign("center");
-    obj.edit41:setType("number");
-    lfm_setPropAsString(obj.edit41, "fontStyle", "bold");
-    obj.edit41:setName("edit41");
+    obj.InteligenciaTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.InteligenciaTreino:setParent(obj.layout7);
+    obj.InteligenciaTreino:setField("InteligenciaTreino");
+    obj.InteligenciaTreino:setName("InteligenciaTreino");
+    obj.InteligenciaTreino:setLeft(310);
+    obj.InteligenciaTreino:setTop(259);
+    obj.InteligenciaTreino:setWidth(45);
+    obj.InteligenciaTreino:setHeight(24);
+    obj.InteligenciaTreino:setTransparent(true);
+    obj.InteligenciaTreino:setFontColor("black");
+    obj.InteligenciaTreino:setFontSize(17);
+    obj.InteligenciaTreino:setHorzTextAlign("center");
+    obj.InteligenciaTreino:setType("number");
+    lfm_setPropAsString(obj.InteligenciaTreino, "fontStyle", "bold");
 
     obj.rectangle90 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle90:setParent(obj.layout7);
@@ -3407,20 +3477,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle90:setCornerType("round");
     obj.rectangle90:setName("rectangle90");
 
-    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit42:setParent(obj.layout7);
-    obj.edit42:setField("PrecisaoTreino");
-    obj.edit42:setLeft(310);
-    obj.edit42:setTop(289);
-    obj.edit42:setWidth(45);
-    obj.edit42:setHeight(24);
-    obj.edit42:setTransparent(true);
-    obj.edit42:setFontColor("black");
-    obj.edit42:setFontSize(17);
-    obj.edit42:setHorzTextAlign("center");
-    obj.edit42:setType("number");
-    lfm_setPropAsString(obj.edit42, "fontStyle", "bold");
-    obj.edit42:setName("edit42");
+    obj.PrecisaoTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.PrecisaoTreino:setParent(obj.layout7);
+    obj.PrecisaoTreino:setField("PrecisaoTreino");
+    obj.PrecisaoTreino:setName("PrecisaoTreino");
+    obj.PrecisaoTreino:setLeft(310);
+    obj.PrecisaoTreino:setTop(289);
+    obj.PrecisaoTreino:setWidth(45);
+    obj.PrecisaoTreino:setHeight(24);
+    obj.PrecisaoTreino:setTransparent(true);
+    obj.PrecisaoTreino:setFontColor("black");
+    obj.PrecisaoTreino:setFontSize(17);
+    obj.PrecisaoTreino:setHorzTextAlign("center");
+    obj.PrecisaoTreino:setType("number");
+    lfm_setPropAsString(obj.PrecisaoTreino, "fontStyle", "bold");
 
     obj.rectangle91 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle91:setParent(obj.layout7);
@@ -3434,20 +3504,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle91:setCornerType("round");
     obj.rectangle91:setName("rectangle91");
 
-    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit43:setParent(obj.layout7);
-    obj.edit43:setField("ForcaDeVontadeTreino");
-    obj.edit43:setLeft(310);
-    obj.edit43:setTop(319);
-    obj.edit43:setWidth(45);
-    obj.edit43:setHeight(24);
-    obj.edit43:setTransparent(true);
-    obj.edit43:setFontColor("black");
-    obj.edit43:setFontSize(17);
-    obj.edit43:setHorzTextAlign("center");
-    obj.edit43:setType("number");
-    lfm_setPropAsString(obj.edit43, "fontStyle", "bold");
-    obj.edit43:setName("edit43");
+    obj.ForcaDeVontadeTreino = GUI.fromHandle(_obj_newObject("edit"));
+    obj.ForcaDeVontadeTreino:setParent(obj.layout7);
+    obj.ForcaDeVontadeTreino:setField("ForcaDeVontadeTreino");
+    obj.ForcaDeVontadeTreino:setName("ForcaDeVontadeTreino");
+    obj.ForcaDeVontadeTreino:setLeft(310);
+    obj.ForcaDeVontadeTreino:setTop(319);
+    obj.ForcaDeVontadeTreino:setWidth(45);
+    obj.ForcaDeVontadeTreino:setHeight(24);
+    obj.ForcaDeVontadeTreino:setTransparent(true);
+    obj.ForcaDeVontadeTreino:setFontColor("black");
+    obj.ForcaDeVontadeTreino:setFontSize(17);
+    obj.ForcaDeVontadeTreino:setHorzTextAlign("center");
+    obj.ForcaDeVontadeTreino:setType("number");
+    lfm_setPropAsString(obj.ForcaDeVontadeTreino, "fontStyle", "bold");
 
     obj.rectangle92 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle92:setParent(obj.layout7);
@@ -3912,12 +3982,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label44:setFontColor("black");
     obj.label44:setFontSize(15);
     obj.label44:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label44, "fontStyle", "bold");
+    obj.label44:setAutoSize(true);
     obj.label44:setName("label44");
 
     obj.label45 = GUI.fromHandle(_obj_newObject("label"));
     obj.label45:setParent(obj.layout7);
     obj.label45:setLeft(120);
-    obj.label45:setTop(425);
+    obj.label45:setTop(423);
     obj.label45:setWidth(300);
     obj.label45:setHeight(24);
     obj.label45:setText(" = (Vigor X 7) + 50 | A cada nv. = +5");
@@ -3961,12 +4033,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label47:setFontColor("black");
     obj.label47:setFontSize(15);
     obj.label47:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label47, "fontStyle", "bold");
+    obj.label47:setAutoSize(true);
     obj.label47:setName("label47");
 
     obj.label48 = GUI.fromHandle(_obj_newObject("label"));
     obj.label48:setParent(obj.layout7);
     obj.label48:setLeft(120);
-    obj.label48:setTop(448);
+    obj.label48:setTop(447);
     obj.label48:setWidth(300);
     obj.label48:setHeight(24);
     obj.label48:setText(" = (Vigor X 7) + 62 | A cada nv. = +5");
@@ -4010,6 +4084,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label50:setFontColor("black");
     obj.label50:setFontSize(15);
     obj.label50:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label50, "fontStyle", "bold");
+    obj.label50:setAutoSize(true);
     obj.label50:setName("label50");
 
     obj.label51 = GUI.fromHandle(_obj_newObject("label"));
@@ -4028,7 +4104,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.layout8:setParent(obj.Atributos);
     obj.layout8:setLeft(455);
     obj.layout8:setTop(12);
-    obj.layout8:setWidth(450);
+    obj.layout8:setWidth(400);
     obj.layout8:setHeight(525);
     obj.layout8:setName("layout8");
 
@@ -4036,7 +4112,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle109:setParent(obj.layout8);
     obj.rectangle109:setLeft(0);
     obj.rectangle109:setTop(0);
-    obj.rectangle109:setWidth(250);
+    obj.rectangle109:setWidth(400);
     obj.rectangle109:setHeight(525);
     obj.rectangle109:setColor("#4169E1");
     obj.rectangle109:setName("rectangle109");
@@ -4045,7 +4121,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle110:setParent(obj.layout8);
     obj.rectangle110:setLeft(2);
     obj.rectangle110:setTop(2);
-    obj.rectangle110:setWidth(246);
+    obj.rectangle110:setWidth(396);
     obj.rectangle110:setHeight(521);
     obj.rectangle110:setColor("black");
     obj.rectangle110:setName("rectangle110");
@@ -4053,7 +4129,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle111 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle111:setParent(obj.layout8);
     obj.rectangle111:setLeft(12);
-    obj.rectangle111:setTop(19);
+    obj.rectangle111:setTop(25);
     obj.rectangle111:setWidth(73);
     obj.rectangle111:setHeight(73);
     obj.rectangle111:setColor("#F5F5DC");
@@ -4061,45 +4137,45 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.rectangle112 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle112:setParent(obj.layout8);
-    obj.rectangle112:setLeft(13);
-    obj.rectangle112:setTop(20);
-    obj.rectangle112:setWidth(71);
-    obj.rectangle112:setHeight(71);
-    obj.rectangle112:setColor("black");
+    obj.rectangle112:setLeft(315);
+    obj.rectangle112:setTop(25);
+    obj.rectangle112:setWidth(73);
+    obj.rectangle112:setHeight(73);
+    obj.rectangle112:setColor("#F5F5DC");
     obj.rectangle112:setName("rectangle112");
-
-    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.layout8);
-    obj.image5:setField("FotoChapeu");
-    obj.image5:setLeft(13);
-    obj.image5:setTop(20);
-    obj.image5:setWidth(71);
-    obj.image5:setHeight(71);
-    obj.image5:setName("image5");
 
     obj.rectangle113 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle113:setParent(obj.layout8);
-    obj.rectangle113:setLeft(12);
-    obj.rectangle113:setTop(102);
-    obj.rectangle113:setWidth(73);
-    obj.rectangle113:setHeight(73);
-    obj.rectangle113:setColor("#F5F5DC");
+    obj.rectangle113:setLeft(13);
+    obj.rectangle113:setTop(26);
+    obj.rectangle113:setWidth(71);
+    obj.rectangle113:setHeight(71);
+    obj.rectangle113:setColor("black");
     obj.rectangle113:setName("rectangle113");
 
     obj.rectangle114 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle114:setParent(obj.layout8);
-    obj.rectangle114:setLeft(13);
-    obj.rectangle114:setTop(103);
+    obj.rectangle114:setLeft(316);
+    obj.rectangle114:setTop(26);
     obj.rectangle114:setWidth(71);
     obj.rectangle114:setHeight(71);
     obj.rectangle114:setColor("black");
     obj.rectangle114:setName("rectangle114");
 
+    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image5:setParent(obj.layout8);
+    obj.image5:setField("FotoChapeu");
+    obj.image5:setLeft(13);
+    obj.image5:setTop(26);
+    obj.image5:setWidth(71);
+    obj.image5:setHeight(71);
+    obj.image5:setName("image5");
+
     obj.image6 = GUI.fromHandle(_obj_newObject("image"));
     obj.image6:setParent(obj.layout8);
-    obj.image6:setField("FotoColar");
-    obj.image6:setLeft(13);
-    obj.image6:setTop(103);
+    obj.image6:setField("FotoRosto");
+    obj.image6:setLeft(316);
+    obj.image6:setTop(26);
     obj.image6:setWidth(71);
     obj.image6:setHeight(71);
     obj.image6:setName("image6");
@@ -4107,7 +4183,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle115 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle115:setParent(obj.layout8);
     obj.rectangle115:setLeft(12);
-    obj.rectangle115:setTop(185);
+    obj.rectangle115:setTop(108);
     obj.rectangle115:setWidth(73);
     obj.rectangle115:setHeight(73);
     obj.rectangle115:setColor("#F5F5DC");
@@ -4115,45 +4191,45 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.rectangle116 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle116:setParent(obj.layout8);
-    obj.rectangle116:setLeft(13);
-    obj.rectangle116:setTop(186);
-    obj.rectangle116:setWidth(71);
-    obj.rectangle116:setHeight(71);
-    obj.rectangle116:setColor("black");
+    obj.rectangle116:setLeft(315);
+    obj.rectangle116:setTop(108);
+    obj.rectangle116:setWidth(73);
+    obj.rectangle116:setHeight(73);
+    obj.rectangle116:setColor("#F5F5DC");
     obj.rectangle116:setName("rectangle116");
-
-    obj.image7 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image7:setParent(obj.layout8);
-    obj.image7:setField("FotoRoupa");
-    obj.image7:setLeft(13);
-    obj.image7:setTop(186);
-    obj.image7:setWidth(71);
-    obj.image7:setHeight(71);
-    obj.image7:setName("image7");
 
     obj.rectangle117 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle117:setParent(obj.layout8);
-    obj.rectangle117:setLeft(12);
-    obj.rectangle117:setTop(268);
-    obj.rectangle117:setWidth(73);
-    obj.rectangle117:setHeight(73);
-    obj.rectangle117:setColor("#F5F5DC");
+    obj.rectangle117:setLeft(13);
+    obj.rectangle117:setTop(109);
+    obj.rectangle117:setWidth(71);
+    obj.rectangle117:setHeight(71);
+    obj.rectangle117:setColor("black");
     obj.rectangle117:setName("rectangle117");
 
     obj.rectangle118 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle118:setParent(obj.layout8);
-    obj.rectangle118:setLeft(13);
-    obj.rectangle118:setTop(269);
+    obj.rectangle118:setLeft(316);
+    obj.rectangle118:setTop(109);
     obj.rectangle118:setWidth(71);
     obj.rectangle118:setHeight(71);
     obj.rectangle118:setColor("black");
     obj.rectangle118:setName("rectangle118");
 
+    obj.image7 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image7:setParent(obj.layout8);
+    obj.image7:setField("FotoColar");
+    obj.image7:setLeft(13);
+    obj.image7:setTop(109);
+    obj.image7:setWidth(71);
+    obj.image7:setHeight(71);
+    obj.image7:setName("image7");
+
     obj.image8 = GUI.fromHandle(_obj_newObject("image"));
     obj.image8:setParent(obj.layout8);
-    obj.image8:setField("FotoMaoPrimaria");
-    obj.image8:setLeft(13);
-    obj.image8:setTop(269);
+    obj.image8:setField("FotoBrinco");
+    obj.image8:setLeft(316);
+    obj.image8:setTop(109);
     obj.image8:setWidth(71);
     obj.image8:setHeight(71);
     obj.image8:setName("image8");
@@ -4161,7 +4237,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle119 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle119:setParent(obj.layout8);
     obj.rectangle119:setLeft(12);
-    obj.rectangle119:setTop(351);
+    obj.rectangle119:setTop(191);
     obj.rectangle119:setWidth(73);
     obj.rectangle119:setHeight(73);
     obj.rectangle119:setColor("#F5F5DC");
@@ -4169,48 +4245,1208 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.rectangle120 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle120:setParent(obj.layout8);
-    obj.rectangle120:setLeft(13);
-    obj.rectangle120:setTop(352);
-    obj.rectangle120:setWidth(71);
-    obj.rectangle120:setHeight(71);
-    obj.rectangle120:setColor("black");
+    obj.rectangle120:setLeft(315);
+    obj.rectangle120:setTop(191);
+    obj.rectangle120:setWidth(73);
+    obj.rectangle120:setHeight(73);
+    obj.rectangle120:setColor("#F5F5DC");
     obj.rectangle120:setName("rectangle120");
-
-    obj.image9 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image9:setParent(obj.layout8);
-    obj.image9:setField("FotoCalca");
-    obj.image9:setLeft(13);
-    obj.image9:setTop(352);
-    obj.image9:setWidth(71);
-    obj.image9:setHeight(71);
-    obj.image9:setName("image9");
 
     obj.rectangle121 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle121:setParent(obj.layout8);
-    obj.rectangle121:setLeft(12);
-    obj.rectangle121:setTop(434);
-    obj.rectangle121:setWidth(73);
-    obj.rectangle121:setHeight(73);
-    obj.rectangle121:setColor("#F5F5DC");
+    obj.rectangle121:setLeft(13);
+    obj.rectangle121:setTop(192);
+    obj.rectangle121:setWidth(71);
+    obj.rectangle121:setHeight(71);
+    obj.rectangle121:setColor("black");
     obj.rectangle121:setName("rectangle121");
 
     obj.rectangle122 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle122:setParent(obj.layout8);
-    obj.rectangle122:setLeft(13);
-    obj.rectangle122:setTop(435);
+    obj.rectangle122:setLeft(316);
+    obj.rectangle122:setTop(192);
     obj.rectangle122:setWidth(71);
     obj.rectangle122:setHeight(71);
     obj.rectangle122:setColor("black");
     obj.rectangle122:setName("rectangle122");
 
+    obj.image9 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image9:setParent(obj.layout8);
+    obj.image9:setField("FotoRoupa");
+    obj.image9:setLeft(13);
+    obj.image9:setTop(192);
+    obj.image9:setWidth(71);
+    obj.image9:setHeight(71);
+    obj.image9:setName("image9");
+
     obj.image10 = GUI.fromHandle(_obj_newObject("image"));
     obj.image10:setParent(obj.layout8);
-    obj.image10:setField("FotoBota");
-    obj.image10:setLeft(13);
-    obj.image10:setTop(435);
+    obj.image10:setField("FotoCapa");
+    obj.image10:setLeft(316);
+    obj.image10:setTop(192);
     obj.image10:setWidth(71);
     obj.image10:setHeight(71);
     obj.image10:setName("image10");
+
+    obj.rectangle123 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle123:setParent(obj.layout8);
+    obj.rectangle123:setLeft(12);
+    obj.rectangle123:setTop(274);
+    obj.rectangle123:setWidth(73);
+    obj.rectangle123:setHeight(73);
+    obj.rectangle123:setColor("#F5F5DC");
+    obj.rectangle123:setName("rectangle123");
+
+    obj.rectangle124 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle124:setParent(obj.layout8);
+    obj.rectangle124:setLeft(315);
+    obj.rectangle124:setTop(274);
+    obj.rectangle124:setWidth(73);
+    obj.rectangle124:setHeight(73);
+    obj.rectangle124:setColor("#F5F5DC");
+    obj.rectangle124:setName("rectangle124");
+
+    obj.rectangle125 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle125:setParent(obj.layout8);
+    obj.rectangle125:setLeft(13);
+    obj.rectangle125:setTop(275);
+    obj.rectangle125:setWidth(71);
+    obj.rectangle125:setHeight(71);
+    obj.rectangle125:setColor("black");
+    obj.rectangle125:setName("rectangle125");
+
+    obj.rectangle126 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle126:setParent(obj.layout8);
+    obj.rectangle126:setLeft(316);
+    obj.rectangle126:setTop(275);
+    obj.rectangle126:setWidth(71);
+    obj.rectangle126:setHeight(71);
+    obj.rectangle126:setColor("black");
+    obj.rectangle126:setName("rectangle126");
+
+    obj.image11 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image11:setParent(obj.layout8);
+    obj.image11:setField("FotoMaoPrimaria");
+    obj.image11:setLeft(13);
+    obj.image11:setTop(275);
+    obj.image11:setWidth(71);
+    obj.image11:setHeight(71);
+    obj.image11:setName("image11");
+
+    obj.image12 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image12:setParent(obj.layout8);
+    obj.image12:setField("FotoMaoSecundaria");
+    obj.image12:setLeft(316);
+    obj.image12:setTop(275);
+    obj.image12:setWidth(71);
+    obj.image12:setHeight(71);
+    obj.image12:setName("image12");
+
+    obj.rectangle127 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle127:setParent(obj.layout8);
+    obj.rectangle127:setLeft(12);
+    obj.rectangle127:setTop(357);
+    obj.rectangle127:setWidth(73);
+    obj.rectangle127:setHeight(73);
+    obj.rectangle127:setColor("#F5F5DC");
+    obj.rectangle127:setName("rectangle127");
+
+    obj.rectangle128 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle128:setParent(obj.layout8);
+    obj.rectangle128:setLeft(315);
+    obj.rectangle128:setTop(357);
+    obj.rectangle128:setWidth(73);
+    obj.rectangle128:setHeight(73);
+    obj.rectangle128:setColor("#F5F5DC");
+    obj.rectangle128:setName("rectangle128");
+
+    obj.rectangle129 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle129:setParent(obj.layout8);
+    obj.rectangle129:setLeft(13);
+    obj.rectangle129:setTop(358);
+    obj.rectangle129:setWidth(71);
+    obj.rectangle129:setHeight(71);
+    obj.rectangle129:setColor("black");
+    obj.rectangle129:setName("rectangle129");
+
+    obj.rectangle130 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle130:setParent(obj.layout8);
+    obj.rectangle130:setLeft(316);
+    obj.rectangle130:setTop(358);
+    obj.rectangle130:setWidth(71);
+    obj.rectangle130:setHeight(71);
+    obj.rectangle130:setColor("black");
+    obj.rectangle130:setName("rectangle130");
+
+    obj.image13 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image13:setParent(obj.layout8);
+    obj.image13:setField("FotoCalca");
+    obj.image13:setLeft(13);
+    obj.image13:setTop(358);
+    obj.image13:setWidth(71);
+    obj.image13:setHeight(71);
+    obj.image13:setName("image13");
+
+    obj.image14 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image14:setParent(obj.layout8);
+    obj.image14:setField("FotoLuva");
+    obj.image14:setLeft(316);
+    obj.image14:setTop(358);
+    obj.image14:setWidth(71);
+    obj.image14:setHeight(71);
+    obj.image14:setName("image14");
+
+    obj.rectangle131 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle131:setParent(obj.layout8);
+    obj.rectangle131:setLeft(12);
+    obj.rectangle131:setTop(440);
+    obj.rectangle131:setWidth(73);
+    obj.rectangle131:setHeight(73);
+    obj.rectangle131:setColor("#F5F5DC");
+    obj.rectangle131:setName("rectangle131");
+
+    obj.rectangle132 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle132:setParent(obj.layout8);
+    obj.rectangle132:setLeft(315);
+    obj.rectangle132:setTop(440);
+    obj.rectangle132:setWidth(73);
+    obj.rectangle132:setHeight(73);
+    obj.rectangle132:setColor("#F5F5DC");
+    obj.rectangle132:setName("rectangle132");
+
+    obj.rectangle133 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle133:setParent(obj.layout8);
+    obj.rectangle133:setLeft(13);
+    obj.rectangle133:setTop(441);
+    obj.rectangle133:setWidth(71);
+    obj.rectangle133:setHeight(71);
+    obj.rectangle133:setColor("black");
+    obj.rectangle133:setName("rectangle133");
+
+    obj.rectangle134 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle134:setParent(obj.layout8);
+    obj.rectangle134:setLeft(316);
+    obj.rectangle134:setTop(441);
+    obj.rectangle134:setWidth(71);
+    obj.rectangle134:setHeight(71);
+    obj.rectangle134:setColor("black");
+    obj.rectangle134:setName("rectangle134");
+
+    obj.image15 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image15:setParent(obj.layout8);
+    obj.image15:setField("FotoBota");
+    obj.image15:setLeft(13);
+    obj.image15:setTop(441);
+    obj.image15:setWidth(71);
+    obj.image15:setHeight(71);
+    obj.image15:setName("image15");
+
+    obj.image16 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image16:setParent(obj.layout8);
+    obj.image16:setField("FotoAnel");
+    obj.image16:setLeft(316);
+    obj.image16:setTop(441);
+    obj.image16:setWidth(71);
+    obj.image16:setHeight(71);
+    obj.image16:setName("image16");
+
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button7:setParent(obj.layout8);
+    obj.button7:setLeft(12);
+    obj.button7:setTop(25);
+    obj.button7:setWidth(73);
+    obj.button7:setHeight(73);
+    obj.button7:setOpacity(0);
+    obj.button7:setCursor("handPoint");
+    obj.button7:setName("button7");
+
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button8:setParent(obj.layout8);
+    obj.button8:setLeft(315);
+    obj.button8:setTop(25);
+    obj.button8:setWidth(73);
+    obj.button8:setHeight(73);
+    obj.button8:setOpacity(0);
+    obj.button8:setCursor("handPoint");
+    obj.button8:setName("button8");
+
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button9:setParent(obj.layout8);
+    obj.button9:setLeft(12);
+    obj.button9:setTop(108);
+    obj.button9:setWidth(73);
+    obj.button9:setHeight(73);
+    obj.button9:setOpacity(0);
+    obj.button9:setCursor("handPoint");
+    obj.button9:setName("button9");
+
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button10:setParent(obj.layout8);
+    obj.button10:setLeft(315);
+    obj.button10:setTop(108);
+    obj.button10:setWidth(73);
+    obj.button10:setHeight(73);
+    obj.button10:setOpacity(0);
+    obj.button10:setCursor("handPoint");
+    obj.button10:setName("button10");
+
+    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button11:setParent(obj.layout8);
+    obj.button11:setLeft(12);
+    obj.button11:setTop(191);
+    obj.button11:setWidth(73);
+    obj.button11:setHeight(73);
+    obj.button11:setOpacity(0);
+    obj.button11:setCursor("handPoint");
+    obj.button11:setName("button11");
+
+    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button12:setParent(obj.layout8);
+    obj.button12:setLeft(315);
+    obj.button12:setTop(191);
+    obj.button12:setWidth(73);
+    obj.button12:setHeight(73);
+    obj.button12:setOpacity(0);
+    obj.button12:setCursor("handPoint");
+    obj.button12:setName("button12");
+
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button13:setParent(obj.layout8);
+    obj.button13:setLeft(12);
+    obj.button13:setTop(274);
+    obj.button13:setWidth(73);
+    obj.button13:setHeight(73);
+    obj.button13:setOpacity(0);
+    obj.button13:setCursor("handPoint");
+    obj.button13:setName("button13");
+
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button14:setParent(obj.layout8);
+    obj.button14:setLeft(315);
+    obj.button14:setTop(274);
+    obj.button14:setWidth(73);
+    obj.button14:setHeight(73);
+    obj.button14:setOpacity(0);
+    obj.button14:setCursor("handPoint");
+    obj.button14:setName("button14");
+
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button15:setParent(obj.layout8);
+    obj.button15:setLeft(12);
+    obj.button15:setTop(357);
+    obj.button15:setWidth(73);
+    obj.button15:setHeight(73);
+    obj.button15:setOpacity(0);
+    obj.button15:setCursor("handPoint");
+    obj.button15:setName("button15");
+
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button16:setParent(obj.layout8);
+    obj.button16:setLeft(315);
+    obj.button16:setTop(357);
+    obj.button16:setWidth(73);
+    obj.button16:setHeight(73);
+    obj.button16:setOpacity(0);
+    obj.button16:setCursor("handPoint");
+    obj.button16:setName("button16");
+
+    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button17:setParent(obj.layout8);
+    obj.button17:setLeft(12);
+    obj.button17:setTop(440);
+    obj.button17:setWidth(73);
+    obj.button17:setHeight(73);
+    obj.button17:setOpacity(0);
+    obj.button17:setCursor("handPoint");
+    obj.button17:setName("button17");
+
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button18:setParent(obj.layout8);
+    obj.button18:setLeft(315);
+    obj.button18:setTop(440);
+    obj.button18:setWidth(73);
+    obj.button18:setHeight(73);
+    obj.button18:setOpacity(0);
+    obj.button18:setCursor("handPoint");
+    obj.button18:setName("button18");
+
+    obj.imagem = GUI.fromHandle(_obj_newObject("image"));
+    obj.imagem:setParent(obj.layout8);
+    obj.imagem:setField("imagemPersonagem");
+    obj.imagem:setName("imagem");
+    obj.imagem:setLeft(85);
+    obj.imagem:setTop(25);
+    obj.imagem:setWidth(115);
+    obj.imagem:setHeight(244);
+    obj.imagem:setScale(2);
+    obj.imagem:setSRC("https://blob.firecast.com.br/blobs/RORGTSIN_3738646/Ussop-removebg-preview.png");
+
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout9:setParent(obj.Atributos);
+    obj.layout9:setLeft(868);
+    obj.layout9:setTop(12);
+    obj.layout9:setWidth(650);
+    obj.layout9:setHeight(525);
+    obj.layout9:setName("layout9");
+
+    obj.rectangle135 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle135:setParent(obj.layout9);
+    obj.rectangle135:setLeft(0);
+    obj.rectangle135:setTop(0);
+    obj.rectangle135:setWidth(430);
+    obj.rectangle135:setHeight(167);
+    obj.rectangle135:setColor("#4169E1");
+    obj.rectangle135:setName("rectangle135");
+
+    obj.rectangle136 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle136:setParent(obj.layout9);
+    obj.rectangle136:setLeft(2);
+    obj.rectangle136:setTop(2);
+    obj.rectangle136:setWidth(426);
+    obj.rectangle136:setHeight(163);
+    obj.rectangle136:setColor("black");
+    obj.rectangle136:setName("rectangle136");
+
+    obj.image17 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image17:setParent(obj.layout9);
+    obj.image17:setLeft(4);
+    obj.image17:setTop(4);
+    obj.image17:setWidth(140);
+    obj.image17:setHeight(159);
+    obj.image17:setSRC("https://i.namu.wiki/i/r0gPa0bB1bcSk6e517nIupj0zyqafzWY1LL1f0lg9dqPzouu57kCiCbG4TxLCyMA0ljPVi5GON2NftSTCkRp8g.gif");
+    obj.image17:setShowStyle("autoFit");
+    obj.image17.animate = true;
+    obj.image17:setName("image17");
+
+    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label52:setParent(obj.layout9);
+    obj.label52:setLeft(144);
+    obj.label52:setTop(5);
+    obj.label52:setWidth(286);
+    obj.label52:setText("Haki do Armamento");
+    obj.label52:setFontColor("#D1B27E");
+    lfm_setPropAsString(obj.label52, "fontStyle", "bold underline");
+    obj.label52:setFontSize(18);
+    obj.label52:setHorzTextAlign("center");
+    obj.label52:setName("label52");
+
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button19:setParent(obj.layout9);
+    obj.button19:setLeft(2);
+    obj.button19:setTop(2);
+    obj.button19:setWidth(70);
+    obj.button19:setText("Descrição");
+    obj.button19:setName("button19");
+
+    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label53:setParent(obj.layout9);
+    obj.label53:setLeft(162);
+    obj.label53:setTop(40);
+    obj.label53:setWidth(256);
+    obj.label53:setText("Tier:");
+    obj.label53:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label53, "fontStyle", "bold");
+    obj.label53:setFontSize(16);
+    obj.label53:setName("label53");
+
+    obj.rectangle137 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle137:setParent(obj.layout9);
+    obj.rectangle137:setLeft(199);
+    obj.rectangle137:setTop(41);
+    obj.rectangle137:setWidth(35);
+    obj.rectangle137:setHeight(18);
+    obj.rectangle137:setColor("#F5F5DC");
+    obj.rectangle137:setXradius(7);
+    obj.rectangle137:setYradius(7);
+    obj.rectangle137:setName("rectangle137");
+
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit8:setParent(obj.layout9);
+    obj.edit8:setField("tierArmamento");
+    obj.edit8:setLeft(199);
+    obj.edit8:setTop(40);
+    obj.edit8:setWidth(35);
+    obj.edit8:setHeight(18);
+    obj.edit8:setTransparent(true);
+    obj.edit8:setFontColor("black");
+    obj.edit8:setFontSize(15);
+    obj.edit8:setHorzTextAlign("center");
+    obj.edit8:setType("number");
+    obj.edit8:setName("edit8");
+
+    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label54:setParent(obj.layout9);
+    obj.label54:setLeft(156);
+    obj.label54:setTop(65);
+    obj.label54:setWidth(256);
+    obj.label54:setText("%UP:");
+    obj.label54:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label54, "fontStyle", "bold");
+    obj.label54:setFontSize(16);
+    obj.label54:setName("label54");
+
+    obj.rectangle138 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle138:setParent(obj.layout9);
+    obj.rectangle138:setLeft(199);
+    obj.rectangle138:setTop(66);
+    obj.rectangle138:setWidth(35);
+    obj.rectangle138:setHeight(18);
+    obj.rectangle138:setColor("#F5F5DC");
+    obj.rectangle138:setXradius(7);
+    obj.rectangle138:setYradius(7);
+    obj.rectangle138:setName("rectangle138");
+
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit9:setParent(obj.layout9);
+    obj.edit9:setField("upArmamento");
+    obj.edit9:setLeft(199);
+    obj.edit9:setTop(65);
+    obj.edit9:setWidth(35);
+    obj.edit9:setHeight(18);
+    obj.edit9:setTransparent(true);
+    obj.edit9:setFontColor("black");
+    obj.edit9:setFontSize(15);
+    obj.edit9:setHorzTextAlign("center");
+    obj.edit9:setType("number");
+    obj.edit9:setName("edit9");
+
+    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label55:setParent(obj.layout9);
+    obj.label55:setLeft(260);
+    obj.label55:setTop(40);
+    obj.label55:setWidth(256);
+    obj.label55:setText("     Estado:");
+    obj.label55:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label55, "fontStyle", "bold");
+    obj.label55:setFontSize(15);
+    obj.label55:setName("label55");
+
+    obj.rectangle139 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle139:setParent(obj.layout9);
+    obj.rectangle139:setLeft(335);
+    obj.rectangle139:setTop(41);
+    obj.rectangle139:setWidth(80);
+    obj.rectangle139:setHeight(18);
+    obj.rectangle139:setColor("#F5F5DC");
+    obj.rectangle139:setXradius(7);
+    obj.rectangle139:setYradius(7);
+    obj.rectangle139:setName("rectangle139");
+
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1:setParent(obj.layout9);
+    obj.comboBox1:setField("EstadoArmamento");
+    obj.comboBox1:setLeft(331);
+    obj.comboBox1:setTop(38);
+    obj.comboBox1:setWidth(87);
+    obj.comboBox1:setTransparent(true);
+    obj.comboBox1:setFontColor("black");
+    obj.comboBox1:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.comboBox1:setValues({'I','Do','De','C'});
+    obj.comboBox1:setHorzTextAlign("leading");
+    obj.comboBox1:setName("comboBox1");
+
+    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label56:setParent(obj.layout9);
+    obj.label56:setLeft(262);
+    obj.label56:setTop(65);
+    obj.label56:setWidth(256);
+    obj.label56:setText("Condição:");
+    obj.label56:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label56, "fontStyle", "bold");
+    obj.label56:setFontSize(15);
+    obj.label56:setName("label56");
+
+    obj.rectangle140 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle140:setParent(obj.layout9);
+    obj.rectangle140:setLeft(335);
+    obj.rectangle140:setTop(66);
+    obj.rectangle140:setWidth(80);
+    obj.rectangle140:setHeight(18);
+    obj.rectangle140:setColor("#F5F5DC");
+    obj.rectangle140:setXradius(7);
+    obj.rectangle140:setYradius(7);
+    obj.rectangle140:setName("rectangle140");
+
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2:setParent(obj.layout9);
+    obj.comboBox2:setField("CondArmamento");
+    obj.comboBox2:setLeft(331);
+    obj.comboBox2:setTop(63);
+    obj.comboBox2:setWidth(85);
+    obj.comboBox2:setTransparent(true);
+    obj.comboBox2:setFontColor("black");
+    obj.comboBox2:setItems({'Normal','Avançado'});
+    obj.comboBox2:setValues({'N','A'});
+    obj.comboBox2:setHorzTextAlign("leading");
+    obj.comboBox2:setName("comboBox2");
+
+    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label57:setParent(obj.layout9);
+    obj.label57:setLeft(152);
+    obj.label57:setTop(90);
+    obj.label57:setWidth(256);
+    obj.label57:setText("Custo:");
+    obj.label57:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label57, "fontStyle", "bold");
+    obj.label57:setFontSize(12);
+    obj.label57:setName("label57");
+
+    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label58:setParent(obj.layout9);
+    obj.label58:setField("CustoArmamento");
+    obj.label58:setLeft(193);
+    obj.label58:setTop(90);
+    obj.label58:setWidth(237);
+    obj.label58:setHeight(40);
+    obj.label58:setFontColor("#5F9EA0");
+    obj.label58:setFontSize(11);
+    obj.label58:setVertTextAlign("leading");
+    obj.label58:setName("label58");
+
+    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label59:setParent(obj.layout9);
+    obj.label59:setLeft(152);
+    obj.label59:setTop(110);
+    obj.label59:setWidth(256);
+    obj.label59:setText("Bônus:");
+    obj.label59:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label59, "fontStyle", "bold");
+    obj.label59:setFontSize(12);
+    obj.label59:setName("label59");
+
+    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label60:setParent(obj.layout9);
+    obj.label60:setField("BonusArmamento");
+    obj.label60:setLeft(192);
+    obj.label60:setTop(110);
+    obj.label60:setWidth(237);
+    obj.label60:setHeight(40);
+    obj.label60:setFontColor("#5F9EA0");
+    obj.label60:setFontSize(11);
+    obj.label60:setVertTextAlign("leading");
+    obj.label60:setName("label60");
+
+    obj.rectangle141 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle141:setParent(obj.layout9);
+    obj.rectangle141:setLeft(0);
+    obj.rectangle141:setTop(179);
+    obj.rectangle141:setWidth(430);
+    obj.rectangle141:setHeight(167);
+    obj.rectangle141:setColor("#4169E1");
+    obj.rectangle141:setName("rectangle141");
+
+    obj.rectangle142 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle142:setParent(obj.layout9);
+    obj.rectangle142:setLeft(2);
+    obj.rectangle142:setTop(181);
+    obj.rectangle142:setWidth(426);
+    obj.rectangle142:setHeight(163);
+    obj.rectangle142:setColor("black");
+    obj.rectangle142:setName("rectangle142");
+
+    obj.image18 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image18:setParent(obj.layout9);
+    obj.image18:setLeft(4);
+    obj.image18:setTop(183);
+    obj.image18:setWidth(140);
+    obj.image18:setHeight(159);
+    obj.image18:setSRC("https://blob.firecast.com.br/blobs/EGIIICJG_3736362/BtKz.gif");
+    obj.image18:setShowStyle("autoFit");
+    obj.image18.animate = true;
+    obj.image18:setName("image18");
+
+    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label61:setParent(obj.layout9);
+    obj.label61:setLeft(144);
+    obj.label61:setTop(184);
+    obj.label61:setWidth(286);
+    obj.label61:setText("Haki da Observação");
+    obj.label61:setFontColor("#D1B27E");
+    lfm_setPropAsString(obj.label61, "fontStyle", "bold underline");
+    obj.label61:setFontSize(18);
+    obj.label61:setHorzTextAlign("center");
+    obj.label61:setName("label61");
+
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button20:setParent(obj.layout9);
+    obj.button20:setLeft(2);
+    obj.button20:setTop(181);
+    obj.button20:setWidth(70);
+    obj.button20:setText("Descrição");
+    obj.button20:setName("button20");
+
+    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label62:setParent(obj.layout9);
+    obj.label62:setLeft(162);
+    obj.label62:setTop(210);
+    obj.label62:setWidth(256);
+    obj.label62:setText("Tier:");
+    obj.label62:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label62, "fontStyle", "bold");
+    obj.label62:setFontSize(16);
+    obj.label62:setName("label62");
+
+    obj.rectangle143 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle143:setParent(obj.layout9);
+    obj.rectangle143:setLeft(199);
+    obj.rectangle143:setTop(211);
+    obj.rectangle143:setWidth(35);
+    obj.rectangle143:setHeight(18);
+    obj.rectangle143:setColor("#F5F5DC");
+    obj.rectangle143:setXradius(7);
+    obj.rectangle143:setYradius(7);
+    obj.rectangle143:setName("rectangle143");
+
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit10:setParent(obj.layout9);
+    obj.edit10:setField("tierObservacao");
+    obj.edit10:setLeft(199);
+    obj.edit10:setTop(210);
+    obj.edit10:setWidth(35);
+    obj.edit10:setHeight(18);
+    obj.edit10:setTransparent(true);
+    obj.edit10:setFontColor("black");
+    obj.edit10:setFontSize(15);
+    obj.edit10:setHorzTextAlign("center");
+    obj.edit10:setType("number");
+    obj.edit10:setName("edit10");
+
+    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label63:setParent(obj.layout9);
+    obj.label63:setLeft(156);
+    obj.label63:setTop(235);
+    obj.label63:setWidth(256);
+    obj.label63:setText("%UP:");
+    obj.label63:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label63, "fontStyle", "bold");
+    obj.label63:setFontSize(16);
+    obj.label63:setName("label63");
+
+    obj.rectangle144 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle144:setParent(obj.layout9);
+    obj.rectangle144:setLeft(199);
+    obj.rectangle144:setTop(236);
+    obj.rectangle144:setWidth(35);
+    obj.rectangle144:setHeight(18);
+    obj.rectangle144:setColor("#F5F5DC");
+    obj.rectangle144:setXradius(7);
+    obj.rectangle144:setYradius(7);
+    obj.rectangle144:setName("rectangle144");
+
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit11:setParent(obj.layout9);
+    obj.edit11:setField("upObsevacao");
+    obj.edit11:setLeft(199);
+    obj.edit11:setTop(235);
+    obj.edit11:setWidth(35);
+    obj.edit11:setHeight(18);
+    obj.edit11:setTransparent(true);
+    obj.edit11:setFontColor("black");
+    obj.edit11:setFontSize(15);
+    obj.edit11:setHorzTextAlign("center");
+    obj.edit11:setType("number");
+    obj.edit11:setName("edit11");
+
+    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label64:setParent(obj.layout9);
+    obj.label64:setLeft(260);
+    obj.label64:setTop(210);
+    obj.label64:setWidth(256);
+    obj.label64:setText("     Estado:");
+    obj.label64:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label64, "fontStyle", "bold");
+    obj.label64:setFontSize(15);
+    obj.label64:setName("label64");
+
+    obj.rectangle145 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle145:setParent(obj.layout9);
+    obj.rectangle145:setLeft(335);
+    obj.rectangle145:setTop(211);
+    obj.rectangle145:setWidth(80);
+    obj.rectangle145:setHeight(18);
+    obj.rectangle145:setColor("#F5F5DC");
+    obj.rectangle145:setXradius(7);
+    obj.rectangle145:setYradius(7);
+    obj.rectangle145:setName("rectangle145");
+
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3:setParent(obj.layout9);
+    obj.comboBox3:setField("EstadoObsevacao");
+    obj.comboBox3:setLeft(331);
+    obj.comboBox3:setTop(208);
+    obj.comboBox3:setWidth(87);
+    obj.comboBox3:setTransparent(true);
+    obj.comboBox3:setFontColor("black");
+    obj.comboBox3:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.comboBox3:setValues({'I','Do','De','C'});
+    obj.comboBox3:setHorzTextAlign("leading");
+    obj.comboBox3:setName("comboBox3");
+
+    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label65:setParent(obj.layout9);
+    obj.label65:setLeft(262);
+    obj.label65:setTop(235);
+    obj.label65:setWidth(256);
+    obj.label65:setText("Condição:");
+    obj.label65:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label65, "fontStyle", "bold");
+    obj.label65:setFontSize(15);
+    obj.label65:setName("label65");
+
+    obj.rectangle146 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle146:setParent(obj.layout9);
+    obj.rectangle146:setLeft(335);
+    obj.rectangle146:setTop(236);
+    obj.rectangle146:setWidth(80);
+    obj.rectangle146:setHeight(18);
+    obj.rectangle146:setColor("#F5F5DC");
+    obj.rectangle146:setXradius(7);
+    obj.rectangle146:setYradius(7);
+    obj.rectangle146:setName("rectangle146");
+
+    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox4:setParent(obj.layout9);
+    obj.comboBox4:setField("CondObsevacao");
+    obj.comboBox4:setLeft(331);
+    obj.comboBox4:setTop(233);
+    obj.comboBox4:setWidth(85);
+    obj.comboBox4:setTransparent(true);
+    obj.comboBox4:setFontColor("black");
+    obj.comboBox4:setItems({'Normal','Avançado'});
+    obj.comboBox4:setValues({'N','A'});
+    obj.comboBox4:setHorzTextAlign("leading");
+    obj.comboBox4:setName("comboBox4");
+
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label66:setParent(obj.layout9);
+    obj.label66:setLeft(152);
+    obj.label66:setTop(260);
+    obj.label66:setWidth(256);
+    obj.label66:setText("Custo:");
+    obj.label66:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label66, "fontStyle", "bold");
+    obj.label66:setFontSize(12);
+    obj.label66:setName("label66");
+
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label67:setParent(obj.layout9);
+    obj.label67:setField("CustoObservacao");
+    obj.label67:setLeft(193);
+    obj.label67:setTop(260);
+    obj.label67:setWidth(237);
+    obj.label67:setHeight(40);
+    obj.label67:setFontColor("#5F9EA0");
+    obj.label67:setFontSize(11);
+    obj.label67:setVertTextAlign("leading");
+    obj.label67:setName("label67");
+
+    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label68:setParent(obj.layout9);
+    obj.label68:setLeft(152);
+    obj.label68:setTop(280);
+    obj.label68:setWidth(256);
+    obj.label68:setText("Bônus:");
+    obj.label68:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label68, "fontStyle", "bold");
+    obj.label68:setFontSize(12);
+    obj.label68:setName("label68");
+
+    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label69:setParent(obj.layout9);
+    obj.label69:setField("BonusObservacao");
+    obj.label69:setLeft(192);
+    obj.label69:setTop(280);
+    obj.label69:setWidth(237);
+    obj.label69:setHeight(40);
+    obj.label69:setFontColor("#5F9EA0");
+    obj.label69:setFontSize(11);
+    obj.label69:setVertTextAlign("leading");
+    obj.label69:setName("label69");
+
+    obj.rectangle147 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle147:setParent(obj.layout9);
+    obj.rectangle147:setLeft(0);
+    obj.rectangle147:setTop(358);
+    obj.rectangle147:setWidth(430);
+    obj.rectangle147:setHeight(167);
+    obj.rectangle147:setColor("#4169E1");
+    obj.rectangle147:setName("rectangle147");
+
+    obj.rectangle148 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle148:setParent(obj.layout9);
+    obj.rectangle148:setLeft(2);
+    obj.rectangle148:setTop(360);
+    obj.rectangle148:setWidth(426);
+    obj.rectangle148:setHeight(163);
+    obj.rectangle148:setColor("black");
+    obj.rectangle148:setName("rectangle148");
+
+    obj.image19 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image19:setParent(obj.layout9);
+    obj.image19:setLeft(4);
+    obj.image19:setTop(362);
+    obj.image19:setWidth(140);
+    obj.image19:setHeight(159);
+    obj.image19:setSRC("https://blob.firecast.com.br/blobs/TPUWRIHO_3736361/haki-luffy.gif");
+    obj.image19:setShowStyle("autoFit");
+    obj.image19.animate = true;
+    obj.image19:setName("image19");
+
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label70:setParent(obj.layout9);
+    obj.label70:setLeft(144);
+    obj.label70:setTop(363);
+    obj.label70:setWidth(286);
+    obj.label70:setText("Haki do Conquistador");
+    obj.label70:setFontColor("#D1B27E");
+    lfm_setPropAsString(obj.label70, "fontStyle", "bold underline");
+    obj.label70:setFontSize(18);
+    obj.label70:setHorzTextAlign("center");
+    obj.label70:setName("label70");
+
+    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button21:setParent(obj.layout9);
+    obj.button21:setLeft(2);
+    obj.button21:setTop(360);
+    obj.button21:setWidth(70);
+    obj.button21:setText("Descrição");
+    obj.button21:setName("button21");
+
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label71:setParent(obj.layout9);
+    obj.label71:setLeft(162);
+    obj.label71:setTop(398);
+    obj.label71:setWidth(256);
+    obj.label71:setText("Tier:");
+    obj.label71:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label71, "fontStyle", "bold");
+    obj.label71:setFontSize(16);
+    obj.label71:setName("label71");
+
+    obj.rectangle149 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle149:setParent(obj.layout9);
+    obj.rectangle149:setLeft(199);
+    obj.rectangle149:setTop(399);
+    obj.rectangle149:setWidth(35);
+    obj.rectangle149:setHeight(18);
+    obj.rectangle149:setColor("#F5F5DC");
+    obj.rectangle149:setXradius(7);
+    obj.rectangle149:setYradius(7);
+    obj.rectangle149:setName("rectangle149");
+
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit12:setParent(obj.layout9);
+    obj.edit12:setField("tierConquistador");
+    obj.edit12:setLeft(199);
+    obj.edit12:setTop(398);
+    obj.edit12:setWidth(35);
+    obj.edit12:setHeight(18);
+    obj.edit12:setTransparent(true);
+    obj.edit12:setFontColor("black");
+    obj.edit12:setFontSize(15);
+    obj.edit12:setHorzTextAlign("center");
+    obj.edit12:setType("number");
+    obj.edit12:setName("edit12");
+
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label72:setParent(obj.layout9);
+    obj.label72:setLeft(156);
+    obj.label72:setTop(423);
+    obj.label72:setWidth(256);
+    obj.label72:setText("%UP:");
+    obj.label72:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label72, "fontStyle", "bold");
+    obj.label72:setFontSize(16);
+    obj.label72:setName("label72");
+
+    obj.rectangle150 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle150:setParent(obj.layout9);
+    obj.rectangle150:setLeft(199);
+    obj.rectangle150:setTop(424);
+    obj.rectangle150:setWidth(35);
+    obj.rectangle150:setHeight(18);
+    obj.rectangle150:setColor("#F5F5DC");
+    obj.rectangle150:setXradius(7);
+    obj.rectangle150:setYradius(7);
+    obj.rectangle150:setName("rectangle150");
+
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit13:setParent(obj.layout9);
+    obj.edit13:setField("upConquistador");
+    obj.edit13:setLeft(199);
+    obj.edit13:setTop(423);
+    obj.edit13:setWidth(35);
+    obj.edit13:setHeight(18);
+    obj.edit13:setTransparent(true);
+    obj.edit13:setFontColor("black");
+    obj.edit13:setFontSize(15);
+    obj.edit13:setHorzTextAlign("center");
+    obj.edit13:setType("number");
+    obj.edit13:setName("edit13");
+
+    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label73:setParent(obj.layout9);
+    obj.label73:setLeft(260);
+    obj.label73:setTop(398);
+    obj.label73:setWidth(256);
+    obj.label73:setText("     Estado:");
+    obj.label73:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label73, "fontStyle", "bold");
+    obj.label73:setFontSize(15);
+    obj.label73:setName("label73");
+
+    obj.rectangle151 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle151:setParent(obj.layout9);
+    obj.rectangle151:setLeft(335);
+    obj.rectangle151:setTop(399);
+    obj.rectangle151:setWidth(80);
+    obj.rectangle151:setHeight(18);
+    obj.rectangle151:setColor("#F5F5DC");
+    obj.rectangle151:setXradius(7);
+    obj.rectangle151:setYradius(7);
+    obj.rectangle151:setName("rectangle151");
+
+    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox5:setParent(obj.layout9);
+    obj.comboBox5:setField("EstadoConquistador");
+    obj.comboBox5:setLeft(331);
+    obj.comboBox5:setTop(396);
+    obj.comboBox5:setWidth(87);
+    obj.comboBox5:setTransparent(true);
+    obj.comboBox5:setFontColor("black");
+    obj.comboBox5:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.comboBox5:setValues({'I','Do','De','C'});
+    obj.comboBox5:setHorzTextAlign("leading");
+    obj.comboBox5:setName("comboBox5");
+
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label74:setParent(obj.layout9);
+    obj.label74:setLeft(262);
+    obj.label74:setTop(423);
+    obj.label74:setWidth(256);
+    obj.label74:setText("Condição:");
+    obj.label74:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label74, "fontStyle", "bold");
+    obj.label74:setFontSize(15);
+    obj.label74:setName("label74");
+
+    obj.rectangle152 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle152:setParent(obj.layout9);
+    obj.rectangle152:setLeft(335);
+    obj.rectangle152:setTop(424);
+    obj.rectangle152:setWidth(80);
+    obj.rectangle152:setHeight(18);
+    obj.rectangle152:setColor("#F5F5DC");
+    obj.rectangle152:setXradius(7);
+    obj.rectangle152:setYradius(7);
+    obj.rectangle152:setName("rectangle152");
+
+    obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox6:setParent(obj.layout9);
+    obj.comboBox6:setField("CondConquistador");
+    obj.comboBox6:setLeft(331);
+    obj.comboBox6:setTop(421);
+    obj.comboBox6:setWidth(85);
+    obj.comboBox6:setTransparent(true);
+    obj.comboBox6:setFontColor("black");
+    obj.comboBox6:setItems({'Normal','Avançado'});
+    obj.comboBox6:setValues({'N','A'});
+    obj.comboBox6:setHorzTextAlign("leading");
+    obj.comboBox6:setName("comboBox6");
+
+    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label75:setParent(obj.layout9);
+    obj.label75:setLeft(152);
+    obj.label75:setTop(448);
+    obj.label75:setWidth(256);
+    obj.label75:setText("Custo:");
+    obj.label75:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label75, "fontStyle", "bold");
+    obj.label75:setFontSize(12);
+    obj.label75:setName("label75");
+
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label76:setParent(obj.layout9);
+    obj.label76:setField("CustoConquistador");
+    obj.label76:setLeft(193);
+    obj.label76:setTop(448);
+    obj.label76:setWidth(237);
+    obj.label76:setHeight(40);
+    obj.label76:setFontColor("#5F9EA0");
+    obj.label76:setFontSize(11);
+    obj.label76:setVertTextAlign("leading");
+    obj.label76:setName("label76");
+
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label77:setParent(obj.layout9);
+    obj.label77:setLeft(152);
+    obj.label77:setTop(468);
+    obj.label77:setWidth(256);
+    obj.label77:setText("Bônus:");
+    obj.label77:setFontColor("#5F9EA0");
+    lfm_setPropAsString(obj.label77, "fontStyle", "bold");
+    obj.label77:setFontSize(12);
+    obj.label77:setName("label77");
+
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label78:setParent(obj.layout9);
+    obj.label78:setField("BonusConquistador");
+    obj.label78:setLeft(192);
+    obj.label78:setTop(468);
+    obj.label78:setWidth(237);
+    obj.label78:setHeight(60);
+    obj.label78:setFontColor("#5F9EA0");
+    obj.label78:setFontSize(11);
+    obj.label78:setVertTextAlign("leading");
+    obj.label78:setName("label78");
+
+    obj.Equipamento = GUI.fromHandle(_obj_newObject("layout"));
+    obj.Equipamento:setParent(obj.Atributos);
+    obj.Equipamento:setName("Equipamento");
+    obj.Equipamento:setLeft(600);
+    obj.Equipamento:setTop(150);
+    obj.Equipamento:setWidth(600);
+    obj.Equipamento:setHeight(550);
+    obj.Equipamento:setVisible(false);
+
+    obj.rectangle153 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle153:setParent(obj.Equipamento);
+    obj.rectangle153:setAlign("client");
+    obj.rectangle153:setColor("#404040");
+    obj.rectangle153:setXradius(7);
+    obj.rectangle153:setYradius(7);
+    obj.rectangle153:setName("rectangle153");
+
+    obj.buttonSair = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.buttonSair:setParent(obj.Equipamento);
+    obj.buttonSair:setName("buttonSair");
+    obj.buttonSair:setLeft(530);
+    obj.buttonSair:setTop(2);
+    obj.buttonSair:setWidth(60);
+    obj.buttonSair:setHeight(25);
+    obj.buttonSair:setColor("crimson");
+    obj.buttonSair:setXradius(7);
+    obj.buttonSair:setYradius(7);
+
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label79:setParent(obj.Equipamento);
+    obj.label79:setLeft(530);
+    obj.label79:setTop(-1);
+    obj.label79:setWidth(60);
+    obj.label79:setHeight(25);
+    obj.label79:setHorzTextAlign("center");
+    obj.label79:setText("x");
+    obj.label79:setFontColor("Black");
+    obj.label79:setFontSize(21);
+    obj.label79:setName("label79");
+
+    obj.rectangle154 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle154:setParent(obj.Equipamento);
+    obj.rectangle154:setLeft(1);
+    obj.rectangle154:setTop(28);
+    obj.rectangle154:setWidth(208);
+    obj.rectangle154:setHeight(520);
+    obj.rectangle154:setColor("black");
+    obj.rectangle154:setXradius(4);
+    obj.rectangle154:setYradius(4);
+    obj.rectangle154:setName("rectangle154");
+
+    obj.rectangle155 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle155:setParent(obj.Equipamento);
+    obj.rectangle155:setLeft(5);
+    obj.rectangle155:setTop(32);
+    obj.rectangle155:setWidth(200);
+    obj.rectangle155:setHeight(512);
+    obj.rectangle155:setColor("#404040");
+    obj.rectangle155:setXradius(4);
+    obj.rectangle155:setYradius(4);
+    obj.rectangle155:setName("rectangle155");
+
+    obj.fotoEquip = GUI.fromHandle(_obj_newObject("image"));
+    obj.fotoEquip:setParent(obj.Equipamento);
+    obj.fotoEquip:setName("fotoEquip");
+    obj.fotoEquip:setLeft(5);
+    obj.fotoEquip:setTop(32);
+    obj.fotoEquip:setWidth(50);
+    obj.fotoEquip:setHeight(128);
+    obj.fotoEquip:setScale(4);
+    obj.fotoEquip:setEditable(true);
+    obj.fotoEquip:setStyle("proportional");
+
+    obj.rectangle156 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle156:setParent(obj.Equipamento);
+    obj.rectangle156:setLeft(205);
+    obj.rectangle156:setTop(28);
+    obj.rectangle156:setWidth(5);
+    obj.rectangle156:setHeight(520);
+    obj.rectangle156:setColor("black");
+    obj.rectangle156:setName("rectangle156");
+
+    obj.editEquip = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.editEquip:setParent(obj.Equipamento);
+    obj.editEquip:setName("editEquip");
+    obj.editEquip:setField("");
+    obj.editEquip:setLeft(210);
+    obj.editEquip:setTop(28);
+    obj.editEquip:setWidth(390);
+    obj.editEquip:setHeight(520);
+    obj.editEquip.backgroundColor = "black";
+    obj.editEquip.defaultFontColor = "white";
+    obj.editEquip.animateImages = true;
+
+    obj.Haki = GUI.fromHandle(_obj_newObject("layout"));
+    obj.Haki:setParent(obj.Atributos);
+    obj.Haki:setName("Haki");
+    obj.Haki:setLeft(600);
+    obj.Haki:setTop(150);
+    obj.Haki:setWidth(600);
+    obj.Haki:setHeight(550);
+    obj.Haki:setVisible(false);
+
+    obj.rectangle157 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle157:setParent(obj.Haki);
+    obj.rectangle157:setAlign("client");
+    obj.rectangle157:setColor("#404040");
+    obj.rectangle157:setXradius(7);
+    obj.rectangle157:setYradius(7);
+    obj.rectangle157:setName("rectangle157");
+
+    obj.buttonExit = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.buttonExit:setParent(obj.Haki);
+    obj.buttonExit:setName("buttonExit");
+    obj.buttonExit:setLeft(530);
+    obj.buttonExit:setTop(2);
+    obj.buttonExit:setWidth(60);
+    obj.buttonExit:setHeight(25);
+    obj.buttonExit:setColor("crimson");
+    obj.buttonExit:setXradius(7);
+    obj.buttonExit:setYradius(7);
+
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label80:setParent(obj.Haki);
+    obj.label80:setLeft(530);
+    obj.label80:setTop(-1);
+    obj.label80:setWidth(60);
+    obj.label80:setHeight(25);
+    obj.label80:setHorzTextAlign("center");
+    obj.label80:setText("x");
+    obj.label80:setFontColor("Black");
+    obj.label80:setFontSize(21);
+    obj.label80:setName("label80");
+
+    obj.editHaki = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.editHaki:setParent(obj.Haki);
+    obj.editHaki:setName("editHaki");
+    obj.editHaki:setField("");
+    obj.editHaki:setLeft(2);
+    obj.editHaki:setTop(30);
+    obj.editHaki:setWidth(598);
+    obj.editHaki:setHeight(520);
+    obj.editHaki.backgroundColor = "#404040";
+    obj.editHaki.defaultFontColor = "white";
+    obj.editHaki.animateImages = true;
+    obj.editHaki.readOnly = false;
+    obj.editHaki.showToolbar = true;
 
     obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink17:setParent(obj.Atributos);
@@ -4424,63 +5660,153 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.dataLink52 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink52:setParent(obj.Atributos);
-    obj.dataLink52:setField("PontosDisponiveis");
-    obj.dataLink52:setDefaultValue("16");
+    obj.dataLink52:setField("ForcaDeVontadeTreino");
+    obj.dataLink52:setDefaultValue("0");
     obj.dataLink52:setName("dataLink52");
 
     obj.dataLink53 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink53:setParent(obj.Atributos);
-    obj.dataLink53:setField("PontosDistribuidos");
-    obj.dataLink53:setDefaultValue("0");
+    obj.dataLink53:setField("FotoChapeu");
+    obj.dataLink53:setDefaultValue("https://blob.firecast.com.br/blobs/BSEWIEVG_3735362/Chapeu.png");
     obj.dataLink53:setName("dataLink53");
 
     obj.dataLink54 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink54:setParent(obj.Atributos);
-    obj.dataLink54:setField("PontosOutros");
-    obj.dataLink54:setDefaultValue("0");
+    obj.dataLink54:setField("FotoColar");
+    obj.dataLink54:setDefaultValue("https://blob.firecast.com.br/blobs/ELGUBICD_3735361/Colar.png");
     obj.dataLink54:setName("dataLink54");
 
     obj.dataLink55 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink55:setParent(obj.Atributos);
-    obj.dataLink55:setField("PontosTotais");
-    obj.dataLink55:setDefaultValue("0");
+    obj.dataLink55:setField("FotoRoupa");
+    obj.dataLink55:setDefaultValue("https://blob.firecast.com.br/blobs/SIRPGIRT_3735359/Ropa.png");
     obj.dataLink55:setName("dataLink55");
 
     obj.dataLink56 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink56:setParent(obj.Atributos);
-    obj.dataLink56:setField("FotoChapeu");
-    obj.dataLink56:setDefaultValue("https://blob.firecast.com.br/blobs/BSEWIEVG_3735362/Chapeu.png");
+    obj.dataLink56:setField("FotoMaoPrimaria");
+    obj.dataLink56:setDefaultValue("https://blob.firecast.com.br/blobs/SMOQJGJO_3735363/M_o.png");
     obj.dataLink56:setName("dataLink56");
 
     obj.dataLink57 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink57:setParent(obj.Atributos);
-    obj.dataLink57:setField("FotoColar");
-    obj.dataLink57:setDefaultValue("https://blob.firecast.com.br/blobs/ELGUBICD_3735361/Colar.png");
+    obj.dataLink57:setField("FotoCalca");
+    obj.dataLink57:setDefaultValue("https://blob.firecast.com.br/blobs/TQPAWOQT_3735360/Car_a.png");
     obj.dataLink57:setName("dataLink57");
 
     obj.dataLink58 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink58:setParent(obj.Atributos);
-    obj.dataLink58:setField("FotoRoupa");
-    obj.dataLink58:setDefaultValue("https://blob.firecast.com.br/blobs/SIRPGIRT_3735359/Ropa.png");
+    obj.dataLink58:setField("FotoBota");
+    obj.dataLink58:setDefaultValue("https://blob.firecast.com.br/blobs/OHNVCDNS_3735367/Bota.png");
     obj.dataLink58:setName("dataLink58");
 
     obj.dataLink59 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink59:setParent(obj.Atributos);
-    obj.dataLink59:setField("FotoMaoPrimaria");
-    obj.dataLink59:setDefaultValue("https://blob.firecast.com.br/blobs/SMOQJGJO_3735363/M_o.png");
+    obj.dataLink59:setField("FotoRosto");
+    obj.dataLink59:setDefaultValue("https://blob.firecast.com.br/blobs/NHQFHSIH_3735364/Mascara.png");
     obj.dataLink59:setName("dataLink59");
 
     obj.dataLink60 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink60:setParent(obj.Atributos);
-    obj.dataLink60:setField("FotoCalca");
-    obj.dataLink60:setDefaultValue("https://blob.firecast.com.br/blobs/TQPAWOQT_3735360/Car_a.png");
+    obj.dataLink60:setField("FotoBrinco");
+    obj.dataLink60:setDefaultValue("https://blob.firecast.com.br/blobs/LQUKWDCJ_3735365/Binco.png");
     obj.dataLink60:setName("dataLink60");
 
     obj.dataLink61 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink61:setParent(obj.Atributos);
-    obj.dataLink61:setField("FotoBota");
-    obj.dataLink61:setDefaultValue("0");
+    obj.dataLink61:setField("FotoCapa");
+    obj.dataLink61:setDefaultValue("https://blob.firecast.com.br/blobs/SEKLBTCI_3735802/Kapa.png");
     obj.dataLink61:setName("dataLink61");
+
+    obj.dataLink62 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink62:setParent(obj.Atributos);
+    obj.dataLink62:setField("FotoMaoSecundaria");
+    obj.dataLink62:setDefaultValue("https://blob.firecast.com.br/blobs/RRQKGODJ_3735460/M_o.png");
+    obj.dataLink62:setName("dataLink62");
+
+    obj.dataLink63 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink63:setParent(obj.Atributos);
+    obj.dataLink63:setField("FotoLuva");
+    obj.dataLink63:setDefaultValue("https://blob.firecast.com.br/blobs/BCNCKKRT_3735366/Luva.png");
+    obj.dataLink63:setName("dataLink63");
+
+    obj.dataLink64 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink64:setParent(obj.Atributos);
+    obj.dataLink64:setField("FotoAnel");
+    obj.dataLink64:setDefaultValue("https://blob.firecast.com.br/blobs/QLBWNJUT_3735368/Anal.png");
+    obj.dataLink64:setName("dataLink64");
+
+    obj.dataLink65 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink65:setParent(obj.Atributos);
+    obj.dataLink65:setField("tierArmamento");
+    obj.dataLink65:setDefaultValue("0");
+    obj.dataLink65:setName("dataLink65");
+
+    obj.dataLink66 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink66:setParent(obj.Atributos);
+    obj.dataLink66:setField("upArmamento");
+    obj.dataLink66:setDefaultValue("0");
+    obj.dataLink66:setName("dataLink66");
+
+    obj.dataLink67 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink67:setParent(obj.Atributos);
+    obj.dataLink67:setField("EstadoArmamento");
+    obj.dataLink67:setDefaultValue("I");
+    obj.dataLink67:setName("dataLink67");
+
+    obj.dataLink68 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink68:setParent(obj.Atributos);
+    obj.dataLink68:setField("CondArmamento");
+    obj.dataLink68:setDefaultValue("N");
+    obj.dataLink68:setName("dataLink68");
+
+    obj.dataLink69 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink69:setParent(obj.Atributos);
+    obj.dataLink69:setField("tierObservacao");
+    obj.dataLink69:setDefaultValue("0");
+    obj.dataLink69:setName("dataLink69");
+
+    obj.dataLink70 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink70:setParent(obj.Atributos);
+    obj.dataLink70:setField("upObsevacao");
+    obj.dataLink70:setDefaultValue("0");
+    obj.dataLink70:setName("dataLink70");
+
+    obj.dataLink71 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink71:setParent(obj.Atributos);
+    obj.dataLink71:setField("EstadoObsevacao");
+    obj.dataLink71:setDefaultValue("I");
+    obj.dataLink71:setName("dataLink71");
+
+    obj.dataLink72 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink72:setParent(obj.Atributos);
+    obj.dataLink72:setField("CondObsevacao");
+    obj.dataLink72:setDefaultValue("N");
+    obj.dataLink72:setName("dataLink72");
+
+    obj.dataLink73 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink73:setParent(obj.Atributos);
+    obj.dataLink73:setField("tierConquistador");
+    obj.dataLink73:setDefaultValue("0");
+    obj.dataLink73:setName("dataLink73");
+
+    obj.dataLink74 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink74:setParent(obj.Atributos);
+    obj.dataLink74:setField("upConquistador");
+    obj.dataLink74:setDefaultValue("0");
+    obj.dataLink74:setName("dataLink74");
+
+    obj.dataLink75 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink75:setParent(obj.Atributos);
+    obj.dataLink75:setField("EstadoConquistador");
+    obj.dataLink75:setDefaultValue("I");
+    obj.dataLink75:setName("dataLink75");
+
+    obj.dataLink76 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink76:setParent(obj.Atributos);
+    obj.dataLink76:setField("CondConquistador");
+    obj.dataLink76:setDefaultValue("N");
+    obj.dataLink76:setName("dataLink76");
 
     obj.tab9 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab9:setParent(obj.tabControl1);
@@ -4507,19 +5833,19 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ExportImport:setHeight(1000);
     obj.ExportImport:setVisible(false);
 
-    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.ExportImport);
-    obj.button7:setWidth(100);
-    obj.button7:setTop(800);
-    obj.button7:setText("Exportar Ficha");
-    obj.button7:setName("button7");
+    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button22:setParent(obj.ExportImport);
+    obj.button22:setWidth(100);
+    obj.button22:setTop(800);
+    obj.button22:setText("Exportar Ficha");
+    obj.button22:setName("button22");
 
-    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.ExportImport);
-    obj.button8:setWidth(100);
-    obj.button8:setTop(830);
-    obj.button8:setText("Importar Ficha");
-    obj.button8:setName("button8");
+    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button23:setParent(obj.ExportImport);
+    obj.button23:setWidth(100);
+    obj.button23:setTop(830);
+    obj.button23:setText("Importar Ficha");
+    obj.button23:setName("button23");
 
 
 		mesas = Firecast.getMesas()
@@ -4625,6 +5951,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj._e_event17 = obj.dataLink3:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.nivel == "" then sheet.nivel = "1" end
+            			CalcularHpEngHaki()
             			AlterarValorTotal("Carisma")
         end);
 
@@ -4847,262 +6174,616 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             RolarAtributo('ForcaDeVontade')
         end);
 
-    obj._e_event58 = obj.DefButton:addEventListener("onMouseEnter",
+    obj._e_event58 = obj.ForcaBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Forca')
+        end);
+
+    obj._e_event59 = obj.AgilidadeBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Agilidade')
+        end);
+
+    obj._e_event60 = obj.VigorBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Vigor')
+        end);
+
+    obj._e_event61 = obj.CombateBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Combate')
+        end);
+
+    obj._e_event62 = obj.PercepcaoBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Percepcao')
+        end);
+
+    obj._e_event63 = obj.CarismaBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Carisma')
+        end);
+
+    obj._e_event64 = obj.InteligenciaBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Inteligencia')
+        end);
+
+    obj._e_event65 = obj.PrecisaoBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Precisao')
+        end);
+
+    obj._e_event66 = obj.ForcaDeVontadeBase:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('ForcaDeVontade')
+        end);
+
+    obj._e_event67 = obj.ForcaPassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Forca')
+        end);
+
+    obj._e_event68 = obj.AgilidadePassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Agilidade')
+        end);
+
+    obj._e_event69 = obj.VigorPassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Vigor')
+        end);
+
+    obj._e_event70 = obj.CombatePassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Combate')
+        end);
+
+    obj._e_event71 = obj.PercepcaoPassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Percepcao')
+        end);
+
+    obj._e_event72 = obj.CarismaPassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Carisma')
+        end);
+
+    obj._e_event73 = obj.InteligenciaPassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Inteligencia')
+        end);
+
+    obj._e_event74 = obj.PrecisaoPassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Precisao')
+        end);
+
+    obj._e_event75 = obj.ForcaDeVontadePassivo:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('ForcaDeVontade')
+        end);
+
+    obj._e_event76 = obj.ForcaEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Forca')
+        end);
+
+    obj._e_event77 = obj.AgilidadeEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Agilidade')
+        end);
+
+    obj._e_event78 = obj.VigorEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Vigor')
+        end);
+
+    obj._e_event79 = obj.CombateEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Combate')
+        end);
+
+    obj._e_event80 = obj.PercepcaoEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Percepcao')
+        end);
+
+    obj._e_event81 = obj.CarismaEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Carisma')
+        end);
+
+    obj._e_event82 = obj.InteligenciaEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Inteligencia')
+        end);
+
+    obj._e_event83 = obj.PrecisaoEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Precisao')
+        end);
+
+    obj._e_event84 = obj.ForcaDeVontadeEquips:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('ForcaDeVontade')
+        end);
+
+    obj._e_event85 = obj.ForcaTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Forca')
+        end);
+
+    obj._e_event86 = obj.AgilidadeTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Agilidade')
+        end);
+
+    obj._e_event87 = obj.VigorTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Vigor')
+        end);
+
+    obj._e_event88 = obj.CombateTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Combate')
+        end);
+
+    obj._e_event89 = obj.PercepcaoTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Percepcao')
+        end);
+
+    obj._e_event90 = obj.CarismaTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Carisma')
+        end);
+
+    obj._e_event91 = obj.InteligenciaTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Inteligencia')
+        end);
+
+    obj._e_event92 = obj.PrecisaoTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('Precisao')
+        end);
+
+    obj._e_event93 = obj.ForcaDeVontadeTreino:addEventListener("onChange",
+        function ()
+            AlterarValorTotal('ForcaDeVontade')
+        end);
+
+    obj._e_event94 = obj.ForcaTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais()
+        end);
+
+    obj._e_event95 = obj.AgilidadeTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais()
+        end);
+
+    obj._e_event96 = obj.VigorTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais(); CalcularHpEngHaki()
+        end);
+
+    obj._e_event97 = obj.CombateTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais()
+        end);
+
+    obj._e_event98 = obj.PercepcaoTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais()
+        end);
+
+    obj._e_event99 = obj.CarismaTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais()
+        end);
+
+    obj._e_event100 = obj.InteligenciaTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais()
+        end);
+
+    obj._e_event101 = obj.PrecisaoTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais()
+        end);
+
+    obj._e_event102 = obj.ForcaDeVontadeTotal:addEventListener("onChange",
+        function ()
+            CalcularPontosTotais(); CalcularHpEngHaki()
+        end);
+
+    obj._e_event103 = obj.DefButton:addEventListener("onMouseEnter",
         function ()
             self.DefButton.text = 'Rolar Defesa'
         end);
 
-    obj._e_event59 = obj.DefButton:addEventListener("onMouseLeave",
+    obj._e_event104 = obj.DefButton:addEventListener("onMouseLeave",
         function ()
             self.DefButton.text = 'Defesa'
         end);
 
-    obj._e_event60 = obj.DefButton:addEventListener("onClick",
+    obj._e_event105 = obj.DefButton:addEventListener("onClick",
         function (event)
             RolarAtributo('Defesa')
         end);
 
-    obj._e_event61 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event106 = obj.button7:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoChapeu'; self.editEquip.field = 'Chapeu'
+        end);
+
+    obj._e_event107 = obj.button8:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoRosto'; self.editEquip.field = 'Rosto'
+        end);
+
+    obj._e_event108 = obj.button9:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoColar'; self.editEquip.field = 'Colar'
+        end);
+
+    obj._e_event109 = obj.button10:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoBrinco'; self.editEquip.field = 'Brinco'
+        end);
+
+    obj._e_event110 = obj.button11:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoRoupa'; self.editEquip.field = 'Roupa'
+        end);
+
+    obj._e_event111 = obj.button12:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoCapa'; self.editEquip.field = 'Capa'
+        end);
+
+    obj._e_event112 = obj.button13:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoMaoPrimaria'; self.editEquip.field = 'MaoP'
+        end);
+
+    obj._e_event113 = obj.button14:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoMaoSecundaria'; self.editEquip.field = 'MaoS'
+        end);
+
+    obj._e_event114 = obj.button15:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoCalca'; self.editEquip.field = 'Calca'
+        end);
+
+    obj._e_event115 = obj.button16:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoLuva'; self.editEquip.field = 'Luva'
+        end);
+
+    obj._e_event116 = obj.button17:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoBota'; self.editEquip.field = 'Bota'
+        end);
+
+    obj._e_event117 = obj.button18:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible = true; self.fotoEquip.field = 'FotoAnel'; self.editEquip.field = 'Anel'
+        end);
+
+    obj._e_event118 = obj.button19:addEventListener("onClick",
+        function (event)
+            self.Haki.visible = true; self.editHaki.field = 'Armamento'
+        end);
+
+    obj._e_event119 = obj.button20:addEventListener("onClick",
+        function (event)
+            self.Haki.visible = true; self.editHaki.field = 'Observacao'
+        end);
+
+    obj._e_event120 = obj.button21:addEventListener("onClick",
+        function (event)
+            self.Haki.visible = true; self.editHaki.field = 'Conquistador'
+        end);
+
+    obj._e_event121 = obj.buttonSair:addEventListener("onMouseEnter",
+        function ()
+            self.buttonSair.color = '#f3214b'
+        end);
+
+    obj._e_event122 = obj.buttonSair:addEventListener("onMouseLeave",
+        function ()
+            self.buttonSair.color = 'crimson'
+        end);
+
+    obj._e_event123 = obj.buttonSair:addEventListener("onClick",
+        function (event)
+            self.Equipamento.visible= false
+        end);
+
+    obj._e_event124 = obj.buttonExit:addEventListener("onMouseEnter",
+        function ()
+            self.buttonExit.color = '#f3214b'
+        end);
+
+    obj._e_event125 = obj.buttonExit:addEventListener("onMouseLeave",
+        function ()
+            self.buttonExit.color = 'crimson'
+        end);
+
+    obj._e_event126 = obj.buttonExit:addEventListener("onClick",
+        function (event)
+            self.Haki.visible= false
+        end);
+
+    obj._e_event127 = obj.dataLink17:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaBase == "" then sheet.ForcaBase = 1 end
-            		AlterarValorTotal("Forca")
         end);
 
-    obj._e_event62 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event128 = obj.dataLink18:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeBase == "" then sheet.AgilidadeBase = 1 end
-            			AlterarValorTotal("Agilidade")
         end);
 
-    obj._e_event63 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event129 = obj.dataLink19:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorBase == "" then sheet.VigorBase = 1 end
-            			AlterarValorTotal("Vigor")
         end);
 
-    obj._e_event64 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event130 = obj.dataLink20:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateBase == "" then sheet.CombateBase = 1 end
-            			AlterarValorTotal("Combate")
         end);
 
-    obj._e_event65 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event131 = obj.dataLink21:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoBase == "" then sheet.PercepcaoBase = 1 end
-            			AlterarValorTotal("Percepcao")
         end);
 
-    obj._e_event66 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event132 = obj.dataLink22:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaBase == "" then sheet.CarismaBase = 1 end
-            			AlterarValorTotal("Carisma")
         end);
 
-    obj._e_event67 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event133 = obj.dataLink23:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaBase == "" then sheet.InteligenciaBase = 1 end
-            			AlterarValorTotal("Inteligencia")
         end);
 
-    obj._e_event68 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event134 = obj.dataLink24:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoBase == "" then sheet.PrecisaoBase = 1 end
-            			AlterarValorTotal("Precisao")
         end);
 
-    obj._e_event69 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event135 = obj.dataLink25:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadeBase == "" then sheet.ForcaDeVontadeBase = 1 end
-            			AlterarValorTotal("ForcaDeVontade")
         end);
 
-    obj._e_event70 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event136 = obj.dataLink26:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaPassivo == "" then sheet.ForcaPassivo = 0 end
-            			AlterarValorTotal("Forca")
         end);
 
-    obj._e_event71 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event137 = obj.dataLink27:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadePassivo == "" then sheet.AgilidadePassivo = 0 end
-            			AlterarValorTotal("Agilidade")
         end);
 
-    obj._e_event72 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event138 = obj.dataLink28:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorPassivo == "" then sheet.VigorPassivo = 0 end
-            			AlterarValorTotal("Vigor")
         end);
 
-    obj._e_event73 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event139 = obj.dataLink29:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombatePassivo == "" then sheet.CombatePassivo = 0 end
-            			AlterarValorTotal("Combate")
         end);
 
-    obj._e_event74 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event140 = obj.dataLink30:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoPassivo == "" then sheet.PercepcaoPassivo = 0 end
-            			AlterarValorTotal("Percepcao")
         end);
 
-    obj._e_event75 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event141 = obj.dataLink31:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaPassivo == "" then sheet.CarismaPassivo = 0 end
-            			AlterarValorTotal("Carisma")
         end);
 
-    obj._e_event76 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event142 = obj.dataLink32:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaPassivo == "" then sheet.InteligenciaPassivo = 0 end
-            			AlterarValorTotal("Inteligencia")
         end);
 
-    obj._e_event77 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event143 = obj.dataLink33:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoPassivo == "" then sheet.PrecisaoPassivo = 0 end
-            			AlterarValorTotal("Precisao")
         end);
 
-    obj._e_event78 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event144 = obj.dataLink34:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadePassivo == "" then sheet.ForcaDeVontadePassivo = 0 end
-            			AlterarValorTotal("ForcaDeVontade")
         end);
 
-    obj._e_event79 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event145 = obj.dataLink35:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaEquips == "" then sheet.ForcaEquips = 0 end
-            			AlterarValorTotal("Forca")
         end);
 
-    obj._e_event80 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event146 = obj.dataLink36:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeEquips == "" then sheet.AgilidadeEquips = 0 end
-            			AlterarValorTotal("Agilidade")
         end);
 
-    obj._e_event81 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event147 = obj.dataLink37:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorEquips == "" then sheet.VigorEquips = 0 end
-            			AlterarValorTotal("Vigor")
         end);
 
-    obj._e_event82 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event148 = obj.dataLink38:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateEquips == "" then sheet.CombateEquips = 0 end
-            			AlterarValorTotal("Combate")
         end);
 
-    obj._e_event83 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event149 = obj.dataLink39:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoEquips == "" then sheet.PercepcaoEquips = 0 end
-            			AlterarValorTotal("Percepcao")
         end);
 
-    obj._e_event84 = obj.dataLink40:addEventListener("onChange",
+    obj._e_event150 = obj.dataLink40:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaEquips == "" then sheet.CarismaEquips = 0 end
-            			AlterarValorTotal("Carisma")
         end);
 
-    obj._e_event85 = obj.dataLink41:addEventListener("onChange",
+    obj._e_event151 = obj.dataLink41:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaEquips == "" then sheet.InteligenciaEquips = 0 end
-            			AlterarValorTotal("Inteligencia")
         end);
 
-    obj._e_event86 = obj.dataLink42:addEventListener("onChange",
+    obj._e_event152 = obj.dataLink42:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoEquips == "" then sheet.PrecisaoEquips = 0 end
-            			AlterarValorTotal("Precisao")
         end);
 
-    obj._e_event87 = obj.dataLink43:addEventListener("onChange",
+    obj._e_event153 = obj.dataLink43:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadeEquips == "" then sheet.ForcaDeVontadeEquips = 0 end
-            			AlterarValorTotal("ForcaDeVontade")
         end);
 
-    obj._e_event88 = obj.dataLink44:addEventListener("onChange",
+    obj._e_event154 = obj.dataLink44:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaTreino == "" then sheet.ForcaTreino = 0 end
-            			AlterarValorTotal("Forca")
         end);
 
-    obj._e_event89 = obj.dataLink45:addEventListener("onChange",
+    obj._e_event155 = obj.dataLink45:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeTreino == "" then sheet.AgilidadeTreino = 0 end
-            			AlterarValorTotal("Agilidade")
         end);
 
-    obj._e_event90 = obj.dataLink46:addEventListener("onChange",
+    obj._e_event156 = obj.dataLink46:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorTreino == "" then sheet.VigorTreino = 0 end
-            			AlterarValorTotal("Vigor")
         end);
 
-    obj._e_event91 = obj.dataLink47:addEventListener("onChange",
+    obj._e_event157 = obj.dataLink47:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateTreino == "" then sheet.CombateTreino = 0 end
-            			AlterarValorTotal("Combate")
         end);
 
-    obj._e_event92 = obj.dataLink48:addEventListener("onChange",
+    obj._e_event158 = obj.dataLink48:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoTreino == "" then sheet.PercepcaoTreino = 0 end
-            			AlterarValorTotal("Percepcao")
         end);
 
-    obj._e_event93 = obj.dataLink49:addEventListener("onChange",
+    obj._e_event159 = obj.dataLink49:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaTreino == "" then sheet.CarismaTreino = 0 end
-            			AlterarValorTotal("Carisma")
         end);
 
-    obj._e_event94 = obj.dataLink50:addEventListener("onChange",
+    obj._e_event160 = obj.dataLink50:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaTreino == "" then sheet.InteligenciaTreino = 0 end
-            			AlterarValorTotal("Inteligencia")
         end);
 
-    obj._e_event95 = obj.dataLink51:addEventListener("onChange",
+    obj._e_event161 = obj.dataLink51:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoTreino == "" then sheet.PrecisaoTreino = 0 end
-            			AlterarValorTotal("Precisao")
         end);
 
-    obj._e_event96 = obj.dataLink56:addEventListener("onChange",
+    obj._e_event162 = obj.dataLink52:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if sheet.ForcaDeVontadeTreino == "" then sheet.ForcaDeVontadeTreino = 0 end
+        end);
+
+    obj._e_event163 = obj.dataLink53:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoChapeu == nil then sheet.FotoChapeu = "https://blob.firecast.com.br/blobs/BSEWIEVG_3735362/Chapeu.png" end
         end);
 
-    obj._e_event97 = obj.dataLink57:addEventListener("onChange",
+    obj._e_event164 = obj.dataLink54:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoColar == nil then sheet.FotoColar = "https://blob.firecast.com.br/blobs/ELGUBICD_3735361/Colar.png" end
         end);
 
-    obj._e_event98 = obj.dataLink58:addEventListener("onChange",
+    obj._e_event165 = obj.dataLink55:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoRoupa == nil then sheet.FotoRoupa = "https://blob.firecast.com.br/blobs/SIRPGIRT_3735359/Ropa.png" end
         end);
 
-    obj._e_event99 = obj.dataLink59:addEventListener("onChange",
+    obj._e_event166 = obj.dataLink56:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoMaoPrimaria == nil then sheet.FotoMaoPrimaria = "https://blob.firecast.com.br/blobs/SMOQJGJO_3735363/M_o.png" end
         end);
 
-    obj._e_event100 = obj.dataLink60:addEventListener("onChange",
+    obj._e_event167 = obj.dataLink57:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoCalca == nil then sheet.FotoCalca = "https://blob.firecast.com.br/blobs/TQPAWOQT_3735360/Car_a.png" end
         end);
 
-    obj._e_event101 = obj.dataLink61:addEventListener("onChange",
+    obj._e_event168 = obj.dataLink58:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoBota == nil then sheet.FotoBota = "https://blob.firecast.com.br/blobs/OHNVCDNS_3735367/Bota.png" end
         end);
 
-    obj._e_event102 = obj.button7:addEventListener("onClick",
+    obj._e_event169 = obj.dataLink59:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if sheet.FotoRosto == nil then sheet.FotoRosto = "https://blob.firecast.com.br/blobs/NHQFHSIH_3735364/Mascara.png" end
+        end);
+
+    obj._e_event170 = obj.dataLink60:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if sheet.FotoBrinco == nil then sheet.FotoBrinco = "https://blob.firecast.com.br/blobs/LQUKWDCJ_3735365/Binco.png" end
+        end);
+
+    obj._e_event171 = obj.dataLink61:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if sheet.FotoCapa == nil then sheet.FotoCapa = "https://blob.firecast.com.br/blobs/SEKLBTCI_3735802/Kapa.png" end
+        end);
+
+    obj._e_event172 = obj.dataLink62:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if sheet.FotoMaoSecundaria == nil then sheet.FotoMaoSecundaria = "https://blob.firecast.com.br/blobs/RRQKGODJ_3735460/M_o.png" end
+        end);
+
+    obj._e_event173 = obj.dataLink63:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if sheet.FotoCinto == nil then sheet.FotoCinto = "https://blob.firecast.com.br/blobs/BCNCKKRT_3735366/Luva.png" end
+        end);
+
+    obj._e_event174 = obj.dataLink64:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if sheet.FotoAnel == nil then sheet.FotoAnel = "https://blob.firecast.com.br/blobs/QLBWNJUT_3735368/Anal.png" end
+        end);
+
+    obj._e_event175 = obj.dataLink65:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if (sheet.tierArmamento == "" and not (sheet.EstadoArmamento == "I" or sheet.EstadoArmamento == "Do")) then
+            				sheet.tierArmamento = 1 else sheet.tierArmamento = 0 end
+            			sheet.BonusArmamento = "+".. (sheet.tierArmamento * 5) .." de dano ou em rolagens de resistência"
+            			sheet.CustoArmamento = "-".. (sheet.tierArmamento * 3) .." da barra de haki"
+        end);
+
+    obj._e_event176 = obj.dataLink69:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if (sheet.tierObservacao == "" and not (sheet.EstadoObsevacao == "I" or sheet.EstadoObsevacao == "Do")) then
+            				sheet.tierObservacao = 1 else sheet.tierObservacao = 0 end
+            			sheet.BonusObservacao = "+".. (sheet.tierObservacao) .." de acerto, esquiva ou em rolagens de     percepção."
+            			sheet.CustoObservacao = "-".. (sheet.tierObservacao * 3) .." da barra de haki"
+        end);
+
+    obj._e_event177 = obj.dataLink73:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if (sheet.tierConquistador == "" and not (sheet.EstadoConquistador == "I" or sheet.EstadoConquistador == "Do")) then
+            				sheet.tierConquistador = 1 else sheet.tierConquistador = 0 end
+            			sheet.BonusConquistador = "Numa área de 12m, todos fazem um teste de resistência (DT 1d20+ FdV("..sheet.ForcaDeVontadeTotal..")+ ".. sheet.tierConquistador .."). Se passarem ficam acordados; se falharem desmaiam."
+            			sheet.CustoConquistador = "-".. (sheet.tierConquistador * 3) .." da barra de haki"
+        end);
+
+    obj._e_event178 = obj.button22:addEventListener("onClick",
         function (event)
             -- Criar uma tabela com as informações específicas
             				local node = NDB.createChildNode(sheet, "listaNodes")
@@ -5118,6 +6799,10 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             					node[profissao .. "descri"] = sheet[profissao .. "descri"]
             				end
             
+            				node.Armamento = sheet.Armamento
+            				node.Observacao = sheet.Observacao
+            				node.Conquistador = sheet.Conquistador
+            				
             				-- Converter essa tabela para XML
             				local xml = NDB.exportXML(node)
             
@@ -5133,7 +6818,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             				end)
         end);
 
-    obj._e_event103 = obj.button8:addEventListener("onClick",
+    obj._e_event179 = obj.button23:addEventListener("onClick",
         function (event)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             			function(arquivos)
@@ -5157,10 +6842,90 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             					sheet[profissao] = sheet.listaInformacoes[profissao]
             					sheet[profissao .. "descri"] = sheet.listaInformacoes[profissao .. "descri"]
             				end
+            				
+            				sheet.Armamento = sheet.listaInformacoes.Armamento
+            				sheet.Observacao = sheet.listaInformacoes.Observacao
+            				sheet.Conquistador = sheet.listaInformacoes.Conquistador
             			end);
         end);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event179);
+        __o_rrpgObjs.removeEventListenerById(self._e_event178);
+        __o_rrpgObjs.removeEventListenerById(self._e_event177);
+        __o_rrpgObjs.removeEventListenerById(self._e_event176);
+        __o_rrpgObjs.removeEventListenerById(self._e_event175);
+        __o_rrpgObjs.removeEventListenerById(self._e_event174);
+        __o_rrpgObjs.removeEventListenerById(self._e_event173);
+        __o_rrpgObjs.removeEventListenerById(self._e_event172);
+        __o_rrpgObjs.removeEventListenerById(self._e_event171);
+        __o_rrpgObjs.removeEventListenerById(self._e_event170);
+        __o_rrpgObjs.removeEventListenerById(self._e_event169);
+        __o_rrpgObjs.removeEventListenerById(self._e_event168);
+        __o_rrpgObjs.removeEventListenerById(self._e_event167);
+        __o_rrpgObjs.removeEventListenerById(self._e_event166);
+        __o_rrpgObjs.removeEventListenerById(self._e_event165);
+        __o_rrpgObjs.removeEventListenerById(self._e_event164);
+        __o_rrpgObjs.removeEventListenerById(self._e_event163);
+        __o_rrpgObjs.removeEventListenerById(self._e_event162);
+        __o_rrpgObjs.removeEventListenerById(self._e_event161);
+        __o_rrpgObjs.removeEventListenerById(self._e_event160);
+        __o_rrpgObjs.removeEventListenerById(self._e_event159);
+        __o_rrpgObjs.removeEventListenerById(self._e_event158);
+        __o_rrpgObjs.removeEventListenerById(self._e_event157);
+        __o_rrpgObjs.removeEventListenerById(self._e_event156);
+        __o_rrpgObjs.removeEventListenerById(self._e_event155);
+        __o_rrpgObjs.removeEventListenerById(self._e_event154);
+        __o_rrpgObjs.removeEventListenerById(self._e_event153);
+        __o_rrpgObjs.removeEventListenerById(self._e_event152);
+        __o_rrpgObjs.removeEventListenerById(self._e_event151);
+        __o_rrpgObjs.removeEventListenerById(self._e_event150);
+        __o_rrpgObjs.removeEventListenerById(self._e_event149);
+        __o_rrpgObjs.removeEventListenerById(self._e_event148);
+        __o_rrpgObjs.removeEventListenerById(self._e_event147);
+        __o_rrpgObjs.removeEventListenerById(self._e_event146);
+        __o_rrpgObjs.removeEventListenerById(self._e_event145);
+        __o_rrpgObjs.removeEventListenerById(self._e_event144);
+        __o_rrpgObjs.removeEventListenerById(self._e_event143);
+        __o_rrpgObjs.removeEventListenerById(self._e_event142);
+        __o_rrpgObjs.removeEventListenerById(self._e_event141);
+        __o_rrpgObjs.removeEventListenerById(self._e_event140);
+        __o_rrpgObjs.removeEventListenerById(self._e_event139);
+        __o_rrpgObjs.removeEventListenerById(self._e_event138);
+        __o_rrpgObjs.removeEventListenerById(self._e_event137);
+        __o_rrpgObjs.removeEventListenerById(self._e_event136);
+        __o_rrpgObjs.removeEventListenerById(self._e_event135);
+        __o_rrpgObjs.removeEventListenerById(self._e_event134);
+        __o_rrpgObjs.removeEventListenerById(self._e_event133);
+        __o_rrpgObjs.removeEventListenerById(self._e_event132);
+        __o_rrpgObjs.removeEventListenerById(self._e_event131);
+        __o_rrpgObjs.removeEventListenerById(self._e_event130);
+        __o_rrpgObjs.removeEventListenerById(self._e_event129);
+        __o_rrpgObjs.removeEventListenerById(self._e_event128);
+        __o_rrpgObjs.removeEventListenerById(self._e_event127);
+        __o_rrpgObjs.removeEventListenerById(self._e_event126);
+        __o_rrpgObjs.removeEventListenerById(self._e_event125);
+        __o_rrpgObjs.removeEventListenerById(self._e_event124);
+        __o_rrpgObjs.removeEventListenerById(self._e_event123);
+        __o_rrpgObjs.removeEventListenerById(self._e_event122);
+        __o_rrpgObjs.removeEventListenerById(self._e_event121);
+        __o_rrpgObjs.removeEventListenerById(self._e_event120);
+        __o_rrpgObjs.removeEventListenerById(self._e_event119);
+        __o_rrpgObjs.removeEventListenerById(self._e_event118);
+        __o_rrpgObjs.removeEventListenerById(self._e_event117);
+        __o_rrpgObjs.removeEventListenerById(self._e_event116);
+        __o_rrpgObjs.removeEventListenerById(self._e_event115);
+        __o_rrpgObjs.removeEventListenerById(self._e_event114);
+        __o_rrpgObjs.removeEventListenerById(self._e_event113);
+        __o_rrpgObjs.removeEventListenerById(self._e_event112);
+        __o_rrpgObjs.removeEventListenerById(self._e_event111);
+        __o_rrpgObjs.removeEventListenerById(self._e_event110);
+        __o_rrpgObjs.removeEventListenerById(self._e_event109);
+        __o_rrpgObjs.removeEventListenerById(self._e_event108);
+        __o_rrpgObjs.removeEventListenerById(self._e_event107);
+        __o_rrpgObjs.removeEventListenerById(self._e_event106);
+        __o_rrpgObjs.removeEventListenerById(self._e_event105);
+        __o_rrpgObjs.removeEventListenerById(self._e_event104);
         __o_rrpgObjs.removeEventListenerById(self._e_event103);
         __o_rrpgObjs.removeEventListenerById(self._e_event102);
         __o_rrpgObjs.removeEventListenerById(self._e_event101);
@@ -5280,23 +7045,34 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.genero ~= nil then self.genero:destroy(); self.genero = nil; end;
         if self.rectangle85 ~= nil then self.rectangle85:destroy(); self.rectangle85 = nil; end;
         if self.rectangle95 ~= nil then self.rectangle95:destroy(); self.rectangle95 = nil; end;
-        if self.edit42 ~= nil then self.edit42:destroy(); self.edit42 = nil; end;
+        if self.PrecisaoPassivo ~= nil then self.PrecisaoPassivo:destroy(); self.PrecisaoPassivo = nil; end;
         if self.rectangle71 ~= nil then self.rectangle71:destroy(); self.rectangle71 = nil; end;
-        if self.rectangle90 ~= nil then self.rectangle90:destroy(); self.rectangle90 = nil; end;
+        if self.ForcaPassivo ~= nil then self.ForcaPassivo:destroy(); self.ForcaPassivo = nil; end;
         if self.rectangle82 ~= nil then self.rectangle82:destroy(); self.rectangle82 = nil; end;
+        if self.rectangle90 ~= nil then self.rectangle90:destroy(); self.rectangle90 = nil; end;
         if self.ComboRaca ~= nil then self.ComboRaca:destroy(); self.ComboRaca = nil; end;
+        if self.ForcaDeVontadeBase ~= nil then self.ForcaDeVontadeBase:destroy(); self.ForcaDeVontadeBase = nil; end;
         if self.ForcaDeVontadeTotal ~= nil then self.ForcaDeVontadeTotal:destroy(); self.ForcaDeVontadeTotal = nil; end;
         if self.rectangle74 ~= nil then self.rectangle74:destroy(); self.rectangle74 = nil; end;
         if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
-        if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
+        if self.rectangle126 ~= nil then self.rectangle126:destroy(); self.rectangle126 = nil; end;
+        if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
+        if self.VigorEquips ~= nil then self.VigorEquips:destroy(); self.VigorEquips = nil; end;
+        if self.comboBox6 ~= nil then self.comboBox6:destroy(); self.comboBox6 = nil; end;
         if self.dataLink32 ~= nil then self.dataLink32:destroy(); self.dataLink32 = nil; end;
+        if self.rectangle151 ~= nil then self.rectangle151:destroy(); self.rectangle151 = nil; end;
         if self.NomeRaca ~= nil then self.NomeRaca:destroy(); self.NomeRaca = nil; end;
         if self.rectangle32 ~= nil then self.rectangle32:destroy(); self.rectangle32 = nil; end;
         if self.rectangle121 ~= nil then self.rectangle121:destroy(); self.rectangle121 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
+        if self.label62 ~= nil then self.label62:destroy(); self.label62 = nil; end;
+        if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
+        if self.image19 ~= nil then self.image19:destroy(); self.image19 = nil; end;
         if self.ImagemRaca ~= nil then self.ImagemRaca:destroy(); self.ImagemRaca = nil; end;
+        if self.rectangle156 ~= nil then self.rectangle156:destroy(); self.rectangle156 = nil; end;
         if self.NomeProfissaoSecundaria ~= nil then self.NomeProfissaoSecundaria:destroy(); self.NomeProfissaoSecundaria = nil; end;
         if self.Atributos ~= nil then self.Atributos:destroy(); self.Atributos = nil; end;
+        if self.label69 ~= nil then self.label69:destroy(); self.label69 = nil; end;
         if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.rectangle106 ~= nil then self.rectangle106:destroy(); self.rectangle106 = nil; end;
@@ -5305,6 +7081,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
+        if self.image17 ~= nil then self.image17:destroy(); self.image17 = nil; end;
         if self.AbaProfissaoPrincipal ~= nil then self.AbaProfissaoPrincipal:destroy(); self.AbaProfissaoPrincipal = nil; end;
         if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
@@ -5318,6 +7095,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle63 ~= nil then self.rectangle63:destroy(); self.rectangle63 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
+        if self.button18 ~= nil then self.button18:destroy(); self.button18 = nil; end;
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.dataLink44 ~= nil then self.dataLink44:destroy(); self.dataLink44 = nil; end;
         if self.dataLink56 ~= nil then self.dataLink56:destroy(); self.dataLink56 = nil; end;
@@ -5325,64 +7103,84 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
         if self.TierSecundaria ~= nil then self.TierSecundaria:destroy(); self.TierSecundaria = nil; end;
         if self.rectangle64 ~= nil then self.rectangle64:destroy(); self.rectangle64 = nil; end;
-        if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
+        if self.button21 ~= nil then self.button21:destroy(); self.button21 = nil; end;
+        if self.rectangle132 ~= nil then self.rectangle132:destroy(); self.rectangle132 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.dataLink68 ~= nil then self.dataLink68:destroy(); self.dataLink68 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.AbaHistoria ~= nil then self.AbaHistoria:destroy(); self.AbaHistoria = nil; end;
+        if self.PrecisaoEquips ~= nil then self.PrecisaoEquips:destroy(); self.PrecisaoEquips = nil; end;
+        if self.ForcaEquips ~= nil then self.ForcaEquips:destroy(); self.ForcaEquips = nil; end;
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
+        if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
         if self.rectangle43 ~= nil then self.rectangle43:destroy(); self.rectangle43 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
+        if self.dataLink63 ~= nil then self.dataLink63:destroy(); self.dataLink63 = nil; end;
+        if self.dataLink73 ~= nil then self.dataLink73:destroy(); self.dataLink73 = nil; end;
+        if self.rectangle138 ~= nil then self.rectangle138:destroy(); self.rectangle138 = nil; end;
         if self.tripulacao ~= nil then self.tripulacao:destroy(); self.tripulacao = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
         if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
-        if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
         if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
+        if self.dataLink66 ~= nil then self.dataLink66:destroy(); self.dataLink66 = nil; end;
+        if self.dataLink74 ~= nil then self.dataLink74:destroy(); self.dataLink74 = nil; end;
         if self.ExportImport ~= nil then self.ExportImport:destroy(); self.ExportImport = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
+        if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
+        if self.rectangle141 ~= nil then self.rectangle141:destroy(); self.rectangle141 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.ComboProfissaoSecundaria ~= nil then self.ComboProfissaoSecundaria:destroy(); self.ComboProfissaoSecundaria = nil; end;
         if self.rectangle55 ~= nil then self.rectangle55:destroy(); self.rectangle55 = nil; end;
+        if self.rectangle144 ~= nil then self.rectangle144:destroy(); self.rectangle144 = nil; end;
         if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
         if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
         if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
         if self.LayoutProfissaoSecundaria ~= nil then self.LayoutProfissaoSecundaria:destroy(); self.LayoutProfissaoSecundaria = nil; end;
         if self.rectangle58 ~= nil then self.rectangle58:destroy(); self.rectangle58 = nil; end;
+        if self.CombateTreino ~= nil then self.CombateTreino:destroy(); self.CombateTreino = nil; end;
         if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
+        if self.ForcaDeVontadePassivo ~= nil then self.ForcaDeVontadePassivo:destroy(); self.ForcaDeVontadePassivo = nil; end;
+        if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.tituloDoPersonagem ~= nil then self.tituloDoPersonagem:destroy(); self.tituloDoPersonagem = nil; end;
         if self.rectangle98 ~= nil then self.rectangle98:destroy(); self.rectangle98 = nil; end;
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.AgilidadeTotal ~= nil then self.AgilidadeTotal:destroy(); self.AgilidadeTotal = nil; end;
-        if self.edit41 ~= nil then self.edit41:destroy(); self.edit41 = nil; end;
         if self.rectangle97 ~= nil then self.rectangle97:destroy(); self.rectangle97 = nil; end;
         if self.rectangle87 ~= nil then self.rectangle87:destroy(); self.rectangle87 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
+        if self.buttonExit ~= nil then self.buttonExit:destroy(); self.buttonExit = nil; end;
         if self.rectangle77 ~= nil then self.rectangle77:destroy(); self.rectangle77 = nil; end;
+        if self.rectangle129 ~= nil then self.rectangle129:destroy(); self.rectangle129 = nil; end;
         if self.rectangle92 ~= nil then self.rectangle92:destroy(); self.rectangle92 = nil; end;
-        if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
         if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
         if self.XpMaxSecundaria ~= nil then self.XpMaxSecundaria:destroy(); self.XpMaxSecundaria = nil; end;
         if self.rectangle35 ~= nil then self.rectangle35:destroy(); self.rectangle35 = nil; end;
+        if self.rectangle124 ~= nil then self.rectangle124:destroy(); self.rectangle124 = nil; end;
+        if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
         if self.rectangle89 ~= nil then self.rectangle89:destroy(); self.rectangle89 = nil; end;
-        if self.edit25 ~= nil then self.edit25:destroy(); self.edit25 = nil; end;
         if self.dataLink30 ~= nil then self.dataLink30:destroy(); self.dataLink30 = nil; end;
+        if self.rectangle153 ~= nil then self.rectangle153:destroy(); self.rectangle153 = nil; end;
         if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
-        if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
+        if self.CarismaBase ~= nil then self.CarismaBase:destroy(); self.CarismaBase = nil; end;
         if self.rectangle105 ~= nil then self.rectangle105:destroy(); self.rectangle105 = nil; end;
         if self.rectangle115 ~= nil then self.rectangle115:destroy(); self.rectangle115 = nil; end;
+        if self.Equipamento ~= nil then self.Equipamento:destroy(); self.Equipamento = nil; end;
         if self.tab9 ~= nil then self.tab9:destroy(); self.tab9 = nil; end;
         if self.TierPrincipal ~= nil then self.TierPrincipal:destroy(); self.TierPrincipal = nil; end;
         if self.dataLink49 ~= nil then self.dataLink49:destroy(); self.dataLink49 = nil; end;
+        if self.image12 ~= nil then self.image12:destroy(); self.image12 = nil; end;
         if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
         if self.rectangle100 ~= nil then self.rectangle100:destroy(); self.rectangle100 = nil; end;
         if self.DescricaoRacial ~= nil then self.DescricaoRacial:destroy(); self.DescricaoRacial = nil; end;
         if self.rectangle112 ~= nil then self.rectangle112:destroy(); self.rectangle112 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
+        if self.image15 ~= nil then self.image15:destroy(); self.image15 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.label43 ~= nil then self.label43:destroy(); self.label43 = nil; end;
@@ -5390,31 +7188,33 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.tab7 ~= nil then self.tab7:destroy(); self.tab7 = nil; end;
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
+        if self.dataLink43 ~= nil then self.dataLink43:destroy(); self.dataLink43 = nil; end;
         if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
         if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
-        if self.dataLink43 ~= nil then self.dataLink43:destroy(); self.dataLink43 = nil; end;
         if self.dataLink53 ~= nil then self.dataLink53:destroy(); self.dataLink53 = nil; end;
         if self.rectangle61 ~= nil then self.rectangle61:destroy(); self.rectangle61 = nil; end;
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
         if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.idade ~= nil then self.idade:destroy(); self.idade = nil; end;
-        if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
-        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.CarismaTotal ~= nil then self.CarismaTotal:destroy(); self.CarismaTotal = nil; end;
+        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.PrecisaoTotal ~= nil then self.PrecisaoTotal:destroy(); self.PrecisaoTotal = nil; end;
+        if self.InteligenciaBase ~= nil then self.InteligenciaBase:destroy(); self.InteligenciaBase = nil; end;
         if self.image8 ~= nil then self.image8:destroy(); self.image8 = nil; end;
         if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
+        if self.rectangle137 ~= nil then self.rectangle137:destroy(); self.rectangle137 = nil; end;
         if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
-        if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.LayoutProfissaoPrincipal ~= nil then self.LayoutProfissaoPrincipal:destroy(); self.LayoutProfissaoPrincipal = nil; end;
+        if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.dataLink58 ~= nil then self.dataLink58:destroy(); self.dataLink58 = nil; end;
-        if self.edit37 ~= nil then self.edit37:destroy(); self.edit37 = nil; end;
+        if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
+        if self.rectangle130 ~= nil then self.rectangle130:destroy(); self.rectangle130 = nil; end;
         if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.ForDVonButton ~= nil then self.ForDVonButton:destroy(); self.ForDVonButton = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
+        if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.AbaAnotacoes ~= nil then self.AbaAnotacoes:destroy(); self.AbaAnotacoes = nil; end;
         if self.ForcaButton ~= nil then self.ForcaButton:destroy(); self.ForcaButton = nil; end;
         if self.rectangle45 ~= nil then self.rectangle45:destroy(); self.rectangle45 = nil; end;
@@ -5423,48 +7223,71 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.dataLink61 ~= nil then self.dataLink61:destroy(); self.dataLink61 = nil; end;
+        if self.dataLink71 ~= nil then self.dataLink71:destroy(); self.dataLink71 = nil; end;
+        if self.AgilidadeBase ~= nil then self.AgilidadeBase:destroy(); self.AgilidadeBase = nil; end;
+        if self.rectangle149 ~= nil then self.rectangle149:destroy(); self.rectangle149 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.FotoRaca ~= nil then self.FotoRaca:destroy(); self.FotoRaca = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
-        if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
+        if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
         if self.dataLink27 ~= nil then self.dataLink27:destroy(); self.dataLink27 = nil; end;
+        if self.buttonSair ~= nil then self.buttonSair:destroy(); self.buttonSair = nil; end;
+        if self.dataLink64 ~= nil then self.dataLink64:destroy(); self.dataLink64 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
+        if self.label55 ~= nil then self.label55:destroy(); self.label55 = nil; end;
         if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
         if self.rectangle50 ~= nil then self.rectangle50:destroy(); self.rectangle50 = nil; end;
+        if self.rectangle143 ~= nil then self.rectangle143:destroy(); self.rectangle143 = nil; end;
         if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
         if self.rectangle57 ~= nil then self.rectangle57:destroy(); self.rectangle57 = nil; end;
+        if self.rectangle146 ~= nil then self.rectangle146:destroy(); self.rectangle146 = nil; end;
+        if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
         if self.EdLeAkuma ~= nil then self.EdLeAkuma:destroy(); self.EdLeAkuma = nil; end;
         if self.dataLink17 ~= nil then self.dataLink17:destroy(); self.dataLink17 = nil; end;
         if self.AbaProfissaoSecundaria ~= nil then self.AbaProfissaoSecundaria:destroy(); self.AbaProfissaoSecundaria = nil; end;
         if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
         if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
+        if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
+        if self.ForcaBase ~= nil then self.ForcaBase:destroy(); self.ForcaBase = nil; end;
         if self.rectangle84 ~= nil then self.rectangle84:destroy(); self.rectangle84 = nil; end;
         if self.VigorTotal ~= nil then self.VigorTotal:destroy(); self.VigorTotal = nil; end;
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
-        if self.edit43 ~= nil then self.edit43:destroy(); self.edit43 = nil; end;
         if self.rectangle72 ~= nil then self.rectangle72:destroy(); self.rectangle72 = nil; end;
         if self.rectangle91 ~= nil then self.rectangle91:destroy(); self.rectangle91 = nil; end;
         if self.rectangle81 ~= nil then self.rectangle81:destroy(); self.rectangle81 = nil; end;
+        if self.CarismaPassivo ~= nil then self.CarismaPassivo:destroy(); self.CarismaPassivo = nil; end;
         if self.ExpAtual ~= nil then self.ExpAtual:destroy(); self.ExpAtual = nil; end;
         if self.rectangle75 ~= nil then self.rectangle75:destroy(); self.rectangle75 = nil; end;
+        if self.ForcaDeVontadeTreino ~= nil then self.ForcaDeVontadeTreino:destroy(); self.ForcaDeVontadeTreino = nil; end;
+        if self.InteligenciaPassivo ~= nil then self.InteligenciaPassivo:destroy(); self.InteligenciaPassivo = nil; end;
+        if self.rectangle127 ~= nil then self.rectangle127:destroy(); self.rectangle127 = nil; end;
         if self.editHistoria ~= nil then self.editHistoria:destroy(); self.editHistoria = nil; end;
-        if self.edit20 ~= nil then self.edit20:destroy(); self.edit20 = nil; end;
+        if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
+        if self.comboBox5 ~= nil then self.comboBox5:destroy(); self.comboBox5 = nil; end;
         if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
         if self.tabControl2 ~= nil then self.tabControl2:destroy(); self.tabControl2 = nil; end;
+        if self.rectangle150 ~= nil then self.rectangle150:destroy(); self.rectangle150 = nil; end;
         if self.NomeProfissaoPrincipal ~= nil then self.NomeProfissaoPrincipal:destroy(); self.NomeProfissaoPrincipal = nil; end;
         if self.rectangle78 ~= nil then self.rectangle78:destroy(); self.rectangle78 = nil; end;
         if self.rectangle33 ~= nil then self.rectangle33:destroy(); self.rectangle33 = nil; end;
         if self.rectangle122 ~= nil then self.rectangle122:destroy(); self.rectangle122 = nil; end;
+        if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
+        if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
+        if self.VigorPassivo ~= nil then self.VigorPassivo:destroy(); self.VigorPassivo = nil; end;
+        if self.AgilidadePassivo ~= nil then self.AgilidadePassivo:destroy(); self.AgilidadePassivo = nil; end;
         if self.rectangle108 ~= nil then self.rectangle108:destroy(); self.rectangle108 = nil; end;
         if self.DetalhamentoSecundario ~= nil then self.DetalhamentoSecundario:destroy(); self.DetalhamentoSecundario = nil; end;
+        if self.rectangle155 ~= nil then self.rectangle155:destroy(); self.rectangle155 = nil; end;
         if self.CarisButton ~= nil then self.CarisButton:destroy(); self.CarisButton = nil; end;
         if self.rectangle107 ~= nil then self.rectangle107:destroy(); self.rectangle107 = nil; end;
         if self.rectangle117 ~= nil then self.rectangle117:destroy(); self.rectangle117 = nil; end;
         if self.rectangle39 ~= nil then self.rectangle39:destroy(); self.rectangle39 = nil; end;
         if self.label38 ~= nil then self.label38:destroy(); self.label38 = nil; end;
+        if self.PercepcaoTreino ~= nil then self.PercepcaoTreino:destroy(); self.PercepcaoTreino = nil; end;
         if self.image10 ~= nil then self.image10:destroy(); self.image10 = nil; end;
         if self.Raca ~= nil then self.Raca:destroy(); self.Raca = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
         if self.rectangle102 ~= nil then self.rectangle102:destroy(); self.rectangle102 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
         if self.estluta ~= nil then self.estluta:destroy(); self.estluta = nil; end;
@@ -5475,37 +7298,52 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
         if self.tab5 ~= nil then self.tab5:destroy(); self.tab5 = nil; end;
         if self.rectangle62 ~= nil then self.rectangle62:destroy(); self.rectangle62 = nil; end;
+        if self.PercepcaoPassivo ~= nil then self.PercepcaoPassivo:destroy(); self.PercepcaoPassivo = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
-        if self.dataLink45 ~= nil then self.dataLink45:destroy(); self.dataLink45 = nil; end;
-        if self.dataLink55 ~= nil then self.dataLink55:destroy(); self.dataLink55 = nil; end;
+        if self.editEquip ~= nil then self.editEquip:destroy(); self.editEquip = nil; end;
         if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
+        if self.PercepcaoBase ~= nil then self.PercepcaoBase:destroy(); self.PercepcaoBase = nil; end;
+        if self.dataLink45 ~= nil then self.dataLink45:destroy(); self.dataLink45 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.rectangle48 ~= nil then self.rectangle48:destroy(); self.rectangle48 = nil; end;
         if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
+        if self.dataLink55 ~= nil then self.dataLink55:destroy(); self.dataLink55 = nil; end;
         if self.rectangle67 ~= nil then self.rectangle67:destroy(); self.rectangle67 = nil; end;
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
-        if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
+        if self.InteligenciaEquips ~= nil then self.InteligenciaEquips:destroy(); self.InteligenciaEquips = nil; end;
         if self.listaOrganizacoes ~= nil then self.listaOrganizacoes:destroy(); self.listaOrganizacoes = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
-        if self.edit35 ~= nil then self.edit35:destroy(); self.edit35 = nil; end;
+        if self.CombateEquips ~= nil then self.CombateEquips:destroy(); self.CombateEquips = nil; end;
+        if self.rectangle135 ~= nil then self.rectangle135:destroy(); self.rectangle135 = nil; end;
+        if self.dataLink69 ~= nil then self.dataLink69:destroy(); self.dataLink69 = nil; end;
+        if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
+        if self.imagem ~= nil then self.imagem:destroy(); self.imagem = nil; end;
         if self.rectangle42 ~= nil then self.rectangle42:destroy(); self.rectangle42 = nil; end;
         if self.DescricaoProfissionalSecundaria ~= nil then self.DescricaoProfissionalSecundaria:destroy(); self.DescricaoProfissionalSecundaria = nil; end;
+        if self.dataLink72 ~= nil then self.dataLink72:destroy(); self.dataLink72 = nil; end;
+        if self.InteligenciaTreino ~= nil then self.InteligenciaTreino:destroy(); self.InteligenciaTreino = nil; end;
         if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
         if self.ImagemProfissaoPrincipal ~= nil then self.ImagemProfissaoPrincipal:destroy(); self.ImagemProfissaoPrincipal = nil; end;
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
-        if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
+        if self.dataLink67 ~= nil then self.dataLink67:destroy(); self.dataLink67 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
-        if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
+        if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
         if self.ProfissaoPrincipal ~= nil then self.ProfissaoPrincipal:destroy(); self.ProfissaoPrincipal = nil; end;
+        if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
+        if self.CarismaEquips ~= nil then self.CarismaEquips:destroy(); self.CarismaEquips = nil; end;
         if self.moedas ~= nil then self.moedas:destroy(); self.moedas = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
         if self.ImagemBandeira ~= nil then self.ImagemBandeira:destroy(); self.ImagemBandeira = nil; end;
         if self.rectangle52 ~= nil then self.rectangle52:destroy(); self.rectangle52 = nil; end;
+        if self.CombateBase ~= nil then self.CombateBase:destroy(); self.CombateBase = nil; end;
+        if self.rectangle145 ~= nil then self.rectangle145:destroy(); self.rectangle145 = nil; end;
         if self.AbaRaca ~= nil then self.AbaRaca:destroy(); self.AbaRaca = nil; end;
+        if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
         if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.nomeDoPersonagem ~= nil then self.nomeDoPersonagem:destroy(); self.nomeDoPersonagem = nil; end;
         if self.DefButton ~= nil then self.DefButton:destroy(); self.DefButton = nil; end;
@@ -5513,105 +7351,138 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
         if self.FotoProfissaoSecundaria ~= nil then self.FotoProfissaoSecundaria:destroy(); self.FotoProfissaoSecundaria = nil; end;
         if self.rectangle59 ~= nil then self.rectangle59:destroy(); self.rectangle59 = nil; end;
+        if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
         if self.XpMaxPrincipal ~= nil then self.XpMaxPrincipal:destroy(); self.XpMaxPrincipal = nil; end;
         if self.rectangle99 ~= nil then self.rectangle99:destroy(); self.rectangle99 = nil; end;
         if self.rectangle23 ~= nil then self.rectangle23:destroy(); self.rectangle23 = nil; end;
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.PrecButton ~= nil then self.PrecButton:destroy(); self.PrecButton = nil; end;
+        if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
+        if self.Haki ~= nil then self.Haki:destroy(); self.Haki = nil; end;
         if self.rectangle94 ~= nil then self.rectangle94:destroy(); self.rectangle94 = nil; end;
         if self.rectangle86 ~= nil then self.rectangle86:destroy(); self.rectangle86 = nil; end;
+        if self.CarismaTreino ~= nil then self.CarismaTreino:destroy(); self.CarismaTreino = nil; end;
         if self.rectangle70 ~= nil then self.rectangle70:destroy(); self.rectangle70 = nil; end;
         if self.rectangle93 ~= nil then self.rectangle93:destroy(); self.rectangle93 = nil; end;
         if self.rectangle83 ~= nil then self.rectangle83:destroy(); self.rectangle83 = nil; end;
-        if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.ProfissaoSecundaria ~= nil then self.ProfissaoSecundaria:destroy(); self.ProfissaoSecundaria = nil; end;
         if self.rectangle36 ~= nil then self.rectangle36:destroy(); self.rectangle36 = nil; end;
+        if self.rectangle125 ~= nil then self.rectangle125:destroy(); self.rectangle125 = nil; end;
+        if self.label66 ~= nil then self.label66:destroy(); self.label66 = nil; end;
         if self.rectangle88 ~= nil then self.rectangle88:destroy(); self.rectangle88 = nil; end;
-        if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
-        if self.VigorButton ~= nil then self.VigorButton:destroy(); self.VigorButton = nil; end;
         if self.dataLink33 ~= nil then self.dataLink33:destroy(); self.dataLink33 = nil; end;
+        if self.VigorButton ~= nil then self.VigorButton:destroy(); self.VigorButton = nil; end;
+        if self.rectangle152 ~= nil then self.rectangle152:destroy(); self.rectangle152 = nil; end;
         if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
         if self.rectangle120 ~= nil then self.rectangle120:destroy(); self.rectangle120 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
-        if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
+        if self.image18 ~= nil then self.image18:destroy(); self.image18 = nil; end;
         if self.tab10 ~= nil then self.tab10:destroy(); self.tab10 = nil; end;
+        if self.rectangle157 ~= nil then self.rectangle157:destroy(); self.rectangle157 = nil; end;
         if self.rectangle114 ~= nil then self.rectangle114:destroy(); self.rectangle114 = nil; end;
         if self.tab8 ~= nil then self.tab8:destroy(); self.tab8 = nil; end;
         if self.PercepcaoTotal ~= nil then self.PercepcaoTotal:destroy(); self.PercepcaoTotal = nil; end;
+        if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
         if self.dataLink39 ~= nil then self.dataLink39:destroy(); self.dataLink39 = nil; end;
+        if self.image13 ~= nil then self.image13:destroy(); self.image13 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.rectangle101 ~= nil then self.rectangle101:destroy(); self.rectangle101 = nil; end;
         if self.rectangle111 ~= nil then self.rectangle111:destroy(); self.rectangle111 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.image16 ~= nil then self.image16:destroy(); self.image16 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.DetalhamentoPrimario ~= nil then self.DetalhamentoPrimario:destroy(); self.DetalhamentoPrimario = nil; end;
         if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
         if self.tab6 ~= nil then self.tab6:destroy(); self.tab6 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
         if self.dataLink40 ~= nil then self.dataLink40:destroy(); self.dataLink40 = nil; end;
-        if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
         if self.dataLink52 ~= nil then self.dataLink52:destroy(); self.dataLink52 = nil; end;
+        if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
         if self.ComboProfissaoPrincipal ~= nil then self.ComboProfissaoPrincipal:destroy(); self.ComboProfissaoPrincipal = nil; end;
         if self.rectangle60 ~= nil then self.rectangle60:destroy(); self.rectangle60 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
+        if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
         if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.dataLink47 ~= nil then self.dataLink47:destroy(); self.dataLink47 = nil; end;
-        if self.dataLink57 ~= nil then self.dataLink57:destroy(); self.dataLink57 = nil; end;
+        if self.rectangle136 ~= nil then self.rectangle136:destroy(); self.rectangle136 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
+        if self.dataLink57 ~= nil then self.dataLink57:destroy(); self.dataLink57 = nil; end;
+        if self.VigorBase ~= nil then self.VigorBase:destroy(); self.VigorBase = nil; end;
         if self.rectangle65 ~= nil then self.rectangle65:destroy(); self.rectangle65 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.edit36 ~= nil then self.edit36:destroy(); self.edit36 = nil; end;
+        if self.button12 ~= nil then self.button12:destroy(); self.button12 = nil; end;
+        if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
+        if self.rectangle133 ~= nil then self.rectangle133:destroy(); self.rectangle133 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
+        if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
         if self.rectangle44 ~= nil then self.rectangle44:destroy(); self.rectangle44 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
+        if self.dataLink62 ~= nil then self.dataLink62:destroy(); self.dataLink62 = nil; end;
+        if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
+        if self.dataLink70 ~= nil then self.dataLink70:destroy(); self.dataLink70 = nil; end;
+        if self.rectangle139 ~= nil then self.rectangle139:destroy(); self.rectangle139 = nil; end;
+        if self.VigorTreino ~= nil then self.VigorTreino:destroy(); self.VigorTreino = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
-        if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
+        if self.ForcaDeVontadeEquips ~= nil then self.ForcaDeVontadeEquips:destroy(); self.ForcaDeVontadeEquips = nil; end;
         if self.dataLink28 ~= nil then self.dataLink28:destroy(); self.dataLink28 = nil; end;
+        if self.dataLink65 ~= nil then self.dataLink65:destroy(); self.dataLink65 = nil; end;
+        if self.dataLink75 ~= nil then self.dataLink75:destroy(); self.dataLink75 = nil; end;
+        if self.PrecisaoBase ~= nil then self.PrecisaoBase:destroy(); self.PrecisaoBase = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
+        if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
         if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
         if self.ForcaTotal ~= nil then self.ForcaTotal:destroy(); self.ForcaTotal = nil; end;
         if self.rectangle51 ~= nil then self.rectangle51:destroy(); self.rectangle51 = nil; end;
+        if self.rectangle140 ~= nil then self.rectangle140:destroy(); self.rectangle140 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
+        if self.rectangle147 ~= nil then self.rectangle147:destroy(); self.rectangle147 = nil; end;
         if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
         if self.ComButton ~= nil then self.ComButton:destroy(); self.ComButton = nil; end;
         if self.ImagemProfissaoSecundaria ~= nil then self.ImagemProfissaoSecundaria:destroy(); self.ImagemProfissaoSecundaria = nil; end;
         if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
+        if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
         if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
+        if self.fotoEquip ~= nil then self.fotoEquip:destroy(); self.fotoEquip = nil; end;
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
-        if self.edit40 ~= nil then self.edit40:destroy(); self.edit40 = nil; end;
         if self.rectangle73 ~= nil then self.rectangle73:destroy(); self.rectangle73 = nil; end;
         if self.rectangle96 ~= nil then self.rectangle96:destroy(); self.rectangle96 = nil; end;
         if self.rectangle80 ~= nil then self.rectangle80:destroy(); self.rectangle80 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
         if self.tabControl4 ~= nil then self.tabControl4:destroy(); self.tabControl4 = nil; end;
         if self.rectangle76 ~= nil then self.rectangle76:destroy(); self.rectangle76 = nil; end;
-        if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
+        if self.rectangle128 ~= nil then self.rectangle128:destroy(); self.rectangle128 = nil; end;
+        if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
+        if self.comboBox4 ~= nil then self.comboBox4:destroy(); self.comboBox4 = nil; end;
         if self.dataLink34 ~= nil then self.dataLink34:destroy(); self.dataLink34 = nil; end;
         if self.tabControl3 ~= nil then self.tabControl3:destroy(); self.tabControl3 = nil; end;
         if self.rectangle79 ~= nil then self.rectangle79:destroy(); self.rectangle79 = nil; end;
         if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
-        if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
+        if self.rectangle123 ~= nil then self.rectangle123:destroy(); self.rectangle123 = nil; end;
+        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
         if self.dataLink31 ~= nil then self.dataLink31:destroy(); self.dataLink31 = nil; end;
         if self.InteligenciaTotal ~= nil then self.InteligenciaTotal:destroy(); self.InteligenciaTotal = nil; end;
         if self.rectangle109 ~= nil then self.rectangle109:destroy(); self.rectangle109 = nil; end;
+        if self.rectangle154 ~= nil then self.rectangle154:destroy(); self.rectangle154 = nil; end;
+        if self.AgilidadeEquips ~= nil then self.AgilidadeEquips:destroy(); self.AgilidadeEquips = nil; end;
         if self.rectangle104 ~= nil then self.rectangle104:destroy(); self.rectangle104 = nil; end;
         if self.rectangle116 ~= nil then self.rectangle116:destroy(); self.rectangle116 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.dataLink48 ~= nil then self.dataLink48:destroy(); self.dataLink48 = nil; end;
+        if self.image11 ~= nil then self.image11:destroy(); self.image11 = nil; end;
         if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.rectangle103 ~= nil then self.rectangle103:destroy(); self.rectangle103 = nil; end;
         if self.rectangle113 ~= nil then self.rectangle113:destroy(); self.rectangle113 = nil; end;
@@ -5620,6 +7491,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle68 ~= nil then self.rectangle68:destroy(); self.rectangle68 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.image14 ~= nil then self.image14:destroy(); self.image14 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.PercepButton ~= nil then self.PercepButton:destroy(); self.PercepButton = nil; end;
         if self.rectangle118 ~= nil then self.rectangle118:destroy(); self.rectangle118 = nil; end;
@@ -5630,39 +7502,56 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink54 ~= nil then self.dataLink54:destroy(); self.dataLink54 = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
+        if self.CombatePassivo ~= nil then self.CombatePassivo:destroy(); self.CombatePassivo = nil; end;
+        if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
         if self.rectangle66 ~= nil then self.rectangle66:destroy(); self.rectangle66 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
-        if self.edit33 ~= nil then self.edit33:destroy(); self.edit33 = nil; end;
         if self.dataLink59 ~= nil then self.dataLink59:destroy(); self.dataLink59 = nil; end;
+        if self.rectangle134 ~= nil then self.rectangle134:destroy(); self.rectangle134 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.image9 ~= nil then self.image9:destroy(); self.image9 = nil; end;
         if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
         if self.IntButton ~= nil then self.IntButton:destroy(); self.IntButton = nil; end;
-        if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.button10 ~= nil then self.button10:destroy(); self.button10 = nil; end;
         if self.CombateTotal ~= nil then self.CombateTotal:destroy(); self.CombateTotal = nil; end;
-        if self.edit34 ~= nil then self.edit34:destroy(); self.edit34 = nil; end;
+        if self.button22 ~= nil then self.button22:destroy(); self.button22 = nil; end;
+        if self.rectangle131 ~= nil then self.rectangle131:destroy(); self.rectangle131 = nil; end;
         if self.rectangle41 ~= nil then self.rectangle41:destroy(); self.rectangle41 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.button15 ~= nil then self.button15:destroy(); self.button15 = nil; end;
         if self.sex ~= nil then self.sex:destroy(); self.sex = nil; end;
         if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
         if self.rectangle46 ~= nil then self.rectangle46:destroy(); self.rectangle46 = nil; end;
+        if self.AgilidadeTreino ~= nil then self.AgilidadeTreino:destroy(); self.AgilidadeTreino = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
+        if self.editHaki ~= nil then self.editHaki:destroy(); self.editHaki = nil; end;
         if self.dataLink60 ~= nil then self.dataLink60:destroy(); self.dataLink60 = nil; end;
+        if self.dataLink76 ~= nil then self.dataLink76:destroy(); self.dataLink76 = nil; end;
+        if self.rectangle148 ~= nil then self.rectangle148:destroy(); self.rectangle148 = nil; end;
+        if self.PercepcaoEquips ~= nil then self.PercepcaoEquips:destroy(); self.PercepcaoEquips = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
+        if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.dataLink26 ~= nil then self.dataLink26:destroy(); self.dataLink26 = nil; end;
+        if self.PrecisaoTreino ~= nil then self.PrecisaoTreino:destroy(); self.PrecisaoTreino = nil; end;
+        if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
         if self.dataLink21 ~= nil then self.dataLink21:destroy(); self.dataLink21 = nil; end;
         if self.rectangle53 ~= nil then self.rectangle53:destroy(); self.rectangle53 = nil; end;
+        if self.rectangle142 ~= nil then self.rectangle142:destroy(); self.rectangle142 = nil; end;
+        if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
         if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
         if self.rectangle15 ~= nil then self.rectangle15:destroy(); self.rectangle15 = nil; end;
         if self.AgilButton ~= nil then self.AgilButton:destroy(); self.AgilButton = nil; end;
         if self.rectangle56 ~= nil then self.rectangle56:destroy(); self.rectangle56 = nil; end;
+        if self.label75 ~= nil then self.label75:destroy(); self.label75 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
+        if self.ForcaTreino ~= nil then self.ForcaTreino:destroy(); self.ForcaTreino = nil; end;
         if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
         if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
+        if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         self:_oldLFMDestroy();
     end;
 

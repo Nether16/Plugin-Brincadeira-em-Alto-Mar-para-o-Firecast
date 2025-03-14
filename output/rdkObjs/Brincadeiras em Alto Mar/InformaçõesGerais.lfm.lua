@@ -1974,7 +1974,7 @@ local function constructNew_InfoGerais()
     obj.DescricaoRacial:setField("");
     obj.DescricaoRacial.animateImages = true;
     obj.DescricaoRacial.readOnly = false;
-    obj.DescricaoRacial.showToolbar = false;
+    obj.DescricaoRacial.showToolbar = true;
 
     obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab6:setParent(obj.tabControl3);
@@ -2299,6 +2299,7 @@ local function constructNew_InfoGerais()
     obj._e_event17 = obj.dataLink3:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.nivel == "" then sheet.nivel = "1" end
+            			CalcularHpEngHaki()
             			AlterarValorTotal("Carisma")
         end);
 

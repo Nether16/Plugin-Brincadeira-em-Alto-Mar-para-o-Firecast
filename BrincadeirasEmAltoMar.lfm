@@ -40,6 +40,10 @@
 					node[profissao .. "descri"] = sheet[profissao .. "descri"]
 				end
 
+				node.Armamento = sheet.Armamento
+				node.Observacao = sheet.Observacao
+				node.Conquistador = sheet.Conquistador
+				
 				-- Converter essa tabela para XML
 				local xml = NDB.exportXML(node)
 
@@ -80,6 +84,10 @@
 					sheet[profissao] = sheet.listaInformacoes[profissao]
 					sheet[profissao .. "descri"] = sheet.listaInformacoes[profissao .. "descri"]
 				end
+				
+				sheet.Armamento = sheet.listaInformacoes.Armamento
+				sheet.Observacao = sheet.listaInformacoes.Observacao
+				sheet.Conquistador = sheet.listaInformacoes.Conquistador
 			end);
 			</event>
 		</button>

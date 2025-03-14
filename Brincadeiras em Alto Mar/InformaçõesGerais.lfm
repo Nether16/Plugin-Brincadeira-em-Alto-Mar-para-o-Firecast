@@ -606,7 +606,7 @@
 					<image field="fotoRaca" name="FotoRaca" left="125" top="50" width="250" height="140" scaleX="1.4" style="autoFit" animate="true"/>
 					
 					-- Descrição Racial
-					<richEdit top="205" width="604" scaleX="1" height="521" scaleY="1" name="DescricaoRacial" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="false" showToolbar="false"/>
+					<richEdit top="205" width="604" scaleX="1" height="521" scaleY="1" name="DescricaoRacial" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="false" showToolbar="true"/>
 				</tab>
 
 				<tab title="Habilidades Raciais">
@@ -653,6 +653,7 @@
 	<dataLink field="nivel" defaultValue="1">
 		<event name="onChange">
 			if sheet.nivel == "" then sheet.nivel = "1" end
+			CalcularHpEngHaki()
 			AlterarValorTotal("Carisma")
 		</event>
 	</dataLink>
