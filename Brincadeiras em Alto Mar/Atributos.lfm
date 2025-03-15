@@ -84,7 +84,7 @@
 			sheet.PontosDistribuidos = tostring(forcaBase + agilidadeBase + vigorBase + combateBase + percepcaoBase + carismaBase + inteligenciaBase + precisaoBase + forcaDeVontadeBase - 9)
 			
 			-- Cálculo da defesa
-			sheet.Defesa = tostring(math.floor((tonumber(sheet.VigorBase) or 0) / 2))
+			sheet.Defesa = tostring(math.floor((tonumber(sheet.VigorTotal) or 0) / 2))
 			
 		end
 		
@@ -95,8 +95,8 @@
 		end
 
 		function CalcularHpEngHaki()
-			sheet.hp = ((sheet.VigorTotal or 0) * 7) + 45 + (5 * (sheet.nivel or 0))
-			sheet.eng = ((sheet.VigorTotal or 0) * 7) + 57 + (5 * (sheet.nivel or 0))
+			sheet.hp = ((sheet.VigorTotal or 0) * 7) + 50 + (5 * (sheet.nivel or 0))
+			sheet.eng = ((sheet.VigorTotal or 0) * 7) + 62 + (5 * (sheet.nivel or 0))
 			
 			if ((sheet.ForcaDeVontadeTotal or 0) >= 20) then 
 				sheet.haki = (sheet.ForcaDeVontadeTotal or 0) * 5 
@@ -112,9 +112,11 @@
 			if (valor == "Percepcao") then valor = "Percepção" end
 			if (valor == "Inteligencia") then valor = "Inteligência" end
 	
+			if (valor == "Rei") then mesas[1].chat:rolarDados("1d20 + " .. sheet.ForcaDeVontadeTotal + sheet.tierConquistador, "Haki do Rei") else
 			local mesas = Firecast.getRooms();
 			if (valor == "Defesa") then mesas[1].chat:rolarDados("1d20 + " .. sheet.Defesa, "Teste de ".. valor) else
 			                            mesas[1].chat:rolarDados("1d20 + " .. sheet[valorTotal], "Teste de ".. valor) end
+			end
 	end
 	</script>
 
@@ -283,15 +285,15 @@
 			
 			--Tier
 			<label left="162" top="40" width="256" text="Tier:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="41" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="tierArmamento" left="199" top="40" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number"/>
+			<rectangle left="199" top="41" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="tierArmamento" name="tierArmamento" left="199" top="40" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
 			
 			--%UP
 			<label left="156" top="65" width="256" text="%UP:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="66" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upArmamento" left="199" top="65" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number"/>
+			<rectangle left="199" top="66" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upArmamento" left="199" top="65" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
 			
 			--Estado
 			<label left="260" top="40" width="256" text="     Estado:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
-			<rectangle left="335" top="41" width="80" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <comboBox field="EstadoArmamento" left="331" top="38" width="87" transparent="true" fontColor="black" items="{'Inexistente','Dormente','Despertado','Controlado'}" values="{'I','Do','De','C'}" horzTextAlign="leading"/> 
+			<rectangle left="335" top="41" width="80" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <comboBox field="EstadoArmamento" name="estadoArmamento" left="331" top="38" width="87" transparent="true" fontColor="black" items="{'Inexistente','Dormente','Despertado','Controlado'}" values="{'I','Do','De','C'}" horzTextAlign="leading"/> 
 			
 			--Condição
 			<label left="262" top="65" width="256" text="Condição:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
@@ -316,15 +318,15 @@
 			
 			--Tier
 			<label left="162" top="210" width="256" text="Tier:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="211" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="tierObservacao" left="199" top="210" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number"/>
+			<rectangle left="199" top="211" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="tierObservacao" name="tierObservacao" left="199" top="210" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
 			
 			--%UP
 			<label left="156" top="235" width="256" text="%UP:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="236" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upObsevacao" left="199" top="235" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number"/>
+			<rectangle left="199" top="236" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upObsevacao" left="199" top="235" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
 			
 			--Estado
 			<label left="260" top="210" width="256" text="     Estado:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
-			<rectangle left="335" top="211" width="80" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <comboBox field="EstadoObsevacao" left="331" top="208" width="87" transparent="true" fontColor="black" items="{'Inexistente','Dormente','Despertado','Controlado'}" values="{'I','Do','De','C'}" horzTextAlign="leading"/> 
+			<rectangle left="335" top="211" width="80" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <comboBox field="EstadoObservacao" name="estadoObservacao" left="331" top="208" width="87" transparent="true" fontColor="black" items="{'Inexistente','Dormente','Despertado','Controlado'}" values="{'I','Do','De','C'}" horzTextAlign="leading"/> 
 			
 			--Condição
 			<label left="262" top="235" width="256" text="Condição:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
@@ -346,18 +348,19 @@
 			<image left="4" top="362" width="140" height="159" src="https://blob.firecast.com.br/blobs/TPUWRIHO_3736361/haki-luffy.gif" showStyle="autoFit" animate="true"/>
 			<label left="144" top="363" width="286" text="Haki do Conquistador" fontColor="#D1B27E" fontStyle="bold underline" fontSize="18" horzTextAlign="center"/>
 			<button left="2" top="360" width="70" text="Descrição" onClick="self.Haki.visible = true; self.editHaki.field = 'Conquistador'"/>
+			<button left="75" top="360" width="70" text="Rolar Rei" onClick="RolarAtributo('Rei')"/>
 			
 			--Tier
 			<label left="162" top="398" width="256" text="Tier:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="399" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="tierConquistador" left="199" top="398" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number"/>
+			<rectangle left="199" top="399" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="tierConquistador" name="tierConquistador" left="199" top="398" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
 			
 			--%UP
 			<label left="156" top="423" width="256" text="%UP:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="424" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upConquistador" left="199" top="423" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number"/>
+			<rectangle left="199" top="424" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upConquistador" left="199" top="423" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
 			
 			--Estado
 			<label left="260" top="398" width="256" text="     Estado:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
-			<rectangle left="335" top="399" width="80" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <comboBox field="EstadoConquistador" left="331" top="396" width="87" transparent="true" fontColor="black" items="{'Inexistente','Dormente','Despertado','Controlado'}" values="{'I','Do','De','C'}" horzTextAlign="leading"/> 
+			<rectangle left="335" top="399" width="80" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <comboBox field="EstadoConquistador" name="estadoConquistador" left="331" top="396" width="87" transparent="true" fontColor="black" items="{'Inexistente','Dormente','Despertado','Controlado'}" values="{'I','Do','De','C'}" horzTextAlign="leading"/> 
 			
 			--Condição
 			<label left="262" top="423" width="256" text="Condição:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
@@ -703,33 +706,60 @@
 	
 	<dataLink field="tierArmamento" defaultValue="0">
 		<event name="onChange">
-			if (sheet.tierArmamento == "" and not (sheet.EstadoArmamento == "I" or sheet.EstadoArmamento == "Do")) then
-				sheet.tierArmamento = 1 else sheet.tierArmamento = 0 end
 			sheet.BonusArmamento = "+".. (sheet.tierArmamento * 5) .." de dano ou em rolagens de resistência"
 			sheet.CustoArmamento = "-".. (sheet.tierArmamento * 3) .." da barra de haki"
 		</event>
 	</dataLink>
-	<dataLink field="upArmamento" defaultValue="0"/> <dataLink field="EstadoArmamento" defaultValue="I"/> <dataLink field="CondArmamento" defaultValue="N"/>
+	<dataLink field="EstadoArmamento" defaultValue="I"> 
+		<event name="onChange">
+			if (self.estadoArmamento.value == "De" or self.estadoArmamento.value == "C") then
+				self.tierArmamento.readOnly = false
+				self.tierArmamento.text = '1'
+			else
+				self.tierArmamento.readOnly = true
+				self.tierArmamento.text = '0'
+			end
+		</event>
+	</dataLink>
+	<dataLink field="upArmamento" defaultValue="0"/> <dataLink field="CondArmamento" defaultValue="N"/>
 	
 	<dataLink field="tierObservacao" defaultValue="0"> 
 		<event name="onChange">
-			if (sheet.tierObservacao == "" and not (sheet.EstadoObsevacao == "I" or sheet.EstadoObsevacao == "Do")) then
-				sheet.tierObservacao = 1 else sheet.tierObservacao = 0 end
 			sheet.BonusObservacao = "+".. (sheet.tierObservacao) .." de acerto, esquiva ou em rolagens de     percepção."
 			sheet.CustoObservacao = "-".. (sheet.tierObservacao * 3) .." da barra de haki"
 		</event>
 	</dataLink>
-	<dataLink field="upObsevacao" defaultValue="0"/> <dataLink field="EstadoObsevacao" defaultValue="I"/> <dataLink field="CondObsevacao" defaultValue="N"/>
+	<dataLink field="EstadoObservacao" defaultValue="I"> 
+		<event name="onChange">
+			if (self.estadoObservacao.value == "De" or self.estadoObservacao.value == "C") then
+				self.tierObservacao.readOnly = false
+				self.tierObservacao.text = '1'
+			else
+				self.tierObservacao.readOnly = true
+				self.tierObservacao.text = '0'
+			end
+		</event>
+	</dataLink>
+	<dataLink field="upObsevacao" defaultValue="0"/> <dataLink field="CondObsevacao" defaultValue="N"/>
 	
 	<dataLink field="tierConquistador" defaultValue="0">
 		<event name="onChange">
-			if (sheet.tierConquistador == "" and not (sheet.EstadoConquistador == "I" or sheet.EstadoConquistador == "Do")) then
-				sheet.tierConquistador = 1 else sheet.tierConquistador = 0 end
 			sheet.BonusConquistador = "Numa área de 12m, todos fazem um teste de resistência (DT 1d20+ FdV("..sheet.ForcaDeVontadeTotal..")+ ".. sheet.tierConquistador .."). Se passarem ficam acordados; se falharem desmaiam."
 			sheet.CustoConquistador = "-".. (sheet.tierConquistador * 3) .." da barra de haki"
 		</event>
 	</dataLink>	
-	<dataLink field="upConquistador" defaultValue="0"/> <dataLink field="EstadoConquistador" defaultValue="I"/> <dataLink field="CondConquistador" defaultValue="N"/>
+	<dataLink field="EstadoConquistador" defaultValue="I"> 
+		<event name="onChange">
+			if (self.estadoConquistador.value == "De" or self.estadoConquistador.value == "C") then
+				self.tierConquistador.readOnly = false
+				self.tierConquistador.text = '1'
+			else
+				self.tierConquistador.readOnly = true
+				self.tierConquistador.text = '0'
+			end
+		</event>
+	</dataLink>
+	<dataLink field="upConquistador" defaultValue="0"/>  <dataLink field="CondConquistador" defaultValue="N"/>
 	</group>
 	</group>
 </form>

@@ -18,7 +18,7 @@
 		</tab>
 		
 		<tab title="Inventario"> 
-			
+			<import file="Brincadeiras em Alto Mar/Inventario.lfm"/>
 		</tab>
 		
 	</tabControl>
@@ -38,6 +38,11 @@
 				for _, profissao in ipairs(Profissoes) do
 					node[profissao] = sheet[profissao]
 					node[profissao .. "descri"] = sheet[profissao .. "descri"]
+				end
+				
+				-- Preenchendo a tabela com os valores de Estilos de Luta
+				for _, est in ipairs(EdLSemCaracteresEspeciais) do
+					node[est] = sheet[est]
 				end
 
 				node.Armamento = sheet.Armamento
@@ -83,6 +88,10 @@
 				for _, profissao in ipairs(Profissoes) do
 					sheet[profissao] = sheet.listaInformacoes[profissao]
 					sheet[profissao .. "descri"] = sheet.listaInformacoes[profissao .. "descri"]
+				end
+				
+				for _, est in ipairs(EdLSemCaracteresEspeciais) do
+					sheet[est] = sheet.listaInformacoes[est]
 				end
 				
 				sheet.Armamento = sheet.listaInformacoes.Armamento

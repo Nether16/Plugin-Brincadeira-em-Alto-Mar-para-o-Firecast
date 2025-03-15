@@ -35,16 +35,27 @@ local function constructNew_InfoGerais()
 		Organizacoes = {'Kurokage', 'Revolucionario', 'Governo Mundial', 'Marinha', 'Pirata', 'Não Definido'}
 		
 		EstilosDeLuta = {
-			'Atirador', 'Karatê Tritão', 'Okama Kenpo', 'Rokushiki', 'Boxe', 
-			'Hasshoken', 'Merman Combat', 'Tontatta Combat', 'Black Leg', 
-			'Ramen Kenpo', 'Jao Kun Do', 'Ryusoken', 'Jio-Ken', 'Santoryu', 
-			'Nitoryu', 'Ittoryu', 'Hachitoryu', 'Yontoryu', 'Kappa-ryu', 
-			'Kitsunebi-ryu', 'Rokutoryu', 'Ningyo Gujutsu', 'Son Goku no Ugoki', 
-			'Kurobara-Ryū', 'Street Brawling', 'Demonharubādo', 'Sumo-Ryu', 
-			'Senritsuken', 'Kikai Kōbō-Ryū', 'Kōsenjū-Ryū', 'Tenshi Nunchaku-Ryū', 
-			'Kyokugi', 'Koe no Ensei-Ryū', 'Tōkaradō', 'Reitetsu no Ken', 
-			'Kenki no Gattsu', 'Teppanyaki no Ken', 'Seigi no Tōken-Ryū', 
-			'Tsuinburēdo', 'Sakejutsu', 'Rairyū-Ryū', 'Frog Leg'
+			'Black Leg', 'Bō Fudō-ryū', 'Bō Kenryū', 'Boxe', 'Capoeira', 'Colors Trap','Demonharubādo', 
+			'Engei no Furete-ryū', 'Frog Leg', 'Hachitoryu', 'Hagane no Kiba', 'Hasshoken',
+			'Ittoryu', 'Jao Kun Do', 'Jio-Ken', 'Karatê Tritão', 'Kappa-ryu', 'Kenki no Gattsu',
+			'Kikai Kōbō-Ryū', 'Kitsunebi-ryu', 'Koe no Ensei-Ryū', 'Kōsenjū-Ryū',
+			'Kyokugi', 'Merman Combat', 'Ningyo Gujutsu', 'Nitoryu', 'Okama Kenpo', 'Rairyū-Ryū',
+			'Ramen Kenpo', 'Reitetsu no Ken', 'Rokushiki', 'Rokutoryu', 'Ryusoken', 'Sakejutsu',
+			'Santoryu', 'Seigi no Tōken-Ryū', 'Senritsuken', 'Son Goku no Ugoki', 'Street Brawling',
+			'Sumo-Ryu', 'Tate no Mamori-ryū', 'Tenshi Nunchaku-Ryū', 'Teppanyaki no Ken', 
+			'Tontatta Combat', 'Tōkaradō', 'Tsuinburēdo', 'Yontoryu'
+		}
+
+		EdLSemCaracteresEspeciais = {
+			"BlackLeg", "BoFudoRyu", "BoKenryu", "Boxe", "Capoeira", "ColorsTrap", "Demonharubado", 
+			"EngeinoFureteRyu", "FrogLeg", "Hachitoryu", "HaganeNoKiba", "Hasshoken",
+			"Ittoryu", "JaoKunDo", "JioKen", "KarateTritao", "Kapparyu", "KenkinoGattsu",
+			"KikaiKoboRyu", "Kitsunebiryu", "KoenoEnseiRyu", "KosenjuRyu",
+			"Kyokugi", "MermanCombat", "NingyoGujutsu", "Nitoryu", "OkamaKenpo", "RairyuuRyu",
+			"RamenKenpo", "ReitetsunoKen", "Rokushiki", "Rokutoryu", "Ryusoken", "Sakejutsu",
+			"Santoryu", "SeiginoTokenRyu", "Senritsuken", "SonGokunoUgoki", "StreetBrawling",
+			"SumoRyu", "TatenoMamoriRyu", "TenshiNunchakuRyu", "TeppanyakinoKen", 
+			"TontattaCombat", "Tokarado", "Tsuinburedo", "Yontoryu"
 		}
 		
 		Profissoes = {
@@ -678,7 +689,7 @@ local function constructNew_InfoGerais()
     obj.idade:setField("idade");
     obj.idade:setName("idade");
     obj.idade:setLeft(275);
-    obj.idade:setTop(173);
+    obj.idade:setTop(172);
     obj.idade:setWidth(120);
     obj.idade:setHeight(22);
     obj.idade:setTransparent(true);
@@ -716,7 +727,7 @@ local function constructNew_InfoGerais()
     obj.genero:setField("genero");
     obj.genero:setName("genero");
     obj.genero:setLeft(275);
-    obj.genero:setTop(203);
+    obj.genero:setTop(202);
     obj.genero:setWidth(120);
     obj.genero:setHeight(22);
     obj.genero:setTransparent(true);
@@ -753,7 +764,7 @@ local function constructNew_InfoGerais()
     obj.moedas:setField("moedas");
     obj.moedas:setName("moedas");
     obj.moedas:setLeft(275);
-    obj.moedas:setTop(233);
+    obj.moedas:setTop(232);
     obj.moedas:setWidth(120);
     obj.moedas:setHeight(20);
     obj.moedas:setTransparent(true);
@@ -824,6 +835,17 @@ local function constructNew_InfoGerais()
     obj.rectangle14:setCornerType("round");
     obj.rectangle14:setName("rectangle14");
 
+    obj.LabelEdL = GUI.fromHandle(_obj_newObject("label"));
+    obj.LabelEdL:setParent(obj.layout3);
+    obj.LabelEdL:setName("LabelEdL");
+    obj.LabelEdL:setLeft(505);
+    obj.LabelEdL:setTop(176);
+    obj.LabelEdL:setWidth(120);
+    obj.LabelEdL:setHeight(17);
+    obj.LabelEdL:setFontSize(12);
+    obj.LabelEdL:setFontColor("black");
+    obj.LabelEdL:setHorzTextAlign("center");
+
     obj.estluta = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.estluta:setParent(obj.layout3);
     obj.estluta:setField("estiloDeLuta");
@@ -831,12 +853,13 @@ local function constructNew_InfoGerais()
     obj.estluta:setLeft(505);
     obj.estluta:setTop(176);
     obj.estluta:setWidth(120);
-    obj.estluta:setHeight(17);
-    obj.estluta:setTransparent(true);
-    obj.estluta:setFontColor("black");
+    obj.estluta:setHeight(19);
+    obj.estluta:setOpacity(0);
+    obj.estluta:setFontColor("white");
     obj.estluta:setFontSize(12);
     obj.estluta:setHorzTextAlign("center");
     obj.estluta:setItems(EstilosDeLuta);
+    obj.estluta:setValues(EdLSemCaracteresEspeciais);
 
     obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout3);
@@ -867,7 +890,7 @@ local function constructNew_InfoGerais()
     obj.sex:setField("sexualidade");
     obj.sex:setName("sex");
     obj.sex:setLeft(505);
-    obj.sex:setTop(203);
+    obj.sex:setTop(202);
     obj.sex:setWidth(120);
     obj.sex:setHeight(22);
     obj.sex:setTransparent(true);
@@ -965,11 +988,20 @@ local function constructNew_InfoGerais()
     obj.NomeProfissaoPrincipal:setAutoSize(true);
     obj.NomeProfissaoPrincipal:setHorzTextAlign("center");
 
+    obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle20:setParent(obj.layout4);
+    obj.rectangle20:setLeft(199.5);
+    obj.rectangle20:setTop(300);
+    obj.rectangle20:setWidth(82);
+    obj.rectangle20:setHeight(92);
+    obj.rectangle20:setColor("black");
+    obj.rectangle20:setName("rectangle20");
+
     obj.ImagemProfissaoPrincipal = GUI.fromHandle(_obj_newObject("image"));
     obj.ImagemProfissaoPrincipal:setParent(obj.layout4);
     obj.ImagemProfissaoPrincipal:setField("imagemPrincipal");
     obj.ImagemProfissaoPrincipal:setName("ImagemProfissaoPrincipal");
-    obj.ImagemProfissaoPrincipal:setLeft(199);
+    obj.ImagemProfissaoPrincipal:setLeft(199.5);
     obj.ImagemProfissaoPrincipal:setTop(300);
     obj.ImagemProfissaoPrincipal:setWidth(82);
     obj.ImagemProfissaoPrincipal:setHeight(92);
@@ -978,7 +1010,7 @@ local function constructNew_InfoGerais()
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout4);
-    obj.button1:setLeft(192);
+    obj.button1:setLeft(193);
     obj.button1:setTop(292);
     obj.button1:setWidth(97);
     obj.button1:setHeight(123);
@@ -986,32 +1018,32 @@ local function constructNew_InfoGerais()
     obj.button1:setCursor("handPoint");
     obj.button1:setName("button1");
 
-    obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle20:setParent(obj.layout4);
-    obj.rectangle20:setLeft(555);
-    obj.rectangle20:setTop(292);
-    obj.rectangle20:setWidth(97);
-    obj.rectangle20:setHeight(123);
-    obj.rectangle20:setColor("#4169E1");
-    obj.rectangle20:setName("rectangle20");
-
     obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout4);
-    obj.rectangle21:setLeft(557);
-    obj.rectangle21:setTop(294);
-    obj.rectangle21:setWidth(93);
-    obj.rectangle21:setHeight(119);
-    obj.rectangle21:setColor("black");
+    obj.rectangle21:setLeft(555);
+    obj.rectangle21:setTop(292);
+    obj.rectangle21:setWidth(97);
+    obj.rectangle21:setHeight(123);
+    obj.rectangle21:setColor("#4169E1");
     obj.rectangle21:setName("rectangle21");
 
     obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle22:setParent(obj.layout4);
-    obj.rectangle22:setLeft(559);
-    obj.rectangle22:setTop(296);
-    obj.rectangle22:setWidth(89);
-    obj.rectangle22:setHeight(115);
-    obj.rectangle22:setColor("#F5F5DC");
+    obj.rectangle22:setLeft(557);
+    obj.rectangle22:setTop(294);
+    obj.rectangle22:setWidth(93);
+    obj.rectangle22:setHeight(119);
+    obj.rectangle22:setColor("black");
     obj.rectangle22:setName("rectangle22");
+
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23:setParent(obj.layout4);
+    obj.rectangle23:setLeft(559);
+    obj.rectangle23:setTop(296);
+    obj.rectangle23:setWidth(89);
+    obj.rectangle23:setHeight(115);
+    obj.rectangle23:setColor("#F5F5DC");
+    obj.rectangle23:setName("rectangle23");
 
     obj.NomeProfissaoSecundaria = GUI.fromHandle(_obj_newObject("label"));
     obj.NomeProfissaoSecundaria:setParent(obj.layout4);
@@ -1028,11 +1060,20 @@ local function constructNew_InfoGerais()
     obj.NomeProfissaoSecundaria:setAutoSize(true);
     obj.NomeProfissaoSecundaria:setHorzTextAlign("center");
 
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24:setParent(obj.layout4);
+    obj.rectangle24:setLeft(562.5);
+    obj.rectangle24:setTop(300);
+    obj.rectangle24:setWidth(82);
+    obj.rectangle24:setHeight(92);
+    obj.rectangle24:setColor("black");
+    obj.rectangle24:setName("rectangle24");
+
     obj.ImagemProfissaoSecundaria = GUI.fromHandle(_obj_newObject("image"));
     obj.ImagemProfissaoSecundaria:setParent(obj.layout4);
     obj.ImagemProfissaoSecundaria:setField("imagemSecundaria");
     obj.ImagemProfissaoSecundaria:setName("ImagemProfissaoSecundaria");
-    obj.ImagemProfissaoSecundaria:setLeft(562);
+    obj.ImagemProfissaoSecundaria:setLeft(562.5);
     obj.ImagemProfissaoSecundaria:setTop(300);
     obj.ImagemProfissaoSecundaria:setWidth(82);
     obj.ImagemProfissaoSecundaria:setHeight(92);
@@ -1041,7 +1082,7 @@ local function constructNew_InfoGerais()
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout4);
-    obj.button2:setLeft(555);
+    obj.button2:setLeft(556);
     obj.button2:setTop(292);
     obj.button2:setWidth(97);
     obj.button2:setHeight(123);
@@ -1049,32 +1090,32 @@ local function constructNew_InfoGerais()
     obj.button2:setCursor("handPoint");
     obj.button2:setName("button2");
 
-    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle23:setParent(obj.layout4);
-    obj.rectangle23:setLeft(302);
-    obj.rectangle23:setTop(292);
-    obj.rectangle23:setWidth(240);
-    obj.rectangle23:setHeight(123);
-    obj.rectangle23:setColor("#4169E1");
-    obj.rectangle23:setName("rectangle23");
-
-    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle24:setParent(obj.layout4);
-    obj.rectangle24:setLeft(304);
-    obj.rectangle24:setTop(294);
-    obj.rectangle24:setWidth(236);
-    obj.rectangle24:setHeight(119);
-    obj.rectangle24:setColor("black");
-    obj.rectangle24:setName("rectangle24");
-
     obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout4);
-    obj.rectangle25:setLeft(306);
-    obj.rectangle25:setTop(296);
-    obj.rectangle25:setWidth(232);
-    obj.rectangle25:setHeight(115);
-    obj.rectangle25:setColor("#F5F5DC");
+    obj.rectangle25:setLeft(302);
+    obj.rectangle25:setTop(292);
+    obj.rectangle25:setWidth(240);
+    obj.rectangle25:setHeight(123);
+    obj.rectangle25:setColor("#4169E1");
     obj.rectangle25:setName("rectangle25");
+
+    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26:setParent(obj.layout4);
+    obj.rectangle26:setLeft(304);
+    obj.rectangle26:setTop(294);
+    obj.rectangle26:setWidth(236);
+    obj.rectangle26:setHeight(119);
+    obj.rectangle26:setColor("black");
+    obj.rectangle26:setName("rectangle26");
+
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27:setParent(obj.layout4);
+    obj.rectangle27:setLeft(306);
+    obj.rectangle27:setTop(296);
+    obj.rectangle27:setWidth(232);
+    obj.rectangle27:setHeight(115);
+    obj.rectangle27:setColor("#F5F5DC");
+    obj.rectangle27:setName("rectangle27");
 
     obj.NomeRaca = GUI.fromHandle(_obj_newObject("label"));
     obj.NomeRaca:setParent(obj.layout4);
@@ -1090,6 +1131,15 @@ local function constructNew_InfoGerais()
     obj.NomeRaca:setFontColor("black");
     obj.NomeRaca:setAutoSize(true);
     obj.NomeRaca:setHorzTextAlign("center");
+
+    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28:setParent(obj.layout4);
+    obj.rectangle28:setLeft(310);
+    obj.rectangle28:setTop(300);
+    obj.rectangle28:setWidth(225);
+    obj.rectangle28:setHeight(92);
+    obj.rectangle28:setColor("black");
+    obj.rectangle28:setName("rectangle28");
 
     obj.ImagemRaca = GUI.fromHandle(_obj_newObject("image"));
     obj.ImagemRaca:setParent(obj.layout4);
@@ -1112,23 +1162,23 @@ local function constructNew_InfoGerais()
     obj.button3:setCursor("handPoint");
     obj.button3:setName("button3");
 
-    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle26:setParent(obj.layout4);
-    obj.rectangle26:setLeft(302);
-    obj.rectangle26:setTop(424);
-    obj.rectangle26:setWidth(240);
-    obj.rectangle26:setHeight(123);
-    obj.rectangle26:setColor("#4169E1");
-    obj.rectangle26:setName("rectangle26");
+    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29:setParent(obj.layout4);
+    obj.rectangle29:setLeft(302);
+    obj.rectangle29:setTop(424);
+    obj.rectangle29:setWidth(240);
+    obj.rectangle29:setHeight(123);
+    obj.rectangle29:setColor("#4169E1");
+    obj.rectangle29:setName("rectangle29");
 
-    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle27:setParent(obj.layout4);
-    obj.rectangle27:setLeft(304);
-    obj.rectangle27:setTop(426);
-    obj.rectangle27:setWidth(236);
-    obj.rectangle27:setHeight(119);
-    obj.rectangle27:setColor("black");
-    obj.rectangle27:setName("rectangle27");
+    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30:setParent(obj.layout4);
+    obj.rectangle30:setLeft(304);
+    obj.rectangle30:setTop(426);
+    obj.rectangle30:setWidth(236);
+    obj.rectangle30:setHeight(119);
+    obj.rectangle30:setColor("black");
+    obj.rectangle30:setName("rectangle30");
 
     obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout4);
@@ -1155,32 +1205,32 @@ local function constructNew_InfoGerais()
     obj.ImagemBandeira:setStyle("autoFit");
     obj.ImagemBandeira.animate = true;
 
-    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle28:setParent(obj.layout4);
-    obj.rectangle28:setLeft(192);
-    obj.rectangle28:setTop(424);
-    obj.rectangle28:setWidth(97);
-    obj.rectangle28:setHeight(123);
-    obj.rectangle28:setColor("#4169E1");
-    obj.rectangle28:setName("rectangle28");
+    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31:setParent(obj.layout4);
+    obj.rectangle31:setLeft(192);
+    obj.rectangle31:setTop(424);
+    obj.rectangle31:setWidth(97);
+    obj.rectangle31:setHeight(123);
+    obj.rectangle31:setColor("#4169E1");
+    obj.rectangle31:setName("rectangle31");
 
-    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle29:setParent(obj.layout4);
-    obj.rectangle29:setLeft(194);
-    obj.rectangle29:setTop(426);
-    obj.rectangle29:setWidth(93);
-    obj.rectangle29:setHeight(119);
-    obj.rectangle29:setColor("black");
-    obj.rectangle29:setName("rectangle29");
+    obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle32:setParent(obj.layout4);
+    obj.rectangle32:setLeft(194);
+    obj.rectangle32:setTop(426);
+    obj.rectangle32:setWidth(93);
+    obj.rectangle32:setHeight(119);
+    obj.rectangle32:setColor("black");
+    obj.rectangle32:setName("rectangle32");
 
-    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle30:setParent(obj.layout4);
-    obj.rectangle30:setLeft(196);
-    obj.rectangle30:setTop(428);
-    obj.rectangle30:setWidth(89);
-    obj.rectangle30:setHeight(115);
-    obj.rectangle30:setColor("#F5F5DC");
-    obj.rectangle30:setName("rectangle30");
+    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle33:setParent(obj.layout4);
+    obj.rectangle33:setLeft(196);
+    obj.rectangle33:setTop(428);
+    obj.rectangle33:setWidth(89);
+    obj.rectangle33:setHeight(115);
+    obj.rectangle33:setColor("#F5F5DC");
+    obj.rectangle33:setName("rectangle33");
 
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout4);
@@ -1219,32 +1269,32 @@ local function constructNew_InfoGerais()
     obj.button4:setCursor("handPoint");
     obj.button4:setName("button4");
 
-    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle31:setParent(obj.layout4);
-    obj.rectangle31:setLeft(555);
-    obj.rectangle31:setTop(424);
-    obj.rectangle31:setWidth(97);
-    obj.rectangle31:setHeight(123);
-    obj.rectangle31:setColor("#4169E1");
-    obj.rectangle31:setName("rectangle31");
+    obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle34:setParent(obj.layout4);
+    obj.rectangle34:setLeft(555);
+    obj.rectangle34:setTop(424);
+    obj.rectangle34:setWidth(97);
+    obj.rectangle34:setHeight(123);
+    obj.rectangle34:setColor("#4169E1");
+    obj.rectangle34:setName("rectangle34");
 
-    obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle32:setParent(obj.layout4);
-    obj.rectangle32:setLeft(557);
-    obj.rectangle32:setTop(426);
-    obj.rectangle32:setWidth(93);
-    obj.rectangle32:setHeight(119);
-    obj.rectangle32:setColor("black");
-    obj.rectangle32:setName("rectangle32");
+    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle35:setParent(obj.layout4);
+    obj.rectangle35:setLeft(557);
+    obj.rectangle35:setTop(426);
+    obj.rectangle35:setWidth(93);
+    obj.rectangle35:setHeight(119);
+    obj.rectangle35:setColor("black");
+    obj.rectangle35:setName("rectangle35");
 
-    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle33:setParent(obj.layout4);
-    obj.rectangle33:setLeft(559);
-    obj.rectangle33:setTop(428);
-    obj.rectangle33:setWidth(89);
-    obj.rectangle33:setHeight(115);
-    obj.rectangle33:setColor("#F5F5DC");
-    obj.rectangle33:setName("rectangle33");
+    obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle36:setParent(obj.layout4);
+    obj.rectangle36:setLeft(559);
+    obj.rectangle36:setTop(428);
+    obj.rectangle36:setWidth(89);
+    obj.rectangle36:setHeight(115);
+    obj.rectangle36:setColor("#F5F5DC");
+    obj.rectangle36:setName("rectangle36");
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout4);
@@ -1292,23 +1342,23 @@ local function constructNew_InfoGerais()
     obj.AbaProfissaoPrincipal:setHeight(1800);
     obj.AbaProfissaoPrincipal:setVisible(false);
 
-    obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle34:setParent(obj.AbaProfissaoPrincipal);
-    obj.rectangle34:setLeft(665);
-    obj.rectangle34:setTop(22);
-    obj.rectangle34:setWidth(608);
-    obj.rectangle34:setHeight(525);
-    obj.rectangle34:setColor("#4169E1");
-    obj.rectangle34:setName("rectangle34");
+    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle37:setParent(obj.AbaProfissaoPrincipal);
+    obj.rectangle37:setLeft(665);
+    obj.rectangle37:setTop(22);
+    obj.rectangle37:setWidth(608);
+    obj.rectangle37:setHeight(525);
+    obj.rectangle37:setColor("#4169E1");
+    obj.rectangle37:setName("rectangle37");
 
-    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle35:setParent(obj.AbaProfissaoPrincipal);
-    obj.rectangle35:setLeft(667);
-    obj.rectangle35:setTop(24);
-    obj.rectangle35:setWidth(604);
-    obj.rectangle35:setHeight(521);
-    obj.rectangle35:setColor("black");
-    obj.rectangle35:setName("rectangle35");
+    obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle38:setParent(obj.AbaProfissaoPrincipal);
+    obj.rectangle38:setLeft(667);
+    obj.rectangle38:setTop(24);
+    obj.rectangle38:setWidth(604);
+    obj.rectangle38:setHeight(521);
+    obj.rectangle38:setColor("black");
+    obj.rectangle38:setName("rectangle38");
 
     obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj.AbaProfissaoPrincipal);
@@ -1385,17 +1435,17 @@ local function constructNew_InfoGerais()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle36:setParent(obj.LayoutProfissaoPrincipal);
-    obj.rectangle36:setLeft(245);
-    obj.rectangle36:setTop(201);
-    obj.rectangle36:setWidth(27);
-    obj.rectangle36:setHeight(15);
-    obj.rectangle36:setColor("white");
-    obj.rectangle36:setXradius(7);
-    obj.rectangle36:setYradius(7);
-    obj.rectangle36:setCornerType("round");
-    obj.rectangle36:setName("rectangle36");
+    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle39:setParent(obj.LayoutProfissaoPrincipal);
+    obj.rectangle39:setLeft(245);
+    obj.rectangle39:setTop(201);
+    obj.rectangle39:setWidth(27);
+    obj.rectangle39:setHeight(15);
+    obj.rectangle39:setColor("white");
+    obj.rectangle39:setXradius(7);
+    obj.rectangle39:setYradius(7);
+    obj.rectangle39:setCornerType("round");
+    obj.rectangle39:setName("rectangle39");
 
     obj.TierPrincipal = GUI.fromHandle(_obj_newObject("edit"));
     obj.TierPrincipal:setParent(obj.LayoutProfissaoPrincipal);
@@ -1423,17 +1473,17 @@ local function constructNew_InfoGerais()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle37:setParent(obj.LayoutProfissaoPrincipal);
-    obj.rectangle37:setLeft(325);
-    obj.rectangle37:setTop(201);
-    obj.rectangle37:setWidth(80);
-    obj.rectangle37:setHeight(15);
-    obj.rectangle37:setColor("white");
-    obj.rectangle37:setXradius(7);
-    obj.rectangle37:setYradius(7);
-    obj.rectangle37:setCornerType("round");
-    obj.rectangle37:setName("rectangle37");
+    obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle40:setParent(obj.LayoutProfissaoPrincipal);
+    obj.rectangle40:setLeft(325);
+    obj.rectangle40:setTop(201);
+    obj.rectangle40:setWidth(80);
+    obj.rectangle40:setHeight(15);
+    obj.rectangle40:setColor("white");
+    obj.rectangle40:setXradius(7);
+    obj.rectangle40:setYradius(7);
+    obj.rectangle40:setCornerType("round");
+    obj.rectangle40:setName("rectangle40");
 
     obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.LayoutProfissaoPrincipal);
@@ -1487,17 +1537,17 @@ local function constructNew_InfoGerais()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle38:setParent(obj.LayoutProfissaoPrincipal);
-    obj.rectangle38:setLeft(129);
-    obj.rectangle38:setTop(228);
-    obj.rectangle38:setWidth(143);
-    obj.rectangle38:setHeight(17);
-    obj.rectangle38:setColor("white");
-    obj.rectangle38:setXradius(7);
-    obj.rectangle38:setYradius(7);
-    obj.rectangle38:setCornerType("round");
-    obj.rectangle38:setName("rectangle38");
+    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle41:setParent(obj.LayoutProfissaoPrincipal);
+    obj.rectangle41:setLeft(129);
+    obj.rectangle41:setTop(228);
+    obj.rectangle41:setWidth(143);
+    obj.rectangle41:setHeight(17);
+    obj.rectangle41:setColor("white");
+    obj.rectangle41:setXradius(7);
+    obj.rectangle41:setYradius(7);
+    obj.rectangle41:setCornerType("round");
+    obj.rectangle41:setName("rectangle41");
 
     obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.LayoutProfissaoPrincipal);
@@ -1524,17 +1574,17 @@ local function constructNew_InfoGerais()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle39:setParent(obj.LayoutProfissaoPrincipal);
-    obj.rectangle39:setLeft(355);
-    obj.rectangle39:setTop(228);
-    obj.rectangle39:setWidth(160);
-    obj.rectangle39:setHeight(17);
-    obj.rectangle39:setColor("white");
-    obj.rectangle39:setXradius(7);
-    obj.rectangle39:setYradius(7);
-    obj.rectangle39:setCornerType("round");
-    obj.rectangle39:setName("rectangle39");
+    obj.rectangle42 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle42:setParent(obj.LayoutProfissaoPrincipal);
+    obj.rectangle42:setLeft(355);
+    obj.rectangle42:setTop(228);
+    obj.rectangle42:setWidth(160);
+    obj.rectangle42:setHeight(17);
+    obj.rectangle42:setColor("white");
+    obj.rectangle42:setXradius(7);
+    obj.rectangle42:setYradius(7);
+    obj.rectangle42:setCornerType("round");
+    obj.rectangle42:setName("rectangle42");
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.LayoutProfissaoPrincipal);
@@ -1589,23 +1639,23 @@ local function constructNew_InfoGerais()
     obj.AbaProfissaoSecundaria:setHeight(1800);
     obj.AbaProfissaoSecundaria:setVisible(false);
 
-    obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle40:setParent(obj.AbaProfissaoSecundaria);
-    obj.rectangle40:setLeft(665);
-    obj.rectangle40:setTop(22);
-    obj.rectangle40:setWidth(608);
-    obj.rectangle40:setHeight(525);
-    obj.rectangle40:setColor("#4169E1");
-    obj.rectangle40:setName("rectangle40");
+    obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle43:setParent(obj.AbaProfissaoSecundaria);
+    obj.rectangle43:setLeft(665);
+    obj.rectangle43:setTop(22);
+    obj.rectangle43:setWidth(608);
+    obj.rectangle43:setHeight(525);
+    obj.rectangle43:setColor("#4169E1");
+    obj.rectangle43:setName("rectangle43");
 
-    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle41:setParent(obj.AbaProfissaoSecundaria);
-    obj.rectangle41:setLeft(667);
-    obj.rectangle41:setTop(24);
-    obj.rectangle41:setWidth(604);
-    obj.rectangle41:setHeight(521);
-    obj.rectangle41:setColor("black");
-    obj.rectangle41:setName("rectangle41");
+    obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle44:setParent(obj.AbaProfissaoSecundaria);
+    obj.rectangle44:setLeft(667);
+    obj.rectangle44:setTop(24);
+    obj.rectangle44:setWidth(604);
+    obj.rectangle44:setHeight(521);
+    obj.rectangle44:setColor("black");
+    obj.rectangle44:setName("rectangle44");
 
     obj.tabControl2 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl2:setParent(obj.AbaProfissaoSecundaria);
@@ -1682,17 +1732,17 @@ local function constructNew_InfoGerais()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.rectangle42 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle42:setParent(obj.LayoutProfissaoSecundaria);
-    obj.rectangle42:setLeft(245);
-    obj.rectangle42:setTop(201);
-    obj.rectangle42:setWidth(27);
-    obj.rectangle42:setHeight(15);
-    obj.rectangle42:setColor("white");
-    obj.rectangle42:setXradius(7);
-    obj.rectangle42:setYradius(7);
-    obj.rectangle42:setCornerType("round");
-    obj.rectangle42:setName("rectangle42");
+    obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle45:setParent(obj.LayoutProfissaoSecundaria);
+    obj.rectangle45:setLeft(245);
+    obj.rectangle45:setTop(201);
+    obj.rectangle45:setWidth(27);
+    obj.rectangle45:setHeight(15);
+    obj.rectangle45:setColor("white");
+    obj.rectangle45:setXradius(7);
+    obj.rectangle45:setYradius(7);
+    obj.rectangle45:setCornerType("round");
+    obj.rectangle45:setName("rectangle45");
 
     obj.TierSecundaria = GUI.fromHandle(_obj_newObject("edit"));
     obj.TierSecundaria:setParent(obj.LayoutProfissaoSecundaria);
@@ -1720,17 +1770,17 @@ local function constructNew_InfoGerais()
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
-    obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle43:setParent(obj.LayoutProfissaoSecundaria);
-    obj.rectangle43:setLeft(325);
-    obj.rectangle43:setTop(201);
-    obj.rectangle43:setWidth(80);
-    obj.rectangle43:setHeight(15);
-    obj.rectangle43:setColor("white");
-    obj.rectangle43:setXradius(7);
-    obj.rectangle43:setYradius(7);
-    obj.rectangle43:setCornerType("round");
-    obj.rectangle43:setName("rectangle43");
+    obj.rectangle46 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle46:setParent(obj.LayoutProfissaoSecundaria);
+    obj.rectangle46:setLeft(325);
+    obj.rectangle46:setTop(201);
+    obj.rectangle46:setWidth(80);
+    obj.rectangle46:setHeight(15);
+    obj.rectangle46:setColor("white");
+    obj.rectangle46:setXradius(7);
+    obj.rectangle46:setYradius(7);
+    obj.rectangle46:setCornerType("round");
+    obj.rectangle46:setName("rectangle46");
 
     obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.LayoutProfissaoSecundaria);
@@ -1784,17 +1834,17 @@ local function constructNew_InfoGerais()
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
-    obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle44:setParent(obj.LayoutProfissaoSecundaria);
-    obj.rectangle44:setLeft(129);
-    obj.rectangle44:setTop(228);
-    obj.rectangle44:setWidth(143);
-    obj.rectangle44:setHeight(17);
-    obj.rectangle44:setColor("white");
-    obj.rectangle44:setXradius(7);
-    obj.rectangle44:setYradius(7);
-    obj.rectangle44:setCornerType("round");
-    obj.rectangle44:setName("rectangle44");
+    obj.rectangle47 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle47:setParent(obj.LayoutProfissaoSecundaria);
+    obj.rectangle47:setLeft(129);
+    obj.rectangle47:setTop(228);
+    obj.rectangle47:setWidth(143);
+    obj.rectangle47:setHeight(17);
+    obj.rectangle47:setColor("white");
+    obj.rectangle47:setXradius(7);
+    obj.rectangle47:setYradius(7);
+    obj.rectangle47:setCornerType("round");
+    obj.rectangle47:setName("rectangle47");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.LayoutProfissaoSecundaria);
@@ -1821,17 +1871,17 @@ local function constructNew_InfoGerais()
     obj.label24:setHorzTextAlign("center");
     obj.label24:setName("label24");
 
-    obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle45:setParent(obj.LayoutProfissaoSecundaria);
-    obj.rectangle45:setLeft(355);
-    obj.rectangle45:setTop(228);
-    obj.rectangle45:setWidth(160);
-    obj.rectangle45:setHeight(17);
-    obj.rectangle45:setColor("white");
-    obj.rectangle45:setXradius(7);
-    obj.rectangle45:setYradius(7);
-    obj.rectangle45:setCornerType("round");
-    obj.rectangle45:setName("rectangle45");
+    obj.rectangle48 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle48:setParent(obj.LayoutProfissaoSecundaria);
+    obj.rectangle48:setLeft(355);
+    obj.rectangle48:setTop(228);
+    obj.rectangle48:setWidth(160);
+    obj.rectangle48:setHeight(17);
+    obj.rectangle48:setColor("white");
+    obj.rectangle48:setXradius(7);
+    obj.rectangle48:setYradius(7);
+    obj.rectangle48:setCornerType("round");
+    obj.rectangle48:setName("rectangle48");
 
     obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.LayoutProfissaoSecundaria);
@@ -1886,23 +1936,23 @@ local function constructNew_InfoGerais()
     obj.AbaRaca:setHeight(1800);
     obj.AbaRaca:setVisible(false);
 
-    obj.rectangle46 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle46:setParent(obj.AbaRaca);
-    obj.rectangle46:setLeft(665);
-    obj.rectangle46:setTop(22);
-    obj.rectangle46:setWidth(608);
-    obj.rectangle46:setHeight(525);
-    obj.rectangle46:setColor("#4169E1");
-    obj.rectangle46:setName("rectangle46");
+    obj.rectangle49 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle49:setParent(obj.AbaRaca);
+    obj.rectangle49:setLeft(665);
+    obj.rectangle49:setTop(22);
+    obj.rectangle49:setWidth(608);
+    obj.rectangle49:setHeight(525);
+    obj.rectangle49:setColor("#4169E1");
+    obj.rectangle49:setName("rectangle49");
 
-    obj.rectangle47 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle47:setParent(obj.AbaRaca);
-    obj.rectangle47:setLeft(667);
-    obj.rectangle47:setTop(24);
-    obj.rectangle47:setWidth(604);
-    obj.rectangle47:setHeight(521);
-    obj.rectangle47:setColor("black");
-    obj.rectangle47:setName("rectangle47");
+    obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle50:setParent(obj.AbaRaca);
+    obj.rectangle50:setLeft(667);
+    obj.rectangle50:setTop(24);
+    obj.rectangle50:setWidth(604);
+    obj.rectangle50:setHeight(521);
+    obj.rectangle50:setColor("black");
+    obj.rectangle50:setName("rectangle50");
 
     obj.tabControl3 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl3:setParent(obj.AbaRaca);
@@ -1973,8 +2023,8 @@ local function constructNew_InfoGerais()
     obj.DescricaoRacial.defaultFontColor = "white";
     obj.DescricaoRacial:setField("");
     obj.DescricaoRacial.animateImages = true;
-    obj.DescricaoRacial.readOnly = false;
-    obj.DescricaoRacial.showToolbar = true;
+    obj.DescricaoRacial.readOnly = true;
+    obj.DescricaoRacial.showToolbar = false;
 
     obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab6:setParent(obj.tabControl3);
@@ -1999,23 +2049,23 @@ local function constructNew_InfoGerais()
     obj.AbaHistoria:setHeight(1800);
     obj.AbaHistoria:setVisible(false);
 
-    obj.rectangle48 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle48:setParent(obj.AbaHistoria);
-    obj.rectangle48:setLeft(0);
-    obj.rectangle48:setTop(22);
-    obj.rectangle48:setWidth(608);
-    obj.rectangle48:setHeight(525);
-    obj.rectangle48:setColor("#4169E1");
-    obj.rectangle48:setName("rectangle48");
+    obj.rectangle51 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle51:setParent(obj.AbaHistoria);
+    obj.rectangle51:setLeft(0);
+    obj.rectangle51:setTop(22);
+    obj.rectangle51:setWidth(608);
+    obj.rectangle51:setHeight(525);
+    obj.rectangle51:setColor("#4169E1");
+    obj.rectangle51:setName("rectangle51");
 
-    obj.rectangle49 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle49:setParent(obj.AbaHistoria);
-    obj.rectangle49:setLeft(2);
-    obj.rectangle49:setTop(24);
-    obj.rectangle49:setWidth(604);
-    obj.rectangle49:setHeight(521);
-    obj.rectangle49:setColor("black");
-    obj.rectangle49:setName("rectangle49");
+    obj.rectangle52 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle52:setParent(obj.AbaHistoria);
+    obj.rectangle52:setLeft(2);
+    obj.rectangle52:setTop(24);
+    obj.rectangle52:setWidth(604);
+    obj.rectangle52:setHeight(521);
+    obj.rectangle52:setColor("black");
+    obj.rectangle52:setName("rectangle52");
 
     obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.AbaHistoria);
@@ -2050,10 +2100,6 @@ local function constructNew_InfoGerais()
     obj.editHistoria:setField("Historia");
     obj.editHistoria.animateImages = true;
 
-    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.layout5);
-    obj.button6:setName("button6");
-
     obj.AbaAnotacoes = GUI.fromHandle(_obj_newObject("layout"));
     obj.AbaAnotacoes:setParent(obj.layout1);
     obj.AbaAnotacoes:setName("AbaAnotacoes");
@@ -2063,23 +2109,23 @@ local function constructNew_InfoGerais()
     obj.AbaAnotacoes:setHeight(1800);
     obj.AbaAnotacoes:setVisible(false);
 
-    obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle50:setParent(obj.AbaAnotacoes);
-    obj.rectangle50:setLeft(0);
-    obj.rectangle50:setTop(22);
-    obj.rectangle50:setWidth(608);
-    obj.rectangle50:setHeight(525);
-    obj.rectangle50:setColor("#4169E1");
-    obj.rectangle50:setName("rectangle50");
+    obj.rectangle53 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle53:setParent(obj.AbaAnotacoes);
+    obj.rectangle53:setLeft(0);
+    obj.rectangle53:setTop(22);
+    obj.rectangle53:setWidth(608);
+    obj.rectangle53:setHeight(525);
+    obj.rectangle53:setColor("#4169E1");
+    obj.rectangle53:setName("rectangle53");
 
-    obj.rectangle51 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle51:setParent(obj.AbaAnotacoes);
-    obj.rectangle51:setLeft(2);
-    obj.rectangle51:setTop(24);
-    obj.rectangle51:setWidth(604);
-    obj.rectangle51:setHeight(521);
-    obj.rectangle51:setColor("black");
-    obj.rectangle51:setName("rectangle51");
+    obj.rectangle54 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle54:setParent(obj.AbaAnotacoes);
+    obj.rectangle54:setLeft(2);
+    obj.rectangle54:setTop(24);
+    obj.rectangle54:setWidth(604);
+    obj.rectangle54:setHeight(521);
+    obj.rectangle54:setColor("black");
+    obj.rectangle54:setName("rectangle54");
 
     obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.AbaAnotacoes);
@@ -2217,73 +2263,73 @@ local function constructNew_InfoGerais()
             AtualizarExp()
         end);
 
-    obj._e_event2 = obj.listaOrganizacoes:addEventListener("onChange",
+    obj._e_event2 = obj.estluta:addEventListener("onChange",
+        function ()
+            self.LabelEdL.text = self.estluta.text
+        end);
+
+    obj._e_event3 = obj.listaOrganizacoes:addEventListener("onChange",
         function ()
             MudarBandeira()
         end);
 
-    obj._e_event3 = obj.button1:addEventListener("onClick",
+    obj._e_event4 = obj.button1:addEventListener("onClick",
         function (event)
             self.AbaProfissaoPrincipal.visible = true; self.AbaProfissaoSecundaria.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
             				CheckIfEmpregado(self.ProfissaoPrincipal.text); sheet.fotoProfissaoPrincipal = self.ImagemProfissaoPrincipal.src
         end);
 
-    obj._e_event4 = obj.button2:addEventListener("onClick",
+    obj._e_event5 = obj.button2:addEventListener("onClick",
         function (event)
             self.AbaProfissaoSecundaria.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
             				CheckIfEmpregado(self.ProfissaoSecundaria.text); sheet.fotoProfissaoSecundaria = self.ImagemProfissaoSecundaria.src
         end);
 
-    obj._e_event5 = obj.button3:addEventListener("onClick",
+    obj._e_event6 = obj.button3:addEventListener("onClick",
         function (event)
             self.AbaRaca.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
             				sheet.fotoRaca= self.ImagemRaca.src
         end);
 
-    obj._e_event6 = obj.ImagemBandeira:addEventListener("onLoad",
+    obj._e_event7 = obj.ImagemBandeira:addEventListener("onLoad",
         function ()
             sheet.imagemBandeira = self.ImagemBandeira.src
         end);
 
-    obj._e_event7 = obj.button4:addEventListener("onClick",
+    obj._e_event8 = obj.button4:addEventListener("onClick",
         function (event)
             self.AbaHistoria.visible = true;self.AbaRaca.visible = false; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false; self.AbaAnotacoes.visible = false
         end);
 
-    obj._e_event8 = obj.button5:addEventListener("onClick",
+    obj._e_event9 = obj.button5:addEventListener("onClick",
         function (event)
             self.AbaAnotacoes.visible = true;self.AbaHistoria.visible = false;self.AbaRaca.visible = false; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false
         end);
 
-    obj._e_event9 = obj.ComboProfissaoPrincipal:addEventListener("onChange",
+    obj._e_event10 = obj.ComboProfissaoPrincipal:addEventListener("onChange",
         function ()
             
             						MudarProfissao1(); self.DetalhamentoPrimario.field = self.ComboProfissaoPrincipal.value; self.DescricaoProfissionalPrimaria.field = self.ComboProfissaoPrincipal.value..'descri'
         end);
 
-    obj._e_event10 = obj.TierPrincipal:addEventListener("onChange",
+    obj._e_event11 = obj.TierPrincipal:addEventListener("onChange",
         function ()
             AtualizarTier('TierPrincipal','XpMaxPrincipal')
         end);
 
-    obj._e_event11 = obj.ComboProfissaoSecundaria:addEventListener("onChange",
+    obj._e_event12 = obj.ComboProfissaoSecundaria:addEventListener("onChange",
         function ()
             MudarProfissao2();
         end);
 
-    obj._e_event12 = obj.TierSecundaria:addEventListener("onChange",
+    obj._e_event13 = obj.TierSecundaria:addEventListener("onChange",
         function ()
             AtualizarTier('TierSecundaria','XpMaxSecundaria')
         end);
 
-    obj._e_event13 = obj.ComboRaca:addEventListener("onChange",
+    obj._e_event14 = obj.ComboRaca:addEventListener("onChange",
         function ()
             MudarRaca(); self.DescricaoRacial.field = self.ComboRaca.value
-        end);
-
-    obj._e_event14 = obj.button6:addEventListener("onClick",
-        function (event)
-            showMessage(self.editHistoria:getText())
         end);
 
     obj._e_event15 = obj.dataLink1:addEventListener("onChange",
@@ -2431,7 +2477,7 @@ local function constructNew_InfoGerais()
         end;
 
         if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
-        if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
+        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.rectangle48 ~= nil then self.rectangle48:destroy(); self.rectangle48 = nil; end;
         if self.Exp ~= nil then self.Exp:destroy(); self.Exp = nil; end;
@@ -2449,6 +2495,7 @@ local function constructNew_InfoGerais()
         if self.rectangle42 ~= nil then self.rectangle42:destroy(); self.rectangle42 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.DescricaoProfissionalSecundaria ~= nil then self.DescricaoProfissionalSecundaria:destroy(); self.DescricaoProfissionalSecundaria = nil; end;
+        if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
@@ -2459,8 +2506,8 @@ local function constructNew_InfoGerais()
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.ImagemProfissaoSecundaria ~= nil then self.ImagemProfissaoSecundaria:destroy(); self.ImagemProfissaoSecundaria = nil; end;
         if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
+        if self.ImagemProfissaoSecundaria ~= nil then self.ImagemProfissaoSecundaria:destroy(); self.ImagemProfissaoSecundaria = nil; end;
         if self.NomeRaca ~= nil then self.NomeRaca:destroy(); self.NomeRaca = nil; end;
         if self.rectangle32 ~= nil then self.rectangle32:destroy(); self.rectangle32 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
@@ -2486,6 +2533,7 @@ local function constructNew_InfoGerais()
         if self.ImagemBandeira ~= nil then self.ImagemBandeira:destroy(); self.ImagemBandeira = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
+        if self.rectangle52 ~= nil then self.rectangle52:destroy(); self.rectangle52 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.AbaRaca ~= nil then self.AbaRaca:destroy(); self.AbaRaca = nil; end;
         if self.AbaAnotacoes ~= nil then self.AbaAnotacoes:destroy(); self.AbaAnotacoes = nil; end;
@@ -2496,9 +2544,9 @@ local function constructNew_InfoGerais()
         if self.rectangle45 ~= nil then self.rectangle45:destroy(); self.rectangle45 = nil; end;
         if self.tabControl3 ~= nil then self.tabControl3:destroy(); self.tabControl3 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
-        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
-        if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
         if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
+        if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
@@ -2514,7 +2562,6 @@ local function constructNew_InfoGerais()
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.FotoRaca ~= nil then self.FotoRaca:destroy(); self.FotoRaca = nil; end;
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
-        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.TierSecundaria ~= nil then self.TierSecundaria:destroy(); self.TierSecundaria = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
@@ -2566,8 +2613,8 @@ local function constructNew_InfoGerais()
         if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
         if self.NomeProfissaoPrincipal ~= nil then self.NomeProfissaoPrincipal:destroy(); self.NomeProfissaoPrincipal = nil; end;
         if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
-        if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.rectangle33 ~= nil then self.rectangle33:destroy(); self.rectangle33 = nil; end;
+        if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.ComboProfissaoPrincipal ~= nil then self.ComboProfissaoPrincipal:destroy(); self.ComboProfissaoPrincipal = nil; end;
         if self.LayoutProfissaoSecundaria ~= nil then self.LayoutProfissaoSecundaria:destroy(); self.LayoutProfissaoSecundaria = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
@@ -2581,11 +2628,13 @@ local function constructNew_InfoGerais()
         if self.DetalhamentoSecundario ~= nil then self.DetalhamentoSecundario:destroy(); self.DetalhamentoSecundario = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
+        if self.LabelEdL ~= nil then self.LabelEdL:destroy(); self.LabelEdL = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.rectangle39 ~= nil then self.rectangle39:destroy(); self.rectangle39 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
+        if self.rectangle53 ~= nil then self.rectangle53:destroy(); self.rectangle53 = nil; end;
         if self.Raca ~= nil then self.Raca:destroy(); self.Raca = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
@@ -2600,8 +2649,8 @@ local function constructNew_InfoGerais()
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.tab5 ~= nil then self.tab5:destroy(); self.tab5 = nil; end;
         if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
-        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
+        if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
         self:_oldLFMDestroy();
     end;
 

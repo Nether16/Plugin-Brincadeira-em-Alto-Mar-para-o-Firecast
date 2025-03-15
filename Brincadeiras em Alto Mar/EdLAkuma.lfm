@@ -1,5 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <form formType="sheetTemplate" title="Brincadeiras Em Alto Mar" name="EdLeAkuma">
+	<rectangle left="0" top="0" width="10000" height="10000" color="black"/>
+
+	<script>
+	EdLImagens = {
+		BlackLeg = {
+			imagem = "https://media.tenor.com/0qQyt427SHkAAAAC/one-piece-sanji.gif"
+		},
+		BoFudoRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/WFPKKTJD_3733833/yamato.gif"
+		},
+		BoKenryu = {
+			imagem = "https://blob.firecast.com.br/blobs/CJFVPMIU_3733719/Sem_t_tul13123123o.jpg"
+		},
+		Boxe = {
+			imagem = "https://pa1.aminoapps.com/6326/b952dd643c8bc613840ce082d0927e2655803f5a_hq.gif"
+		},
+		Capoeira = {
+			imagem = "https://blob.firecast.com.br/blobs/SLLOFDJF_3733730/dancing.gif"
+		},
+		ColorsTrap = {
+			imagem = "https://media.tenor.com/t_HGhrVJns8AAAAM/one-piece-marianne.gif"
+		},
+		Demonharubado = {
+			imagem = "https://pa1.narvii.com/6868/542b309968267825692736c8674ce0b6fcc67a1ar1-500-281_hq.gif"
+		},
+		EngeinoFureteRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/FKTCTWGL_3733800/sword.gif"
+		},
+		FrogLeg = {
+			imagem = "https://blob.firecast.com.br/blobs/KBFNPWKL_3702865/greninja-pokemon.gif"
+		},
+		Hachitoryu = {
+			imagem = "https://onepiecebytheghosthunter.weebly.com/uploads/2/7/1/1/27112571/2940841_orig.jpg"
+		},
+		HaganeNoKiba = {
+			imagem = "https://blob.firecast.com.br/blobs/HSWHCKOE_3733810/matchups-for-vega-balrog-street-fighter-v0.gif"
+		},
+		Hasshoken = {
+			imagem = "https://pa1.narvii.com/6411/0f53e382be8557160d2d5cf570f38afe62225ea8_hq.gif"
+		},
+		Ittoryu = {
+			imagem = "https://media.tenor.com/tgevhaBd3g0AAAAC/ittoryu.gif"
+		},
+		JaoKunDo = {
+			imagem = "https://media.tenor.com/QxEuc6YNYf8AAAAd/jao-kun-do.gif"
+		},
+		JioKen = {
+			imagem = "https://blob.firecast.com.br/blobs/TPQAWDPD_3727751/tumblr_nfh452KyYK1rr37qoo4_r1_500.gif"
+		},
+		KarateTritao = {
+			imagem = "https://pa1.narvii.com/6708/34262be4d9d8776b5a5b0b073374450b30eecbcf_hq.gif"
+		},
+		Kapparyu = {
+			imagem = "https://media.tenor.com/q2PHPRDB9TwAAAAC/amano-gawa-kawamatsu.gif"
+		},
+		KenkinoGattsu = {
+			imagem = "http://blob.firecast.com.br/blobs/CEMKQKNK_3065178/guts-berserk.gif"
+		},
+		KikaiKoboRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/OOHIHPTD_3733191/stark-frieren.gif"
+		},
+		Kitsunebiryu = {
+			imagem = "https://blob.firecast.com.br/blobs/HPKTINEF_3637389/e8cb549a0e3b80058a21110154e3f6ff6adc22e7_h.gif"
+		},
+		KoenoEnseiRyu = {
+			imagem = "https://giffiles.alphacoders.com/136/136090.gif"
+		},
+		KosenjuRyu = {
+			imagem = "https://pa1.aminoapps.com/6264/eecfa19e2fd02dcddfd20b58dc6d3f1f76fd8c9f_hq.gif"
+		},
+		Kyokugi = {
+			imagem = "http://blob.firecast.com.br/blobs/UVBHBWGK_3110025/00_-_Kyokugi_Apresentacao.gif"
+		},
+		MermanCombat = {
+			imagem = "https://static.wikia.nocookie.net/powerlisting/images/4/4e/Merman_Combat_Ultramarine_2_%28One_Piece%29.gif/revision/latest/scale-to-width-down/250?cb=20180707050855"
+		},
+		NingyoGujutsu = {
+			imagem = "https://blob.firecast.com.br/blobs/KNHEGOEM_3733080/images.jpg"
+		},
+		Nitoryu = {
+			imagem = "https://media.tenor.com/Ztnilz9RI6UAAAAd/oden-nitoryu-oden-two-sword-style.gif"
+		},
+		OkamaKenpo = {
+			imagem = "https://pa1.narvii.com/7230/3b4538d2abcf8f8cc99f7b1a50490053be678b30r1-435-250_hq.gif"
+		},
+		RairyuuRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/AIKOQSUR_3391738/lancer-fate-diarmuid.gif"
+		},
+		RamenKenpo = {
+			imagem = "http://blob.firecast.com.br/blobs/AOUWPLSN_3076631/one-piece-wanze.gif"
+		},
+		ReitetsunoKen = {
+			imagem = "http://blob.firecast.com.br/blobs/PRCKFKTL_3110154/00_-_Reitetsu_no_Ken_Apresentacao.gif"
+		},
+		Rokushiki = {
+			imagem = "https://static.wikia.nocookie.net/onepiece/images/6/65/Rankyaku.gif/revision/latest?cb=20160626195046&amp;path-prefix=pt"
+		},
+		Rokutoryu = {
+			imagem = "http://blob.firecast.com.br/blobs/HBRCSGEV_2627847/6437283b9f3d3e1e0105375f.jpg"
+		},
+		Ryusoken = {
+			imagem = "https://static.wikia.nocookie.net/onepiece/images/b/b5/Punho_da_Garra_do_Drag%C3%A3o.gif/revision/latest?cb=20160415153631&amp;path-prefix=pt"
+		},
+		Sakejutsu = {
+			imagem = "http://blob.firecast.com.br/blobs/WWPNLULN_3210353/naruto-rock-lee.gif"
+		},
+		Santoryu = {
+			imagem = "https://media.tenor.com/QIzUoOtRWGgAAAAC/one-piece-santoryu.gif"
+		},
+		SeiginoTokenRyu = {
+			imagem = "http://blob.firecast.com.br/blobs/LREEFFNW_3133574/one-piece-justice.gif"
+		},
+		Senritsuken = {
+			imagem = "https://64.media.tumblr.com/7e14767ef57464e24be00c23bb7b8a68/cd199a8845b2618e-62/s640x960/ea553ade2692a9b29750f291ef0585c87ffaa10b.gif"
+		},
+		SonGokunoUgoki = {
+			imagem = "https://steamuserimages-a.akamaihd.net/ugc/608350301004475238/027316ACF082A6EFC7EAEFDA6CEABE092EA70BE1/?imw=5000&amp;imh=5000&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=false"
+		},
+		StreetBrawling = {
+			imagem = "https://i0.wp.com/the-avocado.org/wp-content/uploads/2020/07/0d2f2e25384393037370749e50b9a82c.gif?fit=500%2C269&amp;ssl=1"
+		},
+		SumoRyu = {
+			imagem = "https://64.media.tumblr.com/3289a22883915af6d0829451f0d33426/tumblr_pjfc9i5Rr81sau2q2o2_640.gif"
+		},
+		TatenoMamoriRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/OKQFBLVC_3039337/braum-lol.gif"
+		},
+		TenshiNunchakuRyu = {
+			imagem = "https://pa1.aminoapps.com/6543/2b523ace978ad8b0366019e9b1f8fd20a3a4eeed_00.gif"
+		},
+		TeppanyakinoKen = {
+			imagem = "http://blob.firecast.com.br/blobs/CTPNDVHM_3076650/black-butler-sebastian.gif"
+		},
+		TontattaCombat = {
+			imagem = "https://blob.firecast.com.br/blobs/KLBHRSKN_3702972/123.jpg"
+		},
+		Tokarado = {
+			imagem = "https://i.pinimg.com/originals/e9/65/a8/e965a8c9e5c755cefdcd034f0e3a20bf.gif"
+		},
+		Tsuinburedo = {
+			imagem = "https://media.tenor.com/7wqsMTZpOGkAAAAM/darth-maul.gif"
+		},
+		Yontoryu = {
+			imagem = "https://media.tenor.com/8fumyVdhRJ8AAAAC/kaku-one-piece.gif"
+		}
+	}
+	</script>
    
+	<layout left="12" top="12" width="175" height="525"> --Abas
+		<rectangle left="0" top="0" width="175" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="171" height="521" color="black"/>
+		
+		--Estilo de Luta
+		<label left="10" top="10" width="155" height="25" text="Estilo De Luta" fontSize="18" fontStyle="bold underline" fontColor="#5F9EA0" horzTextAlign="center"/>
+		<rectangle left="10" top="40" width="155" height="105" color="#F5F5DC"/>
+		<edit name="EstLuta" left="12" top="119" width="151" height="24" fontColor="#D1B27E" fontStyle="bold" horzTextAlign="center"/>
+		
+		<rectangle left="12" top="42" width="151" height="77" color="black"/>
+		<image field="imagemEdL" name="imagemEdL" left="12" top="42" width="151" height="77" editable="true" animate="true" style="autoFit"/>
+		
+		<button left="12" top="42" width="40" height="20" text="Ver" onClick="self.EstilosDeLuta.visible = true; self.AkumaLayout.visible = false; self.MiscLayout.visible = false"/>
+		
+		--Akuma
+		<label left="10" top="159" width="155" height="25" text="Akuma no Mi" fontSize="18" fontStyle="bold underline" fontColor="#5F9EA0" horzTextAlign="center"/>
+		<rectangle left="10" top="189" width="155" height="105" color="#F5F5DC"/>
+		<edit name="Akuma" field="Akuma" left="12" top="268" width="151" height="24" fontColor="#D1B27E" fontStyle="bold" fontSize="10" horzTextAlign="center"/>
+		
+		<rectangle left="12" top="191" width="151" height="77" color="black"/>
+		<image field="imagemAkuma" left="12" top="191" width="151" height="77" editable="true" animate="true" style="autoFit"/>
+		
+		<button left="12" top="191" width="40" height="20" text="Ver" onClick="self.EstilosDeLuta.visible = false; self.AkumaLayout.visible = true; self.MiscLayout.visible = false"/>
+		
+		--Misc
+		<label left="10" top="308" width="155" height="25" text="Miscelânea" fontSize="18" fontStyle="bold underline" fontColor="#5F9EA0" horzTextAlign="center"/>
+		<rectangle left="10" top="338" width="155" height="105" color="#F5F5DC"/>
+		<edit name="Misc" field="Misc" left="12" top="417" width="151" height="24" fontColor="#D1B27E" fontStyle="bold" horzTextAlign="center"/>
+		
+		<rectangle left="12" top="340" width="151" height="77" color="black"/>
+		<image field="imagemMisc" left="12" top="340" width="151" height="77" editable="true" animate="true" style="autoFit"/>
+		
+		<button left="12" top="340" width="40" height="20" text="Ver" onClick="self.EstilosDeLuta.visible = false; self.AkumaLayout.visible = false; self.MiscLayout.visible = true"/>
+		
+	</layout>
+   
+	<layout name="EstilosDeLuta" left="197" top="12" width="1000" height="525">
+		<rectangle left="0" top="0" width="1000" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="996" height="521" color="black"/>
+		
+		<tabControl left="2" top="2" width="996" height="521">
+			<tab title="Principal"> 
+				<rectangle left="0" top="0" width="996" height="525" color="black"/>
+				<richEdit name="estLPrincipal" field="" align="Client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>
+				<comboBox field="estiloDeLuta" name="estiloDeLuta" values="EdLSemCaracteresEspeciais" left="750" top="1.2" width="150" height="29" fontColor="white" horzTextAlign="center" items="EstilosDeLuta"/>			
+			</tab>
+			
+			<tab title="Secundario"> 
+				<rectangle left="0" top="0" width="996" height="525" color="black"/>
+				<richEdit name="estLSecundario" align="Client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>
+				<comboBox field="estiloDeLutaSec" name="estiloDeLutaSec" values="EdLSemCaracteresEspeciais" left="750" top="1.2" width="150" height="29" fontColor="white" horzTextAlign="center" items="EstilosDeLuta"/>		
+			</tab>
+		</tabControl>
+	</layout>
+   
+	<layout name="AkumaLayout" left="197" top="12" width="1000" height="525" visible="false">
+		<rectangle left="0" top="0" width="1000" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="996" height="521" color="black"/>
+		
+		<tabControl left="2" top="2" width="996" height="521">
+			<tab title="Descrição"> 
+				<richEdit field="editDescri" width="996" height="521" backgroundColor="black" defaultFontColor="white" animateImages="true"/>		
+			</tab>
+			
+			<tab title="Formas"> 
+				<richEdit field="editFormas" width="996" height="521" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+			</tab>
+			
+			<tab title="Golpes"> 
+				<richEdit field="editGolpes" width="996" height="521" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+			</tab>
+		</tabControl>
+	</layout>
+
+	<layout name="MiscLayout" left="197" top="12" width="1000" height="525" visible="false">
+		<rectangle left="0" top="0" width="1000" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="996" height="521" color="black"/>
+		
+		<richEdit field="MiscAkuma" left="2" top="2" width="996" height="521" backgroundColor="black" defaultFontColor="white" animateImages="true"/>
+	</layout>
+
+	<dataLink field="estiloDeLuta">
+		<event name="onChange">
+			self.EstLuta.text = self.estiloDeLuta.text
+			self.estLPrincipal.field = self.estiloDeLuta.value
+			self.LabelEdL.text = self.estluta.text
+			self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+		</event>
+	</dataLink>
+
+	<dataLink field="estiloDeLutaSec">
+		<event name="onChange">
+			self.estLSecundario.field = self.estiloDeLutaSec.value
+		</event>
+   </dataLink>
 </form>

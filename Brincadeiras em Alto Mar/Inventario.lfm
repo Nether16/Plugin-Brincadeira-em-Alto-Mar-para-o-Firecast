@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" title="Brincadeiras Em Alto Mar" name="Inventario">
+	<rectangle left="0" top="0" width="5000" height="3000" color="black"/>
+	
+	<layout left="12" top="12" width="1185" height="525">
+		<rectangle left="0" top="0" width="1185" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="1181" height="521" color="black"/>
+		<tabControl left="2" top="3" width="1180" height="506">
+			<tab title="Diversos"> 
+				<richEdit field="diversos" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+			</tab>
+			<tab title="Consumiveis"> 
+				<richEdit field="consumiveis" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+			</tab>
+			<tab title="Armamento"> 
+				<richEdit field="armamentos" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+			</tab>
+			<tab title="Equipamentos"> 
+				<richEdit field="equips" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+			</tab>
+		</tabControl>
+	</layout>
+</form>

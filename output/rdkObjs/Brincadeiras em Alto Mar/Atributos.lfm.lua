@@ -119,7 +119,7 @@ local function constructNew_Atributos()
 			sheet.PontosDistribuidos = tostring(forcaBase + agilidadeBase + vigorBase + combateBase + percepcaoBase + carismaBase + inteligenciaBase + precisaoBase + forcaDeVontadeBase - 9)
 			
 			-- Cálculo da defesa
-			sheet.Defesa = tostring(math.floor((tonumber(sheet.VigorBase) or 0) / 2))
+			sheet.Defesa = tostring(math.floor((tonumber(sheet.VigorTotal) or 0) / 2))
 			
 		end
 		
@@ -130,8 +130,8 @@ local function constructNew_Atributos()
 		end
 
 		function CalcularHpEngHaki()
-			sheet.hp = ((sheet.VigorTotal or 0) * 7) + 45 + (5 * (sheet.nivel or 0))
-			sheet.eng = ((sheet.VigorTotal or 0) * 7) + 57 + (5 * (sheet.nivel or 0))
+			sheet.hp = ((sheet.VigorTotal or 0) * 7) + 50 + (5 * (sheet.nivel or 0))
+			sheet.eng = ((sheet.VigorTotal or 0) * 7) + 62 + (5 * (sheet.nivel or 0))
 			
 			if ((sheet.ForcaDeVontadeTotal or 0) >= 20) then 
 				sheet.haki = (sheet.ForcaDeVontadeTotal or 0) * 5 
@@ -147,9 +147,11 @@ local function constructNew_Atributos()
 			if (valor == "Percepcao") then valor = "Percepção" end
 			if (valor == "Inteligencia") then valor = "Inteligência" end
 	
+			if (valor == "Rei") then mesas[1].chat:rolarDados("1d20 + " .. sheet.ForcaDeVontadeTotal + sheet.tierConquistador, "Haki do Rei") else
 			local mesas = Firecast.getRooms();
 			if (valor == "Defesa") then mesas[1].chat:rolarDados("1d20 + " .. sheet.Defesa, "Teste de ".. valor) else
 			                            mesas[1].chat:rolarDados("1d20 + " .. sheet[valorTotal], "Teste de ".. valor) end
+			end
 	end
 	
 
@@ -2443,19 +2445,20 @@ local function constructNew_Atributos()
     obj.rectangle85:setYradius(7);
     obj.rectangle85:setName("rectangle85");
 
-    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit1:setParent(obj.layout3);
-    obj.edit1:setField("tierArmamento");
-    obj.edit1:setLeft(199);
-    obj.edit1:setTop(40);
-    obj.edit1:setWidth(35);
-    obj.edit1:setHeight(18);
-    obj.edit1:setTransparent(true);
-    obj.edit1:setFontColor("black");
-    obj.edit1:setFontSize(15);
-    obj.edit1:setHorzTextAlign("center");
-    obj.edit1:setType("number");
-    obj.edit1:setName("edit1");
+    obj.tierArmamento = GUI.fromHandle(_obj_newObject("edit"));
+    obj.tierArmamento:setParent(obj.layout3);
+    obj.tierArmamento:setField("tierArmamento");
+    obj.tierArmamento:setName("tierArmamento");
+    obj.tierArmamento:setLeft(199);
+    obj.tierArmamento:setTop(40);
+    obj.tierArmamento:setWidth(35);
+    obj.tierArmamento:setHeight(18);
+    obj.tierArmamento:setTransparent(true);
+    obj.tierArmamento:setFontColor("black");
+    obj.tierArmamento:setFontSize(15);
+    obj.tierArmamento:setHorzTextAlign("center");
+    obj.tierArmamento:setType("number");
+    obj.tierArmamento:setReadOnly(true);
 
     obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout3);
@@ -2479,19 +2482,20 @@ local function constructNew_Atributos()
     obj.rectangle86:setYradius(7);
     obj.rectangle86:setName("rectangle86");
 
-    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit2:setParent(obj.layout3);
-    obj.edit2:setField("upArmamento");
-    obj.edit2:setLeft(199);
-    obj.edit2:setTop(65);
-    obj.edit2:setWidth(35);
-    obj.edit2:setHeight(18);
-    obj.edit2:setTransparent(true);
-    obj.edit2:setFontColor("black");
-    obj.edit2:setFontSize(15);
-    obj.edit2:setHorzTextAlign("center");
-    obj.edit2:setType("number");
-    obj.edit2:setName("edit2");
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit1:setParent(obj.layout3);
+    obj.edit1:setField("upArmamento");
+    obj.edit1:setLeft(199);
+    obj.edit1:setTop(65);
+    obj.edit1:setWidth(35);
+    obj.edit1:setHeight(18);
+    obj.edit1:setTransparent(true);
+    obj.edit1:setFontColor("black");
+    obj.edit1:setFontSize(15);
+    obj.edit1:setHorzTextAlign("center");
+    obj.edit1:setType("number");
+    obj.edit1:setReadOnly(true);
+    obj.edit1:setName("edit1");
 
     obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout3);
@@ -2515,18 +2519,18 @@ local function constructNew_Atributos()
     obj.rectangle87:setYradius(7);
     obj.rectangle87:setName("rectangle87");
 
-    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox1:setParent(obj.layout3);
-    obj.comboBox1:setField("EstadoArmamento");
-    obj.comboBox1:setLeft(331);
-    obj.comboBox1:setTop(38);
-    obj.comboBox1:setWidth(87);
-    obj.comboBox1:setTransparent(true);
-    obj.comboBox1:setFontColor("black");
-    obj.comboBox1:setItems({'Inexistente','Dormente','Despertado','Controlado'});
-    obj.comboBox1:setValues({'I','Do','De','C'});
-    obj.comboBox1:setHorzTextAlign("leading");
-    obj.comboBox1:setName("comboBox1");
+    obj.estadoArmamento = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.estadoArmamento:setParent(obj.layout3);
+    obj.estadoArmamento:setField("EstadoArmamento");
+    obj.estadoArmamento:setName("estadoArmamento");
+    obj.estadoArmamento:setLeft(331);
+    obj.estadoArmamento:setTop(38);
+    obj.estadoArmamento:setWidth(87);
+    obj.estadoArmamento:setTransparent(true);
+    obj.estadoArmamento:setFontColor("black");
+    obj.estadoArmamento:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.estadoArmamento:setValues({'I','Do','De','C'});
+    obj.estadoArmamento:setHorzTextAlign("leading");
 
     obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout3);
@@ -2550,18 +2554,18 @@ local function constructNew_Atributos()
     obj.rectangle88:setYradius(7);
     obj.rectangle88:setName("rectangle88");
 
-    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox2:setParent(obj.layout3);
-    obj.comboBox2:setField("CondArmamento");
-    obj.comboBox2:setLeft(331);
-    obj.comboBox2:setTop(63);
-    obj.comboBox2:setWidth(85);
-    obj.comboBox2:setTransparent(true);
-    obj.comboBox2:setFontColor("black");
-    obj.comboBox2:setItems({'Normal','Avançado'});
-    obj.comboBox2:setValues({'N','A'});
-    obj.comboBox2:setHorzTextAlign("leading");
-    obj.comboBox2:setName("comboBox2");
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1:setParent(obj.layout3);
+    obj.comboBox1:setField("CondArmamento");
+    obj.comboBox1:setLeft(331);
+    obj.comboBox1:setTop(63);
+    obj.comboBox1:setWidth(85);
+    obj.comboBox1:setTransparent(true);
+    obj.comboBox1:setFontColor("black");
+    obj.comboBox1:setItems({'Normal','Avançado'});
+    obj.comboBox1:setValues({'N','A'});
+    obj.comboBox1:setHorzTextAlign("leading");
+    obj.comboBox1:setName("comboBox1");
 
     obj.label31 = GUI.fromHandle(_obj_newObject("label"));
     obj.label31:setParent(obj.layout3);
@@ -2680,19 +2684,20 @@ local function constructNew_Atributos()
     obj.rectangle91:setYradius(7);
     obj.rectangle91:setName("rectangle91");
 
-    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj.layout3);
-    obj.edit3:setField("tierObservacao");
-    obj.edit3:setLeft(199);
-    obj.edit3:setTop(210);
-    obj.edit3:setWidth(35);
-    obj.edit3:setHeight(18);
-    obj.edit3:setTransparent(true);
-    obj.edit3:setFontColor("black");
-    obj.edit3:setFontSize(15);
-    obj.edit3:setHorzTextAlign("center");
-    obj.edit3:setType("number");
-    obj.edit3:setName("edit3");
+    obj.tierObservacao = GUI.fromHandle(_obj_newObject("edit"));
+    obj.tierObservacao:setParent(obj.layout3);
+    obj.tierObservacao:setField("tierObservacao");
+    obj.tierObservacao:setName("tierObservacao");
+    obj.tierObservacao:setLeft(199);
+    obj.tierObservacao:setTop(210);
+    obj.tierObservacao:setWidth(35);
+    obj.tierObservacao:setHeight(18);
+    obj.tierObservacao:setTransparent(true);
+    obj.tierObservacao:setFontColor("black");
+    obj.tierObservacao:setFontSize(15);
+    obj.tierObservacao:setHorzTextAlign("center");
+    obj.tierObservacao:setType("number");
+    obj.tierObservacao:setReadOnly(true);
 
     obj.label37 = GUI.fromHandle(_obj_newObject("label"));
     obj.label37:setParent(obj.layout3);
@@ -2716,19 +2721,20 @@ local function constructNew_Atributos()
     obj.rectangle92:setYradius(7);
     obj.rectangle92:setName("rectangle92");
 
-    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit4:setParent(obj.layout3);
-    obj.edit4:setField("upObsevacao");
-    obj.edit4:setLeft(199);
-    obj.edit4:setTop(235);
-    obj.edit4:setWidth(35);
-    obj.edit4:setHeight(18);
-    obj.edit4:setTransparent(true);
-    obj.edit4:setFontColor("black");
-    obj.edit4:setFontSize(15);
-    obj.edit4:setHorzTextAlign("center");
-    obj.edit4:setType("number");
-    obj.edit4:setName("edit4");
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit2:setParent(obj.layout3);
+    obj.edit2:setField("upObsevacao");
+    obj.edit2:setLeft(199);
+    obj.edit2:setTop(235);
+    obj.edit2:setWidth(35);
+    obj.edit2:setHeight(18);
+    obj.edit2:setTransparent(true);
+    obj.edit2:setFontColor("black");
+    obj.edit2:setFontSize(15);
+    obj.edit2:setHorzTextAlign("center");
+    obj.edit2:setType("number");
+    obj.edit2:setReadOnly(true);
+    obj.edit2:setName("edit2");
 
     obj.label38 = GUI.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout3);
@@ -2752,18 +2758,18 @@ local function constructNew_Atributos()
     obj.rectangle93:setYradius(7);
     obj.rectangle93:setName("rectangle93");
 
-    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox3:setParent(obj.layout3);
-    obj.comboBox3:setField("EstadoObsevacao");
-    obj.comboBox3:setLeft(331);
-    obj.comboBox3:setTop(208);
-    obj.comboBox3:setWidth(87);
-    obj.comboBox3:setTransparent(true);
-    obj.comboBox3:setFontColor("black");
-    obj.comboBox3:setItems({'Inexistente','Dormente','Despertado','Controlado'});
-    obj.comboBox3:setValues({'I','Do','De','C'});
-    obj.comboBox3:setHorzTextAlign("leading");
-    obj.comboBox3:setName("comboBox3");
+    obj.estadoObservacao = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.estadoObservacao:setParent(obj.layout3);
+    obj.estadoObservacao:setField("EstadoObservacao");
+    obj.estadoObservacao:setName("estadoObservacao");
+    obj.estadoObservacao:setLeft(331);
+    obj.estadoObservacao:setTop(208);
+    obj.estadoObservacao:setWidth(87);
+    obj.estadoObservacao:setTransparent(true);
+    obj.estadoObservacao:setFontColor("black");
+    obj.estadoObservacao:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.estadoObservacao:setValues({'I','Do','De','C'});
+    obj.estadoObservacao:setHorzTextAlign("leading");
 
     obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.layout3);
@@ -2787,18 +2793,18 @@ local function constructNew_Atributos()
     obj.rectangle94:setYradius(7);
     obj.rectangle94:setName("rectangle94");
 
-    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox4:setParent(obj.layout3);
-    obj.comboBox4:setField("CondObsevacao");
-    obj.comboBox4:setLeft(331);
-    obj.comboBox4:setTop(233);
-    obj.comboBox4:setWidth(85);
-    obj.comboBox4:setTransparent(true);
-    obj.comboBox4:setFontColor("black");
-    obj.comboBox4:setItems({'Normal','Avançado'});
-    obj.comboBox4:setValues({'N','A'});
-    obj.comboBox4:setHorzTextAlign("leading");
-    obj.comboBox4:setName("comboBox4");
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2:setParent(obj.layout3);
+    obj.comboBox2:setField("CondObsevacao");
+    obj.comboBox2:setLeft(331);
+    obj.comboBox2:setTop(233);
+    obj.comboBox2:setWidth(85);
+    obj.comboBox2:setTransparent(true);
+    obj.comboBox2:setFontColor("black");
+    obj.comboBox2:setItems({'Normal','Avançado'});
+    obj.comboBox2:setValues({'N','A'});
+    obj.comboBox2:setHorzTextAlign("leading");
+    obj.comboBox2:setName("comboBox2");
 
     obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.layout3);
@@ -2895,6 +2901,14 @@ local function constructNew_Atributos()
     obj.button15:setText("Descrição");
     obj.button15:setName("button15");
 
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button16:setParent(obj.layout3);
+    obj.button16:setLeft(75);
+    obj.button16:setTop(360);
+    obj.button16:setWidth(70);
+    obj.button16:setText("Rolar Rei");
+    obj.button16:setName("button16");
+
     obj.label45 = GUI.fromHandle(_obj_newObject("label"));
     obj.label45:setParent(obj.layout3);
     obj.label45:setLeft(162);
@@ -2917,19 +2931,20 @@ local function constructNew_Atributos()
     obj.rectangle97:setYradius(7);
     obj.rectangle97:setName("rectangle97");
 
-    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit5:setParent(obj.layout3);
-    obj.edit5:setField("tierConquistador");
-    obj.edit5:setLeft(199);
-    obj.edit5:setTop(398);
-    obj.edit5:setWidth(35);
-    obj.edit5:setHeight(18);
-    obj.edit5:setTransparent(true);
-    obj.edit5:setFontColor("black");
-    obj.edit5:setFontSize(15);
-    obj.edit5:setHorzTextAlign("center");
-    obj.edit5:setType("number");
-    obj.edit5:setName("edit5");
+    obj.tierConquistador = GUI.fromHandle(_obj_newObject("edit"));
+    obj.tierConquistador:setParent(obj.layout3);
+    obj.tierConquistador:setField("tierConquistador");
+    obj.tierConquistador:setName("tierConquistador");
+    obj.tierConquistador:setLeft(199);
+    obj.tierConquistador:setTop(398);
+    obj.tierConquistador:setWidth(35);
+    obj.tierConquistador:setHeight(18);
+    obj.tierConquistador:setTransparent(true);
+    obj.tierConquistador:setFontColor("black");
+    obj.tierConquistador:setFontSize(15);
+    obj.tierConquistador:setHorzTextAlign("center");
+    obj.tierConquistador:setType("number");
+    obj.tierConquistador:setReadOnly(true);
 
     obj.label46 = GUI.fromHandle(_obj_newObject("label"));
     obj.label46:setParent(obj.layout3);
@@ -2953,19 +2968,20 @@ local function constructNew_Atributos()
     obj.rectangle98:setYradius(7);
     obj.rectangle98:setName("rectangle98");
 
-    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit6:setParent(obj.layout3);
-    obj.edit6:setField("upConquistador");
-    obj.edit6:setLeft(199);
-    obj.edit6:setTop(423);
-    obj.edit6:setWidth(35);
-    obj.edit6:setHeight(18);
-    obj.edit6:setTransparent(true);
-    obj.edit6:setFontColor("black");
-    obj.edit6:setFontSize(15);
-    obj.edit6:setHorzTextAlign("center");
-    obj.edit6:setType("number");
-    obj.edit6:setName("edit6");
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit3:setParent(obj.layout3);
+    obj.edit3:setField("upConquistador");
+    obj.edit3:setLeft(199);
+    obj.edit3:setTop(423);
+    obj.edit3:setWidth(35);
+    obj.edit3:setHeight(18);
+    obj.edit3:setTransparent(true);
+    obj.edit3:setFontColor("black");
+    obj.edit3:setFontSize(15);
+    obj.edit3:setHorzTextAlign("center");
+    obj.edit3:setType("number");
+    obj.edit3:setReadOnly(true);
+    obj.edit3:setName("edit3");
 
     obj.label47 = GUI.fromHandle(_obj_newObject("label"));
     obj.label47:setParent(obj.layout3);
@@ -2989,18 +3005,18 @@ local function constructNew_Atributos()
     obj.rectangle99:setYradius(7);
     obj.rectangle99:setName("rectangle99");
 
-    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox5:setParent(obj.layout3);
-    obj.comboBox5:setField("EstadoConquistador");
-    obj.comboBox5:setLeft(331);
-    obj.comboBox5:setTop(396);
-    obj.comboBox5:setWidth(87);
-    obj.comboBox5:setTransparent(true);
-    obj.comboBox5:setFontColor("black");
-    obj.comboBox5:setItems({'Inexistente','Dormente','Despertado','Controlado'});
-    obj.comboBox5:setValues({'I','Do','De','C'});
-    obj.comboBox5:setHorzTextAlign("leading");
-    obj.comboBox5:setName("comboBox5");
+    obj.estadoConquistador = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.estadoConquistador:setParent(obj.layout3);
+    obj.estadoConquistador:setField("EstadoConquistador");
+    obj.estadoConquistador:setName("estadoConquistador");
+    obj.estadoConquistador:setLeft(331);
+    obj.estadoConquistador:setTop(396);
+    obj.estadoConquistador:setWidth(87);
+    obj.estadoConquistador:setTransparent(true);
+    obj.estadoConquistador:setFontColor("black");
+    obj.estadoConquistador:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.estadoConquistador:setValues({'I','Do','De','C'});
+    obj.estadoConquistador:setHorzTextAlign("leading");
 
     obj.label48 = GUI.fromHandle(_obj_newObject("label"));
     obj.label48:setParent(obj.layout3);
@@ -3024,18 +3040,18 @@ local function constructNew_Atributos()
     obj.rectangle100:setYradius(7);
     obj.rectangle100:setName("rectangle100");
 
-    obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox6:setParent(obj.layout3);
-    obj.comboBox6:setField("CondConquistador");
-    obj.comboBox6:setLeft(331);
-    obj.comboBox6:setTop(421);
-    obj.comboBox6:setWidth(85);
-    obj.comboBox6:setTransparent(true);
-    obj.comboBox6:setFontColor("black");
-    obj.comboBox6:setItems({'Normal','Avançado'});
-    obj.comboBox6:setValues({'N','A'});
-    obj.comboBox6:setHorzTextAlign("leading");
-    obj.comboBox6:setName("comboBox6");
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3:setParent(obj.layout3);
+    obj.comboBox3:setField("CondConquistador");
+    obj.comboBox3:setLeft(331);
+    obj.comboBox3:setTop(421);
+    obj.comboBox3:setWidth(85);
+    obj.comboBox3:setTransparent(true);
+    obj.comboBox3:setFontColor("black");
+    obj.comboBox3:setItems({'Normal','Avançado'});
+    obj.comboBox3:setValues({'N','A'});
+    obj.comboBox3:setHorzTextAlign("leading");
+    obj.comboBox3:setName("comboBox3");
 
     obj.label49 = GUI.fromHandle(_obj_newObject("label"));
     obj.label49:setParent(obj.layout3);
@@ -3527,14 +3543,14 @@ local function constructNew_Atributos()
 
     obj.dataLink50 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink50:setParent(obj);
-    obj.dataLink50:setField("upArmamento");
-    obj.dataLink50:setDefaultValue("0");
+    obj.dataLink50:setField("EstadoArmamento");
+    obj.dataLink50:setDefaultValue("I");
     obj.dataLink50:setName("dataLink50");
 
     obj.dataLink51 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink51:setParent(obj);
-    obj.dataLink51:setField("EstadoArmamento");
-    obj.dataLink51:setDefaultValue("I");
+    obj.dataLink51:setField("upArmamento");
+    obj.dataLink51:setDefaultValue("0");
     obj.dataLink51:setName("dataLink51");
 
     obj.dataLink52 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -3551,14 +3567,14 @@ local function constructNew_Atributos()
 
     obj.dataLink54 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink54:setParent(obj);
-    obj.dataLink54:setField("upObsevacao");
-    obj.dataLink54:setDefaultValue("0");
+    obj.dataLink54:setField("EstadoObservacao");
+    obj.dataLink54:setDefaultValue("I");
     obj.dataLink54:setName("dataLink54");
 
     obj.dataLink55 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink55:setParent(obj);
-    obj.dataLink55:setField("EstadoObsevacao");
-    obj.dataLink55:setDefaultValue("I");
+    obj.dataLink55:setField("upObsevacao");
+    obj.dataLink55:setDefaultValue("0");
     obj.dataLink55:setName("dataLink55");
 
     obj.dataLink56 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -3575,14 +3591,14 @@ local function constructNew_Atributos()
 
     obj.dataLink58 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink58:setParent(obj);
-    obj.dataLink58:setField("upConquistador");
-    obj.dataLink58:setDefaultValue("0");
+    obj.dataLink58:setField("EstadoConquistador");
+    obj.dataLink58:setDefaultValue("I");
     obj.dataLink58:setName("dataLink58");
 
     obj.dataLink59 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink59:setParent(obj);
-    obj.dataLink59:setField("EstadoConquistador");
-    obj.dataLink59:setDefaultValue("I");
+    obj.dataLink59:setField("upConquistador");
+    obj.dataLink59:setDefaultValue("0");
     obj.dataLink59:setName("dataLink59");
 
     obj.dataLink60 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -4041,301 +4057,337 @@ local function constructNew_Atributos()
             self.Haki.visible = true; self.editHaki.field = 'Conquistador'
         end);
 
-    obj._e_event90 = obj.buttonSair:addEventListener("onMouseEnter",
+    obj._e_event90 = obj.button16:addEventListener("onClick",
+        function (event)
+            RolarAtributo('Rei')
+        end);
+
+    obj._e_event91 = obj.buttonSair:addEventListener("onMouseEnter",
         function ()
             self.buttonSair.color = '#f3214b'
         end);
 
-    obj._e_event91 = obj.buttonSair:addEventListener("onMouseLeave",
+    obj._e_event92 = obj.buttonSair:addEventListener("onMouseLeave",
         function ()
             self.buttonSair.color = 'crimson'
         end);
 
-    obj._e_event92 = obj.buttonSair:addEventListener("onClick",
+    obj._e_event93 = obj.buttonSair:addEventListener("onClick",
         function (event)
             self.Equipamento.visible= false
         end);
 
-    obj._e_event93 = obj.buttonExit:addEventListener("onMouseEnter",
+    obj._e_event94 = obj.buttonExit:addEventListener("onMouseEnter",
         function ()
             self.buttonExit.color = '#f3214b'
         end);
 
-    obj._e_event94 = obj.buttonExit:addEventListener("onMouseLeave",
+    obj._e_event95 = obj.buttonExit:addEventListener("onMouseLeave",
         function ()
             self.buttonExit.color = 'crimson'
         end);
 
-    obj._e_event95 = obj.buttonExit:addEventListener("onClick",
+    obj._e_event96 = obj.buttonExit:addEventListener("onClick",
         function (event)
             self.Haki.visible= false
         end);
 
-    obj._e_event96 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event97 = obj.dataLink1:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaBase == "" then sheet.ForcaBase = 1 end
         end);
 
-    obj._e_event97 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event98 = obj.dataLink2:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeBase == "" then sheet.AgilidadeBase = 1 end
         end);
 
-    obj._e_event98 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event99 = obj.dataLink3:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorBase == "" then sheet.VigorBase = 1 end
         end);
 
-    obj._e_event99 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event100 = obj.dataLink4:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateBase == "" then sheet.CombateBase = 1 end
         end);
 
-    obj._e_event100 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event101 = obj.dataLink5:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoBase == "" then sheet.PercepcaoBase = 1 end
         end);
 
-    obj._e_event101 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event102 = obj.dataLink6:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaBase == "" then sheet.CarismaBase = 1 end
         end);
 
-    obj._e_event102 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event103 = obj.dataLink7:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaBase == "" then sheet.InteligenciaBase = 1 end
         end);
 
-    obj._e_event103 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event104 = obj.dataLink8:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoBase == "" then sheet.PrecisaoBase = 1 end
         end);
 
-    obj._e_event104 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event105 = obj.dataLink9:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadeBase == "" then sheet.ForcaDeVontadeBase = 1 end
         end);
 
-    obj._e_event105 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event106 = obj.dataLink10:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaPassivo == "" then sheet.ForcaPassivo = 0 end
         end);
 
-    obj._e_event106 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event107 = obj.dataLink11:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadePassivo == "" then sheet.AgilidadePassivo = 0 end
         end);
 
-    obj._e_event107 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event108 = obj.dataLink12:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorPassivo == "" then sheet.VigorPassivo = 0 end
         end);
 
-    obj._e_event108 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event109 = obj.dataLink13:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombatePassivo == "" then sheet.CombatePassivo = 0 end
         end);
 
-    obj._e_event109 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event110 = obj.dataLink14:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoPassivo == "" then sheet.PercepcaoPassivo = 0 end
         end);
 
-    obj._e_event110 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event111 = obj.dataLink15:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaPassivo == "" then sheet.CarismaPassivo = 0 end
         end);
 
-    obj._e_event111 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event112 = obj.dataLink16:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaPassivo == "" then sheet.InteligenciaPassivo = 0 end
         end);
 
-    obj._e_event112 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event113 = obj.dataLink17:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoPassivo == "" then sheet.PrecisaoPassivo = 0 end
         end);
 
-    obj._e_event113 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event114 = obj.dataLink18:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadePassivo == "" then sheet.ForcaDeVontadePassivo = 0 end
         end);
 
-    obj._e_event114 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event115 = obj.dataLink19:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaEquips == "" then sheet.ForcaEquips = 0 end
         end);
 
-    obj._e_event115 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event116 = obj.dataLink20:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeEquips == "" then sheet.AgilidadeEquips = 0 end
         end);
 
-    obj._e_event116 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event117 = obj.dataLink21:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorEquips == "" then sheet.VigorEquips = 0 end
         end);
 
-    obj._e_event117 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event118 = obj.dataLink22:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateEquips == "" then sheet.CombateEquips = 0 end
         end);
 
-    obj._e_event118 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event119 = obj.dataLink23:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoEquips == "" then sheet.PercepcaoEquips = 0 end
         end);
 
-    obj._e_event119 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event120 = obj.dataLink24:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaEquips == "" then sheet.CarismaEquips = 0 end
         end);
 
-    obj._e_event120 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event121 = obj.dataLink25:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaEquips == "" then sheet.InteligenciaEquips = 0 end
         end);
 
-    obj._e_event121 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event122 = obj.dataLink26:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoEquips == "" then sheet.PrecisaoEquips = 0 end
         end);
 
-    obj._e_event122 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event123 = obj.dataLink27:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadeEquips == "" then sheet.ForcaDeVontadeEquips = 0 end
         end);
 
-    obj._e_event123 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event124 = obj.dataLink28:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaTreino == "" then sheet.ForcaTreino = 0 end
         end);
 
-    obj._e_event124 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event125 = obj.dataLink29:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeTreino == "" then sheet.AgilidadeTreino = 0 end
         end);
 
-    obj._e_event125 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event126 = obj.dataLink30:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorTreino == "" then sheet.VigorTreino = 0 end
         end);
 
-    obj._e_event126 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event127 = obj.dataLink31:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateTreino == "" then sheet.CombateTreino = 0 end
         end);
 
-    obj._e_event127 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event128 = obj.dataLink32:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoTreino == "" then sheet.PercepcaoTreino = 0 end
         end);
 
-    obj._e_event128 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event129 = obj.dataLink33:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaTreino == "" then sheet.CarismaTreino = 0 end
         end);
 
-    obj._e_event129 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event130 = obj.dataLink34:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaTreino == "" then sheet.InteligenciaTreino = 0 end
         end);
 
-    obj._e_event130 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event131 = obj.dataLink35:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoTreino == "" then sheet.PrecisaoTreino = 0 end
         end);
 
-    obj._e_event131 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event132 = obj.dataLink36:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadeTreino == "" then sheet.ForcaDeVontadeTreino = 0 end
         end);
 
-    obj._e_event132 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event133 = obj.dataLink37:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoChapeu == nil then sheet.FotoChapeu = "https://blob.firecast.com.br/blobs/BSEWIEVG_3735362/Chapeu.png" end
         end);
 
-    obj._e_event133 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event134 = obj.dataLink38:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoColar == nil then sheet.FotoColar = "https://blob.firecast.com.br/blobs/ELGUBICD_3735361/Colar.png" end
         end);
 
-    obj._e_event134 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event135 = obj.dataLink39:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoRoupa == nil then sheet.FotoRoupa = "https://blob.firecast.com.br/blobs/SIRPGIRT_3735359/Ropa.png" end
         end);
 
-    obj._e_event135 = obj.dataLink40:addEventListener("onChange",
+    obj._e_event136 = obj.dataLink40:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoMaoPrimaria == nil then sheet.FotoMaoPrimaria = "https://blob.firecast.com.br/blobs/SMOQJGJO_3735363/M_o.png" end
         end);
 
-    obj._e_event136 = obj.dataLink41:addEventListener("onChange",
+    obj._e_event137 = obj.dataLink41:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoCalca == nil then sheet.FotoCalca = "https://blob.firecast.com.br/blobs/TQPAWOQT_3735360/Car_a.png" end
         end);
 
-    obj._e_event137 = obj.dataLink42:addEventListener("onChange",
+    obj._e_event138 = obj.dataLink42:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoBota == nil then sheet.FotoBota = "https://blob.firecast.com.br/blobs/OHNVCDNS_3735367/Bota.png" end
         end);
 
-    obj._e_event138 = obj.dataLink43:addEventListener("onChange",
+    obj._e_event139 = obj.dataLink43:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoRosto == nil then sheet.FotoRosto = "https://blob.firecast.com.br/blobs/NHQFHSIH_3735364/Mascara.png" end
         end);
 
-    obj._e_event139 = obj.dataLink44:addEventListener("onChange",
+    obj._e_event140 = obj.dataLink44:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoBrinco == nil then sheet.FotoBrinco = "https://blob.firecast.com.br/blobs/LQUKWDCJ_3735365/Binco.png" end
         end);
 
-    obj._e_event140 = obj.dataLink45:addEventListener("onChange",
+    obj._e_event141 = obj.dataLink45:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoCapa == nil then sheet.FotoCapa = "https://blob.firecast.com.br/blobs/SEKLBTCI_3735802/Kapa.png" end
         end);
 
-    obj._e_event141 = obj.dataLink46:addEventListener("onChange",
+    obj._e_event142 = obj.dataLink46:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoMaoSecundaria == nil then sheet.FotoMaoSecundaria = "https://blob.firecast.com.br/blobs/RRQKGODJ_3735460/M_o.png" end
         end);
 
-    obj._e_event142 = obj.dataLink47:addEventListener("onChange",
+    obj._e_event143 = obj.dataLink47:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoCinto == nil then sheet.FotoCinto = "https://blob.firecast.com.br/blobs/BCNCKKRT_3735366/Luva.png" end
         end);
 
-    obj._e_event143 = obj.dataLink48:addEventListener("onChange",
+    obj._e_event144 = obj.dataLink48:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoAnel == nil then sheet.FotoAnel = "https://blob.firecast.com.br/blobs/QLBWNJUT_3735368/Anal.png" end
         end);
 
-    obj._e_event144 = obj.dataLink49:addEventListener("onChange",
+    obj._e_event145 = obj.dataLink49:addEventListener("onChange",
         function (field, oldValue, newValue)
-            if (sheet.tierArmamento == "" and not (sheet.EstadoArmamento == "I" or sheet.EstadoArmamento == "Do")) then
-            				sheet.tierArmamento = 1 else sheet.tierArmamento = 0 end
-            			sheet.BonusArmamento = "+".. (sheet.tierArmamento * 5) .." de dano ou em rolagens de resistência"
+            sheet.BonusArmamento = "+".. (sheet.tierArmamento * 5) .." de dano ou em rolagens de resistência"
             			sheet.CustoArmamento = "-".. (sheet.tierArmamento * 3) .." da barra de haki"
         end);
 
-    obj._e_event145 = obj.dataLink53:addEventListener("onChange",
+    obj._e_event146 = obj.dataLink50:addEventListener("onChange",
         function (field, oldValue, newValue)
-            if (sheet.tierObservacao == "" and not (sheet.EstadoObsevacao == "I" or sheet.EstadoObsevacao == "Do")) then
-            				sheet.tierObservacao = 1 else sheet.tierObservacao = 0 end
-            			sheet.BonusObservacao = "+".. (sheet.tierObservacao) .." de acerto, esquiva ou em rolagens de     percepção."
+            if (self.estadoArmamento.value == "De" or self.estadoArmamento.value == "C") then
+            				self.tierArmamento.readOnly = false
+            				self.tierArmamento.text = '1'
+            			else
+            				self.tierArmamento.readOnly = true
+            				self.tierArmamento.text = '0'
+            			end
+        end);
+
+    obj._e_event147 = obj.dataLink53:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            sheet.BonusObservacao = "+".. (sheet.tierObservacao) .." de acerto, esquiva ou em rolagens de     percepção."
             			sheet.CustoObservacao = "-".. (sheet.tierObservacao * 3) .." da barra de haki"
         end);
 
-    obj._e_event146 = obj.dataLink57:addEventListener("onChange",
+    obj._e_event148 = obj.dataLink54:addEventListener("onChange",
         function (field, oldValue, newValue)
-            if (sheet.tierConquistador == "" and not (sheet.EstadoConquistador == "I" or sheet.EstadoConquistador == "Do")) then
-            				sheet.tierConquistador = 1 else sheet.tierConquistador = 0 end
-            			sheet.BonusConquistador = "Numa área de 12m, todos fazem um teste de resistência (DT 1d20+ FdV("..sheet.ForcaDeVontadeTotal..")+ ".. sheet.tierConquistador .."). Se passarem ficam acordados; se falharem desmaiam."
+            if (self.estadoObservacao.value == "De" or self.estadoObservacao.value == "C") then
+            				self.tierObservacao.readOnly = false
+            				self.tierObservacao.text = '1'
+            			else
+            				self.tierObservacao.readOnly = true
+            				self.tierObservacao.text = '0'
+            			end
+        end);
+
+    obj._e_event149 = obj.dataLink57:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            sheet.BonusConquistador = "Numa área de 12m, todos fazem um teste de resistência (DT 1d20+ FdV("..sheet.ForcaDeVontadeTotal..")+ ".. sheet.tierConquistador .."). Se passarem ficam acordados; se falharem desmaiam."
             			sheet.CustoConquistador = "-".. (sheet.tierConquistador * 3) .." da barra de haki"
         end);
 
+    obj._e_event150 = obj.dataLink58:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if (self.estadoConquistador.value == "De" or self.estadoConquistador.value == "C") then
+            				self.tierConquistador.readOnly = false
+            				self.tierConquistador.text = '1'
+            			else
+            				self.tierConquistador.readOnly = true
+            				self.tierConquistador.text = '0'
+            			end
+        end);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event150);
+        __o_rrpgObjs.removeEventListenerById(self._e_event149);
+        __o_rrpgObjs.removeEventListenerById(self._e_event148);
+        __o_rrpgObjs.removeEventListenerById(self._e_event147);
         __o_rrpgObjs.removeEventListenerById(self._e_event146);
         __o_rrpgObjs.removeEventListenerById(self._e_event145);
         __o_rrpgObjs.removeEventListenerById(self._e_event144);
@@ -4520,7 +4572,6 @@ local function constructNew_Atributos()
         if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
         if self.InteligenciaTreino ~= nil then self.InteligenciaTreino:destroy(); self.InteligenciaTreino = nil; end;
         if self.VigorEquips ~= nil then self.VigorEquips:destroy(); self.VigorEquips = nil; end;
-        if self.comboBox6 ~= nil then self.comboBox6:destroy(); self.comboBox6 = nil; end;
         if self.dataLink32 ~= nil then self.dataLink32:destroy(); self.dataLink32 = nil; end;
         if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
@@ -4531,6 +4582,7 @@ local function constructNew_Atributos()
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
         if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
+        if self.tierArmamento ~= nil then self.tierArmamento:destroy(); self.tierArmamento = nil; end;
         if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
         if self.CarismaEquips ~= nil then self.CarismaEquips:destroy(); self.CarismaEquips = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
@@ -4546,7 +4598,6 @@ local function constructNew_Atributos()
         if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
         if self.DefButton ~= nil then self.DefButton:destroy(); self.DefButton = nil; end;
-        if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
         if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
         if self.rectangle59 ~= nil then self.rectangle59:destroy(); self.rectangle59 = nil; end;
@@ -4568,6 +4619,7 @@ local function constructNew_Atributos()
         if self.dataLink44 ~= nil then self.dataLink44:destroy(); self.dataLink44 = nil; end;
         if self.dataLink56 ~= nil then self.dataLink56:destroy(); self.dataLink56 = nil; end;
         if self.rectangle64 ~= nil then self.rectangle64:destroy(); self.rectangle64 = nil; end;
+        if self.estadoArmamento ~= nil then self.estadoArmamento:destroy(); self.estadoArmamento = nil; end;
         if self.Haki ~= nil then self.Haki:destroy(); self.Haki = nil; end;
         if self.rectangle94 ~= nil then self.rectangle94:destroy(); self.rectangle94 = nil; end;
         if self.rectangle86 ~= nil then self.rectangle86:destroy(); self.rectangle86 = nil; end;
@@ -4575,6 +4627,7 @@ local function constructNew_Atributos()
         if self.CarismaTreino ~= nil then self.CarismaTreino:destroy(); self.CarismaTreino = nil; end;
         if self.rectangle70 ~= nil then self.rectangle70:destroy(); self.rectangle70 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
+        if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
         if self.PrecisaoEquips ~= nil then self.PrecisaoEquips:destroy(); self.PrecisaoEquips = nil; end;
         if self.ForcaEquips ~= nil then self.ForcaEquips:destroy(); self.ForcaEquips = nil; end;
         if self.rectangle83 ~= nil then self.rectangle83:destroy(); self.rectangle83 = nil; end;
@@ -4590,6 +4643,7 @@ local function constructNew_Atributos()
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
         if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
+        if self.estadoObservacao ~= nil then self.estadoObservacao:destroy(); self.estadoObservacao = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.PercepcaoTotal ~= nil then self.PercepcaoTotal:destroy(); self.PercepcaoTotal = nil; end;
@@ -4666,7 +4720,7 @@ local function constructNew_Atributos()
         if self.rectangle100 ~= nil then self.rectangle100:destroy(); self.rectangle100 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
-        if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
+        if self.tierObservacao ~= nil then self.tierObservacao:destroy(); self.tierObservacao = nil; end;
         if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
         if self.image15 ~= nil then self.image15:destroy(); self.image15 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
@@ -4691,24 +4745,24 @@ local function constructNew_Atributos()
         if self.image8 ~= nil then self.image8:destroy(); self.image8 = nil; end;
         if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.InteligenciaBase ~= nil then self.InteligenciaBase:destroy(); self.InteligenciaBase = nil; end;
-        if self.fotoEquip ~= nil then self.fotoEquip:destroy(); self.fotoEquip = nil; end;
+        if self.estadoConquistador ~= nil then self.estadoConquistador:destroy(); self.estadoConquistador = nil; end;
         if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
-        if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
+        if self.fotoEquip ~= nil then self.fotoEquip:destroy(); self.fotoEquip = nil; end;
         if self.rectangle73 ~= nil then self.rectangle73:destroy(); self.rectangle73 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.rectangle96 ~= nil then self.rectangle96:destroy(); self.rectangle96 = nil; end;
         if self.rectangle80 ~= nil then self.rectangle80:destroy(); self.rectangle80 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
+        if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
         if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
-        if self.dataLink58 ~= nil then self.dataLink58:destroy(); self.dataLink58 = nil; end;
         if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
+        if self.dataLink58 ~= nil then self.dataLink58:destroy(); self.dataLink58 = nil; end;
         if self.ForDVonButton ~= nil then self.ForDVonButton:destroy(); self.ForDVonButton = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.rectangle76 ~= nil then self.rectangle76:destroy(); self.rectangle76 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
-        if self.comboBox4 ~= nil then self.comboBox4:destroy(); self.comboBox4 = nil; end;
         if self.ForcaButton ~= nil then self.ForcaButton:destroy(); self.ForcaButton = nil; end;
         if self.dataLink34 ~= nil then self.dataLink34:destroy(); self.dataLink34 = nil; end;
         if self.rectangle45 ~= nil then self.rectangle45:destroy(); self.rectangle45 = nil; end;
@@ -4736,7 +4790,6 @@ local function constructNew_Atributos()
         if self.rectangle103 ~= nil then self.rectangle103:destroy(); self.rectangle103 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.rectangle68 ~= nil then self.rectangle68:destroy(); self.rectangle68 = nil; end;
-        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
         if self.rectangle57 ~= nil then self.rectangle57:destroy(); self.rectangle57 = nil; end;
         if self.image14 ~= nil then self.image14:destroy(); self.image14 = nil; end;
@@ -4755,6 +4808,7 @@ local function constructNew_Atributos()
         if self.dataLink54 ~= nil then self.dataLink54:destroy(); self.dataLink54 = nil; end;
         if self.rectangle66 ~= nil then self.rectangle66:destroy(); self.rectangle66 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
+        if self.tierConquistador ~= nil then self.tierConquistador:destroy(); self.tierConquistador = nil; end;
         if self.rectangle84 ~= nil then self.rectangle84:destroy(); self.rectangle84 = nil; end;
         if self.dataLink59 ~= nil then self.dataLink59:destroy(); self.dataLink59 = nil; end;
         if self.VigorTotal ~= nil then self.VigorTotal:destroy(); self.VigorTotal = nil; end;
@@ -4775,7 +4829,6 @@ local function constructNew_Atributos()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.InteligenciaPassivo ~= nil then self.InteligenciaPassivo:destroy(); self.InteligenciaPassivo = nil; end;
         if self.button15 ~= nil then self.button15:destroy(); self.button15 = nil; end;
-        if self.comboBox5 ~= nil then self.comboBox5:destroy(); self.comboBox5 = nil; end;
         if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
         if self.rectangle46 ~= nil then self.rectangle46:destroy(); self.rectangle46 = nil; end;
         if self.AgilidadeTreino ~= nil then self.AgilidadeTreino:destroy(); self.AgilidadeTreino = nil; end;

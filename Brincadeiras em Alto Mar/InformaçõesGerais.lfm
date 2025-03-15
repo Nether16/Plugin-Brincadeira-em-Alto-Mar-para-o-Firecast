@@ -6,16 +6,27 @@
 		Organizacoes = {'Kurokage', 'Revolucionario', 'Governo Mundial', 'Marinha', 'Pirata', 'Não Definido'}
 		
 		EstilosDeLuta = {
-			'Atirador', 'Karatê Tritão', 'Okama Kenpo', 'Rokushiki', 'Boxe', 
-			'Hasshoken', 'Merman Combat', 'Tontatta Combat', 'Black Leg', 
-			'Ramen Kenpo', 'Jao Kun Do', 'Ryusoken', 'Jio-Ken', 'Santoryu', 
-			'Nitoryu', 'Ittoryu', 'Hachitoryu', 'Yontoryu', 'Kappa-ryu', 
-			'Kitsunebi-ryu', 'Rokutoryu', 'Ningyo Gujutsu', 'Son Goku no Ugoki', 
-			'Kurobara-Ryū', 'Street Brawling', 'Demonharubādo', 'Sumo-Ryu', 
-			'Senritsuken', 'Kikai Kōbō-Ryū', 'Kōsenjū-Ryū', 'Tenshi Nunchaku-Ryū', 
-			'Kyokugi', 'Koe no Ensei-Ryū', 'Tōkaradō', 'Reitetsu no Ken', 
-			'Kenki no Gattsu', 'Teppanyaki no Ken', 'Seigi no Tōken-Ryū', 
-			'Tsuinburēdo', 'Sakejutsu', 'Rairyū-Ryū', 'Frog Leg'
+			'Black Leg', 'Bō Fudō-ryū', 'Bō Kenryū', 'Boxe', 'Capoeira', 'Colors Trap','Demonharubādo', 
+			'Engei no Furete-ryū', 'Frog Leg', 'Hachitoryu', 'Hagane no Kiba', 'Hasshoken',
+			'Ittoryu', 'Jao Kun Do', 'Jio-Ken', 'Karatê Tritão', 'Kappa-ryu', 'Kenki no Gattsu',
+			'Kikai Kōbō-Ryū', 'Kitsunebi-ryu', 'Koe no Ensei-Ryū', 'Kōsenjū-Ryū',
+			'Kyokugi', 'Merman Combat', 'Ningyo Gujutsu', 'Nitoryu', 'Okama Kenpo', 'Rairyū-Ryū',
+			'Ramen Kenpo', 'Reitetsu no Ken', 'Rokushiki', 'Rokutoryu', 'Ryusoken', 'Sakejutsu',
+			'Santoryu', 'Seigi no Tōken-Ryū', 'Senritsuken', 'Son Goku no Ugoki', 'Street Brawling',
+			'Sumo-Ryu', 'Tate no Mamori-ryū', 'Tenshi Nunchaku-Ryū', 'Teppanyaki no Ken', 
+			'Tontatta Combat', 'Tōkaradō', 'Tsuinburēdo', 'Yontoryu'
+		}
+
+		EdLSemCaracteresEspeciais = {
+			"BlackLeg", "BoFudoRyu", "BoKenryu", "Boxe", "Capoeira", "ColorsTrap", "Demonharubado", 
+			"EngeinoFureteRyu", "FrogLeg", "Hachitoryu", "HaganeNoKiba", "Hasshoken",
+			"Ittoryu", "JaoKunDo", "JioKen", "KarateTritao", "Kapparyu", "KenkinoGattsu",
+			"KikaiKoboRyu", "Kitsunebiryu", "KoenoEnseiRyu", "KosenjuRyu",
+			"Kyokugi", "MermanCombat", "NingyoGujutsu", "Nitoryu", "OkamaKenpo", "RairyuuRyu",
+			"RamenKenpo", "ReitetsunoKen", "Rokushiki", "Rokutoryu", "Ryusoken", "Sakejutsu",
+			"Santoryu", "SeiginoTokenRyu", "Senritsuken", "SonGokunoUgoki", "StreetBrawling",
+			"SumoRyu", "TatenoMamoriRyu", "TenshiNunchakuRyu", "TeppanyakinoKen", 
+			"TontattaCombat", "Tokarado", "Tsuinburedo", "Yontoryu"
 		}
 		
 		Profissoes = {
@@ -401,17 +412,17 @@
 			-- Idade
 			<label left="215" top="158" width="100" height="50" text="Idade:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
 			<rectangle left="275" top="176" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
-			<edit field="idade" name="idade" left="275" top="173" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center" keyboardType="NumberPad"/>
+			<edit field="idade" name="idade" left="275" top="172" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center" keyboardType="NumberPad"/>
 			
 			-- Gênero
 			<label left="215" top="188" width="100" height="50" text="Gênero:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
 			<rectangle left="275" top="206" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
-			<edit field="genero" name="genero" left="275" top="203" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"/>
+			<edit field="genero" name="genero" left="275" top="202" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"/>
 			
 			-- Moedas
 			<label left="215" top="218" width="100" height="50" text="Moedas:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
 			<rectangle left="275" top="236" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
-			<edit field="moedas" name="moedas" left="275" top="233" width="120" height="20" transparent="true" text="0" fontColor="black" fontSize="12" horzTextAlign="center" keyboardType="numbersAndPunctuation"/>
+			<edit field="moedas" name="moedas" left="275" top="232" width="120" height="20" transparent="true" text="0" fontColor="black" fontSize="12" horzTextAlign="center" keyboardType="numbersAndPunctuation"/>
 			
 			-- Tripulação
 			<label left="415" top="128" width="100" height="50" text="Tripulação:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
@@ -421,13 +432,14 @@
 			-- Estilo de Luta
 			<label left="415" top="158" width="100" height="50" text="Est. de Luta:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
 			<rectangle left="505" top="176" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
-			<comboBox field="estiloDeLuta" name="estluta" left="505" top="176" width="120" height="17" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"
-			items="EstilosDeLuta"/>
+			<label name="LabelEdL" left="505" top="176" width="120" height="17" fontSize="12" fontColor="black" horzTextAlign="center" />
+			<comboBox field="estiloDeLuta" name="estluta" left="505" top="176" width="120" height="19" opacity="0" fontColor="white" fontSize="12" horzTextAlign="center"
+			items="EstilosDeLuta" values="EdLSemCaracteresEspeciais" onChange="self.LabelEdL.text = self.estluta.text"/>
 			
 			-- Sexualidade
 			<label left="415" top="188" width="100" height="50" text="Sexualidade:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
 			<rectangle left="505" top="206" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
-			<edit field="sexualidade" name="sex" left="505" top="203" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"/>
+			<edit field="sexualidade" name="sex" left="505" top="202" width="120" height="22" transparent="true" fontColor="black" fontSize="12" horzTextAlign="center"/>
 			
 			-- Organização
 			<label left="415" top="218" width="100" height="50" text="Organização:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
@@ -443,9 +455,10 @@
 			<rectangle left="196" top="296" width="89" height="115" color="#F5F5DC"/>
 			
 			<label field="nomePrincipal" name="NomeProfissaoPrincipal" left="196" top="392" width="89" height="113" text="Profissão 1" fontSize="13" fontStyle="bold" fontColor="black" autoSize="true" horzTextAlign="center"/>
-			<image field="imagemPrincipal" name="ImagemProfissaoPrincipal" left="199" top="300" width="82" height="92" style="autoFit" animate="true"/>
+			<rectangle left="199.5" top="300" width="82" height="92" color="black"/>
+			<image field="imagemPrincipal" name="ImagemProfissaoPrincipal" left="199.5" top="300" width="82" height="92" style="autoFit" animate="true"/>
 			
-			<button left="192" top="292" width="97" height="123" opacity="0" cursor="handpoint" onClick="self.AbaProfissaoPrincipal.visible = true; self.AbaProfissaoSecundaria.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
+			<button left="193" top="292" width="97" height="123" opacity="0" cursor="handpoint" onClick="self.AbaProfissaoPrincipal.visible = true; self.AbaProfissaoSecundaria.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
 				CheckIfEmpregado(self.ProfissaoPrincipal.text); sheet.fotoProfissaoPrincipal = self.ImagemProfissaoPrincipal.src"/>
 			
 			-- Profissão Secundaria
@@ -454,9 +467,10 @@
 			<rectangle left="559" top="296" width="89" height="115" color="#F5F5DC"/>
 			
 			<label field="nomeSecundaria" name="NomeProfissaoSecundaria" left="559" top="392" width="89" height="113" text="Profissão 2" fontSize="13" fontStyle="bold" fontColor="black" autoSize="true" horzTextAlign="center"/>
-			<image field="imagemSecundaria" name="ImagemProfissaoSecundaria" left="562" top="300" width="82" height="92" style="autoFit" animate="true" />
-				
-			<button left="555" top="292" width="97" height="123" opacity="0" cursor="handpoint" onClick="self.AbaProfissaoSecundaria.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
+			<rectangle left="562.5" top="300" width="82" height="92" color="black"/>
+			<image field="imagemSecundaria" name="ImagemProfissaoSecundaria" left="562.5" top="300" width="82" height="92" style="autoFit" animate="true"/>
+			
+			<button left="556" top="292" width="97" height="123" opacity="0" cursor="handpoint" onClick="self.AbaProfissaoSecundaria.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
 				CheckIfEmpregado(self.ProfissaoSecundaria.text); sheet.fotoProfissaoSecundaria = self.ImagemProfissaoSecundaria.src"/>
 			
 			-- Raça
@@ -465,6 +479,7 @@
 			<rectangle left="306" top="296" width="232" height="115" color="#F5F5DC"/>
 			
 			<label field="nomeRaca" name="NomeRaca" left="306" top="392" width="232" height="113" text="Raça" fontSize="13" fontStyle="bold" fontColor="black" autoSize="true" horzTextAlign="center"/>
+			<rectangle left="310" top="300" width="225" height="92" color="black"/>
 			<image field="imagemRaca" name="ImagemRaca" left="310" top="300" width="225" height="92" style="autoFit" animate="true"/>
 			
 			<button left="302" top="292" width="240" height="123" opacity="0" cursor="handpoint" onClick="self.AbaRaca.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
@@ -606,7 +621,7 @@
 					<image field="fotoRaca" name="FotoRaca" left="125" top="50" width="250" height="140" scaleX="1.4" style="autoFit" animate="true"/>
 					
 					-- Descrição Racial
-					<richEdit top="205" width="604" scaleX="1" height="521" scaleY="1" name="DescricaoRacial" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="false" showToolbar="true"/>
+					<richEdit top="205" width="604" scaleX="1" height="521" scaleY="1" name="DescricaoRacial" backgroundColor="#404040" defaultFontColor="white" field="" animateImages="true" readOnly="true" showToolbar="false"/>
 				</tab>
 
 				<tab title="Habilidades Raciais">
@@ -622,7 +637,6 @@
 			<label left="-2" top="30" width="604" height="521" text="História" fontSize="24" fontStyle="bold underline" fontColor="#F5F5DC" autoSize="true" horzTextAlign="center"/>
 			<layout left="2" top="65" width="604" height="480" visible="true">
 				<richEdit name="editHistoria" top="35" align="client" backgroundColor="black" defaultFontColor="white" field="Historia" animateImages="true"/>
-				<button onClick="showMessage(self.editHistoria:getText())"/>
 			</layout>
 		</layout>
 
@@ -669,7 +683,7 @@
 			if sheet.expMax == "" then sheet.expMax = "300" end
 		</event>
 	</dataLink>
-	
+
 	<dataLink field="nomeRaca" defaultValue="Raça">
 		<event name="onChange">
 			if sheet.nomeRaca == "" then sheet.nomeRaca = "Raça" end

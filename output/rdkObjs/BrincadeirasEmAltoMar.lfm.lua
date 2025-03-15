@@ -64,16 +64,27 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 		Organizacoes = {'Kurokage', 'Revolucionario', 'Governo Mundial', 'Marinha', 'Pirata', 'Não Definido'}
 		
 		EstilosDeLuta = {
-			'Atirador', 'Karatê Tritão', 'Okama Kenpo', 'Rokushiki', 'Boxe', 
-			'Hasshoken', 'Merman Combat', 'Tontatta Combat', 'Black Leg', 
-			'Ramen Kenpo', 'Jao Kun Do', 'Ryusoken', 'Jio-Ken', 'Santoryu', 
-			'Nitoryu', 'Ittoryu', 'Hachitoryu', 'Yontoryu', 'Kappa-ryu', 
-			'Kitsunebi-ryu', 'Rokutoryu', 'Ningyo Gujutsu', 'Son Goku no Ugoki', 
-			'Kurobara-Ryū', 'Street Brawling', 'Demonharubādo', 'Sumo-Ryu', 
-			'Senritsuken', 'Kikai Kōbō-Ryū', 'Kōsenjū-Ryū', 'Tenshi Nunchaku-Ryū', 
-			'Kyokugi', 'Koe no Ensei-Ryū', 'Tōkaradō', 'Reitetsu no Ken', 
-			'Kenki no Gattsu', 'Teppanyaki no Ken', 'Seigi no Tōken-Ryū', 
-			'Tsuinburēdo', 'Sakejutsu', 'Rairyū-Ryū', 'Frog Leg'
+			'Black Leg', 'Bō Fudō-ryū', 'Bō Kenryū', 'Boxe', 'Capoeira', 'Colors Trap','Demonharubādo', 
+			'Engei no Furete-ryū', 'Frog Leg', 'Hachitoryu', 'Hagane no Kiba', 'Hasshoken',
+			'Ittoryu', 'Jao Kun Do', 'Jio-Ken', 'Karatê Tritão', 'Kappa-ryu', 'Kenki no Gattsu',
+			'Kikai Kōbō-Ryū', 'Kitsunebi-ryu', 'Koe no Ensei-Ryū', 'Kōsenjū-Ryū',
+			'Kyokugi', 'Merman Combat', 'Ningyo Gujutsu', 'Nitoryu', 'Okama Kenpo', 'Rairyū-Ryū',
+			'Ramen Kenpo', 'Reitetsu no Ken', 'Rokushiki', 'Rokutoryu', 'Ryusoken', 'Sakejutsu',
+			'Santoryu', 'Seigi no Tōken-Ryū', 'Senritsuken', 'Son Goku no Ugoki', 'Street Brawling',
+			'Sumo-Ryu', 'Tate no Mamori-ryū', 'Tenshi Nunchaku-Ryū', 'Teppanyaki no Ken', 
+			'Tontatta Combat', 'Tōkaradō', 'Tsuinburēdo', 'Yontoryu'
+		}
+
+		EdLSemCaracteresEspeciais = {
+			"BlackLeg", "BoFudoRyu", "BoKenryu", "Boxe", "Capoeira", "ColorsTrap", "Demonharubado", 
+			"EngeinoFureteRyu", "FrogLeg", "Hachitoryu", "HaganeNoKiba", "Hasshoken",
+			"Ittoryu", "JaoKunDo", "JioKen", "KarateTritao", "Kapparyu", "KenkinoGattsu",
+			"KikaiKoboRyu", "Kitsunebiryu", "KoenoEnseiRyu", "KosenjuRyu",
+			"Kyokugi", "MermanCombat", "NingyoGujutsu", "Nitoryu", "OkamaKenpo", "RairyuuRyu",
+			"RamenKenpo", "ReitetsunoKen", "Rokushiki", "Rokutoryu", "Ryusoken", "Sakejutsu",
+			"Santoryu", "SeiginoTokenRyu", "Senritsuken", "SonGokunoUgoki", "StreetBrawling",
+			"SumoRyu", "TatenoMamoriRyu", "TenshiNunchakuRyu", "TeppanyakinoKen", 
+			"TontattaCombat", "Tokarado", "Tsuinburedo", "Yontoryu"
 		}
 		
 		Profissoes = {
@@ -707,7 +718,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.idade:setField("idade");
     obj.idade:setName("idade");
     obj.idade:setLeft(275);
-    obj.idade:setTop(173);
+    obj.idade:setTop(172);
     obj.idade:setWidth(120);
     obj.idade:setHeight(22);
     obj.idade:setTransparent(true);
@@ -745,7 +756,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.genero:setField("genero");
     obj.genero:setName("genero");
     obj.genero:setLeft(275);
-    obj.genero:setTop(203);
+    obj.genero:setTop(202);
     obj.genero:setWidth(120);
     obj.genero:setHeight(22);
     obj.genero:setTransparent(true);
@@ -782,7 +793,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.moedas:setField("moedas");
     obj.moedas:setName("moedas");
     obj.moedas:setLeft(275);
-    obj.moedas:setTop(233);
+    obj.moedas:setTop(232);
     obj.moedas:setWidth(120);
     obj.moedas:setHeight(20);
     obj.moedas:setTransparent(true);
@@ -853,6 +864,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle15:setCornerType("round");
     obj.rectangle15:setName("rectangle15");
 
+    obj.LabelEdL = GUI.fromHandle(_obj_newObject("label"));
+    obj.LabelEdL:setParent(obj.layout3);
+    obj.LabelEdL:setName("LabelEdL");
+    obj.LabelEdL:setLeft(505);
+    obj.LabelEdL:setTop(176);
+    obj.LabelEdL:setWidth(120);
+    obj.LabelEdL:setHeight(17);
+    obj.LabelEdL:setFontSize(12);
+    obj.LabelEdL:setFontColor("black");
+    obj.LabelEdL:setHorzTextAlign("center");
+
     obj.estluta = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.estluta:setParent(obj.layout3);
     obj.estluta:setField("estiloDeLuta");
@@ -860,12 +882,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.estluta:setLeft(505);
     obj.estluta:setTop(176);
     obj.estluta:setWidth(120);
-    obj.estluta:setHeight(17);
-    obj.estluta:setTransparent(true);
-    obj.estluta:setFontColor("black");
+    obj.estluta:setHeight(19);
+    obj.estluta:setOpacity(0);
+    obj.estluta:setFontColor("white");
     obj.estluta:setFontSize(12);
     obj.estluta:setHorzTextAlign("center");
     obj.estluta:setItems(EstilosDeLuta);
+    obj.estluta:setValues(EdLSemCaracteresEspeciais);
 
     obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout3);
@@ -896,7 +919,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.sex:setField("sexualidade");
     obj.sex:setName("sex");
     obj.sex:setLeft(505);
-    obj.sex:setTop(203);
+    obj.sex:setTop(202);
     obj.sex:setWidth(120);
     obj.sex:setHeight(22);
     obj.sex:setTransparent(true);
@@ -994,11 +1017,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.NomeProfissaoPrincipal:setAutoSize(true);
     obj.NomeProfissaoPrincipal:setHorzTextAlign("center");
 
+    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21:setParent(obj.layout4);
+    obj.rectangle21:setLeft(199.5);
+    obj.rectangle21:setTop(300);
+    obj.rectangle21:setWidth(82);
+    obj.rectangle21:setHeight(92);
+    obj.rectangle21:setColor("black");
+    obj.rectangle21:setName("rectangle21");
+
     obj.ImagemProfissaoPrincipal = GUI.fromHandle(_obj_newObject("image"));
     obj.ImagemProfissaoPrincipal:setParent(obj.layout4);
     obj.ImagemProfissaoPrincipal:setField("imagemPrincipal");
     obj.ImagemProfissaoPrincipal:setName("ImagemProfissaoPrincipal");
-    obj.ImagemProfissaoPrincipal:setLeft(199);
+    obj.ImagemProfissaoPrincipal:setLeft(199.5);
     obj.ImagemProfissaoPrincipal:setTop(300);
     obj.ImagemProfissaoPrincipal:setWidth(82);
     obj.ImagemProfissaoPrincipal:setHeight(92);
@@ -1007,7 +1039,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout4);
-    obj.button1:setLeft(192);
+    obj.button1:setLeft(193);
     obj.button1:setTop(292);
     obj.button1:setWidth(97);
     obj.button1:setHeight(123);
@@ -1015,32 +1047,32 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.button1:setCursor("handPoint");
     obj.button1:setName("button1");
 
-    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle21:setParent(obj.layout4);
-    obj.rectangle21:setLeft(555);
-    obj.rectangle21:setTop(292);
-    obj.rectangle21:setWidth(97);
-    obj.rectangle21:setHeight(123);
-    obj.rectangle21:setColor("#4169E1");
-    obj.rectangle21:setName("rectangle21");
-
     obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle22:setParent(obj.layout4);
-    obj.rectangle22:setLeft(557);
-    obj.rectangle22:setTop(294);
-    obj.rectangle22:setWidth(93);
-    obj.rectangle22:setHeight(119);
-    obj.rectangle22:setColor("black");
+    obj.rectangle22:setLeft(555);
+    obj.rectangle22:setTop(292);
+    obj.rectangle22:setWidth(97);
+    obj.rectangle22:setHeight(123);
+    obj.rectangle22:setColor("#4169E1");
     obj.rectangle22:setName("rectangle22");
 
     obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout4);
-    obj.rectangle23:setLeft(559);
-    obj.rectangle23:setTop(296);
-    obj.rectangle23:setWidth(89);
-    obj.rectangle23:setHeight(115);
-    obj.rectangle23:setColor("#F5F5DC");
+    obj.rectangle23:setLeft(557);
+    obj.rectangle23:setTop(294);
+    obj.rectangle23:setWidth(93);
+    obj.rectangle23:setHeight(119);
+    obj.rectangle23:setColor("black");
     obj.rectangle23:setName("rectangle23");
+
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24:setParent(obj.layout4);
+    obj.rectangle24:setLeft(559);
+    obj.rectangle24:setTop(296);
+    obj.rectangle24:setWidth(89);
+    obj.rectangle24:setHeight(115);
+    obj.rectangle24:setColor("#F5F5DC");
+    obj.rectangle24:setName("rectangle24");
 
     obj.NomeProfissaoSecundaria = GUI.fromHandle(_obj_newObject("label"));
     obj.NomeProfissaoSecundaria:setParent(obj.layout4);
@@ -1057,11 +1089,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.NomeProfissaoSecundaria:setAutoSize(true);
     obj.NomeProfissaoSecundaria:setHorzTextAlign("center");
 
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25:setParent(obj.layout4);
+    obj.rectangle25:setLeft(562.5);
+    obj.rectangle25:setTop(300);
+    obj.rectangle25:setWidth(82);
+    obj.rectangle25:setHeight(92);
+    obj.rectangle25:setColor("black");
+    obj.rectangle25:setName("rectangle25");
+
     obj.ImagemProfissaoSecundaria = GUI.fromHandle(_obj_newObject("image"));
     obj.ImagemProfissaoSecundaria:setParent(obj.layout4);
     obj.ImagemProfissaoSecundaria:setField("imagemSecundaria");
     obj.ImagemProfissaoSecundaria:setName("ImagemProfissaoSecundaria");
-    obj.ImagemProfissaoSecundaria:setLeft(562);
+    obj.ImagemProfissaoSecundaria:setLeft(562.5);
     obj.ImagemProfissaoSecundaria:setTop(300);
     obj.ImagemProfissaoSecundaria:setWidth(82);
     obj.ImagemProfissaoSecundaria:setHeight(92);
@@ -1070,7 +1111,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout4);
-    obj.button2:setLeft(555);
+    obj.button2:setLeft(556);
     obj.button2:setTop(292);
     obj.button2:setWidth(97);
     obj.button2:setHeight(123);
@@ -1078,32 +1119,32 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.button2:setCursor("handPoint");
     obj.button2:setName("button2");
 
-    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle24:setParent(obj.layout4);
-    obj.rectangle24:setLeft(302);
-    obj.rectangle24:setTop(292);
-    obj.rectangle24:setWidth(240);
-    obj.rectangle24:setHeight(123);
-    obj.rectangle24:setColor("#4169E1");
-    obj.rectangle24:setName("rectangle24");
-
-    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle25:setParent(obj.layout4);
-    obj.rectangle25:setLeft(304);
-    obj.rectangle25:setTop(294);
-    obj.rectangle25:setWidth(236);
-    obj.rectangle25:setHeight(119);
-    obj.rectangle25:setColor("black");
-    obj.rectangle25:setName("rectangle25");
-
     obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle26:setParent(obj.layout4);
-    obj.rectangle26:setLeft(306);
-    obj.rectangle26:setTop(296);
-    obj.rectangle26:setWidth(232);
-    obj.rectangle26:setHeight(115);
-    obj.rectangle26:setColor("#F5F5DC");
+    obj.rectangle26:setLeft(302);
+    obj.rectangle26:setTop(292);
+    obj.rectangle26:setWidth(240);
+    obj.rectangle26:setHeight(123);
+    obj.rectangle26:setColor("#4169E1");
     obj.rectangle26:setName("rectangle26");
+
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27:setParent(obj.layout4);
+    obj.rectangle27:setLeft(304);
+    obj.rectangle27:setTop(294);
+    obj.rectangle27:setWidth(236);
+    obj.rectangle27:setHeight(119);
+    obj.rectangle27:setColor("black");
+    obj.rectangle27:setName("rectangle27");
+
+    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28:setParent(obj.layout4);
+    obj.rectangle28:setLeft(306);
+    obj.rectangle28:setTop(296);
+    obj.rectangle28:setWidth(232);
+    obj.rectangle28:setHeight(115);
+    obj.rectangle28:setColor("#F5F5DC");
+    obj.rectangle28:setName("rectangle28");
 
     obj.NomeRaca = GUI.fromHandle(_obj_newObject("label"));
     obj.NomeRaca:setParent(obj.layout4);
@@ -1119,6 +1160,15 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.NomeRaca:setFontColor("black");
     obj.NomeRaca:setAutoSize(true);
     obj.NomeRaca:setHorzTextAlign("center");
+
+    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29:setParent(obj.layout4);
+    obj.rectangle29:setLeft(310);
+    obj.rectangle29:setTop(300);
+    obj.rectangle29:setWidth(225);
+    obj.rectangle29:setHeight(92);
+    obj.rectangle29:setColor("black");
+    obj.rectangle29:setName("rectangle29");
 
     obj.ImagemRaca = GUI.fromHandle(_obj_newObject("image"));
     obj.ImagemRaca:setParent(obj.layout4);
@@ -1141,23 +1191,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.button3:setCursor("handPoint");
     obj.button3:setName("button3");
 
-    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle27:setParent(obj.layout4);
-    obj.rectangle27:setLeft(302);
-    obj.rectangle27:setTop(424);
-    obj.rectangle27:setWidth(240);
-    obj.rectangle27:setHeight(123);
-    obj.rectangle27:setColor("#4169E1");
-    obj.rectangle27:setName("rectangle27");
+    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30:setParent(obj.layout4);
+    obj.rectangle30:setLeft(302);
+    obj.rectangle30:setTop(424);
+    obj.rectangle30:setWidth(240);
+    obj.rectangle30:setHeight(123);
+    obj.rectangle30:setColor("#4169E1");
+    obj.rectangle30:setName("rectangle30");
 
-    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle28:setParent(obj.layout4);
-    obj.rectangle28:setLeft(304);
-    obj.rectangle28:setTop(426);
-    obj.rectangle28:setWidth(236);
-    obj.rectangle28:setHeight(119);
-    obj.rectangle28:setColor("black");
-    obj.rectangle28:setName("rectangle28");
+    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31:setParent(obj.layout4);
+    obj.rectangle31:setLeft(304);
+    obj.rectangle31:setTop(426);
+    obj.rectangle31:setWidth(236);
+    obj.rectangle31:setHeight(119);
+    obj.rectangle31:setColor("black");
+    obj.rectangle31:setName("rectangle31");
 
     obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout4);
@@ -1184,32 +1234,32 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ImagemBandeira:setStyle("autoFit");
     obj.ImagemBandeira.animate = true;
 
-    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle29:setParent(obj.layout4);
-    obj.rectangle29:setLeft(192);
-    obj.rectangle29:setTop(424);
-    obj.rectangle29:setWidth(97);
-    obj.rectangle29:setHeight(123);
-    obj.rectangle29:setColor("#4169E1");
-    obj.rectangle29:setName("rectangle29");
+    obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle32:setParent(obj.layout4);
+    obj.rectangle32:setLeft(192);
+    obj.rectangle32:setTop(424);
+    obj.rectangle32:setWidth(97);
+    obj.rectangle32:setHeight(123);
+    obj.rectangle32:setColor("#4169E1");
+    obj.rectangle32:setName("rectangle32");
 
-    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle30:setParent(obj.layout4);
-    obj.rectangle30:setLeft(194);
-    obj.rectangle30:setTop(426);
-    obj.rectangle30:setWidth(93);
-    obj.rectangle30:setHeight(119);
-    obj.rectangle30:setColor("black");
-    obj.rectangle30:setName("rectangle30");
+    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle33:setParent(obj.layout4);
+    obj.rectangle33:setLeft(194);
+    obj.rectangle33:setTop(426);
+    obj.rectangle33:setWidth(93);
+    obj.rectangle33:setHeight(119);
+    obj.rectangle33:setColor("black");
+    obj.rectangle33:setName("rectangle33");
 
-    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle31:setParent(obj.layout4);
-    obj.rectangle31:setLeft(196);
-    obj.rectangle31:setTop(428);
-    obj.rectangle31:setWidth(89);
-    obj.rectangle31:setHeight(115);
-    obj.rectangle31:setColor("#F5F5DC");
-    obj.rectangle31:setName("rectangle31");
+    obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle34:setParent(obj.layout4);
+    obj.rectangle34:setLeft(196);
+    obj.rectangle34:setTop(428);
+    obj.rectangle34:setWidth(89);
+    obj.rectangle34:setHeight(115);
+    obj.rectangle34:setColor("#F5F5DC");
+    obj.rectangle34:setName("rectangle34");
 
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout4);
@@ -1248,32 +1298,32 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.button4:setCursor("handPoint");
     obj.button4:setName("button4");
 
-    obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle32:setParent(obj.layout4);
-    obj.rectangle32:setLeft(555);
-    obj.rectangle32:setTop(424);
-    obj.rectangle32:setWidth(97);
-    obj.rectangle32:setHeight(123);
-    obj.rectangle32:setColor("#4169E1");
-    obj.rectangle32:setName("rectangle32");
+    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle35:setParent(obj.layout4);
+    obj.rectangle35:setLeft(555);
+    obj.rectangle35:setTop(424);
+    obj.rectangle35:setWidth(97);
+    obj.rectangle35:setHeight(123);
+    obj.rectangle35:setColor("#4169E1");
+    obj.rectangle35:setName("rectangle35");
 
-    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle33:setParent(obj.layout4);
-    obj.rectangle33:setLeft(557);
-    obj.rectangle33:setTop(426);
-    obj.rectangle33:setWidth(93);
-    obj.rectangle33:setHeight(119);
-    obj.rectangle33:setColor("black");
-    obj.rectangle33:setName("rectangle33");
+    obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle36:setParent(obj.layout4);
+    obj.rectangle36:setLeft(557);
+    obj.rectangle36:setTop(426);
+    obj.rectangle36:setWidth(93);
+    obj.rectangle36:setHeight(119);
+    obj.rectangle36:setColor("black");
+    obj.rectangle36:setName("rectangle36");
 
-    obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle34:setParent(obj.layout4);
-    obj.rectangle34:setLeft(559);
-    obj.rectangle34:setTop(428);
-    obj.rectangle34:setWidth(89);
-    obj.rectangle34:setHeight(115);
-    obj.rectangle34:setColor("#F5F5DC");
-    obj.rectangle34:setName("rectangle34");
+    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle37:setParent(obj.layout4);
+    obj.rectangle37:setLeft(559);
+    obj.rectangle37:setTop(428);
+    obj.rectangle37:setWidth(89);
+    obj.rectangle37:setHeight(115);
+    obj.rectangle37:setColor("#F5F5DC");
+    obj.rectangle37:setName("rectangle37");
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout4);
@@ -1321,23 +1371,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AbaProfissaoPrincipal:setHeight(1800);
     obj.AbaProfissaoPrincipal:setVisible(false);
 
-    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle35:setParent(obj.AbaProfissaoPrincipal);
-    obj.rectangle35:setLeft(665);
-    obj.rectangle35:setTop(22);
-    obj.rectangle35:setWidth(608);
-    obj.rectangle35:setHeight(525);
-    obj.rectangle35:setColor("#4169E1");
-    obj.rectangle35:setName("rectangle35");
+    obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle38:setParent(obj.AbaProfissaoPrincipal);
+    obj.rectangle38:setLeft(665);
+    obj.rectangle38:setTop(22);
+    obj.rectangle38:setWidth(608);
+    obj.rectangle38:setHeight(525);
+    obj.rectangle38:setColor("#4169E1");
+    obj.rectangle38:setName("rectangle38");
 
-    obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle36:setParent(obj.AbaProfissaoPrincipal);
-    obj.rectangle36:setLeft(667);
-    obj.rectangle36:setTop(24);
-    obj.rectangle36:setWidth(604);
-    obj.rectangle36:setHeight(521);
-    obj.rectangle36:setColor("black");
-    obj.rectangle36:setName("rectangle36");
+    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle39:setParent(obj.AbaProfissaoPrincipal);
+    obj.rectangle39:setLeft(667);
+    obj.rectangle39:setTop(24);
+    obj.rectangle39:setWidth(604);
+    obj.rectangle39:setHeight(521);
+    obj.rectangle39:setColor("black");
+    obj.rectangle39:setName("rectangle39");
 
     obj.tabControl2 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl2:setParent(obj.AbaProfissaoPrincipal);
@@ -1414,17 +1464,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle37:setParent(obj.LayoutProfissaoPrincipal);
-    obj.rectangle37:setLeft(245);
-    obj.rectangle37:setTop(201);
-    obj.rectangle37:setWidth(27);
-    obj.rectangle37:setHeight(15);
-    obj.rectangle37:setColor("white");
-    obj.rectangle37:setXradius(7);
-    obj.rectangle37:setYradius(7);
-    obj.rectangle37:setCornerType("round");
-    obj.rectangle37:setName("rectangle37");
+    obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle40:setParent(obj.LayoutProfissaoPrincipal);
+    obj.rectangle40:setLeft(245);
+    obj.rectangle40:setTop(201);
+    obj.rectangle40:setWidth(27);
+    obj.rectangle40:setHeight(15);
+    obj.rectangle40:setColor("white");
+    obj.rectangle40:setXradius(7);
+    obj.rectangle40:setYradius(7);
+    obj.rectangle40:setCornerType("round");
+    obj.rectangle40:setName("rectangle40");
 
     obj.TierPrincipal = GUI.fromHandle(_obj_newObject("edit"));
     obj.TierPrincipal:setParent(obj.LayoutProfissaoPrincipal);
@@ -1452,17 +1502,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle38:setParent(obj.LayoutProfissaoPrincipal);
-    obj.rectangle38:setLeft(325);
-    obj.rectangle38:setTop(201);
-    obj.rectangle38:setWidth(80);
-    obj.rectangle38:setHeight(15);
-    obj.rectangle38:setColor("white");
-    obj.rectangle38:setXradius(7);
-    obj.rectangle38:setYradius(7);
-    obj.rectangle38:setCornerType("round");
-    obj.rectangle38:setName("rectangle38");
+    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle41:setParent(obj.LayoutProfissaoPrincipal);
+    obj.rectangle41:setLeft(325);
+    obj.rectangle41:setTop(201);
+    obj.rectangle41:setWidth(80);
+    obj.rectangle41:setHeight(15);
+    obj.rectangle41:setColor("white");
+    obj.rectangle41:setXradius(7);
+    obj.rectangle41:setYradius(7);
+    obj.rectangle41:setCornerType("round");
+    obj.rectangle41:setName("rectangle41");
 
     obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.LayoutProfissaoPrincipal);
@@ -1516,17 +1566,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle39:setParent(obj.LayoutProfissaoPrincipal);
-    obj.rectangle39:setLeft(129);
-    obj.rectangle39:setTop(228);
-    obj.rectangle39:setWidth(143);
-    obj.rectangle39:setHeight(17);
-    obj.rectangle39:setColor("white");
-    obj.rectangle39:setXradius(7);
-    obj.rectangle39:setYradius(7);
-    obj.rectangle39:setCornerType("round");
-    obj.rectangle39:setName("rectangle39");
+    obj.rectangle42 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle42:setParent(obj.LayoutProfissaoPrincipal);
+    obj.rectangle42:setLeft(129);
+    obj.rectangle42:setTop(228);
+    obj.rectangle42:setWidth(143);
+    obj.rectangle42:setHeight(17);
+    obj.rectangle42:setColor("white");
+    obj.rectangle42:setXradius(7);
+    obj.rectangle42:setYradius(7);
+    obj.rectangle42:setCornerType("round");
+    obj.rectangle42:setName("rectangle42");
 
     obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.LayoutProfissaoPrincipal);
@@ -1553,17 +1603,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle40:setParent(obj.LayoutProfissaoPrincipal);
-    obj.rectangle40:setLeft(355);
-    obj.rectangle40:setTop(228);
-    obj.rectangle40:setWidth(160);
-    obj.rectangle40:setHeight(17);
-    obj.rectangle40:setColor("white");
-    obj.rectangle40:setXradius(7);
-    obj.rectangle40:setYradius(7);
-    obj.rectangle40:setCornerType("round");
-    obj.rectangle40:setName("rectangle40");
+    obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle43:setParent(obj.LayoutProfissaoPrincipal);
+    obj.rectangle43:setLeft(355);
+    obj.rectangle43:setTop(228);
+    obj.rectangle43:setWidth(160);
+    obj.rectangle43:setHeight(17);
+    obj.rectangle43:setColor("white");
+    obj.rectangle43:setXradius(7);
+    obj.rectangle43:setYradius(7);
+    obj.rectangle43:setCornerType("round");
+    obj.rectangle43:setName("rectangle43");
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.LayoutProfissaoPrincipal);
@@ -1618,23 +1668,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AbaProfissaoSecundaria:setHeight(1800);
     obj.AbaProfissaoSecundaria:setVisible(false);
 
-    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle41:setParent(obj.AbaProfissaoSecundaria);
-    obj.rectangle41:setLeft(665);
-    obj.rectangle41:setTop(22);
-    obj.rectangle41:setWidth(608);
-    obj.rectangle41:setHeight(525);
-    obj.rectangle41:setColor("#4169E1");
-    obj.rectangle41:setName("rectangle41");
+    obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle44:setParent(obj.AbaProfissaoSecundaria);
+    obj.rectangle44:setLeft(665);
+    obj.rectangle44:setTop(22);
+    obj.rectangle44:setWidth(608);
+    obj.rectangle44:setHeight(525);
+    obj.rectangle44:setColor("#4169E1");
+    obj.rectangle44:setName("rectangle44");
 
-    obj.rectangle42 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle42:setParent(obj.AbaProfissaoSecundaria);
-    obj.rectangle42:setLeft(667);
-    obj.rectangle42:setTop(24);
-    obj.rectangle42:setWidth(604);
-    obj.rectangle42:setHeight(521);
-    obj.rectangle42:setColor("black");
-    obj.rectangle42:setName("rectangle42");
+    obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle45:setParent(obj.AbaProfissaoSecundaria);
+    obj.rectangle45:setLeft(667);
+    obj.rectangle45:setTop(24);
+    obj.rectangle45:setWidth(604);
+    obj.rectangle45:setHeight(521);
+    obj.rectangle45:setColor("black");
+    obj.rectangle45:setName("rectangle45");
 
     obj.tabControl3 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl3:setParent(obj.AbaProfissaoSecundaria);
@@ -1711,17 +1761,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle43:setParent(obj.LayoutProfissaoSecundaria);
-    obj.rectangle43:setLeft(245);
-    obj.rectangle43:setTop(201);
-    obj.rectangle43:setWidth(27);
-    obj.rectangle43:setHeight(15);
-    obj.rectangle43:setColor("white");
-    obj.rectangle43:setXradius(7);
-    obj.rectangle43:setYradius(7);
-    obj.rectangle43:setCornerType("round");
-    obj.rectangle43:setName("rectangle43");
+    obj.rectangle46 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle46:setParent(obj.LayoutProfissaoSecundaria);
+    obj.rectangle46:setLeft(245);
+    obj.rectangle46:setTop(201);
+    obj.rectangle46:setWidth(27);
+    obj.rectangle46:setHeight(15);
+    obj.rectangle46:setColor("white");
+    obj.rectangle46:setXradius(7);
+    obj.rectangle46:setYradius(7);
+    obj.rectangle46:setCornerType("round");
+    obj.rectangle46:setName("rectangle46");
 
     obj.TierSecundaria = GUI.fromHandle(_obj_newObject("edit"));
     obj.TierSecundaria:setParent(obj.LayoutProfissaoSecundaria);
@@ -1749,17 +1799,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
-    obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle44:setParent(obj.LayoutProfissaoSecundaria);
-    obj.rectangle44:setLeft(325);
-    obj.rectangle44:setTop(201);
-    obj.rectangle44:setWidth(80);
-    obj.rectangle44:setHeight(15);
-    obj.rectangle44:setColor("white");
-    obj.rectangle44:setXradius(7);
-    obj.rectangle44:setYradius(7);
-    obj.rectangle44:setCornerType("round");
-    obj.rectangle44:setName("rectangle44");
+    obj.rectangle47 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle47:setParent(obj.LayoutProfissaoSecundaria);
+    obj.rectangle47:setLeft(325);
+    obj.rectangle47:setTop(201);
+    obj.rectangle47:setWidth(80);
+    obj.rectangle47:setHeight(15);
+    obj.rectangle47:setColor("white");
+    obj.rectangle47:setXradius(7);
+    obj.rectangle47:setYradius(7);
+    obj.rectangle47:setCornerType("round");
+    obj.rectangle47:setName("rectangle47");
 
     obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.LayoutProfissaoSecundaria);
@@ -1813,17 +1863,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
-    obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle45:setParent(obj.LayoutProfissaoSecundaria);
-    obj.rectangle45:setLeft(129);
-    obj.rectangle45:setTop(228);
-    obj.rectangle45:setWidth(143);
-    obj.rectangle45:setHeight(17);
-    obj.rectangle45:setColor("white");
-    obj.rectangle45:setXradius(7);
-    obj.rectangle45:setYradius(7);
-    obj.rectangle45:setCornerType("round");
-    obj.rectangle45:setName("rectangle45");
+    obj.rectangle48 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle48:setParent(obj.LayoutProfissaoSecundaria);
+    obj.rectangle48:setLeft(129);
+    obj.rectangle48:setTop(228);
+    obj.rectangle48:setWidth(143);
+    obj.rectangle48:setHeight(17);
+    obj.rectangle48:setColor("white");
+    obj.rectangle48:setXradius(7);
+    obj.rectangle48:setYradius(7);
+    obj.rectangle48:setCornerType("round");
+    obj.rectangle48:setName("rectangle48");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.LayoutProfissaoSecundaria);
@@ -1850,17 +1900,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label24:setHorzTextAlign("center");
     obj.label24:setName("label24");
 
-    obj.rectangle46 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle46:setParent(obj.LayoutProfissaoSecundaria);
-    obj.rectangle46:setLeft(355);
-    obj.rectangle46:setTop(228);
-    obj.rectangle46:setWidth(160);
-    obj.rectangle46:setHeight(17);
-    obj.rectangle46:setColor("white");
-    obj.rectangle46:setXradius(7);
-    obj.rectangle46:setYradius(7);
-    obj.rectangle46:setCornerType("round");
-    obj.rectangle46:setName("rectangle46");
+    obj.rectangle49 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle49:setParent(obj.LayoutProfissaoSecundaria);
+    obj.rectangle49:setLeft(355);
+    obj.rectangle49:setTop(228);
+    obj.rectangle49:setWidth(160);
+    obj.rectangle49:setHeight(17);
+    obj.rectangle49:setColor("white");
+    obj.rectangle49:setXradius(7);
+    obj.rectangle49:setYradius(7);
+    obj.rectangle49:setCornerType("round");
+    obj.rectangle49:setName("rectangle49");
 
     obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.LayoutProfissaoSecundaria);
@@ -1915,23 +1965,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AbaRaca:setHeight(1800);
     obj.AbaRaca:setVisible(false);
 
-    obj.rectangle47 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle47:setParent(obj.AbaRaca);
-    obj.rectangle47:setLeft(665);
-    obj.rectangle47:setTop(22);
-    obj.rectangle47:setWidth(608);
-    obj.rectangle47:setHeight(525);
-    obj.rectangle47:setColor("#4169E1");
-    obj.rectangle47:setName("rectangle47");
+    obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle50:setParent(obj.AbaRaca);
+    obj.rectangle50:setLeft(665);
+    obj.rectangle50:setTop(22);
+    obj.rectangle50:setWidth(608);
+    obj.rectangle50:setHeight(525);
+    obj.rectangle50:setColor("#4169E1");
+    obj.rectangle50:setName("rectangle50");
 
-    obj.rectangle48 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle48:setParent(obj.AbaRaca);
-    obj.rectangle48:setLeft(667);
-    obj.rectangle48:setTop(24);
-    obj.rectangle48:setWidth(604);
-    obj.rectangle48:setHeight(521);
-    obj.rectangle48:setColor("black");
-    obj.rectangle48:setName("rectangle48");
+    obj.rectangle51 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle51:setParent(obj.AbaRaca);
+    obj.rectangle51:setLeft(667);
+    obj.rectangle51:setTop(24);
+    obj.rectangle51:setWidth(604);
+    obj.rectangle51:setHeight(521);
+    obj.rectangle51:setColor("black");
+    obj.rectangle51:setName("rectangle51");
 
     obj.tabControl4 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl4:setParent(obj.AbaRaca);
@@ -2002,8 +2052,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.DescricaoRacial.defaultFontColor = "white";
     obj.DescricaoRacial:setField("");
     obj.DescricaoRacial.animateImages = true;
-    obj.DescricaoRacial.readOnly = false;
-    obj.DescricaoRacial.showToolbar = true;
+    obj.DescricaoRacial.readOnly = true;
+    obj.DescricaoRacial.showToolbar = false;
 
     obj.tab7 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab7:setParent(obj.tabControl4);
@@ -2028,23 +2078,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AbaHistoria:setHeight(1800);
     obj.AbaHistoria:setVisible(false);
 
-    obj.rectangle49 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle49:setParent(obj.AbaHistoria);
-    obj.rectangle49:setLeft(0);
-    obj.rectangle49:setTop(22);
-    obj.rectangle49:setWidth(608);
-    obj.rectangle49:setHeight(525);
-    obj.rectangle49:setColor("#4169E1");
-    obj.rectangle49:setName("rectangle49");
+    obj.rectangle52 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle52:setParent(obj.AbaHistoria);
+    obj.rectangle52:setLeft(0);
+    obj.rectangle52:setTop(22);
+    obj.rectangle52:setWidth(608);
+    obj.rectangle52:setHeight(525);
+    obj.rectangle52:setColor("#4169E1");
+    obj.rectangle52:setName("rectangle52");
 
-    obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle50:setParent(obj.AbaHistoria);
-    obj.rectangle50:setLeft(2);
-    obj.rectangle50:setTop(24);
-    obj.rectangle50:setWidth(604);
-    obj.rectangle50:setHeight(521);
-    obj.rectangle50:setColor("black");
-    obj.rectangle50:setName("rectangle50");
+    obj.rectangle53 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle53:setParent(obj.AbaHistoria);
+    obj.rectangle53:setLeft(2);
+    obj.rectangle53:setTop(24);
+    obj.rectangle53:setWidth(604);
+    obj.rectangle53:setHeight(521);
+    obj.rectangle53:setColor("black");
+    obj.rectangle53:setName("rectangle53");
 
     obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.AbaHistoria);
@@ -2079,10 +2129,6 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.editHistoria:setField("Historia");
     obj.editHistoria.animateImages = true;
 
-    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.layout5);
-    obj.button6:setName("button6");
-
     obj.AbaAnotacoes = GUI.fromHandle(_obj_newObject("layout"));
     obj.AbaAnotacoes:setParent(obj.layout1);
     obj.AbaAnotacoes:setName("AbaAnotacoes");
@@ -2092,23 +2138,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AbaAnotacoes:setHeight(1800);
     obj.AbaAnotacoes:setVisible(false);
 
-    obj.rectangle51 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle51:setParent(obj.AbaAnotacoes);
-    obj.rectangle51:setLeft(0);
-    obj.rectangle51:setTop(22);
-    obj.rectangle51:setWidth(608);
-    obj.rectangle51:setHeight(525);
-    obj.rectangle51:setColor("#4169E1");
-    obj.rectangle51:setName("rectangle51");
+    obj.rectangle54 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle54:setParent(obj.AbaAnotacoes);
+    obj.rectangle54:setLeft(0);
+    obj.rectangle54:setTop(22);
+    obj.rectangle54:setWidth(608);
+    obj.rectangle54:setHeight(525);
+    obj.rectangle54:setColor("#4169E1");
+    obj.rectangle54:setName("rectangle54");
 
-    obj.rectangle52 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle52:setParent(obj.AbaAnotacoes);
-    obj.rectangle52:setLeft(2);
-    obj.rectangle52:setTop(24);
-    obj.rectangle52:setWidth(604);
-    obj.rectangle52:setHeight(521);
-    obj.rectangle52:setColor("black");
-    obj.rectangle52:setName("rectangle52");
+    obj.rectangle55 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle55:setParent(obj.AbaAnotacoes);
+    obj.rectangle55:setLeft(2);
+    obj.rectangle55:setTop(24);
+    obj.rectangle55:setWidth(604);
+    obj.rectangle55:setHeight(521);
+    obj.rectangle55:setColor("black");
+    obj.rectangle55:setName("rectangle55");
 
     obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.AbaAnotacoes);
@@ -2247,14 +2293,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.Atributos:setTitle("Brincadeiras Em Alto Mar");
     obj.Atributos:setName("Atributos");
 
-    obj.rectangle53 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle53:setParent(obj.Atributos);
-    obj.rectangle53:setLeft(0);
-    obj.rectangle53:setTop(0);
-    obj.rectangle53:setWidth(10000);
-    obj.rectangle53:setHeight(10000);
-    obj.rectangle53:setColor("black");
-    obj.rectangle53:setName("rectangle53");
+    obj.rectangle56 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle56:setParent(obj.Atributos);
+    obj.rectangle56:setLeft(0);
+    obj.rectangle56:setTop(0);
+    obj.rectangle56:setWidth(10000);
+    obj.rectangle56:setHeight(10000);
+    obj.rectangle56:setColor("black");
+    obj.rectangle56:setName("rectangle56");
 
 	
 		function AlterarValorTotal(valor)
@@ -2336,7 +2382,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 			sheet.PontosDistribuidos = tostring(forcaBase + agilidadeBase + vigorBase + combateBase + percepcaoBase + carismaBase + inteligenciaBase + precisaoBase + forcaDeVontadeBase - 9)
 			
 			-- Cálculo da defesa
-			sheet.Defesa = tostring(math.floor((tonumber(sheet.VigorBase) or 0) / 2))
+			sheet.Defesa = tostring(math.floor((tonumber(sheet.VigorTotal) or 0) / 2))
 			
 		end
 		
@@ -2347,8 +2393,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 		end
 
 		function CalcularHpEngHaki()
-			sheet.hp = ((sheet.VigorTotal or 0) * 7) + 45 + (5 * (sheet.nivel or 0))
-			sheet.eng = ((sheet.VigorTotal or 0) * 7) + 57 + (5 * (sheet.nivel or 0))
+			sheet.hp = ((sheet.VigorTotal or 0) * 7) + 50 + (5 * (sheet.nivel or 0))
+			sheet.eng = ((sheet.VigorTotal or 0) * 7) + 62 + (5 * (sheet.nivel or 0))
 			
 			if ((sheet.ForcaDeVontadeTotal or 0) >= 20) then 
 				sheet.haki = (sheet.ForcaDeVontadeTotal or 0) * 5 
@@ -2364,9 +2410,11 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 			if (valor == "Percepcao") then valor = "Percepção" end
 			if (valor == "Inteligencia") then valor = "Inteligência" end
 	
+			if (valor == "Rei") then mesas[1].chat:rolarDados("1d20 + " .. sheet.ForcaDeVontadeTotal + sheet.tierConquistador, "Haki do Rei") else
 			local mesas = Firecast.getRooms();
 			if (valor == "Defesa") then mesas[1].chat:rolarDados("1d20 + " .. sheet.Defesa, "Teste de ".. valor) else
 			                            mesas[1].chat:rolarDados("1d20 + " .. sheet[valorTotal], "Teste de ".. valor) end
+			end
 	end
 	
 
@@ -2379,23 +2427,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.layout7:setHeight(5250);
     obj.layout7:setName("layout7");
 
-    obj.rectangle54 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle54:setParent(obj.layout7);
-    obj.rectangle54:setLeft(0);
-    obj.rectangle54:setTop(0);
-    obj.rectangle54:setWidth(430);
-    obj.rectangle54:setHeight(525);
-    obj.rectangle54:setColor("#4169E1");
-    obj.rectangle54:setName("rectangle54");
+    obj.rectangle57 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle57:setParent(obj.layout7);
+    obj.rectangle57:setLeft(0);
+    obj.rectangle57:setTop(0);
+    obj.rectangle57:setWidth(430);
+    obj.rectangle57:setHeight(525);
+    obj.rectangle57:setColor("#4169E1");
+    obj.rectangle57:setName("rectangle57");
 
-    obj.rectangle55 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle55:setParent(obj.layout7);
-    obj.rectangle55:setLeft(2);
-    obj.rectangle55:setTop(2);
-    obj.rectangle55:setWidth(426);
-    obj.rectangle55:setHeight(521);
-    obj.rectangle55:setColor("black");
-    obj.rectangle55:setName("rectangle55");
+    obj.rectangle58 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle58:setParent(obj.layout7);
+    obj.rectangle58:setLeft(2);
+    obj.rectangle58:setTop(2);
+    obj.rectangle58:setWidth(426);
+    obj.rectangle58:setHeight(521);
+    obj.rectangle58:setColor("black");
+    obj.rectangle58:setName("rectangle58");
 
     obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout7);
@@ -2547,17 +2595,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForDVonButton:setText("Força de Vontade");
     obj.ForDVonButton:setWidth(110);
 
-    obj.rectangle56 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle56:setParent(obj.layout7);
-    obj.rectangle56:setLeft(130);
-    obj.rectangle56:setTop(79);
-    obj.rectangle56:setWidth(45);
-    obj.rectangle56:setHeight(24);
-    obj.rectangle56:setColor("#F5F5DC");
-    obj.rectangle56:setXradius(7);
-    obj.rectangle56:setYradius(7);
-    obj.rectangle56:setCornerType("round");
-    obj.rectangle56:setName("rectangle56");
+    obj.rectangle59 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle59:setParent(obj.layout7);
+    obj.rectangle59:setLeft(130);
+    obj.rectangle59:setTop(79);
+    obj.rectangle59:setWidth(45);
+    obj.rectangle59:setHeight(24);
+    obj.rectangle59:setColor("#F5F5DC");
+    obj.rectangle59:setXradius(7);
+    obj.rectangle59:setYradius(7);
+    obj.rectangle59:setCornerType("round");
+    obj.rectangle59:setName("rectangle59");
 
     obj.ForcaBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaBase:setParent(obj.layout7);
@@ -2574,17 +2622,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaBase:setType("number");
     lfm_setPropAsString(obj.ForcaBase, "fontStyle", "bold");
 
-    obj.rectangle57 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle57:setParent(obj.layout7);
-    obj.rectangle57:setLeft(130);
-    obj.rectangle57:setTop(109);
-    obj.rectangle57:setWidth(45);
-    obj.rectangle57:setHeight(24);
-    obj.rectangle57:setColor("#F5F5DC");
-    obj.rectangle57:setXradius(7);
-    obj.rectangle57:setYradius(7);
-    obj.rectangle57:setCornerType("round");
-    obj.rectangle57:setName("rectangle57");
+    obj.rectangle60 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle60:setParent(obj.layout7);
+    obj.rectangle60:setLeft(130);
+    obj.rectangle60:setTop(109);
+    obj.rectangle60:setWidth(45);
+    obj.rectangle60:setHeight(24);
+    obj.rectangle60:setColor("#F5F5DC");
+    obj.rectangle60:setXradius(7);
+    obj.rectangle60:setYradius(7);
+    obj.rectangle60:setCornerType("round");
+    obj.rectangle60:setName("rectangle60");
 
     obj.AgilidadeBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.AgilidadeBase:setParent(obj.layout7);
@@ -2601,17 +2649,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AgilidadeBase:setType("number");
     lfm_setPropAsString(obj.AgilidadeBase, "fontStyle", "bold");
 
-    obj.rectangle58 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle58:setParent(obj.layout7);
-    obj.rectangle58:setLeft(130);
-    obj.rectangle58:setTop(139);
-    obj.rectangle58:setWidth(45);
-    obj.rectangle58:setHeight(24);
-    obj.rectangle58:setColor("#F5F5DC");
-    obj.rectangle58:setXradius(7);
-    obj.rectangle58:setYradius(7);
-    obj.rectangle58:setCornerType("round");
-    obj.rectangle58:setName("rectangle58");
+    obj.rectangle61 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle61:setParent(obj.layout7);
+    obj.rectangle61:setLeft(130);
+    obj.rectangle61:setTop(139);
+    obj.rectangle61:setWidth(45);
+    obj.rectangle61:setHeight(24);
+    obj.rectangle61:setColor("#F5F5DC");
+    obj.rectangle61:setXradius(7);
+    obj.rectangle61:setYradius(7);
+    obj.rectangle61:setCornerType("round");
+    obj.rectangle61:setName("rectangle61");
 
     obj.VigorBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.VigorBase:setParent(obj.layout7);
@@ -2628,17 +2676,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.VigorBase:setType("number");
     lfm_setPropAsString(obj.VigorBase, "fontStyle", "bold");
 
-    obj.rectangle59 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle59:setParent(obj.layout7);
-    obj.rectangle59:setLeft(130);
-    obj.rectangle59:setTop(169);
-    obj.rectangle59:setWidth(45);
-    obj.rectangle59:setHeight(24);
-    obj.rectangle59:setColor("#F5F5DC");
-    obj.rectangle59:setXradius(7);
-    obj.rectangle59:setYradius(7);
-    obj.rectangle59:setCornerType("round");
-    obj.rectangle59:setName("rectangle59");
+    obj.rectangle62 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle62:setParent(obj.layout7);
+    obj.rectangle62:setLeft(130);
+    obj.rectangle62:setTop(169);
+    obj.rectangle62:setWidth(45);
+    obj.rectangle62:setHeight(24);
+    obj.rectangle62:setColor("#F5F5DC");
+    obj.rectangle62:setXradius(7);
+    obj.rectangle62:setYradius(7);
+    obj.rectangle62:setCornerType("round");
+    obj.rectangle62:setName("rectangle62");
 
     obj.CombateBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.CombateBase:setParent(obj.layout7);
@@ -2655,17 +2703,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CombateBase:setType("number");
     lfm_setPropAsString(obj.CombateBase, "fontStyle", "bold");
 
-    obj.rectangle60 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle60:setParent(obj.layout7);
-    obj.rectangle60:setLeft(130);
-    obj.rectangle60:setTop(199);
-    obj.rectangle60:setWidth(45);
-    obj.rectangle60:setHeight(24);
-    obj.rectangle60:setColor("#F5F5DC");
-    obj.rectangle60:setXradius(7);
-    obj.rectangle60:setYradius(7);
-    obj.rectangle60:setCornerType("round");
-    obj.rectangle60:setName("rectangle60");
+    obj.rectangle63 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle63:setParent(obj.layout7);
+    obj.rectangle63:setLeft(130);
+    obj.rectangle63:setTop(199);
+    obj.rectangle63:setWidth(45);
+    obj.rectangle63:setHeight(24);
+    obj.rectangle63:setColor("#F5F5DC");
+    obj.rectangle63:setXradius(7);
+    obj.rectangle63:setYradius(7);
+    obj.rectangle63:setCornerType("round");
+    obj.rectangle63:setName("rectangle63");
 
     obj.PercepcaoBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.PercepcaoBase:setParent(obj.layout7);
@@ -2682,17 +2730,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PercepcaoBase:setType("number");
     lfm_setPropAsString(obj.PercepcaoBase, "fontStyle", "bold");
 
-    obj.rectangle61 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle61:setParent(obj.layout7);
-    obj.rectangle61:setLeft(130);
-    obj.rectangle61:setTop(229);
-    obj.rectangle61:setWidth(45);
-    obj.rectangle61:setHeight(24);
-    obj.rectangle61:setColor("#F5F5DC");
-    obj.rectangle61:setXradius(7);
-    obj.rectangle61:setYradius(7);
-    obj.rectangle61:setCornerType("round");
-    obj.rectangle61:setName("rectangle61");
+    obj.rectangle64 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle64:setParent(obj.layout7);
+    obj.rectangle64:setLeft(130);
+    obj.rectangle64:setTop(229);
+    obj.rectangle64:setWidth(45);
+    obj.rectangle64:setHeight(24);
+    obj.rectangle64:setColor("#F5F5DC");
+    obj.rectangle64:setXradius(7);
+    obj.rectangle64:setYradius(7);
+    obj.rectangle64:setCornerType("round");
+    obj.rectangle64:setName("rectangle64");
 
     obj.CarismaBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.CarismaBase:setParent(obj.layout7);
@@ -2709,17 +2757,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CarismaBase:setType("number");
     lfm_setPropAsString(obj.CarismaBase, "fontStyle", "bold");
 
-    obj.rectangle62 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle62:setParent(obj.layout7);
-    obj.rectangle62:setLeft(130);
-    obj.rectangle62:setTop(259);
-    obj.rectangle62:setWidth(45);
-    obj.rectangle62:setHeight(24);
-    obj.rectangle62:setColor("#F5F5DC");
-    obj.rectangle62:setXradius(7);
-    obj.rectangle62:setYradius(7);
-    obj.rectangle62:setCornerType("round");
-    obj.rectangle62:setName("rectangle62");
+    obj.rectangle65 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle65:setParent(obj.layout7);
+    obj.rectangle65:setLeft(130);
+    obj.rectangle65:setTop(259);
+    obj.rectangle65:setWidth(45);
+    obj.rectangle65:setHeight(24);
+    obj.rectangle65:setColor("#F5F5DC");
+    obj.rectangle65:setXradius(7);
+    obj.rectangle65:setYradius(7);
+    obj.rectangle65:setCornerType("round");
+    obj.rectangle65:setName("rectangle65");
 
     obj.InteligenciaBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.InteligenciaBase:setParent(obj.layout7);
@@ -2736,17 +2784,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.InteligenciaBase:setType("number");
     lfm_setPropAsString(obj.InteligenciaBase, "fontStyle", "bold");
 
-    obj.rectangle63 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle63:setParent(obj.layout7);
-    obj.rectangle63:setLeft(130);
-    obj.rectangle63:setTop(289);
-    obj.rectangle63:setWidth(45);
-    obj.rectangle63:setHeight(24);
-    obj.rectangle63:setColor("#F5F5DC");
-    obj.rectangle63:setXradius(7);
-    obj.rectangle63:setYradius(7);
-    obj.rectangle63:setCornerType("round");
-    obj.rectangle63:setName("rectangle63");
+    obj.rectangle66 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle66:setParent(obj.layout7);
+    obj.rectangle66:setLeft(130);
+    obj.rectangle66:setTop(289);
+    obj.rectangle66:setWidth(45);
+    obj.rectangle66:setHeight(24);
+    obj.rectangle66:setColor("#F5F5DC");
+    obj.rectangle66:setXradius(7);
+    obj.rectangle66:setYradius(7);
+    obj.rectangle66:setCornerType("round");
+    obj.rectangle66:setName("rectangle66");
 
     obj.PrecisaoBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.PrecisaoBase:setParent(obj.layout7);
@@ -2763,17 +2811,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PrecisaoBase:setType("number");
     lfm_setPropAsString(obj.PrecisaoBase, "fontStyle", "bold");
 
-    obj.rectangle64 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle64:setParent(obj.layout7);
-    obj.rectangle64:setLeft(130);
-    obj.rectangle64:setTop(319);
-    obj.rectangle64:setWidth(45);
-    obj.rectangle64:setHeight(24);
-    obj.rectangle64:setColor("#F5F5DC");
-    obj.rectangle64:setXradius(7);
-    obj.rectangle64:setYradius(7);
-    obj.rectangle64:setCornerType("round");
-    obj.rectangle64:setName("rectangle64");
+    obj.rectangle67 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle67:setParent(obj.layout7);
+    obj.rectangle67:setLeft(130);
+    obj.rectangle67:setTop(319);
+    obj.rectangle67:setWidth(45);
+    obj.rectangle67:setHeight(24);
+    obj.rectangle67:setColor("#F5F5DC");
+    obj.rectangle67:setXradius(7);
+    obj.rectangle67:setYradius(7);
+    obj.rectangle67:setCornerType("round");
+    obj.rectangle67:setName("rectangle67");
 
     obj.ForcaDeVontadeBase = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaDeVontadeBase:setParent(obj.layout7);
@@ -2790,17 +2838,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaDeVontadeBase:setType("number");
     lfm_setPropAsString(obj.ForcaDeVontadeBase, "fontStyle", "bold");
 
-    obj.rectangle65 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle65:setParent(obj.layout7);
-    obj.rectangle65:setLeft(190);
-    obj.rectangle65:setTop(79);
-    obj.rectangle65:setWidth(45);
-    obj.rectangle65:setHeight(24);
-    obj.rectangle65:setColor("#F5F5DC");
-    obj.rectangle65:setXradius(7);
-    obj.rectangle65:setYradius(7);
-    obj.rectangle65:setCornerType("round");
-    obj.rectangle65:setName("rectangle65");
+    obj.rectangle68 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle68:setParent(obj.layout7);
+    obj.rectangle68:setLeft(190);
+    obj.rectangle68:setTop(79);
+    obj.rectangle68:setWidth(45);
+    obj.rectangle68:setHeight(24);
+    obj.rectangle68:setColor("#F5F5DC");
+    obj.rectangle68:setXradius(7);
+    obj.rectangle68:setYradius(7);
+    obj.rectangle68:setCornerType("round");
+    obj.rectangle68:setName("rectangle68");
 
     obj.ForcaPassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaPassivo:setParent(obj.layout7);
@@ -2817,17 +2865,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaPassivo:setType("number");
     lfm_setPropAsString(obj.ForcaPassivo, "fontStyle", "bold");
 
-    obj.rectangle66 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle66:setParent(obj.layout7);
-    obj.rectangle66:setLeft(190);
-    obj.rectangle66:setTop(109);
-    obj.rectangle66:setWidth(45);
-    obj.rectangle66:setHeight(24);
-    obj.rectangle66:setColor("#F5F5DC");
-    obj.rectangle66:setXradius(7);
-    obj.rectangle66:setYradius(7);
-    obj.rectangle66:setCornerType("round");
-    obj.rectangle66:setName("rectangle66");
+    obj.rectangle69 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle69:setParent(obj.layout7);
+    obj.rectangle69:setLeft(190);
+    obj.rectangle69:setTop(109);
+    obj.rectangle69:setWidth(45);
+    obj.rectangle69:setHeight(24);
+    obj.rectangle69:setColor("#F5F5DC");
+    obj.rectangle69:setXradius(7);
+    obj.rectangle69:setYradius(7);
+    obj.rectangle69:setCornerType("round");
+    obj.rectangle69:setName("rectangle69");
 
     obj.AgilidadePassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.AgilidadePassivo:setParent(obj.layout7);
@@ -2844,17 +2892,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AgilidadePassivo:setType("number");
     lfm_setPropAsString(obj.AgilidadePassivo, "fontStyle", "bold");
 
-    obj.rectangle67 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle67:setParent(obj.layout7);
-    obj.rectangle67:setLeft(190);
-    obj.rectangle67:setTop(139);
-    obj.rectangle67:setWidth(45);
-    obj.rectangle67:setHeight(24);
-    obj.rectangle67:setColor("#F5F5DC");
-    obj.rectangle67:setXradius(7);
-    obj.rectangle67:setYradius(7);
-    obj.rectangle67:setCornerType("round");
-    obj.rectangle67:setName("rectangle67");
+    obj.rectangle70 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle70:setParent(obj.layout7);
+    obj.rectangle70:setLeft(190);
+    obj.rectangle70:setTop(139);
+    obj.rectangle70:setWidth(45);
+    obj.rectangle70:setHeight(24);
+    obj.rectangle70:setColor("#F5F5DC");
+    obj.rectangle70:setXradius(7);
+    obj.rectangle70:setYradius(7);
+    obj.rectangle70:setCornerType("round");
+    obj.rectangle70:setName("rectangle70");
 
     obj.VigorPassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.VigorPassivo:setParent(obj.layout7);
@@ -2871,17 +2919,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.VigorPassivo:setType("number");
     lfm_setPropAsString(obj.VigorPassivo, "fontStyle", "bold");
 
-    obj.rectangle68 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle68:setParent(obj.layout7);
-    obj.rectangle68:setLeft(190);
-    obj.rectangle68:setTop(169);
-    obj.rectangle68:setWidth(45);
-    obj.rectangle68:setHeight(24);
-    obj.rectangle68:setColor("#F5F5DC");
-    obj.rectangle68:setXradius(7);
-    obj.rectangle68:setYradius(7);
-    obj.rectangle68:setCornerType("round");
-    obj.rectangle68:setName("rectangle68");
+    obj.rectangle71 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle71:setParent(obj.layout7);
+    obj.rectangle71:setLeft(190);
+    obj.rectangle71:setTop(169);
+    obj.rectangle71:setWidth(45);
+    obj.rectangle71:setHeight(24);
+    obj.rectangle71:setColor("#F5F5DC");
+    obj.rectangle71:setXradius(7);
+    obj.rectangle71:setYradius(7);
+    obj.rectangle71:setCornerType("round");
+    obj.rectangle71:setName("rectangle71");
 
     obj.CombatePassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.CombatePassivo:setParent(obj.layout7);
@@ -2898,17 +2946,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CombatePassivo:setType("number");
     lfm_setPropAsString(obj.CombatePassivo, "fontStyle", "bold");
 
-    obj.rectangle69 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle69:setParent(obj.layout7);
-    obj.rectangle69:setLeft(190);
-    obj.rectangle69:setTop(199);
-    obj.rectangle69:setWidth(45);
-    obj.rectangle69:setHeight(24);
-    obj.rectangle69:setColor("#F5F5DC");
-    obj.rectangle69:setXradius(7);
-    obj.rectangle69:setYradius(7);
-    obj.rectangle69:setCornerType("round");
-    obj.rectangle69:setName("rectangle69");
+    obj.rectangle72 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle72:setParent(obj.layout7);
+    obj.rectangle72:setLeft(190);
+    obj.rectangle72:setTop(199);
+    obj.rectangle72:setWidth(45);
+    obj.rectangle72:setHeight(24);
+    obj.rectangle72:setColor("#F5F5DC");
+    obj.rectangle72:setXradius(7);
+    obj.rectangle72:setYradius(7);
+    obj.rectangle72:setCornerType("round");
+    obj.rectangle72:setName("rectangle72");
 
     obj.PercepcaoPassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.PercepcaoPassivo:setParent(obj.layout7);
@@ -2925,17 +2973,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PercepcaoPassivo:setType("number");
     lfm_setPropAsString(obj.PercepcaoPassivo, "fontStyle", "bold");
 
-    obj.rectangle70 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle70:setParent(obj.layout7);
-    obj.rectangle70:setLeft(190);
-    obj.rectangle70:setTop(229);
-    obj.rectangle70:setWidth(45);
-    obj.rectangle70:setHeight(24);
-    obj.rectangle70:setColor("#F5F5DC");
-    obj.rectangle70:setXradius(7);
-    obj.rectangle70:setYradius(7);
-    obj.rectangle70:setCornerType("round");
-    obj.rectangle70:setName("rectangle70");
+    obj.rectangle73 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle73:setParent(obj.layout7);
+    obj.rectangle73:setLeft(190);
+    obj.rectangle73:setTop(229);
+    obj.rectangle73:setWidth(45);
+    obj.rectangle73:setHeight(24);
+    obj.rectangle73:setColor("#F5F5DC");
+    obj.rectangle73:setXradius(7);
+    obj.rectangle73:setYradius(7);
+    obj.rectangle73:setCornerType("round");
+    obj.rectangle73:setName("rectangle73");
 
     obj.CarismaPassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.CarismaPassivo:setParent(obj.layout7);
@@ -2952,17 +3000,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CarismaPassivo:setType("number");
     lfm_setPropAsString(obj.CarismaPassivo, "fontStyle", "bold");
 
-    obj.rectangle71 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle71:setParent(obj.layout7);
-    obj.rectangle71:setLeft(190);
-    obj.rectangle71:setTop(259);
-    obj.rectangle71:setWidth(45);
-    obj.rectangle71:setHeight(24);
-    obj.rectangle71:setColor("#F5F5DC");
-    obj.rectangle71:setXradius(7);
-    obj.rectangle71:setYradius(7);
-    obj.rectangle71:setCornerType("round");
-    obj.rectangle71:setName("rectangle71");
+    obj.rectangle74 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle74:setParent(obj.layout7);
+    obj.rectangle74:setLeft(190);
+    obj.rectangle74:setTop(259);
+    obj.rectangle74:setWidth(45);
+    obj.rectangle74:setHeight(24);
+    obj.rectangle74:setColor("#F5F5DC");
+    obj.rectangle74:setXradius(7);
+    obj.rectangle74:setYradius(7);
+    obj.rectangle74:setCornerType("round");
+    obj.rectangle74:setName("rectangle74");
 
     obj.InteligenciaPassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.InteligenciaPassivo:setParent(obj.layout7);
@@ -2979,17 +3027,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.InteligenciaPassivo:setType("number");
     lfm_setPropAsString(obj.InteligenciaPassivo, "fontStyle", "bold");
 
-    obj.rectangle72 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle72:setParent(obj.layout7);
-    obj.rectangle72:setLeft(190);
-    obj.rectangle72:setTop(289);
-    obj.rectangle72:setWidth(45);
-    obj.rectangle72:setHeight(24);
-    obj.rectangle72:setColor("#F5F5DC");
-    obj.rectangle72:setXradius(7);
-    obj.rectangle72:setYradius(7);
-    obj.rectangle72:setCornerType("round");
-    obj.rectangle72:setName("rectangle72");
+    obj.rectangle75 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle75:setParent(obj.layout7);
+    obj.rectangle75:setLeft(190);
+    obj.rectangle75:setTop(289);
+    obj.rectangle75:setWidth(45);
+    obj.rectangle75:setHeight(24);
+    obj.rectangle75:setColor("#F5F5DC");
+    obj.rectangle75:setXradius(7);
+    obj.rectangle75:setYradius(7);
+    obj.rectangle75:setCornerType("round");
+    obj.rectangle75:setName("rectangle75");
 
     obj.PrecisaoPassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.PrecisaoPassivo:setParent(obj.layout7);
@@ -3006,17 +3054,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PrecisaoPassivo:setType("number");
     lfm_setPropAsString(obj.PrecisaoPassivo, "fontStyle", "bold");
 
-    obj.rectangle73 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle73:setParent(obj.layout7);
-    obj.rectangle73:setLeft(190);
-    obj.rectangle73:setTop(319);
-    obj.rectangle73:setWidth(45);
-    obj.rectangle73:setHeight(24);
-    obj.rectangle73:setColor("#F5F5DC");
-    obj.rectangle73:setXradius(7);
-    obj.rectangle73:setYradius(7);
-    obj.rectangle73:setCornerType("round");
-    obj.rectangle73:setName("rectangle73");
+    obj.rectangle76 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle76:setParent(obj.layout7);
+    obj.rectangle76:setLeft(190);
+    obj.rectangle76:setTop(319);
+    obj.rectangle76:setWidth(45);
+    obj.rectangle76:setHeight(24);
+    obj.rectangle76:setColor("#F5F5DC");
+    obj.rectangle76:setXradius(7);
+    obj.rectangle76:setYradius(7);
+    obj.rectangle76:setCornerType("round");
+    obj.rectangle76:setName("rectangle76");
 
     obj.ForcaDeVontadePassivo = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaDeVontadePassivo:setParent(obj.layout7);
@@ -3033,17 +3081,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaDeVontadePassivo:setType("number");
     lfm_setPropAsString(obj.ForcaDeVontadePassivo, "fontStyle", "bold");
 
-    obj.rectangle74 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle74:setParent(obj.layout7);
-    obj.rectangle74:setLeft(250);
-    obj.rectangle74:setTop(79);
-    obj.rectangle74:setWidth(45);
-    obj.rectangle74:setHeight(24);
-    obj.rectangle74:setColor("#F5F5DC");
-    obj.rectangle74:setXradius(7);
-    obj.rectangle74:setYradius(7);
-    obj.rectangle74:setCornerType("round");
-    obj.rectangle74:setName("rectangle74");
+    obj.rectangle77 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle77:setParent(obj.layout7);
+    obj.rectangle77:setLeft(250);
+    obj.rectangle77:setTop(79);
+    obj.rectangle77:setWidth(45);
+    obj.rectangle77:setHeight(24);
+    obj.rectangle77:setColor("#F5F5DC");
+    obj.rectangle77:setXradius(7);
+    obj.rectangle77:setYradius(7);
+    obj.rectangle77:setCornerType("round");
+    obj.rectangle77:setName("rectangle77");
 
     obj.ForcaEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaEquips:setParent(obj.layout7);
@@ -3060,17 +3108,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaEquips:setType("number");
     lfm_setPropAsString(obj.ForcaEquips, "fontStyle", "bold");
 
-    obj.rectangle75 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle75:setParent(obj.layout7);
-    obj.rectangle75:setLeft(250);
-    obj.rectangle75:setTop(109);
-    obj.rectangle75:setWidth(45);
-    obj.rectangle75:setHeight(24);
-    obj.rectangle75:setColor("#F5F5DC");
-    obj.rectangle75:setXradius(7);
-    obj.rectangle75:setYradius(7);
-    obj.rectangle75:setCornerType("round");
-    obj.rectangle75:setName("rectangle75");
+    obj.rectangle78 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle78:setParent(obj.layout7);
+    obj.rectangle78:setLeft(250);
+    obj.rectangle78:setTop(109);
+    obj.rectangle78:setWidth(45);
+    obj.rectangle78:setHeight(24);
+    obj.rectangle78:setColor("#F5F5DC");
+    obj.rectangle78:setXradius(7);
+    obj.rectangle78:setYradius(7);
+    obj.rectangle78:setCornerType("round");
+    obj.rectangle78:setName("rectangle78");
 
     obj.AgilidadeEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.AgilidadeEquips:setParent(obj.layout7);
@@ -3087,17 +3135,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AgilidadeEquips:setType("number");
     lfm_setPropAsString(obj.AgilidadeEquips, "fontStyle", "bold");
 
-    obj.rectangle76 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle76:setParent(obj.layout7);
-    obj.rectangle76:setLeft(250);
-    obj.rectangle76:setTop(139);
-    obj.rectangle76:setWidth(45);
-    obj.rectangle76:setHeight(24);
-    obj.rectangle76:setColor("#F5F5DC");
-    obj.rectangle76:setXradius(7);
-    obj.rectangle76:setYradius(7);
-    obj.rectangle76:setCornerType("round");
-    obj.rectangle76:setName("rectangle76");
+    obj.rectangle79 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle79:setParent(obj.layout7);
+    obj.rectangle79:setLeft(250);
+    obj.rectangle79:setTop(139);
+    obj.rectangle79:setWidth(45);
+    obj.rectangle79:setHeight(24);
+    obj.rectangle79:setColor("#F5F5DC");
+    obj.rectangle79:setXradius(7);
+    obj.rectangle79:setYradius(7);
+    obj.rectangle79:setCornerType("round");
+    obj.rectangle79:setName("rectangle79");
 
     obj.VigorEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.VigorEquips:setParent(obj.layout7);
@@ -3114,17 +3162,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.VigorEquips:setType("number");
     lfm_setPropAsString(obj.VigorEquips, "fontStyle", "bold");
 
-    obj.rectangle77 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle77:setParent(obj.layout7);
-    obj.rectangle77:setLeft(250);
-    obj.rectangle77:setTop(169);
-    obj.rectangle77:setWidth(45);
-    obj.rectangle77:setHeight(24);
-    obj.rectangle77:setColor("#F5F5DC");
-    obj.rectangle77:setXradius(7);
-    obj.rectangle77:setYradius(7);
-    obj.rectangle77:setCornerType("round");
-    obj.rectangle77:setName("rectangle77");
+    obj.rectangle80 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle80:setParent(obj.layout7);
+    obj.rectangle80:setLeft(250);
+    obj.rectangle80:setTop(169);
+    obj.rectangle80:setWidth(45);
+    obj.rectangle80:setHeight(24);
+    obj.rectangle80:setColor("#F5F5DC");
+    obj.rectangle80:setXradius(7);
+    obj.rectangle80:setYradius(7);
+    obj.rectangle80:setCornerType("round");
+    obj.rectangle80:setName("rectangle80");
 
     obj.CombateEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.CombateEquips:setParent(obj.layout7);
@@ -3141,17 +3189,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CombateEquips:setType("number");
     lfm_setPropAsString(obj.CombateEquips, "fontStyle", "bold");
 
-    obj.rectangle78 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle78:setParent(obj.layout7);
-    obj.rectangle78:setLeft(250);
-    obj.rectangle78:setTop(199);
-    obj.rectangle78:setWidth(45);
-    obj.rectangle78:setHeight(24);
-    obj.rectangle78:setColor("#F5F5DC");
-    obj.rectangle78:setXradius(7);
-    obj.rectangle78:setYradius(7);
-    obj.rectangle78:setCornerType("round");
-    obj.rectangle78:setName("rectangle78");
+    obj.rectangle81 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle81:setParent(obj.layout7);
+    obj.rectangle81:setLeft(250);
+    obj.rectangle81:setTop(199);
+    obj.rectangle81:setWidth(45);
+    obj.rectangle81:setHeight(24);
+    obj.rectangle81:setColor("#F5F5DC");
+    obj.rectangle81:setXradius(7);
+    obj.rectangle81:setYradius(7);
+    obj.rectangle81:setCornerType("round");
+    obj.rectangle81:setName("rectangle81");
 
     obj.PercepcaoEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.PercepcaoEquips:setParent(obj.layout7);
@@ -3168,17 +3216,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PercepcaoEquips:setType("number");
     lfm_setPropAsString(obj.PercepcaoEquips, "fontStyle", "bold");
 
-    obj.rectangle79 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle79:setParent(obj.layout7);
-    obj.rectangle79:setLeft(250);
-    obj.rectangle79:setTop(229);
-    obj.rectangle79:setWidth(45);
-    obj.rectangle79:setHeight(24);
-    obj.rectangle79:setColor("#F5F5DC");
-    obj.rectangle79:setXradius(7);
-    obj.rectangle79:setYradius(7);
-    obj.rectangle79:setCornerType("round");
-    obj.rectangle79:setName("rectangle79");
+    obj.rectangle82 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle82:setParent(obj.layout7);
+    obj.rectangle82:setLeft(250);
+    obj.rectangle82:setTop(229);
+    obj.rectangle82:setWidth(45);
+    obj.rectangle82:setHeight(24);
+    obj.rectangle82:setColor("#F5F5DC");
+    obj.rectangle82:setXradius(7);
+    obj.rectangle82:setYradius(7);
+    obj.rectangle82:setCornerType("round");
+    obj.rectangle82:setName("rectangle82");
 
     obj.CarismaEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.CarismaEquips:setParent(obj.layout7);
@@ -3195,17 +3243,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CarismaEquips:setType("number");
     lfm_setPropAsString(obj.CarismaEquips, "fontStyle", "bold");
 
-    obj.rectangle80 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle80:setParent(obj.layout7);
-    obj.rectangle80:setLeft(250);
-    obj.rectangle80:setTop(259);
-    obj.rectangle80:setWidth(45);
-    obj.rectangle80:setHeight(24);
-    obj.rectangle80:setColor("#F5F5DC");
-    obj.rectangle80:setXradius(7);
-    obj.rectangle80:setYradius(7);
-    obj.rectangle80:setCornerType("round");
-    obj.rectangle80:setName("rectangle80");
+    obj.rectangle83 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle83:setParent(obj.layout7);
+    obj.rectangle83:setLeft(250);
+    obj.rectangle83:setTop(259);
+    obj.rectangle83:setWidth(45);
+    obj.rectangle83:setHeight(24);
+    obj.rectangle83:setColor("#F5F5DC");
+    obj.rectangle83:setXradius(7);
+    obj.rectangle83:setYradius(7);
+    obj.rectangle83:setCornerType("round");
+    obj.rectangle83:setName("rectangle83");
 
     obj.InteligenciaEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.InteligenciaEquips:setParent(obj.layout7);
@@ -3222,17 +3270,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.InteligenciaEquips:setType("number");
     lfm_setPropAsString(obj.InteligenciaEquips, "fontStyle", "bold");
 
-    obj.rectangle81 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle81:setParent(obj.layout7);
-    obj.rectangle81:setLeft(250);
-    obj.rectangle81:setTop(289);
-    obj.rectangle81:setWidth(45);
-    obj.rectangle81:setHeight(24);
-    obj.rectangle81:setColor("#F5F5DC");
-    obj.rectangle81:setXradius(7);
-    obj.rectangle81:setYradius(7);
-    obj.rectangle81:setCornerType("round");
-    obj.rectangle81:setName("rectangle81");
+    obj.rectangle84 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle84:setParent(obj.layout7);
+    obj.rectangle84:setLeft(250);
+    obj.rectangle84:setTop(289);
+    obj.rectangle84:setWidth(45);
+    obj.rectangle84:setHeight(24);
+    obj.rectangle84:setColor("#F5F5DC");
+    obj.rectangle84:setXradius(7);
+    obj.rectangle84:setYradius(7);
+    obj.rectangle84:setCornerType("round");
+    obj.rectangle84:setName("rectangle84");
 
     obj.PrecisaoEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.PrecisaoEquips:setParent(obj.layout7);
@@ -3249,17 +3297,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PrecisaoEquips:setType("number");
     lfm_setPropAsString(obj.PrecisaoEquips, "fontStyle", "bold");
 
-    obj.rectangle82 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle82:setParent(obj.layout7);
-    obj.rectangle82:setLeft(250);
-    obj.rectangle82:setTop(319);
-    obj.rectangle82:setWidth(45);
-    obj.rectangle82:setHeight(24);
-    obj.rectangle82:setColor("#F5F5DC");
-    obj.rectangle82:setXradius(7);
-    obj.rectangle82:setYradius(7);
-    obj.rectangle82:setCornerType("round");
-    obj.rectangle82:setName("rectangle82");
+    obj.rectangle85 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle85:setParent(obj.layout7);
+    obj.rectangle85:setLeft(250);
+    obj.rectangle85:setTop(319);
+    obj.rectangle85:setWidth(45);
+    obj.rectangle85:setHeight(24);
+    obj.rectangle85:setColor("#F5F5DC");
+    obj.rectangle85:setXradius(7);
+    obj.rectangle85:setYradius(7);
+    obj.rectangle85:setCornerType("round");
+    obj.rectangle85:setName("rectangle85");
 
     obj.ForcaDeVontadeEquips = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaDeVontadeEquips:setParent(obj.layout7);
@@ -3276,17 +3324,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaDeVontadeEquips:setType("number");
     lfm_setPropAsString(obj.ForcaDeVontadeEquips, "fontStyle", "bold");
 
-    obj.rectangle83 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle83:setParent(obj.layout7);
-    obj.rectangle83:setLeft(310);
-    obj.rectangle83:setTop(79);
-    obj.rectangle83:setWidth(45);
-    obj.rectangle83:setHeight(24);
-    obj.rectangle83:setColor("#F5F5DC");
-    obj.rectangle83:setXradius(7);
-    obj.rectangle83:setYradius(7);
-    obj.rectangle83:setCornerType("round");
-    obj.rectangle83:setName("rectangle83");
+    obj.rectangle86 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle86:setParent(obj.layout7);
+    obj.rectangle86:setLeft(310);
+    obj.rectangle86:setTop(79);
+    obj.rectangle86:setWidth(45);
+    obj.rectangle86:setHeight(24);
+    obj.rectangle86:setColor("#F5F5DC");
+    obj.rectangle86:setXradius(7);
+    obj.rectangle86:setYradius(7);
+    obj.rectangle86:setCornerType("round");
+    obj.rectangle86:setName("rectangle86");
 
     obj.ForcaTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaTreino:setParent(obj.layout7);
@@ -3303,17 +3351,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaTreino:setType("number");
     lfm_setPropAsString(obj.ForcaTreino, "fontStyle", "bold");
 
-    obj.rectangle84 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle84:setParent(obj.layout7);
-    obj.rectangle84:setLeft(310);
-    obj.rectangle84:setTop(109);
-    obj.rectangle84:setWidth(45);
-    obj.rectangle84:setHeight(24);
-    obj.rectangle84:setColor("#F5F5DC");
-    obj.rectangle84:setXradius(7);
-    obj.rectangle84:setYradius(7);
-    obj.rectangle84:setCornerType("round");
-    obj.rectangle84:setName("rectangle84");
+    obj.rectangle87 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle87:setParent(obj.layout7);
+    obj.rectangle87:setLeft(310);
+    obj.rectangle87:setTop(109);
+    obj.rectangle87:setWidth(45);
+    obj.rectangle87:setHeight(24);
+    obj.rectangle87:setColor("#F5F5DC");
+    obj.rectangle87:setXradius(7);
+    obj.rectangle87:setYradius(7);
+    obj.rectangle87:setCornerType("round");
+    obj.rectangle87:setName("rectangle87");
 
     obj.AgilidadeTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.AgilidadeTreino:setParent(obj.layout7);
@@ -3330,17 +3378,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AgilidadeTreino:setType("number");
     lfm_setPropAsString(obj.AgilidadeTreino, "fontStyle", "bold");
 
-    obj.rectangle85 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle85:setParent(obj.layout7);
-    obj.rectangle85:setLeft(310);
-    obj.rectangle85:setTop(139);
-    obj.rectangle85:setWidth(45);
-    obj.rectangle85:setHeight(24);
-    obj.rectangle85:setColor("#F5F5DC");
-    obj.rectangle85:setXradius(7);
-    obj.rectangle85:setYradius(7);
-    obj.rectangle85:setCornerType("round");
-    obj.rectangle85:setName("rectangle85");
+    obj.rectangle88 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle88:setParent(obj.layout7);
+    obj.rectangle88:setLeft(310);
+    obj.rectangle88:setTop(139);
+    obj.rectangle88:setWidth(45);
+    obj.rectangle88:setHeight(24);
+    obj.rectangle88:setColor("#F5F5DC");
+    obj.rectangle88:setXradius(7);
+    obj.rectangle88:setYradius(7);
+    obj.rectangle88:setCornerType("round");
+    obj.rectangle88:setName("rectangle88");
 
     obj.VigorTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.VigorTreino:setParent(obj.layout7);
@@ -3357,17 +3405,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.VigorTreino:setType("number");
     lfm_setPropAsString(obj.VigorTreino, "fontStyle", "bold");
 
-    obj.rectangle86 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle86:setParent(obj.layout7);
-    obj.rectangle86:setLeft(310);
-    obj.rectangle86:setTop(169);
-    obj.rectangle86:setWidth(45);
-    obj.rectangle86:setHeight(24);
-    obj.rectangle86:setColor("#F5F5DC");
-    obj.rectangle86:setXradius(7);
-    obj.rectangle86:setYradius(7);
-    obj.rectangle86:setCornerType("round");
-    obj.rectangle86:setName("rectangle86");
+    obj.rectangle89 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle89:setParent(obj.layout7);
+    obj.rectangle89:setLeft(310);
+    obj.rectangle89:setTop(169);
+    obj.rectangle89:setWidth(45);
+    obj.rectangle89:setHeight(24);
+    obj.rectangle89:setColor("#F5F5DC");
+    obj.rectangle89:setXradius(7);
+    obj.rectangle89:setYradius(7);
+    obj.rectangle89:setCornerType("round");
+    obj.rectangle89:setName("rectangle89");
 
     obj.CombateTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.CombateTreino:setParent(obj.layout7);
@@ -3384,17 +3432,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CombateTreino:setType("number");
     lfm_setPropAsString(obj.CombateTreino, "fontStyle", "bold");
 
-    obj.rectangle87 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle87:setParent(obj.layout7);
-    obj.rectangle87:setLeft(310);
-    obj.rectangle87:setTop(199);
-    obj.rectangle87:setWidth(45);
-    obj.rectangle87:setHeight(24);
-    obj.rectangle87:setColor("#F5F5DC");
-    obj.rectangle87:setXradius(7);
-    obj.rectangle87:setYradius(7);
-    obj.rectangle87:setCornerType("round");
-    obj.rectangle87:setName("rectangle87");
+    obj.rectangle90 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle90:setParent(obj.layout7);
+    obj.rectangle90:setLeft(310);
+    obj.rectangle90:setTop(199);
+    obj.rectangle90:setWidth(45);
+    obj.rectangle90:setHeight(24);
+    obj.rectangle90:setColor("#F5F5DC");
+    obj.rectangle90:setXradius(7);
+    obj.rectangle90:setYradius(7);
+    obj.rectangle90:setCornerType("round");
+    obj.rectangle90:setName("rectangle90");
 
     obj.PercepcaoTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.PercepcaoTreino:setParent(obj.layout7);
@@ -3411,17 +3459,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PercepcaoTreino:setType("number");
     lfm_setPropAsString(obj.PercepcaoTreino, "fontStyle", "bold");
 
-    obj.rectangle88 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle88:setParent(obj.layout7);
-    obj.rectangle88:setLeft(310);
-    obj.rectangle88:setTop(229);
-    obj.rectangle88:setWidth(45);
-    obj.rectangle88:setHeight(24);
-    obj.rectangle88:setColor("#F5F5DC");
-    obj.rectangle88:setXradius(7);
-    obj.rectangle88:setYradius(7);
-    obj.rectangle88:setCornerType("round");
-    obj.rectangle88:setName("rectangle88");
+    obj.rectangle91 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle91:setParent(obj.layout7);
+    obj.rectangle91:setLeft(310);
+    obj.rectangle91:setTop(229);
+    obj.rectangle91:setWidth(45);
+    obj.rectangle91:setHeight(24);
+    obj.rectangle91:setColor("#F5F5DC");
+    obj.rectangle91:setXradius(7);
+    obj.rectangle91:setYradius(7);
+    obj.rectangle91:setCornerType("round");
+    obj.rectangle91:setName("rectangle91");
 
     obj.CarismaTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.CarismaTreino:setParent(obj.layout7);
@@ -3438,17 +3486,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CarismaTreino:setType("number");
     lfm_setPropAsString(obj.CarismaTreino, "fontStyle", "bold");
 
-    obj.rectangle89 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle89:setParent(obj.layout7);
-    obj.rectangle89:setLeft(310);
-    obj.rectangle89:setTop(259);
-    obj.rectangle89:setWidth(45);
-    obj.rectangle89:setHeight(24);
-    obj.rectangle89:setColor("#F5F5DC");
-    obj.rectangle89:setXradius(7);
-    obj.rectangle89:setYradius(7);
-    obj.rectangle89:setCornerType("round");
-    obj.rectangle89:setName("rectangle89");
+    obj.rectangle92 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle92:setParent(obj.layout7);
+    obj.rectangle92:setLeft(310);
+    obj.rectangle92:setTop(259);
+    obj.rectangle92:setWidth(45);
+    obj.rectangle92:setHeight(24);
+    obj.rectangle92:setColor("#F5F5DC");
+    obj.rectangle92:setXradius(7);
+    obj.rectangle92:setYradius(7);
+    obj.rectangle92:setCornerType("round");
+    obj.rectangle92:setName("rectangle92");
 
     obj.InteligenciaTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.InteligenciaTreino:setParent(obj.layout7);
@@ -3465,17 +3513,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.InteligenciaTreino:setType("number");
     lfm_setPropAsString(obj.InteligenciaTreino, "fontStyle", "bold");
 
-    obj.rectangle90 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle90:setParent(obj.layout7);
-    obj.rectangle90:setLeft(310);
-    obj.rectangle90:setTop(289);
-    obj.rectangle90:setWidth(45);
-    obj.rectangle90:setHeight(24);
-    obj.rectangle90:setColor("#F5F5DC");
-    obj.rectangle90:setXradius(7);
-    obj.rectangle90:setYradius(7);
-    obj.rectangle90:setCornerType("round");
-    obj.rectangle90:setName("rectangle90");
+    obj.rectangle93 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle93:setParent(obj.layout7);
+    obj.rectangle93:setLeft(310);
+    obj.rectangle93:setTop(289);
+    obj.rectangle93:setWidth(45);
+    obj.rectangle93:setHeight(24);
+    obj.rectangle93:setColor("#F5F5DC");
+    obj.rectangle93:setXradius(7);
+    obj.rectangle93:setYradius(7);
+    obj.rectangle93:setCornerType("round");
+    obj.rectangle93:setName("rectangle93");
 
     obj.PrecisaoTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.PrecisaoTreino:setParent(obj.layout7);
@@ -3492,17 +3540,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PrecisaoTreino:setType("number");
     lfm_setPropAsString(obj.PrecisaoTreino, "fontStyle", "bold");
 
-    obj.rectangle91 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle91:setParent(obj.layout7);
-    obj.rectangle91:setLeft(310);
-    obj.rectangle91:setTop(319);
-    obj.rectangle91:setWidth(45);
-    obj.rectangle91:setHeight(24);
-    obj.rectangle91:setColor("#F5F5DC");
-    obj.rectangle91:setXradius(7);
-    obj.rectangle91:setYradius(7);
-    obj.rectangle91:setCornerType("round");
-    obj.rectangle91:setName("rectangle91");
+    obj.rectangle94 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle94:setParent(obj.layout7);
+    obj.rectangle94:setLeft(310);
+    obj.rectangle94:setTop(319);
+    obj.rectangle94:setWidth(45);
+    obj.rectangle94:setHeight(24);
+    obj.rectangle94:setColor("#F5F5DC");
+    obj.rectangle94:setXradius(7);
+    obj.rectangle94:setYradius(7);
+    obj.rectangle94:setCornerType("round");
+    obj.rectangle94:setName("rectangle94");
 
     obj.ForcaDeVontadeTreino = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaDeVontadeTreino:setParent(obj.layout7);
@@ -3519,17 +3567,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaDeVontadeTreino:setType("number");
     lfm_setPropAsString(obj.ForcaDeVontadeTreino, "fontStyle", "bold");
 
-    obj.rectangle92 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle92:setParent(obj.layout7);
-    obj.rectangle92:setLeft(370);
-    obj.rectangle92:setTop(79);
-    obj.rectangle92:setWidth(45);
-    obj.rectangle92:setHeight(24);
-    obj.rectangle92:setColor("#F5F5DC");
-    obj.rectangle92:setXradius(7);
-    obj.rectangle92:setYradius(7);
-    obj.rectangle92:setCornerType("round");
-    obj.rectangle92:setName("rectangle92");
+    obj.rectangle95 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle95:setParent(obj.layout7);
+    obj.rectangle95:setLeft(370);
+    obj.rectangle95:setTop(79);
+    obj.rectangle95:setWidth(45);
+    obj.rectangle95:setHeight(24);
+    obj.rectangle95:setColor("#F5F5DC");
+    obj.rectangle95:setXradius(7);
+    obj.rectangle95:setYradius(7);
+    obj.rectangle95:setCornerType("round");
+    obj.rectangle95:setName("rectangle95");
 
     obj.ForcaTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaTotal:setParent(obj.layout7);
@@ -3546,17 +3594,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ForcaTotal:setType("number");
     lfm_setPropAsString(obj.ForcaTotal, "fontStyle", "bold");
 
-    obj.rectangle93 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle93:setParent(obj.layout7);
-    obj.rectangle93:setLeft(370);
-    obj.rectangle93:setTop(109);
-    obj.rectangle93:setWidth(45);
-    obj.rectangle93:setHeight(24);
-    obj.rectangle93:setColor("#F5F5DC");
-    obj.rectangle93:setXradius(7);
-    obj.rectangle93:setYradius(7);
-    obj.rectangle93:setCornerType("round");
-    obj.rectangle93:setName("rectangle93");
+    obj.rectangle96 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle96:setParent(obj.layout7);
+    obj.rectangle96:setLeft(370);
+    obj.rectangle96:setTop(109);
+    obj.rectangle96:setWidth(45);
+    obj.rectangle96:setHeight(24);
+    obj.rectangle96:setColor("#F5F5DC");
+    obj.rectangle96:setXradius(7);
+    obj.rectangle96:setYradius(7);
+    obj.rectangle96:setCornerType("round");
+    obj.rectangle96:setName("rectangle96");
 
     obj.AgilidadeTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.AgilidadeTotal:setParent(obj.layout7);
@@ -3573,17 +3621,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.AgilidadeTotal:setType("number");
     lfm_setPropAsString(obj.AgilidadeTotal, "fontStyle", "bold");
 
-    obj.rectangle94 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle94:setParent(obj.layout7);
-    obj.rectangle94:setLeft(370);
-    obj.rectangle94:setTop(139);
-    obj.rectangle94:setWidth(45);
-    obj.rectangle94:setHeight(24);
-    obj.rectangle94:setColor("#F5F5DC");
-    obj.rectangle94:setXradius(7);
-    obj.rectangle94:setYradius(7);
-    obj.rectangle94:setCornerType("round");
-    obj.rectangle94:setName("rectangle94");
+    obj.rectangle97 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle97:setParent(obj.layout7);
+    obj.rectangle97:setLeft(370);
+    obj.rectangle97:setTop(139);
+    obj.rectangle97:setWidth(45);
+    obj.rectangle97:setHeight(24);
+    obj.rectangle97:setColor("#F5F5DC");
+    obj.rectangle97:setXradius(7);
+    obj.rectangle97:setYradius(7);
+    obj.rectangle97:setCornerType("round");
+    obj.rectangle97:setName("rectangle97");
 
     obj.VigorTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.VigorTotal:setParent(obj.layout7);
@@ -3600,17 +3648,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.VigorTotal:setType("number");
     lfm_setPropAsString(obj.VigorTotal, "fontStyle", "bold");
 
-    obj.rectangle95 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle95:setParent(obj.layout7);
-    obj.rectangle95:setLeft(370);
-    obj.rectangle95:setTop(169);
-    obj.rectangle95:setWidth(45);
-    obj.rectangle95:setHeight(24);
-    obj.rectangle95:setColor("#F5F5DC");
-    obj.rectangle95:setXradius(7);
-    obj.rectangle95:setYradius(7);
-    obj.rectangle95:setCornerType("round");
-    obj.rectangle95:setName("rectangle95");
+    obj.rectangle98 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle98:setParent(obj.layout7);
+    obj.rectangle98:setLeft(370);
+    obj.rectangle98:setTop(169);
+    obj.rectangle98:setWidth(45);
+    obj.rectangle98:setHeight(24);
+    obj.rectangle98:setColor("#F5F5DC");
+    obj.rectangle98:setXradius(7);
+    obj.rectangle98:setYradius(7);
+    obj.rectangle98:setCornerType("round");
+    obj.rectangle98:setName("rectangle98");
 
     obj.CombateTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.CombateTotal:setParent(obj.layout7);
@@ -3627,17 +3675,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CombateTotal:setType("number");
     lfm_setPropAsString(obj.CombateTotal, "fontStyle", "bold");
 
-    obj.rectangle96 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle96:setParent(obj.layout7);
-    obj.rectangle96:setLeft(370);
-    obj.rectangle96:setTop(199);
-    obj.rectangle96:setWidth(45);
-    obj.rectangle96:setHeight(24);
-    obj.rectangle96:setColor("#F5F5DC");
-    obj.rectangle96:setXradius(7);
-    obj.rectangle96:setYradius(7);
-    obj.rectangle96:setCornerType("round");
-    obj.rectangle96:setName("rectangle96");
+    obj.rectangle99 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle99:setParent(obj.layout7);
+    obj.rectangle99:setLeft(370);
+    obj.rectangle99:setTop(199);
+    obj.rectangle99:setWidth(45);
+    obj.rectangle99:setHeight(24);
+    obj.rectangle99:setColor("#F5F5DC");
+    obj.rectangle99:setXradius(7);
+    obj.rectangle99:setYradius(7);
+    obj.rectangle99:setCornerType("round");
+    obj.rectangle99:setName("rectangle99");
 
     obj.PercepcaoTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.PercepcaoTotal:setParent(obj.layout7);
@@ -3654,17 +3702,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PercepcaoTotal:setType("number");
     lfm_setPropAsString(obj.PercepcaoTotal, "fontStyle", "bold");
 
-    obj.rectangle97 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle97:setParent(obj.layout7);
-    obj.rectangle97:setLeft(370);
-    obj.rectangle97:setTop(229);
-    obj.rectangle97:setWidth(45);
-    obj.rectangle97:setHeight(24);
-    obj.rectangle97:setColor("#F5F5DC");
-    obj.rectangle97:setXradius(7);
-    obj.rectangle97:setYradius(7);
-    obj.rectangle97:setCornerType("round");
-    obj.rectangle97:setName("rectangle97");
+    obj.rectangle100 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle100:setParent(obj.layout7);
+    obj.rectangle100:setLeft(370);
+    obj.rectangle100:setTop(229);
+    obj.rectangle100:setWidth(45);
+    obj.rectangle100:setHeight(24);
+    obj.rectangle100:setColor("#F5F5DC");
+    obj.rectangle100:setXradius(7);
+    obj.rectangle100:setYradius(7);
+    obj.rectangle100:setCornerType("round");
+    obj.rectangle100:setName("rectangle100");
 
     obj.CarismaTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.CarismaTotal:setParent(obj.layout7);
@@ -3681,17 +3729,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.CarismaTotal:setType("number");
     lfm_setPropAsString(obj.CarismaTotal, "fontStyle", "bold");
 
-    obj.rectangle98 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle98:setParent(obj.layout7);
-    obj.rectangle98:setLeft(370);
-    obj.rectangle98:setTop(259);
-    obj.rectangle98:setWidth(45);
-    obj.rectangle98:setHeight(24);
-    obj.rectangle98:setColor("#F5F5DC");
-    obj.rectangle98:setXradius(7);
-    obj.rectangle98:setYradius(7);
-    obj.rectangle98:setCornerType("round");
-    obj.rectangle98:setName("rectangle98");
+    obj.rectangle101 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle101:setParent(obj.layout7);
+    obj.rectangle101:setLeft(370);
+    obj.rectangle101:setTop(259);
+    obj.rectangle101:setWidth(45);
+    obj.rectangle101:setHeight(24);
+    obj.rectangle101:setColor("#F5F5DC");
+    obj.rectangle101:setXradius(7);
+    obj.rectangle101:setYradius(7);
+    obj.rectangle101:setCornerType("round");
+    obj.rectangle101:setName("rectangle101");
 
     obj.InteligenciaTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.InteligenciaTotal:setParent(obj.layout7);
@@ -3708,17 +3756,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.InteligenciaTotal:setType("number");
     lfm_setPropAsString(obj.InteligenciaTotal, "fontStyle", "bold");
 
-    obj.rectangle99 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle99:setParent(obj.layout7);
-    obj.rectangle99:setLeft(370);
-    obj.rectangle99:setTop(289);
-    obj.rectangle99:setWidth(45);
-    obj.rectangle99:setHeight(24);
-    obj.rectangle99:setColor("#F5F5DC");
-    obj.rectangle99:setXradius(7);
-    obj.rectangle99:setYradius(7);
-    obj.rectangle99:setCornerType("round");
-    obj.rectangle99:setName("rectangle99");
+    obj.rectangle102 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle102:setParent(obj.layout7);
+    obj.rectangle102:setLeft(370);
+    obj.rectangle102:setTop(289);
+    obj.rectangle102:setWidth(45);
+    obj.rectangle102:setHeight(24);
+    obj.rectangle102:setColor("#F5F5DC");
+    obj.rectangle102:setXradius(7);
+    obj.rectangle102:setYradius(7);
+    obj.rectangle102:setCornerType("round");
+    obj.rectangle102:setName("rectangle102");
 
     obj.PrecisaoTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.PrecisaoTotal:setParent(obj.layout7);
@@ -3735,17 +3783,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.PrecisaoTotal:setType("number");
     lfm_setPropAsString(obj.PrecisaoTotal, "fontStyle", "bold");
 
-    obj.rectangle100 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle100:setParent(obj.layout7);
-    obj.rectangle100:setLeft(370);
-    obj.rectangle100:setTop(319);
-    obj.rectangle100:setWidth(45);
-    obj.rectangle100:setHeight(24);
-    obj.rectangle100:setColor("#F5F5DC");
-    obj.rectangle100:setXradius(7);
-    obj.rectangle100:setYradius(7);
-    obj.rectangle100:setCornerType("round");
-    obj.rectangle100:setName("rectangle100");
+    obj.rectangle103 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle103:setParent(obj.layout7);
+    obj.rectangle103:setLeft(370);
+    obj.rectangle103:setTop(319);
+    obj.rectangle103:setWidth(45);
+    obj.rectangle103:setHeight(24);
+    obj.rectangle103:setColor("#F5F5DC");
+    obj.rectangle103:setXradius(7);
+    obj.rectangle103:setYradius(7);
+    obj.rectangle103:setCornerType("round");
+    obj.rectangle103:setName("rectangle103");
 
     obj.ForcaDeVontadeTotal = GUI.fromHandle(_obj_newObject("edit"));
     obj.ForcaDeVontadeTotal:setParent(obj.layout7);
@@ -3773,17 +3821,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label33:setFontSize(12);
     obj.label33:setName("label33");
 
-    obj.rectangle101 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle101:setParent(obj.layout7);
-    obj.rectangle101:setLeft(83);
-    obj.rectangle101:setTop(355);
-    obj.rectangle101:setWidth(40);
-    obj.rectangle101:setHeight(19);
-    obj.rectangle101:setColor("#5F9EA0");
-    obj.rectangle101:setXradius(7);
-    obj.rectangle101:setYradius(7);
-    obj.rectangle101:setCornerType("round");
-    obj.rectangle101:setName("rectangle101");
+    obj.rectangle104 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle104:setParent(obj.layout7);
+    obj.rectangle104:setLeft(83);
+    obj.rectangle104:setTop(355);
+    obj.rectangle104:setWidth(40);
+    obj.rectangle104:setHeight(19);
+    obj.rectangle104:setColor("#5F9EA0");
+    obj.rectangle104:setXradius(7);
+    obj.rectangle104:setYradius(7);
+    obj.rectangle104:setCornerType("round");
+    obj.rectangle104:setName("rectangle104");
 
     obj.label34 = GUI.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.layout7);
@@ -3808,17 +3856,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label35:setFontSize(12);
     obj.label35:setName("label35");
 
-    obj.rectangle102 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle102:setParent(obj.layout7);
-    obj.rectangle102:setLeft(202);
-    obj.rectangle102:setTop(355);
-    obj.rectangle102:setWidth(40);
-    obj.rectangle102:setHeight(19);
-    obj.rectangle102:setColor("#5F9EA0");
-    obj.rectangle102:setXradius(7);
-    obj.rectangle102:setYradius(7);
-    obj.rectangle102:setCornerType("round");
-    obj.rectangle102:setName("rectangle102");
+    obj.rectangle105 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle105:setParent(obj.layout7);
+    obj.rectangle105:setLeft(202);
+    obj.rectangle105:setTop(355);
+    obj.rectangle105:setWidth(40);
+    obj.rectangle105:setHeight(19);
+    obj.rectangle105:setColor("#5F9EA0");
+    obj.rectangle105:setXradius(7);
+    obj.rectangle105:setYradius(7);
+    obj.rectangle105:setCornerType("round");
+    obj.rectangle105:setName("rectangle105");
 
     obj.label36 = GUI.fromHandle(_obj_newObject("label"));
     obj.label36:setParent(obj.layout7);
@@ -3843,17 +3891,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label37:setFontSize(12);
     obj.label37:setName("label37");
 
-    obj.rectangle103 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle103:setParent(obj.layout7);
-    obj.rectangle103:setLeft(293);
-    obj.rectangle103:setTop(355);
-    obj.rectangle103:setWidth(40);
-    obj.rectangle103:setHeight(19);
-    obj.rectangle103:setColor("#5F9EA0");
-    obj.rectangle103:setXradius(7);
-    obj.rectangle103:setYradius(7);
-    obj.rectangle103:setCornerType("round");
-    obj.rectangle103:setName("rectangle103");
+    obj.rectangle106 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle106:setParent(obj.layout7);
+    obj.rectangle106:setLeft(293);
+    obj.rectangle106:setTop(355);
+    obj.rectangle106:setWidth(40);
+    obj.rectangle106:setHeight(19);
+    obj.rectangle106:setColor("#5F9EA0");
+    obj.rectangle106:setXradius(7);
+    obj.rectangle106:setYradius(7);
+    obj.rectangle106:setCornerType("round");
+    obj.rectangle106:setName("rectangle106");
 
     obj.label38 = GUI.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout7);
@@ -3878,17 +3926,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label39:setFontSize(12);
     obj.label39:setName("label39");
 
-    obj.rectangle104 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle104:setParent(obj.layout7);
-    obj.rectangle104:setLeft(375);
-    obj.rectangle104:setTop(355);
-    obj.rectangle104:setWidth(40);
-    obj.rectangle104:setHeight(19);
-    obj.rectangle104:setColor("#5F9EA0");
-    obj.rectangle104:setXradius(7);
-    obj.rectangle104:setYradius(7);
-    obj.rectangle104:setCornerType("round");
-    obj.rectangle104:setName("rectangle104");
+    obj.rectangle107 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle107:setParent(obj.layout7);
+    obj.rectangle107:setLeft(375);
+    obj.rectangle107:setTop(355);
+    obj.rectangle107:setWidth(40);
+    obj.rectangle107:setHeight(19);
+    obj.rectangle107:setColor("#5F9EA0");
+    obj.rectangle107:setXradius(7);
+    obj.rectangle107:setYradius(7);
+    obj.rectangle107:setCornerType("round");
+    obj.rectangle107:setName("rectangle107");
 
     obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.layout7);
@@ -3910,17 +3958,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.DefButton:setText("Defesa");
     obj.DefButton:setWidth(110);
 
-    obj.rectangle105 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle105:setParent(obj.layout7);
-    obj.rectangle105:setLeft(130);
-    obj.rectangle105:setTop(385);
-    obj.rectangle105:setWidth(45);
-    obj.rectangle105:setHeight(24);
-    obj.rectangle105:setColor("#5F9EA0");
-    obj.rectangle105:setXradius(7);
-    obj.rectangle105:setYradius(7);
-    obj.rectangle105:setCornerType("round");
-    obj.rectangle105:setName("rectangle105");
+    obj.rectangle108 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle108:setParent(obj.layout7);
+    obj.rectangle108:setLeft(130);
+    obj.rectangle108:setTop(385);
+    obj.rectangle108:setWidth(45);
+    obj.rectangle108:setHeight(24);
+    obj.rectangle108:setColor("#5F9EA0");
+    obj.rectangle108:setXradius(7);
+    obj.rectangle108:setYradius(7);
+    obj.rectangle108:setCornerType("round");
+    obj.rectangle108:setName("rectangle108");
 
     obj.label41 = GUI.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout7);
@@ -3959,17 +4007,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     lfm_setPropAsString(obj.label43, "fontStyle", "bold");
     obj.label43:setName("label43");
 
-    obj.rectangle106 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle106:setParent(obj.layout7);
-    obj.rectangle106:setLeft(75);
-    obj.rectangle106:setTop(426);
-    obj.rectangle106:setWidth(45);
-    obj.rectangle106:setHeight(20);
-    obj.rectangle106:setColor("#5F9EA0");
-    obj.rectangle106:setXradius(7);
-    obj.rectangle106:setYradius(7);
-    obj.rectangle106:setCornerType("round");
-    obj.rectangle106:setName("rectangle106");
+    obj.rectangle109 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle109:setParent(obj.layout7);
+    obj.rectangle109:setLeft(75);
+    obj.rectangle109:setTop(426);
+    obj.rectangle109:setWidth(45);
+    obj.rectangle109:setHeight(20);
+    obj.rectangle109:setColor("#5F9EA0");
+    obj.rectangle109:setXradius(7);
+    obj.rectangle109:setYradius(7);
+    obj.rectangle109:setCornerType("round");
+    obj.rectangle109:setName("rectangle109");
 
     obj.label44 = GUI.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.layout7);
@@ -4010,17 +4058,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     lfm_setPropAsString(obj.label46, "fontStyle", "bold");
     obj.label46:setName("label46");
 
-    obj.rectangle107 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle107:setParent(obj.layout7);
-    obj.rectangle107:setLeft(75);
-    obj.rectangle107:setTop(450);
-    obj.rectangle107:setWidth(45);
-    obj.rectangle107:setHeight(20);
-    obj.rectangle107:setColor("#5F9EA0");
-    obj.rectangle107:setXradius(7);
-    obj.rectangle107:setYradius(7);
-    obj.rectangle107:setCornerType("round");
-    obj.rectangle107:setName("rectangle107");
+    obj.rectangle110 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle110:setParent(obj.layout7);
+    obj.rectangle110:setLeft(75);
+    obj.rectangle110:setTop(450);
+    obj.rectangle110:setWidth(45);
+    obj.rectangle110:setHeight(20);
+    obj.rectangle110:setColor("#5F9EA0");
+    obj.rectangle110:setXradius(7);
+    obj.rectangle110:setYradius(7);
+    obj.rectangle110:setCornerType("round");
+    obj.rectangle110:setName("rectangle110");
 
     obj.label47 = GUI.fromHandle(_obj_newObject("label"));
     obj.label47:setParent(obj.layout7);
@@ -4061,17 +4109,17 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     lfm_setPropAsString(obj.label49, "fontStyle", "bold");
     obj.label49:setName("label49");
 
-    obj.rectangle108 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle108:setParent(obj.layout7);
-    obj.rectangle108:setLeft(75);
-    obj.rectangle108:setTop(474);
-    obj.rectangle108:setWidth(45);
-    obj.rectangle108:setHeight(20);
-    obj.rectangle108:setColor("#5F9EA0");
-    obj.rectangle108:setXradius(7);
-    obj.rectangle108:setYradius(7);
-    obj.rectangle108:setCornerType("round");
-    obj.rectangle108:setName("rectangle108");
+    obj.rectangle111 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle111:setParent(obj.layout7);
+    obj.rectangle111:setLeft(75);
+    obj.rectangle111:setTop(474);
+    obj.rectangle111:setWidth(45);
+    obj.rectangle111:setHeight(20);
+    obj.rectangle111:setColor("#5F9EA0");
+    obj.rectangle111:setXradius(7);
+    obj.rectangle111:setYradius(7);
+    obj.rectangle111:setCornerType("round");
+    obj.rectangle111:setName("rectangle111");
 
     obj.label50 = GUI.fromHandle(_obj_newObject("label"));
     obj.label50:setParent(obj.layout7);
@@ -4108,59 +4156,59 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.layout8:setHeight(525);
     obj.layout8:setName("layout8");
 
-    obj.rectangle109 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle109:setParent(obj.layout8);
-    obj.rectangle109:setLeft(0);
-    obj.rectangle109:setTop(0);
-    obj.rectangle109:setWidth(400);
-    obj.rectangle109:setHeight(525);
-    obj.rectangle109:setColor("#4169E1");
-    obj.rectangle109:setName("rectangle109");
-
-    obj.rectangle110 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle110:setParent(obj.layout8);
-    obj.rectangle110:setLeft(2);
-    obj.rectangle110:setTop(2);
-    obj.rectangle110:setWidth(396);
-    obj.rectangle110:setHeight(521);
-    obj.rectangle110:setColor("black");
-    obj.rectangle110:setName("rectangle110");
-
-    obj.rectangle111 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle111:setParent(obj.layout8);
-    obj.rectangle111:setLeft(12);
-    obj.rectangle111:setTop(25);
-    obj.rectangle111:setWidth(73);
-    obj.rectangle111:setHeight(73);
-    obj.rectangle111:setColor("#F5F5DC");
-    obj.rectangle111:setName("rectangle111");
-
     obj.rectangle112 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle112:setParent(obj.layout8);
-    obj.rectangle112:setLeft(315);
-    obj.rectangle112:setTop(25);
-    obj.rectangle112:setWidth(73);
-    obj.rectangle112:setHeight(73);
-    obj.rectangle112:setColor("#F5F5DC");
+    obj.rectangle112:setLeft(0);
+    obj.rectangle112:setTop(0);
+    obj.rectangle112:setWidth(400);
+    obj.rectangle112:setHeight(525);
+    obj.rectangle112:setColor("#4169E1");
     obj.rectangle112:setName("rectangle112");
 
     obj.rectangle113 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle113:setParent(obj.layout8);
-    obj.rectangle113:setLeft(13);
-    obj.rectangle113:setTop(26);
-    obj.rectangle113:setWidth(71);
-    obj.rectangle113:setHeight(71);
+    obj.rectangle113:setLeft(2);
+    obj.rectangle113:setTop(2);
+    obj.rectangle113:setWidth(396);
+    obj.rectangle113:setHeight(521);
     obj.rectangle113:setColor("black");
     obj.rectangle113:setName("rectangle113");
 
     obj.rectangle114 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle114:setParent(obj.layout8);
-    obj.rectangle114:setLeft(316);
-    obj.rectangle114:setTop(26);
-    obj.rectangle114:setWidth(71);
-    obj.rectangle114:setHeight(71);
-    obj.rectangle114:setColor("black");
+    obj.rectangle114:setLeft(12);
+    obj.rectangle114:setTop(25);
+    obj.rectangle114:setWidth(73);
+    obj.rectangle114:setHeight(73);
+    obj.rectangle114:setColor("#F5F5DC");
     obj.rectangle114:setName("rectangle114");
+
+    obj.rectangle115 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle115:setParent(obj.layout8);
+    obj.rectangle115:setLeft(315);
+    obj.rectangle115:setTop(25);
+    obj.rectangle115:setWidth(73);
+    obj.rectangle115:setHeight(73);
+    obj.rectangle115:setColor("#F5F5DC");
+    obj.rectangle115:setName("rectangle115");
+
+    obj.rectangle116 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle116:setParent(obj.layout8);
+    obj.rectangle116:setLeft(13);
+    obj.rectangle116:setTop(26);
+    obj.rectangle116:setWidth(71);
+    obj.rectangle116:setHeight(71);
+    obj.rectangle116:setColor("black");
+    obj.rectangle116:setName("rectangle116");
+
+    obj.rectangle117 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle117:setParent(obj.layout8);
+    obj.rectangle117:setLeft(316);
+    obj.rectangle117:setTop(26);
+    obj.rectangle117:setWidth(71);
+    obj.rectangle117:setHeight(71);
+    obj.rectangle117:setColor("black");
+    obj.rectangle117:setName("rectangle117");
 
     obj.image5 = GUI.fromHandle(_obj_newObject("image"));
     obj.image5:setParent(obj.layout8);
@@ -4180,41 +4228,41 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.image6:setHeight(71);
     obj.image6:setName("image6");
 
-    obj.rectangle115 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle115:setParent(obj.layout8);
-    obj.rectangle115:setLeft(12);
-    obj.rectangle115:setTop(108);
-    obj.rectangle115:setWidth(73);
-    obj.rectangle115:setHeight(73);
-    obj.rectangle115:setColor("#F5F5DC");
-    obj.rectangle115:setName("rectangle115");
-
-    obj.rectangle116 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle116:setParent(obj.layout8);
-    obj.rectangle116:setLeft(315);
-    obj.rectangle116:setTop(108);
-    obj.rectangle116:setWidth(73);
-    obj.rectangle116:setHeight(73);
-    obj.rectangle116:setColor("#F5F5DC");
-    obj.rectangle116:setName("rectangle116");
-
-    obj.rectangle117 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle117:setParent(obj.layout8);
-    obj.rectangle117:setLeft(13);
-    obj.rectangle117:setTop(109);
-    obj.rectangle117:setWidth(71);
-    obj.rectangle117:setHeight(71);
-    obj.rectangle117:setColor("black");
-    obj.rectangle117:setName("rectangle117");
-
     obj.rectangle118 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle118:setParent(obj.layout8);
-    obj.rectangle118:setLeft(316);
-    obj.rectangle118:setTop(109);
-    obj.rectangle118:setWidth(71);
-    obj.rectangle118:setHeight(71);
-    obj.rectangle118:setColor("black");
+    obj.rectangle118:setLeft(12);
+    obj.rectangle118:setTop(108);
+    obj.rectangle118:setWidth(73);
+    obj.rectangle118:setHeight(73);
+    obj.rectangle118:setColor("#F5F5DC");
     obj.rectangle118:setName("rectangle118");
+
+    obj.rectangle119 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle119:setParent(obj.layout8);
+    obj.rectangle119:setLeft(315);
+    obj.rectangle119:setTop(108);
+    obj.rectangle119:setWidth(73);
+    obj.rectangle119:setHeight(73);
+    obj.rectangle119:setColor("#F5F5DC");
+    obj.rectangle119:setName("rectangle119");
+
+    obj.rectangle120 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle120:setParent(obj.layout8);
+    obj.rectangle120:setLeft(13);
+    obj.rectangle120:setTop(109);
+    obj.rectangle120:setWidth(71);
+    obj.rectangle120:setHeight(71);
+    obj.rectangle120:setColor("black");
+    obj.rectangle120:setName("rectangle120");
+
+    obj.rectangle121 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle121:setParent(obj.layout8);
+    obj.rectangle121:setLeft(316);
+    obj.rectangle121:setTop(109);
+    obj.rectangle121:setWidth(71);
+    obj.rectangle121:setHeight(71);
+    obj.rectangle121:setColor("black");
+    obj.rectangle121:setName("rectangle121");
 
     obj.image7 = GUI.fromHandle(_obj_newObject("image"));
     obj.image7:setParent(obj.layout8);
@@ -4234,41 +4282,41 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.image8:setHeight(71);
     obj.image8:setName("image8");
 
-    obj.rectangle119 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle119:setParent(obj.layout8);
-    obj.rectangle119:setLeft(12);
-    obj.rectangle119:setTop(191);
-    obj.rectangle119:setWidth(73);
-    obj.rectangle119:setHeight(73);
-    obj.rectangle119:setColor("#F5F5DC");
-    obj.rectangle119:setName("rectangle119");
-
-    obj.rectangle120 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle120:setParent(obj.layout8);
-    obj.rectangle120:setLeft(315);
-    obj.rectangle120:setTop(191);
-    obj.rectangle120:setWidth(73);
-    obj.rectangle120:setHeight(73);
-    obj.rectangle120:setColor("#F5F5DC");
-    obj.rectangle120:setName("rectangle120");
-
-    obj.rectangle121 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle121:setParent(obj.layout8);
-    obj.rectangle121:setLeft(13);
-    obj.rectangle121:setTop(192);
-    obj.rectangle121:setWidth(71);
-    obj.rectangle121:setHeight(71);
-    obj.rectangle121:setColor("black");
-    obj.rectangle121:setName("rectangle121");
-
     obj.rectangle122 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle122:setParent(obj.layout8);
-    obj.rectangle122:setLeft(316);
-    obj.rectangle122:setTop(192);
-    obj.rectangle122:setWidth(71);
-    obj.rectangle122:setHeight(71);
-    obj.rectangle122:setColor("black");
+    obj.rectangle122:setLeft(12);
+    obj.rectangle122:setTop(191);
+    obj.rectangle122:setWidth(73);
+    obj.rectangle122:setHeight(73);
+    obj.rectangle122:setColor("#F5F5DC");
     obj.rectangle122:setName("rectangle122");
+
+    obj.rectangle123 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle123:setParent(obj.layout8);
+    obj.rectangle123:setLeft(315);
+    obj.rectangle123:setTop(191);
+    obj.rectangle123:setWidth(73);
+    obj.rectangle123:setHeight(73);
+    obj.rectangle123:setColor("#F5F5DC");
+    obj.rectangle123:setName("rectangle123");
+
+    obj.rectangle124 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle124:setParent(obj.layout8);
+    obj.rectangle124:setLeft(13);
+    obj.rectangle124:setTop(192);
+    obj.rectangle124:setWidth(71);
+    obj.rectangle124:setHeight(71);
+    obj.rectangle124:setColor("black");
+    obj.rectangle124:setName("rectangle124");
+
+    obj.rectangle125 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle125:setParent(obj.layout8);
+    obj.rectangle125:setLeft(316);
+    obj.rectangle125:setTop(192);
+    obj.rectangle125:setWidth(71);
+    obj.rectangle125:setHeight(71);
+    obj.rectangle125:setColor("black");
+    obj.rectangle125:setName("rectangle125");
 
     obj.image9 = GUI.fromHandle(_obj_newObject("image"));
     obj.image9:setParent(obj.layout8);
@@ -4288,41 +4336,41 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.image10:setHeight(71);
     obj.image10:setName("image10");
 
-    obj.rectangle123 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle123:setParent(obj.layout8);
-    obj.rectangle123:setLeft(12);
-    obj.rectangle123:setTop(274);
-    obj.rectangle123:setWidth(73);
-    obj.rectangle123:setHeight(73);
-    obj.rectangle123:setColor("#F5F5DC");
-    obj.rectangle123:setName("rectangle123");
-
-    obj.rectangle124 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle124:setParent(obj.layout8);
-    obj.rectangle124:setLeft(315);
-    obj.rectangle124:setTop(274);
-    obj.rectangle124:setWidth(73);
-    obj.rectangle124:setHeight(73);
-    obj.rectangle124:setColor("#F5F5DC");
-    obj.rectangle124:setName("rectangle124");
-
-    obj.rectangle125 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle125:setParent(obj.layout8);
-    obj.rectangle125:setLeft(13);
-    obj.rectangle125:setTop(275);
-    obj.rectangle125:setWidth(71);
-    obj.rectangle125:setHeight(71);
-    obj.rectangle125:setColor("black");
-    obj.rectangle125:setName("rectangle125");
-
     obj.rectangle126 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle126:setParent(obj.layout8);
-    obj.rectangle126:setLeft(316);
-    obj.rectangle126:setTop(275);
-    obj.rectangle126:setWidth(71);
-    obj.rectangle126:setHeight(71);
-    obj.rectangle126:setColor("black");
+    obj.rectangle126:setLeft(12);
+    obj.rectangle126:setTop(274);
+    obj.rectangle126:setWidth(73);
+    obj.rectangle126:setHeight(73);
+    obj.rectangle126:setColor("#F5F5DC");
     obj.rectangle126:setName("rectangle126");
+
+    obj.rectangle127 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle127:setParent(obj.layout8);
+    obj.rectangle127:setLeft(315);
+    obj.rectangle127:setTop(274);
+    obj.rectangle127:setWidth(73);
+    obj.rectangle127:setHeight(73);
+    obj.rectangle127:setColor("#F5F5DC");
+    obj.rectangle127:setName("rectangle127");
+
+    obj.rectangle128 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle128:setParent(obj.layout8);
+    obj.rectangle128:setLeft(13);
+    obj.rectangle128:setTop(275);
+    obj.rectangle128:setWidth(71);
+    obj.rectangle128:setHeight(71);
+    obj.rectangle128:setColor("black");
+    obj.rectangle128:setName("rectangle128");
+
+    obj.rectangle129 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle129:setParent(obj.layout8);
+    obj.rectangle129:setLeft(316);
+    obj.rectangle129:setTop(275);
+    obj.rectangle129:setWidth(71);
+    obj.rectangle129:setHeight(71);
+    obj.rectangle129:setColor("black");
+    obj.rectangle129:setName("rectangle129");
 
     obj.image11 = GUI.fromHandle(_obj_newObject("image"));
     obj.image11:setParent(obj.layout8);
@@ -4342,41 +4390,41 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.image12:setHeight(71);
     obj.image12:setName("image12");
 
-    obj.rectangle127 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle127:setParent(obj.layout8);
-    obj.rectangle127:setLeft(12);
-    obj.rectangle127:setTop(357);
-    obj.rectangle127:setWidth(73);
-    obj.rectangle127:setHeight(73);
-    obj.rectangle127:setColor("#F5F5DC");
-    obj.rectangle127:setName("rectangle127");
-
-    obj.rectangle128 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle128:setParent(obj.layout8);
-    obj.rectangle128:setLeft(315);
-    obj.rectangle128:setTop(357);
-    obj.rectangle128:setWidth(73);
-    obj.rectangle128:setHeight(73);
-    obj.rectangle128:setColor("#F5F5DC");
-    obj.rectangle128:setName("rectangle128");
-
-    obj.rectangle129 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle129:setParent(obj.layout8);
-    obj.rectangle129:setLeft(13);
-    obj.rectangle129:setTop(358);
-    obj.rectangle129:setWidth(71);
-    obj.rectangle129:setHeight(71);
-    obj.rectangle129:setColor("black");
-    obj.rectangle129:setName("rectangle129");
-
     obj.rectangle130 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle130:setParent(obj.layout8);
-    obj.rectangle130:setLeft(316);
-    obj.rectangle130:setTop(358);
-    obj.rectangle130:setWidth(71);
-    obj.rectangle130:setHeight(71);
-    obj.rectangle130:setColor("black");
+    obj.rectangle130:setLeft(12);
+    obj.rectangle130:setTop(357);
+    obj.rectangle130:setWidth(73);
+    obj.rectangle130:setHeight(73);
+    obj.rectangle130:setColor("#F5F5DC");
     obj.rectangle130:setName("rectangle130");
+
+    obj.rectangle131 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle131:setParent(obj.layout8);
+    obj.rectangle131:setLeft(315);
+    obj.rectangle131:setTop(357);
+    obj.rectangle131:setWidth(73);
+    obj.rectangle131:setHeight(73);
+    obj.rectangle131:setColor("#F5F5DC");
+    obj.rectangle131:setName("rectangle131");
+
+    obj.rectangle132 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle132:setParent(obj.layout8);
+    obj.rectangle132:setLeft(13);
+    obj.rectangle132:setTop(358);
+    obj.rectangle132:setWidth(71);
+    obj.rectangle132:setHeight(71);
+    obj.rectangle132:setColor("black");
+    obj.rectangle132:setName("rectangle132");
+
+    obj.rectangle133 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle133:setParent(obj.layout8);
+    obj.rectangle133:setLeft(316);
+    obj.rectangle133:setTop(358);
+    obj.rectangle133:setWidth(71);
+    obj.rectangle133:setHeight(71);
+    obj.rectangle133:setColor("black");
+    obj.rectangle133:setName("rectangle133");
 
     obj.image13 = GUI.fromHandle(_obj_newObject("image"));
     obj.image13:setParent(obj.layout8);
@@ -4396,41 +4444,41 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.image14:setHeight(71);
     obj.image14:setName("image14");
 
-    obj.rectangle131 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle131:setParent(obj.layout8);
-    obj.rectangle131:setLeft(12);
-    obj.rectangle131:setTop(440);
-    obj.rectangle131:setWidth(73);
-    obj.rectangle131:setHeight(73);
-    obj.rectangle131:setColor("#F5F5DC");
-    obj.rectangle131:setName("rectangle131");
-
-    obj.rectangle132 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle132:setParent(obj.layout8);
-    obj.rectangle132:setLeft(315);
-    obj.rectangle132:setTop(440);
-    obj.rectangle132:setWidth(73);
-    obj.rectangle132:setHeight(73);
-    obj.rectangle132:setColor("#F5F5DC");
-    obj.rectangle132:setName("rectangle132");
-
-    obj.rectangle133 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle133:setParent(obj.layout8);
-    obj.rectangle133:setLeft(13);
-    obj.rectangle133:setTop(441);
-    obj.rectangle133:setWidth(71);
-    obj.rectangle133:setHeight(71);
-    obj.rectangle133:setColor("black");
-    obj.rectangle133:setName("rectangle133");
-
     obj.rectangle134 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle134:setParent(obj.layout8);
-    obj.rectangle134:setLeft(316);
-    obj.rectangle134:setTop(441);
-    obj.rectangle134:setWidth(71);
-    obj.rectangle134:setHeight(71);
-    obj.rectangle134:setColor("black");
+    obj.rectangle134:setLeft(12);
+    obj.rectangle134:setTop(440);
+    obj.rectangle134:setWidth(73);
+    obj.rectangle134:setHeight(73);
+    obj.rectangle134:setColor("#F5F5DC");
     obj.rectangle134:setName("rectangle134");
+
+    obj.rectangle135 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle135:setParent(obj.layout8);
+    obj.rectangle135:setLeft(315);
+    obj.rectangle135:setTop(440);
+    obj.rectangle135:setWidth(73);
+    obj.rectangle135:setHeight(73);
+    obj.rectangle135:setColor("#F5F5DC");
+    obj.rectangle135:setName("rectangle135");
+
+    obj.rectangle136 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle136:setParent(obj.layout8);
+    obj.rectangle136:setLeft(13);
+    obj.rectangle136:setTop(441);
+    obj.rectangle136:setWidth(71);
+    obj.rectangle136:setHeight(71);
+    obj.rectangle136:setColor("black");
+    obj.rectangle136:setName("rectangle136");
+
+    obj.rectangle137 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle137:setParent(obj.layout8);
+    obj.rectangle137:setLeft(316);
+    obj.rectangle137:setTop(441);
+    obj.rectangle137:setWidth(71);
+    obj.rectangle137:setHeight(71);
+    obj.rectangle137:setColor("black");
+    obj.rectangle137:setName("rectangle137");
 
     obj.image15 = GUI.fromHandle(_obj_newObject("image"));
     obj.image15:setParent(obj.layout8);
@@ -4450,9 +4498,19 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.image16:setHeight(71);
     obj.image16:setName("image16");
 
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button6:setParent(obj.layout8);
+    obj.button6:setLeft(12);
+    obj.button6:setTop(25);
+    obj.button6:setWidth(73);
+    obj.button6:setHeight(73);
+    obj.button6:setOpacity(0);
+    obj.button6:setCursor("handPoint");
+    obj.button6:setName("button6");
+
     obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.layout8);
-    obj.button7:setLeft(12);
+    obj.button7:setLeft(315);
     obj.button7:setTop(25);
     obj.button7:setWidth(73);
     obj.button7:setHeight(73);
@@ -4462,8 +4520,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.layout8);
-    obj.button8:setLeft(315);
-    obj.button8:setTop(25);
+    obj.button8:setLeft(12);
+    obj.button8:setTop(108);
     obj.button8:setWidth(73);
     obj.button8:setHeight(73);
     obj.button8:setOpacity(0);
@@ -4472,7 +4530,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button9 = GUI.fromHandle(_obj_newObject("button"));
     obj.button9:setParent(obj.layout8);
-    obj.button9:setLeft(12);
+    obj.button9:setLeft(315);
     obj.button9:setTop(108);
     obj.button9:setWidth(73);
     obj.button9:setHeight(73);
@@ -4482,8 +4540,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button10 = GUI.fromHandle(_obj_newObject("button"));
     obj.button10:setParent(obj.layout8);
-    obj.button10:setLeft(315);
-    obj.button10:setTop(108);
+    obj.button10:setLeft(12);
+    obj.button10:setTop(191);
     obj.button10:setWidth(73);
     obj.button10:setHeight(73);
     obj.button10:setOpacity(0);
@@ -4492,7 +4550,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button11 = GUI.fromHandle(_obj_newObject("button"));
     obj.button11:setParent(obj.layout8);
-    obj.button11:setLeft(12);
+    obj.button11:setLeft(315);
     obj.button11:setTop(191);
     obj.button11:setWidth(73);
     obj.button11:setHeight(73);
@@ -4502,8 +4560,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button12 = GUI.fromHandle(_obj_newObject("button"));
     obj.button12:setParent(obj.layout8);
-    obj.button12:setLeft(315);
-    obj.button12:setTop(191);
+    obj.button12:setLeft(12);
+    obj.button12:setTop(274);
     obj.button12:setWidth(73);
     obj.button12:setHeight(73);
     obj.button12:setOpacity(0);
@@ -4512,7 +4570,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button13 = GUI.fromHandle(_obj_newObject("button"));
     obj.button13:setParent(obj.layout8);
-    obj.button13:setLeft(12);
+    obj.button13:setLeft(315);
     obj.button13:setTop(274);
     obj.button13:setWidth(73);
     obj.button13:setHeight(73);
@@ -4522,8 +4580,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button14 = GUI.fromHandle(_obj_newObject("button"));
     obj.button14:setParent(obj.layout8);
-    obj.button14:setLeft(315);
-    obj.button14:setTop(274);
+    obj.button14:setLeft(12);
+    obj.button14:setTop(357);
     obj.button14:setWidth(73);
     obj.button14:setHeight(73);
     obj.button14:setOpacity(0);
@@ -4532,7 +4590,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button15 = GUI.fromHandle(_obj_newObject("button"));
     obj.button15:setParent(obj.layout8);
-    obj.button15:setLeft(12);
+    obj.button15:setLeft(315);
     obj.button15:setTop(357);
     obj.button15:setWidth(73);
     obj.button15:setHeight(73);
@@ -4542,8 +4600,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button16 = GUI.fromHandle(_obj_newObject("button"));
     obj.button16:setParent(obj.layout8);
-    obj.button16:setLeft(315);
-    obj.button16:setTop(357);
+    obj.button16:setLeft(12);
+    obj.button16:setTop(440);
     obj.button16:setWidth(73);
     obj.button16:setHeight(73);
     obj.button16:setOpacity(0);
@@ -4552,23 +4610,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.button17 = GUI.fromHandle(_obj_newObject("button"));
     obj.button17:setParent(obj.layout8);
-    obj.button17:setLeft(12);
+    obj.button17:setLeft(315);
     obj.button17:setTop(440);
     obj.button17:setWidth(73);
     obj.button17:setHeight(73);
     obj.button17:setOpacity(0);
     obj.button17:setCursor("handPoint");
     obj.button17:setName("button17");
-
-    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button18:setParent(obj.layout8);
-    obj.button18:setLeft(315);
-    obj.button18:setTop(440);
-    obj.button18:setWidth(73);
-    obj.button18:setHeight(73);
-    obj.button18:setOpacity(0);
-    obj.button18:setCursor("handPoint");
-    obj.button18:setName("button18");
 
     obj.imagem = GUI.fromHandle(_obj_newObject("image"));
     obj.imagem:setParent(obj.layout8);
@@ -4589,23 +4637,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.layout9:setHeight(525);
     obj.layout9:setName("layout9");
 
-    obj.rectangle135 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle135:setParent(obj.layout9);
-    obj.rectangle135:setLeft(0);
-    obj.rectangle135:setTop(0);
-    obj.rectangle135:setWidth(430);
-    obj.rectangle135:setHeight(167);
-    obj.rectangle135:setColor("#4169E1");
-    obj.rectangle135:setName("rectangle135");
+    obj.rectangle138 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle138:setParent(obj.layout9);
+    obj.rectangle138:setLeft(0);
+    obj.rectangle138:setTop(0);
+    obj.rectangle138:setWidth(430);
+    obj.rectangle138:setHeight(167);
+    obj.rectangle138:setColor("#4169E1");
+    obj.rectangle138:setName("rectangle138");
 
-    obj.rectangle136 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle136:setParent(obj.layout9);
-    obj.rectangle136:setLeft(2);
-    obj.rectangle136:setTop(2);
-    obj.rectangle136:setWidth(426);
-    obj.rectangle136:setHeight(163);
-    obj.rectangle136:setColor("black");
-    obj.rectangle136:setName("rectangle136");
+    obj.rectangle139 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle139:setParent(obj.layout9);
+    obj.rectangle139:setLeft(2);
+    obj.rectangle139:setTop(2);
+    obj.rectangle139:setWidth(426);
+    obj.rectangle139:setHeight(163);
+    obj.rectangle139:setColor("black");
+    obj.rectangle139:setName("rectangle139");
 
     obj.image17 = GUI.fromHandle(_obj_newObject("image"));
     obj.image17:setParent(obj.layout9);
@@ -4630,13 +4678,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label52:setHorzTextAlign("center");
     obj.label52:setName("label52");
 
-    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button19:setParent(obj.layout9);
-    obj.button19:setLeft(2);
-    obj.button19:setTop(2);
-    obj.button19:setWidth(70);
-    obj.button19:setText("Descrição");
-    obj.button19:setName("button19");
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button18:setParent(obj.layout9);
+    obj.button18:setLeft(2);
+    obj.button18:setTop(2);
+    obj.button18:setWidth(70);
+    obj.button18:setText("Descrição");
+    obj.button18:setName("button18");
 
     obj.label53 = GUI.fromHandle(_obj_newObject("label"));
     obj.label53:setParent(obj.layout9);
@@ -4649,30 +4697,31 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label53:setFontSize(16);
     obj.label53:setName("label53");
 
-    obj.rectangle137 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle137:setParent(obj.layout9);
-    obj.rectangle137:setLeft(199);
-    obj.rectangle137:setTop(41);
-    obj.rectangle137:setWidth(35);
-    obj.rectangle137:setHeight(18);
-    obj.rectangle137:setColor("#F5F5DC");
-    obj.rectangle137:setXradius(7);
-    obj.rectangle137:setYradius(7);
-    obj.rectangle137:setName("rectangle137");
+    obj.rectangle140 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle140:setParent(obj.layout9);
+    obj.rectangle140:setLeft(199);
+    obj.rectangle140:setTop(41);
+    obj.rectangle140:setWidth(35);
+    obj.rectangle140:setHeight(18);
+    obj.rectangle140:setColor("#F5F5DC");
+    obj.rectangle140:setXradius(7);
+    obj.rectangle140:setYradius(7);
+    obj.rectangle140:setName("rectangle140");
 
-    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit8:setParent(obj.layout9);
-    obj.edit8:setField("tierArmamento");
-    obj.edit8:setLeft(199);
-    obj.edit8:setTop(40);
-    obj.edit8:setWidth(35);
-    obj.edit8:setHeight(18);
-    obj.edit8:setTransparent(true);
-    obj.edit8:setFontColor("black");
-    obj.edit8:setFontSize(15);
-    obj.edit8:setHorzTextAlign("center");
-    obj.edit8:setType("number");
-    obj.edit8:setName("edit8");
+    obj.tierArmamento = GUI.fromHandle(_obj_newObject("edit"));
+    obj.tierArmamento:setParent(obj.layout9);
+    obj.tierArmamento:setField("tierArmamento");
+    obj.tierArmamento:setName("tierArmamento");
+    obj.tierArmamento:setLeft(199);
+    obj.tierArmamento:setTop(40);
+    obj.tierArmamento:setWidth(35);
+    obj.tierArmamento:setHeight(18);
+    obj.tierArmamento:setTransparent(true);
+    obj.tierArmamento:setFontColor("black");
+    obj.tierArmamento:setFontSize(15);
+    obj.tierArmamento:setHorzTextAlign("center");
+    obj.tierArmamento:setType("number");
+    obj.tierArmamento:setReadOnly(true);
 
     obj.label54 = GUI.fromHandle(_obj_newObject("label"));
     obj.label54:setParent(obj.layout9);
@@ -4685,30 +4734,31 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label54:setFontSize(16);
     obj.label54:setName("label54");
 
-    obj.rectangle138 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle138:setParent(obj.layout9);
-    obj.rectangle138:setLeft(199);
-    obj.rectangle138:setTop(66);
-    obj.rectangle138:setWidth(35);
-    obj.rectangle138:setHeight(18);
-    obj.rectangle138:setColor("#F5F5DC");
-    obj.rectangle138:setXradius(7);
-    obj.rectangle138:setYradius(7);
-    obj.rectangle138:setName("rectangle138");
+    obj.rectangle141 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle141:setParent(obj.layout9);
+    obj.rectangle141:setLeft(199);
+    obj.rectangle141:setTop(66);
+    obj.rectangle141:setWidth(35);
+    obj.rectangle141:setHeight(18);
+    obj.rectangle141:setColor("#F5F5DC");
+    obj.rectangle141:setXradius(7);
+    obj.rectangle141:setYradius(7);
+    obj.rectangle141:setName("rectangle141");
 
-    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit9:setParent(obj.layout9);
-    obj.edit9:setField("upArmamento");
-    obj.edit9:setLeft(199);
-    obj.edit9:setTop(65);
-    obj.edit9:setWidth(35);
-    obj.edit9:setHeight(18);
-    obj.edit9:setTransparent(true);
-    obj.edit9:setFontColor("black");
-    obj.edit9:setFontSize(15);
-    obj.edit9:setHorzTextAlign("center");
-    obj.edit9:setType("number");
-    obj.edit9:setName("edit9");
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit8:setParent(obj.layout9);
+    obj.edit8:setField("upArmamento");
+    obj.edit8:setLeft(199);
+    obj.edit8:setTop(65);
+    obj.edit8:setWidth(35);
+    obj.edit8:setHeight(18);
+    obj.edit8:setTransparent(true);
+    obj.edit8:setFontColor("black");
+    obj.edit8:setFontSize(15);
+    obj.edit8:setHorzTextAlign("center");
+    obj.edit8:setType("number");
+    obj.edit8:setReadOnly(true);
+    obj.edit8:setName("edit8");
 
     obj.label55 = GUI.fromHandle(_obj_newObject("label"));
     obj.label55:setParent(obj.layout9);
@@ -4721,29 +4771,29 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label55:setFontSize(15);
     obj.label55:setName("label55");
 
-    obj.rectangle139 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle139:setParent(obj.layout9);
-    obj.rectangle139:setLeft(335);
-    obj.rectangle139:setTop(41);
-    obj.rectangle139:setWidth(80);
-    obj.rectangle139:setHeight(18);
-    obj.rectangle139:setColor("#F5F5DC");
-    obj.rectangle139:setXradius(7);
-    obj.rectangle139:setYradius(7);
-    obj.rectangle139:setName("rectangle139");
+    obj.rectangle142 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle142:setParent(obj.layout9);
+    obj.rectangle142:setLeft(335);
+    obj.rectangle142:setTop(41);
+    obj.rectangle142:setWidth(80);
+    obj.rectangle142:setHeight(18);
+    obj.rectangle142:setColor("#F5F5DC");
+    obj.rectangle142:setXradius(7);
+    obj.rectangle142:setYradius(7);
+    obj.rectangle142:setName("rectangle142");
 
-    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox1:setParent(obj.layout9);
-    obj.comboBox1:setField("EstadoArmamento");
-    obj.comboBox1:setLeft(331);
-    obj.comboBox1:setTop(38);
-    obj.comboBox1:setWidth(87);
-    obj.comboBox1:setTransparent(true);
-    obj.comboBox1:setFontColor("black");
-    obj.comboBox1:setItems({'Inexistente','Dormente','Despertado','Controlado'});
-    obj.comboBox1:setValues({'I','Do','De','C'});
-    obj.comboBox1:setHorzTextAlign("leading");
-    obj.comboBox1:setName("comboBox1");
+    obj.estadoArmamento = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.estadoArmamento:setParent(obj.layout9);
+    obj.estadoArmamento:setField("EstadoArmamento");
+    obj.estadoArmamento:setName("estadoArmamento");
+    obj.estadoArmamento:setLeft(331);
+    obj.estadoArmamento:setTop(38);
+    obj.estadoArmamento:setWidth(87);
+    obj.estadoArmamento:setTransparent(true);
+    obj.estadoArmamento:setFontColor("black");
+    obj.estadoArmamento:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.estadoArmamento:setValues({'I','Do','De','C'});
+    obj.estadoArmamento:setHorzTextAlign("leading");
 
     obj.label56 = GUI.fromHandle(_obj_newObject("label"));
     obj.label56:setParent(obj.layout9);
@@ -4756,29 +4806,29 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label56:setFontSize(15);
     obj.label56:setName("label56");
 
-    obj.rectangle140 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle140:setParent(obj.layout9);
-    obj.rectangle140:setLeft(335);
-    obj.rectangle140:setTop(66);
-    obj.rectangle140:setWidth(80);
-    obj.rectangle140:setHeight(18);
-    obj.rectangle140:setColor("#F5F5DC");
-    obj.rectangle140:setXradius(7);
-    obj.rectangle140:setYradius(7);
-    obj.rectangle140:setName("rectangle140");
+    obj.rectangle143 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle143:setParent(obj.layout9);
+    obj.rectangle143:setLeft(335);
+    obj.rectangle143:setTop(66);
+    obj.rectangle143:setWidth(80);
+    obj.rectangle143:setHeight(18);
+    obj.rectangle143:setColor("#F5F5DC");
+    obj.rectangle143:setXradius(7);
+    obj.rectangle143:setYradius(7);
+    obj.rectangle143:setName("rectangle143");
 
-    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox2:setParent(obj.layout9);
-    obj.comboBox2:setField("CondArmamento");
-    obj.comboBox2:setLeft(331);
-    obj.comboBox2:setTop(63);
-    obj.comboBox2:setWidth(85);
-    obj.comboBox2:setTransparent(true);
-    obj.comboBox2:setFontColor("black");
-    obj.comboBox2:setItems({'Normal','Avançado'});
-    obj.comboBox2:setValues({'N','A'});
-    obj.comboBox2:setHorzTextAlign("leading");
-    obj.comboBox2:setName("comboBox2");
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1:setParent(obj.layout9);
+    obj.comboBox1:setField("CondArmamento");
+    obj.comboBox1:setLeft(331);
+    obj.comboBox1:setTop(63);
+    obj.comboBox1:setWidth(85);
+    obj.comboBox1:setTransparent(true);
+    obj.comboBox1:setFontColor("black");
+    obj.comboBox1:setItems({'Normal','Avançado'});
+    obj.comboBox1:setValues({'N','A'});
+    obj.comboBox1:setHorzTextAlign("leading");
+    obj.comboBox1:setName("comboBox1");
 
     obj.label57 = GUI.fromHandle(_obj_newObject("label"));
     obj.label57:setParent(obj.layout9);
@@ -4826,23 +4876,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label60:setVertTextAlign("leading");
     obj.label60:setName("label60");
 
-    obj.rectangle141 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle141:setParent(obj.layout9);
-    obj.rectangle141:setLeft(0);
-    obj.rectangle141:setTop(179);
-    obj.rectangle141:setWidth(430);
-    obj.rectangle141:setHeight(167);
-    obj.rectangle141:setColor("#4169E1");
-    obj.rectangle141:setName("rectangle141");
+    obj.rectangle144 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle144:setParent(obj.layout9);
+    obj.rectangle144:setLeft(0);
+    obj.rectangle144:setTop(179);
+    obj.rectangle144:setWidth(430);
+    obj.rectangle144:setHeight(167);
+    obj.rectangle144:setColor("#4169E1");
+    obj.rectangle144:setName("rectangle144");
 
-    obj.rectangle142 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle142:setParent(obj.layout9);
-    obj.rectangle142:setLeft(2);
-    obj.rectangle142:setTop(181);
-    obj.rectangle142:setWidth(426);
-    obj.rectangle142:setHeight(163);
-    obj.rectangle142:setColor("black");
-    obj.rectangle142:setName("rectangle142");
+    obj.rectangle145 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle145:setParent(obj.layout9);
+    obj.rectangle145:setLeft(2);
+    obj.rectangle145:setTop(181);
+    obj.rectangle145:setWidth(426);
+    obj.rectangle145:setHeight(163);
+    obj.rectangle145:setColor("black");
+    obj.rectangle145:setName("rectangle145");
 
     obj.image18 = GUI.fromHandle(_obj_newObject("image"));
     obj.image18:setParent(obj.layout9);
@@ -4867,13 +4917,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label61:setHorzTextAlign("center");
     obj.label61:setName("label61");
 
-    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button20:setParent(obj.layout9);
-    obj.button20:setLeft(2);
-    obj.button20:setTop(181);
-    obj.button20:setWidth(70);
-    obj.button20:setText("Descrição");
-    obj.button20:setName("button20");
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button19:setParent(obj.layout9);
+    obj.button19:setLeft(2);
+    obj.button19:setTop(181);
+    obj.button19:setWidth(70);
+    obj.button19:setText("Descrição");
+    obj.button19:setName("button19");
 
     obj.label62 = GUI.fromHandle(_obj_newObject("label"));
     obj.label62:setParent(obj.layout9);
@@ -4886,30 +4936,31 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label62:setFontSize(16);
     obj.label62:setName("label62");
 
-    obj.rectangle143 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle143:setParent(obj.layout9);
-    obj.rectangle143:setLeft(199);
-    obj.rectangle143:setTop(211);
-    obj.rectangle143:setWidth(35);
-    obj.rectangle143:setHeight(18);
-    obj.rectangle143:setColor("#F5F5DC");
-    obj.rectangle143:setXradius(7);
-    obj.rectangle143:setYradius(7);
-    obj.rectangle143:setName("rectangle143");
+    obj.rectangle146 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle146:setParent(obj.layout9);
+    obj.rectangle146:setLeft(199);
+    obj.rectangle146:setTop(211);
+    obj.rectangle146:setWidth(35);
+    obj.rectangle146:setHeight(18);
+    obj.rectangle146:setColor("#F5F5DC");
+    obj.rectangle146:setXradius(7);
+    obj.rectangle146:setYradius(7);
+    obj.rectangle146:setName("rectangle146");
 
-    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit10:setParent(obj.layout9);
-    obj.edit10:setField("tierObservacao");
-    obj.edit10:setLeft(199);
-    obj.edit10:setTop(210);
-    obj.edit10:setWidth(35);
-    obj.edit10:setHeight(18);
-    obj.edit10:setTransparent(true);
-    obj.edit10:setFontColor("black");
-    obj.edit10:setFontSize(15);
-    obj.edit10:setHorzTextAlign("center");
-    obj.edit10:setType("number");
-    obj.edit10:setName("edit10");
+    obj.tierObservacao = GUI.fromHandle(_obj_newObject("edit"));
+    obj.tierObservacao:setParent(obj.layout9);
+    obj.tierObservacao:setField("tierObservacao");
+    obj.tierObservacao:setName("tierObservacao");
+    obj.tierObservacao:setLeft(199);
+    obj.tierObservacao:setTop(210);
+    obj.tierObservacao:setWidth(35);
+    obj.tierObservacao:setHeight(18);
+    obj.tierObservacao:setTransparent(true);
+    obj.tierObservacao:setFontColor("black");
+    obj.tierObservacao:setFontSize(15);
+    obj.tierObservacao:setHorzTextAlign("center");
+    obj.tierObservacao:setType("number");
+    obj.tierObservacao:setReadOnly(true);
 
     obj.label63 = GUI.fromHandle(_obj_newObject("label"));
     obj.label63:setParent(obj.layout9);
@@ -4922,30 +4973,31 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label63:setFontSize(16);
     obj.label63:setName("label63");
 
-    obj.rectangle144 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle144:setParent(obj.layout9);
-    obj.rectangle144:setLeft(199);
-    obj.rectangle144:setTop(236);
-    obj.rectangle144:setWidth(35);
-    obj.rectangle144:setHeight(18);
-    obj.rectangle144:setColor("#F5F5DC");
-    obj.rectangle144:setXradius(7);
-    obj.rectangle144:setYradius(7);
-    obj.rectangle144:setName("rectangle144");
+    obj.rectangle147 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle147:setParent(obj.layout9);
+    obj.rectangle147:setLeft(199);
+    obj.rectangle147:setTop(236);
+    obj.rectangle147:setWidth(35);
+    obj.rectangle147:setHeight(18);
+    obj.rectangle147:setColor("#F5F5DC");
+    obj.rectangle147:setXradius(7);
+    obj.rectangle147:setYradius(7);
+    obj.rectangle147:setName("rectangle147");
 
-    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit11:setParent(obj.layout9);
-    obj.edit11:setField("upObsevacao");
-    obj.edit11:setLeft(199);
-    obj.edit11:setTop(235);
-    obj.edit11:setWidth(35);
-    obj.edit11:setHeight(18);
-    obj.edit11:setTransparent(true);
-    obj.edit11:setFontColor("black");
-    obj.edit11:setFontSize(15);
-    obj.edit11:setHorzTextAlign("center");
-    obj.edit11:setType("number");
-    obj.edit11:setName("edit11");
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit9:setParent(obj.layout9);
+    obj.edit9:setField("upObsevacao");
+    obj.edit9:setLeft(199);
+    obj.edit9:setTop(235);
+    obj.edit9:setWidth(35);
+    obj.edit9:setHeight(18);
+    obj.edit9:setTransparent(true);
+    obj.edit9:setFontColor("black");
+    obj.edit9:setFontSize(15);
+    obj.edit9:setHorzTextAlign("center");
+    obj.edit9:setType("number");
+    obj.edit9:setReadOnly(true);
+    obj.edit9:setName("edit9");
 
     obj.label64 = GUI.fromHandle(_obj_newObject("label"));
     obj.label64:setParent(obj.layout9);
@@ -4958,29 +5010,29 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label64:setFontSize(15);
     obj.label64:setName("label64");
 
-    obj.rectangle145 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle145:setParent(obj.layout9);
-    obj.rectangle145:setLeft(335);
-    obj.rectangle145:setTop(211);
-    obj.rectangle145:setWidth(80);
-    obj.rectangle145:setHeight(18);
-    obj.rectangle145:setColor("#F5F5DC");
-    obj.rectangle145:setXradius(7);
-    obj.rectangle145:setYradius(7);
-    obj.rectangle145:setName("rectangle145");
+    obj.rectangle148 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle148:setParent(obj.layout9);
+    obj.rectangle148:setLeft(335);
+    obj.rectangle148:setTop(211);
+    obj.rectangle148:setWidth(80);
+    obj.rectangle148:setHeight(18);
+    obj.rectangle148:setColor("#F5F5DC");
+    obj.rectangle148:setXradius(7);
+    obj.rectangle148:setYradius(7);
+    obj.rectangle148:setName("rectangle148");
 
-    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox3:setParent(obj.layout9);
-    obj.comboBox3:setField("EstadoObsevacao");
-    obj.comboBox3:setLeft(331);
-    obj.comboBox3:setTop(208);
-    obj.comboBox3:setWidth(87);
-    obj.comboBox3:setTransparent(true);
-    obj.comboBox3:setFontColor("black");
-    obj.comboBox3:setItems({'Inexistente','Dormente','Despertado','Controlado'});
-    obj.comboBox3:setValues({'I','Do','De','C'});
-    obj.comboBox3:setHorzTextAlign("leading");
-    obj.comboBox3:setName("comboBox3");
+    obj.estadoObservacao = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.estadoObservacao:setParent(obj.layout9);
+    obj.estadoObservacao:setField("EstadoObservacao");
+    obj.estadoObservacao:setName("estadoObservacao");
+    obj.estadoObservacao:setLeft(331);
+    obj.estadoObservacao:setTop(208);
+    obj.estadoObservacao:setWidth(87);
+    obj.estadoObservacao:setTransparent(true);
+    obj.estadoObservacao:setFontColor("black");
+    obj.estadoObservacao:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.estadoObservacao:setValues({'I','Do','De','C'});
+    obj.estadoObservacao:setHorzTextAlign("leading");
 
     obj.label65 = GUI.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.layout9);
@@ -4993,29 +5045,29 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label65:setFontSize(15);
     obj.label65:setName("label65");
 
-    obj.rectangle146 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle146:setParent(obj.layout9);
-    obj.rectangle146:setLeft(335);
-    obj.rectangle146:setTop(236);
-    obj.rectangle146:setWidth(80);
-    obj.rectangle146:setHeight(18);
-    obj.rectangle146:setColor("#F5F5DC");
-    obj.rectangle146:setXradius(7);
-    obj.rectangle146:setYradius(7);
-    obj.rectangle146:setName("rectangle146");
+    obj.rectangle149 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle149:setParent(obj.layout9);
+    obj.rectangle149:setLeft(335);
+    obj.rectangle149:setTop(236);
+    obj.rectangle149:setWidth(80);
+    obj.rectangle149:setHeight(18);
+    obj.rectangle149:setColor("#F5F5DC");
+    obj.rectangle149:setXradius(7);
+    obj.rectangle149:setYradius(7);
+    obj.rectangle149:setName("rectangle149");
 
-    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox4:setParent(obj.layout9);
-    obj.comboBox4:setField("CondObsevacao");
-    obj.comboBox4:setLeft(331);
-    obj.comboBox4:setTop(233);
-    obj.comboBox4:setWidth(85);
-    obj.comboBox4:setTransparent(true);
-    obj.comboBox4:setFontColor("black");
-    obj.comboBox4:setItems({'Normal','Avançado'});
-    obj.comboBox4:setValues({'N','A'});
-    obj.comboBox4:setHorzTextAlign("leading");
-    obj.comboBox4:setName("comboBox4");
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2:setParent(obj.layout9);
+    obj.comboBox2:setField("CondObsevacao");
+    obj.comboBox2:setLeft(331);
+    obj.comboBox2:setTop(233);
+    obj.comboBox2:setWidth(85);
+    obj.comboBox2:setTransparent(true);
+    obj.comboBox2:setFontColor("black");
+    obj.comboBox2:setItems({'Normal','Avançado'});
+    obj.comboBox2:setValues({'N','A'});
+    obj.comboBox2:setHorzTextAlign("leading");
+    obj.comboBox2:setName("comboBox2");
 
     obj.label66 = GUI.fromHandle(_obj_newObject("label"));
     obj.label66:setParent(obj.layout9);
@@ -5063,23 +5115,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label69:setVertTextAlign("leading");
     obj.label69:setName("label69");
 
-    obj.rectangle147 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle147:setParent(obj.layout9);
-    obj.rectangle147:setLeft(0);
-    obj.rectangle147:setTop(358);
-    obj.rectangle147:setWidth(430);
-    obj.rectangle147:setHeight(167);
-    obj.rectangle147:setColor("#4169E1");
-    obj.rectangle147:setName("rectangle147");
+    obj.rectangle150 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle150:setParent(obj.layout9);
+    obj.rectangle150:setLeft(0);
+    obj.rectangle150:setTop(358);
+    obj.rectangle150:setWidth(430);
+    obj.rectangle150:setHeight(167);
+    obj.rectangle150:setColor("#4169E1");
+    obj.rectangle150:setName("rectangle150");
 
-    obj.rectangle148 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle148:setParent(obj.layout9);
-    obj.rectangle148:setLeft(2);
-    obj.rectangle148:setTop(360);
-    obj.rectangle148:setWidth(426);
-    obj.rectangle148:setHeight(163);
-    obj.rectangle148:setColor("black");
-    obj.rectangle148:setName("rectangle148");
+    obj.rectangle151 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle151:setParent(obj.layout9);
+    obj.rectangle151:setLeft(2);
+    obj.rectangle151:setTop(360);
+    obj.rectangle151:setWidth(426);
+    obj.rectangle151:setHeight(163);
+    obj.rectangle151:setColor("black");
+    obj.rectangle151:setName("rectangle151");
 
     obj.image19 = GUI.fromHandle(_obj_newObject("image"));
     obj.image19:setParent(obj.layout9);
@@ -5104,12 +5156,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label70:setHorzTextAlign("center");
     obj.label70:setName("label70");
 
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button20:setParent(obj.layout9);
+    obj.button20:setLeft(2);
+    obj.button20:setTop(360);
+    obj.button20:setWidth(70);
+    obj.button20:setText("Descrição");
+    obj.button20:setName("button20");
+
     obj.button21 = GUI.fromHandle(_obj_newObject("button"));
     obj.button21:setParent(obj.layout9);
-    obj.button21:setLeft(2);
+    obj.button21:setLeft(75);
     obj.button21:setTop(360);
     obj.button21:setWidth(70);
-    obj.button21:setText("Descrição");
+    obj.button21:setText("Rolar Rei");
     obj.button21:setName("button21");
 
     obj.label71 = GUI.fromHandle(_obj_newObject("label"));
@@ -5123,30 +5183,31 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label71:setFontSize(16);
     obj.label71:setName("label71");
 
-    obj.rectangle149 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle149:setParent(obj.layout9);
-    obj.rectangle149:setLeft(199);
-    obj.rectangle149:setTop(399);
-    obj.rectangle149:setWidth(35);
-    obj.rectangle149:setHeight(18);
-    obj.rectangle149:setColor("#F5F5DC");
-    obj.rectangle149:setXradius(7);
-    obj.rectangle149:setYradius(7);
-    obj.rectangle149:setName("rectangle149");
+    obj.rectangle152 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle152:setParent(obj.layout9);
+    obj.rectangle152:setLeft(199);
+    obj.rectangle152:setTop(399);
+    obj.rectangle152:setWidth(35);
+    obj.rectangle152:setHeight(18);
+    obj.rectangle152:setColor("#F5F5DC");
+    obj.rectangle152:setXradius(7);
+    obj.rectangle152:setYradius(7);
+    obj.rectangle152:setName("rectangle152");
 
-    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit12:setParent(obj.layout9);
-    obj.edit12:setField("tierConquistador");
-    obj.edit12:setLeft(199);
-    obj.edit12:setTop(398);
-    obj.edit12:setWidth(35);
-    obj.edit12:setHeight(18);
-    obj.edit12:setTransparent(true);
-    obj.edit12:setFontColor("black");
-    obj.edit12:setFontSize(15);
-    obj.edit12:setHorzTextAlign("center");
-    obj.edit12:setType("number");
-    obj.edit12:setName("edit12");
+    obj.tierConquistador = GUI.fromHandle(_obj_newObject("edit"));
+    obj.tierConquistador:setParent(obj.layout9);
+    obj.tierConquistador:setField("tierConquistador");
+    obj.tierConquistador:setName("tierConquistador");
+    obj.tierConquistador:setLeft(199);
+    obj.tierConquistador:setTop(398);
+    obj.tierConquistador:setWidth(35);
+    obj.tierConquistador:setHeight(18);
+    obj.tierConquistador:setTransparent(true);
+    obj.tierConquistador:setFontColor("black");
+    obj.tierConquistador:setFontSize(15);
+    obj.tierConquistador:setHorzTextAlign("center");
+    obj.tierConquistador:setType("number");
+    obj.tierConquistador:setReadOnly(true);
 
     obj.label72 = GUI.fromHandle(_obj_newObject("label"));
     obj.label72:setParent(obj.layout9);
@@ -5159,30 +5220,31 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label72:setFontSize(16);
     obj.label72:setName("label72");
 
-    obj.rectangle150 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle150:setParent(obj.layout9);
-    obj.rectangle150:setLeft(199);
-    obj.rectangle150:setTop(424);
-    obj.rectangle150:setWidth(35);
-    obj.rectangle150:setHeight(18);
-    obj.rectangle150:setColor("#F5F5DC");
-    obj.rectangle150:setXradius(7);
-    obj.rectangle150:setYradius(7);
-    obj.rectangle150:setName("rectangle150");
+    obj.rectangle153 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle153:setParent(obj.layout9);
+    obj.rectangle153:setLeft(199);
+    obj.rectangle153:setTop(424);
+    obj.rectangle153:setWidth(35);
+    obj.rectangle153:setHeight(18);
+    obj.rectangle153:setColor("#F5F5DC");
+    obj.rectangle153:setXradius(7);
+    obj.rectangle153:setYradius(7);
+    obj.rectangle153:setName("rectangle153");
 
-    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit13:setParent(obj.layout9);
-    obj.edit13:setField("upConquistador");
-    obj.edit13:setLeft(199);
-    obj.edit13:setTop(423);
-    obj.edit13:setWidth(35);
-    obj.edit13:setHeight(18);
-    obj.edit13:setTransparent(true);
-    obj.edit13:setFontColor("black");
-    obj.edit13:setFontSize(15);
-    obj.edit13:setHorzTextAlign("center");
-    obj.edit13:setType("number");
-    obj.edit13:setName("edit13");
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit10:setParent(obj.layout9);
+    obj.edit10:setField("upConquistador");
+    obj.edit10:setLeft(199);
+    obj.edit10:setTop(423);
+    obj.edit10:setWidth(35);
+    obj.edit10:setHeight(18);
+    obj.edit10:setTransparent(true);
+    obj.edit10:setFontColor("black");
+    obj.edit10:setFontSize(15);
+    obj.edit10:setHorzTextAlign("center");
+    obj.edit10:setType("number");
+    obj.edit10:setReadOnly(true);
+    obj.edit10:setName("edit10");
 
     obj.label73 = GUI.fromHandle(_obj_newObject("label"));
     obj.label73:setParent(obj.layout9);
@@ -5195,29 +5257,29 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label73:setFontSize(15);
     obj.label73:setName("label73");
 
-    obj.rectangle151 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle151:setParent(obj.layout9);
-    obj.rectangle151:setLeft(335);
-    obj.rectangle151:setTop(399);
-    obj.rectangle151:setWidth(80);
-    obj.rectangle151:setHeight(18);
-    obj.rectangle151:setColor("#F5F5DC");
-    obj.rectangle151:setXradius(7);
-    obj.rectangle151:setYradius(7);
-    obj.rectangle151:setName("rectangle151");
+    obj.rectangle154 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle154:setParent(obj.layout9);
+    obj.rectangle154:setLeft(335);
+    obj.rectangle154:setTop(399);
+    obj.rectangle154:setWidth(80);
+    obj.rectangle154:setHeight(18);
+    obj.rectangle154:setColor("#F5F5DC");
+    obj.rectangle154:setXradius(7);
+    obj.rectangle154:setYradius(7);
+    obj.rectangle154:setName("rectangle154");
 
-    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox5:setParent(obj.layout9);
-    obj.comboBox5:setField("EstadoConquistador");
-    obj.comboBox5:setLeft(331);
-    obj.comboBox5:setTop(396);
-    obj.comboBox5:setWidth(87);
-    obj.comboBox5:setTransparent(true);
-    obj.comboBox5:setFontColor("black");
-    obj.comboBox5:setItems({'Inexistente','Dormente','Despertado','Controlado'});
-    obj.comboBox5:setValues({'I','Do','De','C'});
-    obj.comboBox5:setHorzTextAlign("leading");
-    obj.comboBox5:setName("comboBox5");
+    obj.estadoConquistador = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.estadoConquistador:setParent(obj.layout9);
+    obj.estadoConquistador:setField("EstadoConquistador");
+    obj.estadoConquistador:setName("estadoConquistador");
+    obj.estadoConquistador:setLeft(331);
+    obj.estadoConquistador:setTop(396);
+    obj.estadoConquistador:setWidth(87);
+    obj.estadoConquistador:setTransparent(true);
+    obj.estadoConquistador:setFontColor("black");
+    obj.estadoConquistador:setItems({'Inexistente','Dormente','Despertado','Controlado'});
+    obj.estadoConquistador:setValues({'I','Do','De','C'});
+    obj.estadoConquistador:setHorzTextAlign("leading");
 
     obj.label74 = GUI.fromHandle(_obj_newObject("label"));
     obj.label74:setParent(obj.layout9);
@@ -5230,29 +5292,29 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label74:setFontSize(15);
     obj.label74:setName("label74");
 
-    obj.rectangle152 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle152:setParent(obj.layout9);
-    obj.rectangle152:setLeft(335);
-    obj.rectangle152:setTop(424);
-    obj.rectangle152:setWidth(80);
-    obj.rectangle152:setHeight(18);
-    obj.rectangle152:setColor("#F5F5DC");
-    obj.rectangle152:setXradius(7);
-    obj.rectangle152:setYradius(7);
-    obj.rectangle152:setName("rectangle152");
+    obj.rectangle155 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle155:setParent(obj.layout9);
+    obj.rectangle155:setLeft(335);
+    obj.rectangle155:setTop(424);
+    obj.rectangle155:setWidth(80);
+    obj.rectangle155:setHeight(18);
+    obj.rectangle155:setColor("#F5F5DC");
+    obj.rectangle155:setXradius(7);
+    obj.rectangle155:setYradius(7);
+    obj.rectangle155:setName("rectangle155");
 
-    obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox6:setParent(obj.layout9);
-    obj.comboBox6:setField("CondConquistador");
-    obj.comboBox6:setLeft(331);
-    obj.comboBox6:setTop(421);
-    obj.comboBox6:setWidth(85);
-    obj.comboBox6:setTransparent(true);
-    obj.comboBox6:setFontColor("black");
-    obj.comboBox6:setItems({'Normal','Avançado'});
-    obj.comboBox6:setValues({'N','A'});
-    obj.comboBox6:setHorzTextAlign("leading");
-    obj.comboBox6:setName("comboBox6");
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3:setParent(obj.layout9);
+    obj.comboBox3:setField("CondConquistador");
+    obj.comboBox3:setLeft(331);
+    obj.comboBox3:setTop(421);
+    obj.comboBox3:setWidth(85);
+    obj.comboBox3:setTransparent(true);
+    obj.comboBox3:setFontColor("black");
+    obj.comboBox3:setItems({'Normal','Avançado'});
+    obj.comboBox3:setValues({'N','A'});
+    obj.comboBox3:setHorzTextAlign("leading");
+    obj.comboBox3:setName("comboBox3");
 
     obj.label75 = GUI.fromHandle(_obj_newObject("label"));
     obj.label75:setParent(obj.layout9);
@@ -5309,13 +5371,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.Equipamento:setHeight(550);
     obj.Equipamento:setVisible(false);
 
-    obj.rectangle153 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle153:setParent(obj.Equipamento);
-    obj.rectangle153:setAlign("client");
-    obj.rectangle153:setColor("#404040");
-    obj.rectangle153:setXradius(7);
-    obj.rectangle153:setYradius(7);
-    obj.rectangle153:setName("rectangle153");
+    obj.rectangle156 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle156:setParent(obj.Equipamento);
+    obj.rectangle156:setAlign("client");
+    obj.rectangle156:setColor("#404040");
+    obj.rectangle156:setXradius(7);
+    obj.rectangle156:setYradius(7);
+    obj.rectangle156:setName("rectangle156");
 
     obj.buttonSair = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.buttonSair:setParent(obj.Equipamento);
@@ -5340,27 +5402,27 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.label79:setFontSize(21);
     obj.label79:setName("label79");
 
-    obj.rectangle154 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle154:setParent(obj.Equipamento);
-    obj.rectangle154:setLeft(1);
-    obj.rectangle154:setTop(28);
-    obj.rectangle154:setWidth(208);
-    obj.rectangle154:setHeight(520);
-    obj.rectangle154:setColor("black");
-    obj.rectangle154:setXradius(4);
-    obj.rectangle154:setYradius(4);
-    obj.rectangle154:setName("rectangle154");
+    obj.rectangle157 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle157:setParent(obj.Equipamento);
+    obj.rectangle157:setLeft(1);
+    obj.rectangle157:setTop(28);
+    obj.rectangle157:setWidth(208);
+    obj.rectangle157:setHeight(520);
+    obj.rectangle157:setColor("black");
+    obj.rectangle157:setXradius(4);
+    obj.rectangle157:setYradius(4);
+    obj.rectangle157:setName("rectangle157");
 
-    obj.rectangle155 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle155:setParent(obj.Equipamento);
-    obj.rectangle155:setLeft(5);
-    obj.rectangle155:setTop(32);
-    obj.rectangle155:setWidth(200);
-    obj.rectangle155:setHeight(512);
-    obj.rectangle155:setColor("#404040");
-    obj.rectangle155:setXradius(4);
-    obj.rectangle155:setYradius(4);
-    obj.rectangle155:setName("rectangle155");
+    obj.rectangle158 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle158:setParent(obj.Equipamento);
+    obj.rectangle158:setLeft(5);
+    obj.rectangle158:setTop(32);
+    obj.rectangle158:setWidth(200);
+    obj.rectangle158:setHeight(512);
+    obj.rectangle158:setColor("#404040");
+    obj.rectangle158:setXradius(4);
+    obj.rectangle158:setYradius(4);
+    obj.rectangle158:setName("rectangle158");
 
     obj.fotoEquip = GUI.fromHandle(_obj_newObject("image"));
     obj.fotoEquip:setParent(obj.Equipamento);
@@ -5373,14 +5435,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.fotoEquip:setEditable(true);
     obj.fotoEquip:setStyle("proportional");
 
-    obj.rectangle156 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle156:setParent(obj.Equipamento);
-    obj.rectangle156:setLeft(205);
-    obj.rectangle156:setTop(28);
-    obj.rectangle156:setWidth(5);
-    obj.rectangle156:setHeight(520);
-    obj.rectangle156:setColor("black");
-    obj.rectangle156:setName("rectangle156");
+    obj.rectangle159 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle159:setParent(obj.Equipamento);
+    obj.rectangle159:setLeft(205);
+    obj.rectangle159:setTop(28);
+    obj.rectangle159:setWidth(5);
+    obj.rectangle159:setHeight(520);
+    obj.rectangle159:setColor("black");
+    obj.rectangle159:setName("rectangle159");
 
     obj.editEquip = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.editEquip:setParent(obj.Equipamento);
@@ -5403,13 +5465,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.Haki:setHeight(550);
     obj.Haki:setVisible(false);
 
-    obj.rectangle157 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle157:setParent(obj.Haki);
-    obj.rectangle157:setAlign("client");
-    obj.rectangle157:setColor("#404040");
-    obj.rectangle157:setXradius(7);
-    obj.rectangle157:setYradius(7);
-    obj.rectangle157:setName("rectangle157");
+    obj.rectangle160 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle160:setParent(obj.Haki);
+    obj.rectangle160:setAlign("client");
+    obj.rectangle160:setColor("#404040");
+    obj.rectangle160:setXradius(7);
+    obj.rectangle160:setYradius(7);
+    obj.rectangle160:setName("rectangle160");
 
     obj.buttonExit = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.buttonExit:setParent(obj.Haki);
@@ -5744,14 +5806,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.dataLink66 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink66:setParent(obj.Atributos);
-    obj.dataLink66:setField("upArmamento");
-    obj.dataLink66:setDefaultValue("0");
+    obj.dataLink66:setField("EstadoArmamento");
+    obj.dataLink66:setDefaultValue("I");
     obj.dataLink66:setName("dataLink66");
 
     obj.dataLink67 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink67:setParent(obj.Atributos);
-    obj.dataLink67:setField("EstadoArmamento");
-    obj.dataLink67:setDefaultValue("I");
+    obj.dataLink67:setField("upArmamento");
+    obj.dataLink67:setDefaultValue("0");
     obj.dataLink67:setName("dataLink67");
 
     obj.dataLink68 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -5768,14 +5830,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.dataLink70 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink70:setParent(obj.Atributos);
-    obj.dataLink70:setField("upObsevacao");
-    obj.dataLink70:setDefaultValue("0");
+    obj.dataLink70:setField("EstadoObservacao");
+    obj.dataLink70:setDefaultValue("I");
     obj.dataLink70:setName("dataLink70");
 
     obj.dataLink71 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink71:setParent(obj.Atributos);
-    obj.dataLink71:setField("EstadoObsevacao");
-    obj.dataLink71:setDefaultValue("I");
+    obj.dataLink71:setField("upObsevacao");
+    obj.dataLink71:setDefaultValue("0");
     obj.dataLink71:setName("dataLink71");
 
     obj.dataLink72 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -5792,14 +5854,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.dataLink74 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink74:setParent(obj.Atributos);
-    obj.dataLink74:setField("upConquistador");
-    obj.dataLink74:setDefaultValue("0");
+    obj.dataLink74:setField("EstadoConquistador");
+    obj.dataLink74:setDefaultValue("I");
     obj.dataLink74:setName("dataLink74");
 
     obj.dataLink75 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink75:setParent(obj.Atributos);
-    obj.dataLink75:setField("EstadoConquistador");
-    obj.dataLink75:setDefaultValue("I");
+    obj.dataLink75:setField("upConquistador");
+    obj.dataLink75:setDefaultValue("0");
     obj.dataLink75:setName("dataLink75");
 
     obj.dataLink76 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -5819,10 +5881,723 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.EdLeAkuma:setTitle("Brincadeiras Em Alto Mar");
     obj.EdLeAkuma:setName("EdLeAkuma");
 
+    obj.rectangle161 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle161:setParent(obj.EdLeAkuma);
+    obj.rectangle161:setLeft(0);
+    obj.rectangle161:setTop(0);
+    obj.rectangle161:setWidth(10000);
+    obj.rectangle161:setHeight(10000);
+    obj.rectangle161:setColor("black");
+    obj.rectangle161:setName("rectangle161");
+
+
+	EdLImagens = {
+		BlackLeg = {
+			imagem = "https://media.tenor.com/0qQyt427SHkAAAAC/one-piece-sanji.gif"
+		},
+		BoFudoRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/WFPKKTJD_3733833/yamato.gif"
+		},
+		BoKenryu = {
+			imagem = "https://blob.firecast.com.br/blobs/CJFVPMIU_3733719/Sem_t_tul13123123o.jpg"
+		},
+		Boxe = {
+			imagem = "https://pa1.aminoapps.com/6326/b952dd643c8bc613840ce082d0927e2655803f5a_hq.gif"
+		},
+		Capoeira = {
+			imagem = "https://blob.firecast.com.br/blobs/SLLOFDJF_3733730/dancing.gif"
+		},
+		ColorsTrap = {
+			imagem = "https://media.tenor.com/t_HGhrVJns8AAAAM/one-piece-marianne.gif"
+		},
+		Demonharubado = {
+			imagem = "https://pa1.narvii.com/6868/542b309968267825692736c8674ce0b6fcc67a1ar1-500-281_hq.gif"
+		},
+		EngeinoFureteRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/FKTCTWGL_3733800/sword.gif"
+		},
+		FrogLeg = {
+			imagem = "https://blob.firecast.com.br/blobs/KBFNPWKL_3702865/greninja-pokemon.gif"
+		},
+		Hachitoryu = {
+			imagem = "https://onepiecebytheghosthunter.weebly.com/uploads/2/7/1/1/27112571/2940841_orig.jpg"
+		},
+		HaganeNoKiba = {
+			imagem = "https://blob.firecast.com.br/blobs/HSWHCKOE_3733810/matchups-for-vega-balrog-street-fighter-v0.gif"
+		},
+		Hasshoken = {
+			imagem = "https://pa1.narvii.com/6411/0f53e382be8557160d2d5cf570f38afe62225ea8_hq.gif"
+		},
+		Ittoryu = {
+			imagem = "https://media.tenor.com/tgevhaBd3g0AAAAC/ittoryu.gif"
+		},
+		JaoKunDo = {
+			imagem = "https://media.tenor.com/QxEuc6YNYf8AAAAd/jao-kun-do.gif"
+		},
+		JioKen = {
+			imagem = "https://blob.firecast.com.br/blobs/TPQAWDPD_3727751/tumblr_nfh452KyYK1rr37qoo4_r1_500.gif"
+		},
+		KarateTritao = {
+			imagem = "https://pa1.narvii.com/6708/34262be4d9d8776b5a5b0b073374450b30eecbcf_hq.gif"
+		},
+		Kapparyu = {
+			imagem = "https://media.tenor.com/q2PHPRDB9TwAAAAC/amano-gawa-kawamatsu.gif"
+		},
+		KenkinoGattsu = {
+			imagem = "http://blob.firecast.com.br/blobs/CEMKQKNK_3065178/guts-berserk.gif"
+		},
+		KikaiKoboRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/OOHIHPTD_3733191/stark-frieren.gif"
+		},
+		Kitsunebiryu = {
+			imagem = "https://blob.firecast.com.br/blobs/HPKTINEF_3637389/e8cb549a0e3b80058a21110154e3f6ff6adc22e7_h.gif"
+		},
+		KoenoEnseiRyu = {
+			imagem = "https://giffiles.alphacoders.com/136/136090.gif"
+		},
+		KosenjuRyu = {
+			imagem = "https://pa1.aminoapps.com/6264/eecfa19e2fd02dcddfd20b58dc6d3f1f76fd8c9f_hq.gif"
+		},
+		Kyokugi = {
+			imagem = "http://blob.firecast.com.br/blobs/UVBHBWGK_3110025/00_-_Kyokugi_Apresentacao.gif"
+		},
+		MermanCombat = {
+			imagem = "https://static.wikia.nocookie.net/powerlisting/images/4/4e/Merman_Combat_Ultramarine_2_%28One_Piece%29.gif/revision/latest/scale-to-width-down/250?cb=20180707050855"
+		},
+		NingyoGujutsu = {
+			imagem = "https://blob.firecast.com.br/blobs/KNHEGOEM_3733080/images.jpg"
+		},
+		Nitoryu = {
+			imagem = "https://media.tenor.com/Ztnilz9RI6UAAAAd/oden-nitoryu-oden-two-sword-style.gif"
+		},
+		OkamaKenpo = {
+			imagem = "https://pa1.narvii.com/7230/3b4538d2abcf8f8cc99f7b1a50490053be678b30r1-435-250_hq.gif"
+		},
+		RairyuuRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/AIKOQSUR_3391738/lancer-fate-diarmuid.gif"
+		},
+		RamenKenpo = {
+			imagem = "http://blob.firecast.com.br/blobs/AOUWPLSN_3076631/one-piece-wanze.gif"
+		},
+		ReitetsunoKen = {
+			imagem = "http://blob.firecast.com.br/blobs/PRCKFKTL_3110154/00_-_Reitetsu_no_Ken_Apresentacao.gif"
+		},
+		Rokushiki = {
+			imagem = "https://static.wikia.nocookie.net/onepiece/images/6/65/Rankyaku.gif/revision/latest?cb=20160626195046&path-prefix=pt"
+		},
+		Rokutoryu = {
+			imagem = "http://blob.firecast.com.br/blobs/HBRCSGEV_2627847/6437283b9f3d3e1e0105375f.jpg"
+		},
+		Ryusoken = {
+			imagem = "https://static.wikia.nocookie.net/onepiece/images/b/b5/Punho_da_Garra_do_Drag%C3%A3o.gif/revision/latest?cb=20160415153631&path-prefix=pt"
+		},
+		Sakejutsu = {
+			imagem = "http://blob.firecast.com.br/blobs/WWPNLULN_3210353/naruto-rock-lee.gif"
+		},
+		Santoryu = {
+			imagem = "https://media.tenor.com/QIzUoOtRWGgAAAAC/one-piece-santoryu.gif"
+		},
+		SeiginoTokenRyu = {
+			imagem = "http://blob.firecast.com.br/blobs/LREEFFNW_3133574/one-piece-justice.gif"
+		},
+		Senritsuken = {
+			imagem = "https://64.media.tumblr.com/7e14767ef57464e24be00c23bb7b8a68/cd199a8845b2618e-62/s640x960/ea553ade2692a9b29750f291ef0585c87ffaa10b.gif"
+		},
+		SonGokunoUgoki = {
+			imagem = "https://steamuserimages-a.akamaihd.net/ugc/608350301004475238/027316ACF082A6EFC7EAEFDA6CEABE092EA70BE1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"
+		},
+		StreetBrawling = {
+			imagem = "https://i0.wp.com/the-avocado.org/wp-content/uploads/2020/07/0d2f2e25384393037370749e50b9a82c.gif?fit=500%2C269&ssl=1"
+		},
+		SumoRyu = {
+			imagem = "https://64.media.tumblr.com/3289a22883915af6d0829451f0d33426/tumblr_pjfc9i5Rr81sau2q2o2_640.gif"
+		},
+		TatenoMamoriRyu = {
+			imagem = "https://blob.firecast.com.br/blobs/OKQFBLVC_3039337/braum-lol.gif"
+		},
+		TenshiNunchakuRyu = {
+			imagem = "https://pa1.aminoapps.com/6543/2b523ace978ad8b0366019e9b1f8fd20a3a4eeed_00.gif"
+		},
+		TeppanyakinoKen = {
+			imagem = "http://blob.firecast.com.br/blobs/CTPNDVHM_3076650/black-butler-sebastian.gif"
+		},
+		TontattaCombat = {
+			imagem = "https://blob.firecast.com.br/blobs/KLBHRSKN_3702972/123.jpg"
+		},
+		Tokarado = {
+			imagem = "https://i.pinimg.com/originals/e9/65/a8/e965a8c9e5c755cefdcd034f0e3a20bf.gif"
+		},
+		Tsuinburedo = {
+			imagem = "https://media.tenor.com/7wqsMTZpOGkAAAAM/darth-maul.gif"
+		},
+		Yontoryu = {
+			imagem = "https://media.tenor.com/8fumyVdhRJ8AAAAC/kaku-one-piece.gif"
+		}
+	}
+	
+
+
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout10:setParent(obj.EdLeAkuma);
+    obj.layout10:setLeft(12);
+    obj.layout10:setTop(12);
+    obj.layout10:setWidth(175);
+    obj.layout10:setHeight(525);
+    obj.layout10:setName("layout10");
+
+    obj.rectangle162 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle162:setParent(obj.layout10);
+    obj.rectangle162:setLeft(0);
+    obj.rectangle162:setTop(0);
+    obj.rectangle162:setWidth(175);
+    obj.rectangle162:setHeight(525);
+    obj.rectangle162:setColor("#4169E1");
+    obj.rectangle162:setName("rectangle162");
+
+    obj.rectangle163 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle163:setParent(obj.layout10);
+    obj.rectangle163:setLeft(2);
+    obj.rectangle163:setTop(2);
+    obj.rectangle163:setWidth(171);
+    obj.rectangle163:setHeight(521);
+    obj.rectangle163:setColor("black");
+    obj.rectangle163:setName("rectangle163");
+
+    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label81:setParent(obj.layout10);
+    obj.label81:setLeft(10);
+    obj.label81:setTop(10);
+    obj.label81:setWidth(155);
+    obj.label81:setHeight(25);
+    obj.label81:setText("Estilo De Luta");
+    obj.label81:setFontSize(18);
+    lfm_setPropAsString(obj.label81, "fontStyle", "bold underline");
+    obj.label81:setFontColor("#5F9EA0");
+    obj.label81:setHorzTextAlign("center");
+    obj.label81:setName("label81");
+
+    obj.rectangle164 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle164:setParent(obj.layout10);
+    obj.rectangle164:setLeft(10);
+    obj.rectangle164:setTop(40);
+    obj.rectangle164:setWidth(155);
+    obj.rectangle164:setHeight(105);
+    obj.rectangle164:setColor("#F5F5DC");
+    obj.rectangle164:setName("rectangle164");
+
+    obj.EstLuta = GUI.fromHandle(_obj_newObject("edit"));
+    obj.EstLuta:setParent(obj.layout10);
+    obj.EstLuta:setName("EstLuta");
+    obj.EstLuta:setLeft(12);
+    obj.EstLuta:setTop(119);
+    obj.EstLuta:setWidth(151);
+    obj.EstLuta:setHeight(24);
+    obj.EstLuta:setFontColor("#D1B27E");
+    lfm_setPropAsString(obj.EstLuta, "fontStyle", "bold");
+    obj.EstLuta:setHorzTextAlign("center");
+
+    obj.rectangle165 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle165:setParent(obj.layout10);
+    obj.rectangle165:setLeft(12);
+    obj.rectangle165:setTop(42);
+    obj.rectangle165:setWidth(151);
+    obj.rectangle165:setHeight(77);
+    obj.rectangle165:setColor("black");
+    obj.rectangle165:setName("rectangle165");
+
+    obj.imagemEdL = GUI.fromHandle(_obj_newObject("image"));
+    obj.imagemEdL:setParent(obj.layout10);
+    obj.imagemEdL:setField("imagemEdL");
+    obj.imagemEdL:setName("imagemEdL");
+    obj.imagemEdL:setLeft(12);
+    obj.imagemEdL:setTop(42);
+    obj.imagemEdL:setWidth(151);
+    obj.imagemEdL:setHeight(77);
+    obj.imagemEdL:setEditable(true);
+    obj.imagemEdL.animate = true;
+    obj.imagemEdL:setStyle("autoFit");
+
+    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button22:setParent(obj.layout10);
+    obj.button22:setLeft(12);
+    obj.button22:setTop(42);
+    obj.button22:setWidth(40);
+    obj.button22:setHeight(20);
+    obj.button22:setText("Ver");
+    obj.button22:setName("button22");
+
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label82:setParent(obj.layout10);
+    obj.label82:setLeft(10);
+    obj.label82:setTop(159);
+    obj.label82:setWidth(155);
+    obj.label82:setHeight(25);
+    obj.label82:setText("Akuma no Mi");
+    obj.label82:setFontSize(18);
+    lfm_setPropAsString(obj.label82, "fontStyle", "bold underline");
+    obj.label82:setFontColor("#5F9EA0");
+    obj.label82:setHorzTextAlign("center");
+    obj.label82:setName("label82");
+
+    obj.rectangle166 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle166:setParent(obj.layout10);
+    obj.rectangle166:setLeft(10);
+    obj.rectangle166:setTop(189);
+    obj.rectangle166:setWidth(155);
+    obj.rectangle166:setHeight(105);
+    obj.rectangle166:setColor("#F5F5DC");
+    obj.rectangle166:setName("rectangle166");
+
+    obj.Akuma = GUI.fromHandle(_obj_newObject("edit"));
+    obj.Akuma:setParent(obj.layout10);
+    obj.Akuma:setName("Akuma");
+    obj.Akuma:setField("Akuma");
+    obj.Akuma:setLeft(12);
+    obj.Akuma:setTop(268);
+    obj.Akuma:setWidth(151);
+    obj.Akuma:setHeight(24);
+    obj.Akuma:setFontColor("#D1B27E");
+    lfm_setPropAsString(obj.Akuma, "fontStyle", "bold");
+    obj.Akuma:setFontSize(10);
+    obj.Akuma:setHorzTextAlign("center");
+
+    obj.rectangle167 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle167:setParent(obj.layout10);
+    obj.rectangle167:setLeft(12);
+    obj.rectangle167:setTop(191);
+    obj.rectangle167:setWidth(151);
+    obj.rectangle167:setHeight(77);
+    obj.rectangle167:setColor("black");
+    obj.rectangle167:setName("rectangle167");
+
+    obj.image20 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image20:setParent(obj.layout10);
+    obj.image20:setField("imagemAkuma");
+    obj.image20:setLeft(12);
+    obj.image20:setTop(191);
+    obj.image20:setWidth(151);
+    obj.image20:setHeight(77);
+    obj.image20:setEditable(true);
+    obj.image20.animate = true;
+    obj.image20:setStyle("autoFit");
+    obj.image20:setName("image20");
+
+    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button23:setParent(obj.layout10);
+    obj.button23:setLeft(12);
+    obj.button23:setTop(191);
+    obj.button23:setWidth(40);
+    obj.button23:setHeight(20);
+    obj.button23:setText("Ver");
+    obj.button23:setName("button23");
+
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label83:setParent(obj.layout10);
+    obj.label83:setLeft(10);
+    obj.label83:setTop(308);
+    obj.label83:setWidth(155);
+    obj.label83:setHeight(25);
+    obj.label83:setText("Miscelânea");
+    obj.label83:setFontSize(18);
+    lfm_setPropAsString(obj.label83, "fontStyle", "bold underline");
+    obj.label83:setFontColor("#5F9EA0");
+    obj.label83:setHorzTextAlign("center");
+    obj.label83:setName("label83");
+
+    obj.rectangle168 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle168:setParent(obj.layout10);
+    obj.rectangle168:setLeft(10);
+    obj.rectangle168:setTop(338);
+    obj.rectangle168:setWidth(155);
+    obj.rectangle168:setHeight(105);
+    obj.rectangle168:setColor("#F5F5DC");
+    obj.rectangle168:setName("rectangle168");
+
+    obj.Misc = GUI.fromHandle(_obj_newObject("edit"));
+    obj.Misc:setParent(obj.layout10);
+    obj.Misc:setName("Misc");
+    obj.Misc:setField("Misc");
+    obj.Misc:setLeft(12);
+    obj.Misc:setTop(417);
+    obj.Misc:setWidth(151);
+    obj.Misc:setHeight(24);
+    obj.Misc:setFontColor("#D1B27E");
+    lfm_setPropAsString(obj.Misc, "fontStyle", "bold");
+    obj.Misc:setHorzTextAlign("center");
+
+    obj.rectangle169 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle169:setParent(obj.layout10);
+    obj.rectangle169:setLeft(12);
+    obj.rectangle169:setTop(340);
+    obj.rectangle169:setWidth(151);
+    obj.rectangle169:setHeight(77);
+    obj.rectangle169:setColor("black");
+    obj.rectangle169:setName("rectangle169");
+
+    obj.image21 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image21:setParent(obj.layout10);
+    obj.image21:setField("imagemMisc");
+    obj.image21:setLeft(12);
+    obj.image21:setTop(340);
+    obj.image21:setWidth(151);
+    obj.image21:setHeight(77);
+    obj.image21:setEditable(true);
+    obj.image21.animate = true;
+    obj.image21:setStyle("autoFit");
+    obj.image21:setName("image21");
+
+    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button24:setParent(obj.layout10);
+    obj.button24:setLeft(12);
+    obj.button24:setTop(340);
+    obj.button24:setWidth(40);
+    obj.button24:setHeight(20);
+    obj.button24:setText("Ver");
+    obj.button24:setName("button24");
+
+    obj.EstilosDeLuta = GUI.fromHandle(_obj_newObject("layout"));
+    obj.EstilosDeLuta:setParent(obj.EdLeAkuma);
+    obj.EstilosDeLuta:setName("EstilosDeLuta");
+    obj.EstilosDeLuta:setLeft(197);
+    obj.EstilosDeLuta:setTop(12);
+    obj.EstilosDeLuta:setWidth(1000);
+    obj.EstilosDeLuta:setHeight(525);
+
+    obj.rectangle170 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle170:setParent(obj.EstilosDeLuta);
+    obj.rectangle170:setLeft(0);
+    obj.rectangle170:setTop(0);
+    obj.rectangle170:setWidth(1000);
+    obj.rectangle170:setHeight(525);
+    obj.rectangle170:setColor("#4169E1");
+    obj.rectangle170:setName("rectangle170");
+
+    obj.rectangle171 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle171:setParent(obj.EstilosDeLuta);
+    obj.rectangle171:setLeft(2);
+    obj.rectangle171:setTop(2);
+    obj.rectangle171:setWidth(996);
+    obj.rectangle171:setHeight(521);
+    obj.rectangle171:setColor("black");
+    obj.rectangle171:setName("rectangle171");
+
+    obj.tabControl5 = GUI.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl5:setParent(obj.EstilosDeLuta);
+    obj.tabControl5:setLeft(2);
+    obj.tabControl5:setTop(2);
+    obj.tabControl5:setWidth(996);
+    obj.tabControl5:setHeight(521);
+    obj.tabControl5:setName("tabControl5");
+
     obj.tab10 = GUI.fromHandle(_obj_newObject("tab"));
-    obj.tab10:setParent(obj.tabControl1);
-    obj.tab10:setTitle("Inventario");
+    obj.tab10:setParent(obj.tabControl5);
+    obj.tab10:setTitle("Principal");
     obj.tab10:setName("tab10");
+
+    obj.rectangle172 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle172:setParent(obj.tab10);
+    obj.rectangle172:setLeft(0);
+    obj.rectangle172:setTop(0);
+    obj.rectangle172:setWidth(996);
+    obj.rectangle172:setHeight(525);
+    obj.rectangle172:setColor("black");
+    obj.rectangle172:setName("rectangle172");
+
+    obj.estLPrincipal = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.estLPrincipal:setParent(obj.tab10);
+    obj.estLPrincipal:setName("estLPrincipal");
+    obj.estLPrincipal:setField("");
+    obj.estLPrincipal:setAlign("client");
+    obj.estLPrincipal.backgroundColor = "black";
+    obj.estLPrincipal.defaultFontColor = "white";
+    obj.estLPrincipal.animateImages = true;
+
+    obj.estiloDeLuta = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.estiloDeLuta:setParent(obj.tab10);
+    obj.estiloDeLuta:setField("estiloDeLuta");
+    obj.estiloDeLuta:setName("estiloDeLuta");
+    obj.estiloDeLuta:setValues(EdLSemCaracteresEspeciais);
+    obj.estiloDeLuta:setLeft(750);
+    obj.estiloDeLuta:setTop(1.2);
+    obj.estiloDeLuta:setWidth(150);
+    obj.estiloDeLuta:setHeight(29);
+    obj.estiloDeLuta:setFontColor("white");
+    obj.estiloDeLuta:setHorzTextAlign("center");
+    obj.estiloDeLuta:setItems(EstilosDeLuta);
+
+    obj.tab11 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab11:setParent(obj.tabControl5);
+    obj.tab11:setTitle("Secundario");
+    obj.tab11:setName("tab11");
+
+    obj.rectangle173 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle173:setParent(obj.tab11);
+    obj.rectangle173:setLeft(0);
+    obj.rectangle173:setTop(0);
+    obj.rectangle173:setWidth(996);
+    obj.rectangle173:setHeight(525);
+    obj.rectangle173:setColor("black");
+    obj.rectangle173:setName("rectangle173");
+
+    obj.estLSecundario = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.estLSecundario:setParent(obj.tab11);
+    obj.estLSecundario:setName("estLSecundario");
+    obj.estLSecundario:setAlign("client");
+    obj.estLSecundario.backgroundColor = "black";
+    obj.estLSecundario.defaultFontColor = "white";
+    obj.estLSecundario.animateImages = true;
+
+    obj.estiloDeLutaSec = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.estiloDeLutaSec:setParent(obj.tab11);
+    obj.estiloDeLutaSec:setField("estiloDeLutaSec");
+    obj.estiloDeLutaSec:setName("estiloDeLutaSec");
+    obj.estiloDeLutaSec:setValues(EdLSemCaracteresEspeciais);
+    obj.estiloDeLutaSec:setLeft(750);
+    obj.estiloDeLutaSec:setTop(1.2);
+    obj.estiloDeLutaSec:setWidth(150);
+    obj.estiloDeLutaSec:setHeight(29);
+    obj.estiloDeLutaSec:setFontColor("white");
+    obj.estiloDeLutaSec:setHorzTextAlign("center");
+    obj.estiloDeLutaSec:setItems(EstilosDeLuta);
+
+    obj.AkumaLayout = GUI.fromHandle(_obj_newObject("layout"));
+    obj.AkumaLayout:setParent(obj.EdLeAkuma);
+    obj.AkumaLayout:setName("AkumaLayout");
+    obj.AkumaLayout:setLeft(197);
+    obj.AkumaLayout:setTop(12);
+    obj.AkumaLayout:setWidth(1000);
+    obj.AkumaLayout:setHeight(525);
+    obj.AkumaLayout:setVisible(false);
+
+    obj.rectangle174 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle174:setParent(obj.AkumaLayout);
+    obj.rectangle174:setLeft(0);
+    obj.rectangle174:setTop(0);
+    obj.rectangle174:setWidth(1000);
+    obj.rectangle174:setHeight(525);
+    obj.rectangle174:setColor("#4169E1");
+    obj.rectangle174:setName("rectangle174");
+
+    obj.rectangle175 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle175:setParent(obj.AkumaLayout);
+    obj.rectangle175:setLeft(2);
+    obj.rectangle175:setTop(2);
+    obj.rectangle175:setWidth(996);
+    obj.rectangle175:setHeight(521);
+    obj.rectangle175:setColor("black");
+    obj.rectangle175:setName("rectangle175");
+
+    obj.tabControl6 = GUI.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl6:setParent(obj.AkumaLayout);
+    obj.tabControl6:setLeft(2);
+    obj.tabControl6:setTop(2);
+    obj.tabControl6:setWidth(996);
+    obj.tabControl6:setHeight(521);
+    obj.tabControl6:setName("tabControl6");
+
+    obj.tab12 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab12:setParent(obj.tabControl6);
+    obj.tab12:setTitle("Descrição");
+    obj.tab12:setName("tab12");
+
+    obj.richEdit3 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit3:setParent(obj.tab12);
+    obj.richEdit3:setField("editDescri");
+    obj.richEdit3:setWidth(996);
+    obj.richEdit3:setHeight(521);
+    obj.richEdit3.backgroundColor = "black";
+    obj.richEdit3.defaultFontColor = "white";
+    obj.richEdit3.animateImages = true;
+    obj.richEdit3:setName("richEdit3");
+
+    obj.tab13 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab13:setParent(obj.tabControl6);
+    obj.tab13:setTitle("Formas");
+    obj.tab13:setName("tab13");
+
+    obj.richEdit4 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit4:setParent(obj.tab13);
+    obj.richEdit4:setField("editFormas");
+    obj.richEdit4:setWidth(996);
+    obj.richEdit4:setHeight(521);
+    obj.richEdit4.backgroundColor = "black";
+    obj.richEdit4.defaultFontColor = "white";
+    obj.richEdit4.animateImages = true;
+    obj.richEdit4:setName("richEdit4");
+
+    obj.tab14 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab14:setParent(obj.tabControl6);
+    obj.tab14:setTitle("Golpes");
+    obj.tab14:setName("tab14");
+
+    obj.richEdit5 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit5:setParent(obj.tab14);
+    obj.richEdit5:setField("editGolpes");
+    obj.richEdit5:setWidth(996);
+    obj.richEdit5:setHeight(521);
+    obj.richEdit5.backgroundColor = "black";
+    obj.richEdit5.defaultFontColor = "white";
+    obj.richEdit5.animateImages = true;
+    obj.richEdit5:setName("richEdit5");
+
+    obj.MiscLayout = GUI.fromHandle(_obj_newObject("layout"));
+    obj.MiscLayout:setParent(obj.EdLeAkuma);
+    obj.MiscLayout:setName("MiscLayout");
+    obj.MiscLayout:setLeft(197);
+    obj.MiscLayout:setTop(12);
+    obj.MiscLayout:setWidth(1000);
+    obj.MiscLayout:setHeight(525);
+    obj.MiscLayout:setVisible(false);
+
+    obj.rectangle176 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle176:setParent(obj.MiscLayout);
+    obj.rectangle176:setLeft(0);
+    obj.rectangle176:setTop(0);
+    obj.rectangle176:setWidth(1000);
+    obj.rectangle176:setHeight(525);
+    obj.rectangle176:setColor("#4169E1");
+    obj.rectangle176:setName("rectangle176");
+
+    obj.rectangle177 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle177:setParent(obj.MiscLayout);
+    obj.rectangle177:setLeft(2);
+    obj.rectangle177:setTop(2);
+    obj.rectangle177:setWidth(996);
+    obj.rectangle177:setHeight(521);
+    obj.rectangle177:setColor("black");
+    obj.rectangle177:setName("rectangle177");
+
+    obj.richEdit6 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit6:setParent(obj.MiscLayout);
+    obj.richEdit6:setField("MiscAkuma");
+    obj.richEdit6:setLeft(2);
+    obj.richEdit6:setTop(2);
+    obj.richEdit6:setWidth(996);
+    obj.richEdit6:setHeight(521);
+    obj.richEdit6.backgroundColor = "black";
+    obj.richEdit6.defaultFontColor = "white";
+    obj.richEdit6.animateImages = true;
+    obj.richEdit6:setName("richEdit6");
+
+    obj.dataLink77 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink77:setParent(obj.EdLeAkuma);
+    obj.dataLink77:setField("estiloDeLuta");
+    obj.dataLink77:setName("dataLink77");
+
+    obj.dataLink78 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink78:setParent(obj.EdLeAkuma);
+    obj.dataLink78:setField("estiloDeLutaSec");
+    obj.dataLink78:setName("dataLink78");
+
+    obj.tab15 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab15:setParent(obj.tabControl1);
+    obj.tab15:setTitle("Inventario");
+    obj.tab15:setName("tab15");
+
+    obj.Inventario = GUI.fromHandle(_obj_newObject("form"));
+    obj.Inventario:setParent(obj.tab15);
+    obj.Inventario:setFormType("sheetTemplate");
+    obj.Inventario:setTitle("Brincadeiras Em Alto Mar");
+    obj.Inventario:setName("Inventario");
+
+    obj.rectangle178 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle178:setParent(obj.Inventario);
+    obj.rectangle178:setLeft(0);
+    obj.rectangle178:setTop(0);
+    obj.rectangle178:setWidth(5000);
+    obj.rectangle178:setHeight(3000);
+    obj.rectangle178:setColor("black");
+    obj.rectangle178:setName("rectangle178");
+
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout11:setParent(obj.Inventario);
+    obj.layout11:setLeft(12);
+    obj.layout11:setTop(12);
+    obj.layout11:setWidth(1185);
+    obj.layout11:setHeight(525);
+    obj.layout11:setName("layout11");
+
+    obj.rectangle179 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle179:setParent(obj.layout11);
+    obj.rectangle179:setLeft(0);
+    obj.rectangle179:setTop(0);
+    obj.rectangle179:setWidth(1185);
+    obj.rectangle179:setHeight(525);
+    obj.rectangle179:setColor("#4169E1");
+    obj.rectangle179:setName("rectangle179");
+
+    obj.rectangle180 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle180:setParent(obj.layout11);
+    obj.rectangle180:setLeft(2);
+    obj.rectangle180:setTop(2);
+    obj.rectangle180:setWidth(1181);
+    obj.rectangle180:setHeight(521);
+    obj.rectangle180:setColor("black");
+    obj.rectangle180:setName("rectangle180");
+
+    obj.tabControl7 = GUI.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl7:setParent(obj.layout11);
+    obj.tabControl7:setLeft(2);
+    obj.tabControl7:setTop(3);
+    obj.tabControl7:setWidth(1180);
+    obj.tabControl7:setHeight(506);
+    obj.tabControl7:setName("tabControl7");
+
+    obj.tab16 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab16:setParent(obj.tabControl7);
+    obj.tab16:setTitle("Diversos");
+    obj.tab16:setName("tab16");
+
+    obj.richEdit7 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit7:setParent(obj.tab16);
+    obj.richEdit7:setField("diversos");
+    obj.richEdit7:setAlign("client");
+    obj.richEdit7.backgroundColor = "black";
+    obj.richEdit7.defaultFontColor = "white";
+    obj.richEdit7.animateImages = true;
+    obj.richEdit7:setName("richEdit7");
+
+    obj.tab17 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab17:setParent(obj.tabControl7);
+    obj.tab17:setTitle("Consumiveis");
+    obj.tab17:setName("tab17");
+
+    obj.richEdit8 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit8:setParent(obj.tab17);
+    obj.richEdit8:setField("consumiveis");
+    obj.richEdit8:setAlign("client");
+    obj.richEdit8.backgroundColor = "black";
+    obj.richEdit8.defaultFontColor = "white";
+    obj.richEdit8.animateImages = true;
+    obj.richEdit8:setName("richEdit8");
+
+    obj.tab18 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab18:setParent(obj.tabControl7);
+    obj.tab18:setTitle("Armamento");
+    obj.tab18:setName("tab18");
+
+    obj.richEdit9 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit9:setParent(obj.tab18);
+    obj.richEdit9:setField("armamentos");
+    obj.richEdit9:setAlign("client");
+    obj.richEdit9.backgroundColor = "black";
+    obj.richEdit9.defaultFontColor = "white";
+    obj.richEdit9.animateImages = true;
+    obj.richEdit9:setName("richEdit9");
+
+    obj.tab19 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab19:setParent(obj.tabControl7);
+    obj.tab19:setTitle("Equipamentos");
+    obj.tab19:setName("tab19");
+
+    obj.richEdit10 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit10:setParent(obj.tab19);
+    obj.richEdit10:setField("equips");
+    obj.richEdit10:setAlign("client");
+    obj.richEdit10.backgroundColor = "black";
+    obj.richEdit10.defaultFontColor = "white";
+    obj.richEdit10.animateImages = true;
+    obj.richEdit10:setName("richEdit10");
 
     obj.ExportImport = GUI.fromHandle(_obj_newObject("layout"));
     obj.ExportImport:setParent(obj);
@@ -5833,19 +6608,19 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.ExportImport:setHeight(1000);
     obj.ExportImport:setVisible(false);
 
-    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button22:setParent(obj.ExportImport);
-    obj.button22:setWidth(100);
-    obj.button22:setTop(800);
-    obj.button22:setText("Exportar Ficha");
-    obj.button22:setName("button22");
+    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button25:setParent(obj.ExportImport);
+    obj.button25:setWidth(100);
+    obj.button25:setTop(800);
+    obj.button25:setText("Exportar Ficha");
+    obj.button25:setName("button25");
 
-    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button23:setParent(obj.ExportImport);
-    obj.button23:setWidth(100);
-    obj.button23:setTop(830);
-    obj.button23:setText("Importar Ficha");
-    obj.button23:setName("button23");
+    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button26:setParent(obj.ExportImport);
+    obj.button26:setWidth(100);
+    obj.button26:setTop(830);
+    obj.button26:setText("Importar Ficha");
+    obj.button26:setName("button26");
 
 
 		mesas = Firecast.getMesas()
@@ -5869,73 +6644,73 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             AtualizarExp()
         end);
 
-    obj._e_event2 = obj.listaOrganizacoes:addEventListener("onChange",
+    obj._e_event2 = obj.estluta:addEventListener("onChange",
+        function ()
+            self.LabelEdL.text = self.estluta.text
+        end);
+
+    obj._e_event3 = obj.listaOrganizacoes:addEventListener("onChange",
         function ()
             MudarBandeira()
         end);
 
-    obj._e_event3 = obj.button1:addEventListener("onClick",
+    obj._e_event4 = obj.button1:addEventListener("onClick",
         function (event)
             self.AbaProfissaoPrincipal.visible = true; self.AbaProfissaoSecundaria.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
             				CheckIfEmpregado(self.ProfissaoPrincipal.text); sheet.fotoProfissaoPrincipal = self.ImagemProfissaoPrincipal.src
         end);
 
-    obj._e_event4 = obj.button2:addEventListener("onClick",
+    obj._e_event5 = obj.button2:addEventListener("onClick",
         function (event)
             self.AbaProfissaoSecundaria.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaRaca.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
             				CheckIfEmpregado(self.ProfissaoSecundaria.text); sheet.fotoProfissaoSecundaria = self.ImagemProfissaoSecundaria.src
         end);
 
-    obj._e_event5 = obj.button3:addEventListener("onClick",
+    obj._e_event6 = obj.button3:addEventListener("onClick",
         function (event)
             self.AbaRaca.visible = true; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false; self.AbaHistoria.visible = false; self.AbaAnotacoes.visible = false
             				sheet.fotoRaca= self.ImagemRaca.src
         end);
 
-    obj._e_event6 = obj.ImagemBandeira:addEventListener("onLoad",
+    obj._e_event7 = obj.ImagemBandeira:addEventListener("onLoad",
         function ()
             sheet.imagemBandeira = self.ImagemBandeira.src
         end);
 
-    obj._e_event7 = obj.button4:addEventListener("onClick",
+    obj._e_event8 = obj.button4:addEventListener("onClick",
         function (event)
             self.AbaHistoria.visible = true;self.AbaRaca.visible = false; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false; self.AbaAnotacoes.visible = false
         end);
 
-    obj._e_event8 = obj.button5:addEventListener("onClick",
+    obj._e_event9 = obj.button5:addEventListener("onClick",
         function (event)
             self.AbaAnotacoes.visible = true;self.AbaHistoria.visible = false;self.AbaRaca.visible = false; self.AbaProfissaoPrincipal.visible = false; self.AbaProfissaoSecundaria.visible = false
         end);
 
-    obj._e_event9 = obj.ComboProfissaoPrincipal:addEventListener("onChange",
+    obj._e_event10 = obj.ComboProfissaoPrincipal:addEventListener("onChange",
         function ()
             
             						MudarProfissao1(); self.DetalhamentoPrimario.field = self.ComboProfissaoPrincipal.value; self.DescricaoProfissionalPrimaria.field = self.ComboProfissaoPrincipal.value..'descri'
         end);
 
-    obj._e_event10 = obj.TierPrincipal:addEventListener("onChange",
+    obj._e_event11 = obj.TierPrincipal:addEventListener("onChange",
         function ()
             AtualizarTier('TierPrincipal','XpMaxPrincipal')
         end);
 
-    obj._e_event11 = obj.ComboProfissaoSecundaria:addEventListener("onChange",
+    obj._e_event12 = obj.ComboProfissaoSecundaria:addEventListener("onChange",
         function ()
             MudarProfissao2();
         end);
 
-    obj._e_event12 = obj.TierSecundaria:addEventListener("onChange",
+    obj._e_event13 = obj.TierSecundaria:addEventListener("onChange",
         function ()
             AtualizarTier('TierSecundaria','XpMaxSecundaria')
         end);
 
-    obj._e_event13 = obj.ComboRaca:addEventListener("onChange",
+    obj._e_event14 = obj.ComboRaca:addEventListener("onChange",
         function ()
             MudarRaca(); self.DescricaoRacial.field = self.ComboRaca.value
-        end);
-
-    obj._e_event14 = obj.button6:addEventListener("onClick",
-        function (event)
-            showMessage(self.editHistoria:getText())
         end);
 
     obj._e_event15 = obj.dataLink1:addEventListener("onChange",
@@ -6414,376 +7189,436 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             RolarAtributo('Defesa')
         end);
 
-    obj._e_event106 = obj.button7:addEventListener("onClick",
+    obj._e_event106 = obj.button6:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoChapeu'; self.editEquip.field = 'Chapeu'
         end);
 
-    obj._e_event107 = obj.button8:addEventListener("onClick",
+    obj._e_event107 = obj.button7:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoRosto'; self.editEquip.field = 'Rosto'
         end);
 
-    obj._e_event108 = obj.button9:addEventListener("onClick",
+    obj._e_event108 = obj.button8:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoColar'; self.editEquip.field = 'Colar'
         end);
 
-    obj._e_event109 = obj.button10:addEventListener("onClick",
+    obj._e_event109 = obj.button9:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoBrinco'; self.editEquip.field = 'Brinco'
         end);
 
-    obj._e_event110 = obj.button11:addEventListener("onClick",
+    obj._e_event110 = obj.button10:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoRoupa'; self.editEquip.field = 'Roupa'
         end);
 
-    obj._e_event111 = obj.button12:addEventListener("onClick",
+    obj._e_event111 = obj.button11:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoCapa'; self.editEquip.field = 'Capa'
         end);
 
-    obj._e_event112 = obj.button13:addEventListener("onClick",
+    obj._e_event112 = obj.button12:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoMaoPrimaria'; self.editEquip.field = 'MaoP'
         end);
 
-    obj._e_event113 = obj.button14:addEventListener("onClick",
+    obj._e_event113 = obj.button13:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoMaoSecundaria'; self.editEquip.field = 'MaoS'
         end);
 
-    obj._e_event114 = obj.button15:addEventListener("onClick",
+    obj._e_event114 = obj.button14:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoCalca'; self.editEquip.field = 'Calca'
         end);
 
-    obj._e_event115 = obj.button16:addEventListener("onClick",
+    obj._e_event115 = obj.button15:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoLuva'; self.editEquip.field = 'Luva'
         end);
 
-    obj._e_event116 = obj.button17:addEventListener("onClick",
+    obj._e_event116 = obj.button16:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoBota'; self.editEquip.field = 'Bota'
         end);
 
-    obj._e_event117 = obj.button18:addEventListener("onClick",
+    obj._e_event117 = obj.button17:addEventListener("onClick",
         function (event)
             self.Equipamento.visible = true; self.fotoEquip.field = 'FotoAnel'; self.editEquip.field = 'Anel'
         end);
 
-    obj._e_event118 = obj.button19:addEventListener("onClick",
+    obj._e_event118 = obj.button18:addEventListener("onClick",
         function (event)
             self.Haki.visible = true; self.editHaki.field = 'Armamento'
         end);
 
-    obj._e_event119 = obj.button20:addEventListener("onClick",
+    obj._e_event119 = obj.button19:addEventListener("onClick",
         function (event)
             self.Haki.visible = true; self.editHaki.field = 'Observacao'
         end);
 
-    obj._e_event120 = obj.button21:addEventListener("onClick",
+    obj._e_event120 = obj.button20:addEventListener("onClick",
         function (event)
             self.Haki.visible = true; self.editHaki.field = 'Conquistador'
         end);
 
-    obj._e_event121 = obj.buttonSair:addEventListener("onMouseEnter",
+    obj._e_event121 = obj.button21:addEventListener("onClick",
+        function (event)
+            RolarAtributo('Rei')
+        end);
+
+    obj._e_event122 = obj.buttonSair:addEventListener("onMouseEnter",
         function ()
             self.buttonSair.color = '#f3214b'
         end);
 
-    obj._e_event122 = obj.buttonSair:addEventListener("onMouseLeave",
+    obj._e_event123 = obj.buttonSair:addEventListener("onMouseLeave",
         function ()
             self.buttonSair.color = 'crimson'
         end);
 
-    obj._e_event123 = obj.buttonSair:addEventListener("onClick",
+    obj._e_event124 = obj.buttonSair:addEventListener("onClick",
         function (event)
             self.Equipamento.visible= false
         end);
 
-    obj._e_event124 = obj.buttonExit:addEventListener("onMouseEnter",
+    obj._e_event125 = obj.buttonExit:addEventListener("onMouseEnter",
         function ()
             self.buttonExit.color = '#f3214b'
         end);
 
-    obj._e_event125 = obj.buttonExit:addEventListener("onMouseLeave",
+    obj._e_event126 = obj.buttonExit:addEventListener("onMouseLeave",
         function ()
             self.buttonExit.color = 'crimson'
         end);
 
-    obj._e_event126 = obj.buttonExit:addEventListener("onClick",
+    obj._e_event127 = obj.buttonExit:addEventListener("onClick",
         function (event)
             self.Haki.visible= false
         end);
 
-    obj._e_event127 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event128 = obj.dataLink17:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaBase == "" then sheet.ForcaBase = 1 end
         end);
 
-    obj._e_event128 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event129 = obj.dataLink18:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeBase == "" then sheet.AgilidadeBase = 1 end
         end);
 
-    obj._e_event129 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event130 = obj.dataLink19:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorBase == "" then sheet.VigorBase = 1 end
         end);
 
-    obj._e_event130 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event131 = obj.dataLink20:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateBase == "" then sheet.CombateBase = 1 end
         end);
 
-    obj._e_event131 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event132 = obj.dataLink21:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoBase == "" then sheet.PercepcaoBase = 1 end
         end);
 
-    obj._e_event132 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event133 = obj.dataLink22:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaBase == "" then sheet.CarismaBase = 1 end
         end);
 
-    obj._e_event133 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event134 = obj.dataLink23:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaBase == "" then sheet.InteligenciaBase = 1 end
         end);
 
-    obj._e_event134 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event135 = obj.dataLink24:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoBase == "" then sheet.PrecisaoBase = 1 end
         end);
 
-    obj._e_event135 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event136 = obj.dataLink25:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadeBase == "" then sheet.ForcaDeVontadeBase = 1 end
         end);
 
-    obj._e_event136 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event137 = obj.dataLink26:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaPassivo == "" then sheet.ForcaPassivo = 0 end
         end);
 
-    obj._e_event137 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event138 = obj.dataLink27:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadePassivo == "" then sheet.AgilidadePassivo = 0 end
         end);
 
-    obj._e_event138 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event139 = obj.dataLink28:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorPassivo == "" then sheet.VigorPassivo = 0 end
         end);
 
-    obj._e_event139 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event140 = obj.dataLink29:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombatePassivo == "" then sheet.CombatePassivo = 0 end
         end);
 
-    obj._e_event140 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event141 = obj.dataLink30:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoPassivo == "" then sheet.PercepcaoPassivo = 0 end
         end);
 
-    obj._e_event141 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event142 = obj.dataLink31:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaPassivo == "" then sheet.CarismaPassivo = 0 end
         end);
 
-    obj._e_event142 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event143 = obj.dataLink32:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaPassivo == "" then sheet.InteligenciaPassivo = 0 end
         end);
 
-    obj._e_event143 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event144 = obj.dataLink33:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoPassivo == "" then sheet.PrecisaoPassivo = 0 end
         end);
 
-    obj._e_event144 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event145 = obj.dataLink34:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadePassivo == "" then sheet.ForcaDeVontadePassivo = 0 end
         end);
 
-    obj._e_event145 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event146 = obj.dataLink35:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaEquips == "" then sheet.ForcaEquips = 0 end
         end);
 
-    obj._e_event146 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event147 = obj.dataLink36:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeEquips == "" then sheet.AgilidadeEquips = 0 end
         end);
 
-    obj._e_event147 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event148 = obj.dataLink37:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorEquips == "" then sheet.VigorEquips = 0 end
         end);
 
-    obj._e_event148 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event149 = obj.dataLink38:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateEquips == "" then sheet.CombateEquips = 0 end
         end);
 
-    obj._e_event149 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event150 = obj.dataLink39:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoEquips == "" then sheet.PercepcaoEquips = 0 end
         end);
 
-    obj._e_event150 = obj.dataLink40:addEventListener("onChange",
+    obj._e_event151 = obj.dataLink40:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaEquips == "" then sheet.CarismaEquips = 0 end
         end);
 
-    obj._e_event151 = obj.dataLink41:addEventListener("onChange",
+    obj._e_event152 = obj.dataLink41:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaEquips == "" then sheet.InteligenciaEquips = 0 end
         end);
 
-    obj._e_event152 = obj.dataLink42:addEventListener("onChange",
+    obj._e_event153 = obj.dataLink42:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoEquips == "" then sheet.PrecisaoEquips = 0 end
         end);
 
-    obj._e_event153 = obj.dataLink43:addEventListener("onChange",
+    obj._e_event154 = obj.dataLink43:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadeEquips == "" then sheet.ForcaDeVontadeEquips = 0 end
         end);
 
-    obj._e_event154 = obj.dataLink44:addEventListener("onChange",
+    obj._e_event155 = obj.dataLink44:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaTreino == "" then sheet.ForcaTreino = 0 end
         end);
 
-    obj._e_event155 = obj.dataLink45:addEventListener("onChange",
+    obj._e_event156 = obj.dataLink45:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.AgilidadeTreino == "" then sheet.AgilidadeTreino = 0 end
         end);
 
-    obj._e_event156 = obj.dataLink46:addEventListener("onChange",
+    obj._e_event157 = obj.dataLink46:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.VigorTreino == "" then sheet.VigorTreino = 0 end
         end);
 
-    obj._e_event157 = obj.dataLink47:addEventListener("onChange",
+    obj._e_event158 = obj.dataLink47:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CombateTreino == "" then sheet.CombateTreino = 0 end
         end);
 
-    obj._e_event158 = obj.dataLink48:addEventListener("onChange",
+    obj._e_event159 = obj.dataLink48:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PercepcaoTreino == "" then sheet.PercepcaoTreino = 0 end
         end);
 
-    obj._e_event159 = obj.dataLink49:addEventListener("onChange",
+    obj._e_event160 = obj.dataLink49:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.CarismaTreino == "" then sheet.CarismaTreino = 0 end
         end);
 
-    obj._e_event160 = obj.dataLink50:addEventListener("onChange",
+    obj._e_event161 = obj.dataLink50:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.InteligenciaTreino == "" then sheet.InteligenciaTreino = 0 end
         end);
 
-    obj._e_event161 = obj.dataLink51:addEventListener("onChange",
+    obj._e_event162 = obj.dataLink51:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.PrecisaoTreino == "" then sheet.PrecisaoTreino = 0 end
         end);
 
-    obj._e_event162 = obj.dataLink52:addEventListener("onChange",
+    obj._e_event163 = obj.dataLink52:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.ForcaDeVontadeTreino == "" then sheet.ForcaDeVontadeTreino = 0 end
         end);
 
-    obj._e_event163 = obj.dataLink53:addEventListener("onChange",
+    obj._e_event164 = obj.dataLink53:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoChapeu == nil then sheet.FotoChapeu = "https://blob.firecast.com.br/blobs/BSEWIEVG_3735362/Chapeu.png" end
         end);
 
-    obj._e_event164 = obj.dataLink54:addEventListener("onChange",
+    obj._e_event165 = obj.dataLink54:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoColar == nil then sheet.FotoColar = "https://blob.firecast.com.br/blobs/ELGUBICD_3735361/Colar.png" end
         end);
 
-    obj._e_event165 = obj.dataLink55:addEventListener("onChange",
+    obj._e_event166 = obj.dataLink55:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoRoupa == nil then sheet.FotoRoupa = "https://blob.firecast.com.br/blobs/SIRPGIRT_3735359/Ropa.png" end
         end);
 
-    obj._e_event166 = obj.dataLink56:addEventListener("onChange",
+    obj._e_event167 = obj.dataLink56:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoMaoPrimaria == nil then sheet.FotoMaoPrimaria = "https://blob.firecast.com.br/blobs/SMOQJGJO_3735363/M_o.png" end
         end);
 
-    obj._e_event167 = obj.dataLink57:addEventListener("onChange",
+    obj._e_event168 = obj.dataLink57:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoCalca == nil then sheet.FotoCalca = "https://blob.firecast.com.br/blobs/TQPAWOQT_3735360/Car_a.png" end
         end);
 
-    obj._e_event168 = obj.dataLink58:addEventListener("onChange",
+    obj._e_event169 = obj.dataLink58:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoBota == nil then sheet.FotoBota = "https://blob.firecast.com.br/blobs/OHNVCDNS_3735367/Bota.png" end
         end);
 
-    obj._e_event169 = obj.dataLink59:addEventListener("onChange",
+    obj._e_event170 = obj.dataLink59:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoRosto == nil then sheet.FotoRosto = "https://blob.firecast.com.br/blobs/NHQFHSIH_3735364/Mascara.png" end
         end);
 
-    obj._e_event170 = obj.dataLink60:addEventListener("onChange",
+    obj._e_event171 = obj.dataLink60:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoBrinco == nil then sheet.FotoBrinco = "https://blob.firecast.com.br/blobs/LQUKWDCJ_3735365/Binco.png" end
         end);
 
-    obj._e_event171 = obj.dataLink61:addEventListener("onChange",
+    obj._e_event172 = obj.dataLink61:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoCapa == nil then sheet.FotoCapa = "https://blob.firecast.com.br/blobs/SEKLBTCI_3735802/Kapa.png" end
         end);
 
-    obj._e_event172 = obj.dataLink62:addEventListener("onChange",
+    obj._e_event173 = obj.dataLink62:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoMaoSecundaria == nil then sheet.FotoMaoSecundaria = "https://blob.firecast.com.br/blobs/RRQKGODJ_3735460/M_o.png" end
         end);
 
-    obj._e_event173 = obj.dataLink63:addEventListener("onChange",
+    obj._e_event174 = obj.dataLink63:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoCinto == nil then sheet.FotoCinto = "https://blob.firecast.com.br/blobs/BCNCKKRT_3735366/Luva.png" end
         end);
 
-    obj._e_event174 = obj.dataLink64:addEventListener("onChange",
+    obj._e_event175 = obj.dataLink64:addEventListener("onChange",
         function (field, oldValue, newValue)
             if sheet.FotoAnel == nil then sheet.FotoAnel = "https://blob.firecast.com.br/blobs/QLBWNJUT_3735368/Anal.png" end
         end);
 
-    obj._e_event175 = obj.dataLink65:addEventListener("onChange",
+    obj._e_event176 = obj.dataLink65:addEventListener("onChange",
         function (field, oldValue, newValue)
-            if (sheet.tierArmamento == "" and not (sheet.EstadoArmamento == "I" or sheet.EstadoArmamento == "Do")) then
-            				sheet.tierArmamento = 1 else sheet.tierArmamento = 0 end
-            			sheet.BonusArmamento = "+".. (sheet.tierArmamento * 5) .." de dano ou em rolagens de resistência"
+            sheet.BonusArmamento = "+".. (sheet.tierArmamento * 5) .." de dano ou em rolagens de resistência"
             			sheet.CustoArmamento = "-".. (sheet.tierArmamento * 3) .." da barra de haki"
         end);
 
-    obj._e_event176 = obj.dataLink69:addEventListener("onChange",
+    obj._e_event177 = obj.dataLink66:addEventListener("onChange",
         function (field, oldValue, newValue)
-            if (sheet.tierObservacao == "" and not (sheet.EstadoObsevacao == "I" or sheet.EstadoObsevacao == "Do")) then
-            				sheet.tierObservacao = 1 else sheet.tierObservacao = 0 end
-            			sheet.BonusObservacao = "+".. (sheet.tierObservacao) .." de acerto, esquiva ou em rolagens de     percepção."
+            if (self.estadoArmamento.value == "De" or self.estadoArmamento.value == "C") then
+            				self.tierArmamento.readOnly = false
+            				self.tierArmamento.text = '1'
+            			else
+            				self.tierArmamento.readOnly = true
+            				self.tierArmamento.text = '0'
+            			end
+        end);
+
+    obj._e_event178 = obj.dataLink69:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            sheet.BonusObservacao = "+".. (sheet.tierObservacao) .." de acerto, esquiva ou em rolagens de     percepção."
             			sheet.CustoObservacao = "-".. (sheet.tierObservacao * 3) .." da barra de haki"
         end);
 
-    obj._e_event177 = obj.dataLink73:addEventListener("onChange",
+    obj._e_event179 = obj.dataLink70:addEventListener("onChange",
         function (field, oldValue, newValue)
-            if (sheet.tierConquistador == "" and not (sheet.EstadoConquistador == "I" or sheet.EstadoConquistador == "Do")) then
-            				sheet.tierConquistador = 1 else sheet.tierConquistador = 0 end
-            			sheet.BonusConquistador = "Numa área de 12m, todos fazem um teste de resistência (DT 1d20+ FdV("..sheet.ForcaDeVontadeTotal..")+ ".. sheet.tierConquistador .."). Se passarem ficam acordados; se falharem desmaiam."
+            if (self.estadoObservacao.value == "De" or self.estadoObservacao.value == "C") then
+            				self.tierObservacao.readOnly = false
+            				self.tierObservacao.text = '1'
+            			else
+            				self.tierObservacao.readOnly = true
+            				self.tierObservacao.text = '0'
+            			end
+        end);
+
+    obj._e_event180 = obj.dataLink73:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            sheet.BonusConquistador = "Numa área de 12m, todos fazem um teste de resistência (DT 1d20+ FdV("..sheet.ForcaDeVontadeTotal..")+ ".. sheet.tierConquistador .."). Se passarem ficam acordados; se falharem desmaiam."
             			sheet.CustoConquistador = "-".. (sheet.tierConquistador * 3) .." da barra de haki"
         end);
 
-    obj._e_event178 = obj.button22:addEventListener("onClick",
+    obj._e_event181 = obj.dataLink74:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            if (self.estadoConquistador.value == "De" or self.estadoConquistador.value == "C") then
+            				self.tierConquistador.readOnly = false
+            				self.tierConquistador.text = '1'
+            			else
+            				self.tierConquistador.readOnly = true
+            				self.tierConquistador.text = '0'
+            			end
+        end);
+
+    obj._e_event182 = obj.button22:addEventListener("onClick",
+        function (event)
+            self.EstilosDeLuta.visible = true; self.AkumaLayout.visible = false; self.MiscLayout.visible = false
+        end);
+
+    obj._e_event183 = obj.button23:addEventListener("onClick",
+        function (event)
+            self.EstilosDeLuta.visible = false; self.AkumaLayout.visible = true; self.MiscLayout.visible = false
+        end);
+
+    obj._e_event184 = obj.button24:addEventListener("onClick",
+        function (event)
+            self.EstilosDeLuta.visible = false; self.AkumaLayout.visible = false; self.MiscLayout.visible = true
+        end);
+
+    obj._e_event185 = obj.dataLink77:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            self.EstLuta.text = self.estiloDeLuta.text
+            			self.estLPrincipal.field = self.estiloDeLuta.value
+            			self.LabelEdL.text = self.estluta.text
+            			self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+        end);
+
+    obj._e_event186 = obj.dataLink78:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            self.estLSecundario.field = self.estiloDeLutaSec.value
+        end);
+
+    obj._e_event187 = obj.button25:addEventListener("onClick",
         function (event)
             -- Criar uma tabela com as informações específicas
             				local node = NDB.createChildNode(sheet, "listaNodes")
@@ -6797,6 +7632,11 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             				for _, profissao in ipairs(Profissoes) do
             					node[profissao] = sheet[profissao]
             					node[profissao .. "descri"] = sheet[profissao .. "descri"]
+            				end
+            				
+            				-- Preenchendo a tabela com os valores de Estilos de Luta
+            				for _, est in ipairs(EdLSemCaracteresEspeciais) do
+            					node[est] = sheet[est]
             				end
             
             				node.Armamento = sheet.Armamento
@@ -6818,7 +7658,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             				end)
         end);
 
-    obj._e_event179 = obj.button23:addEventListener("onClick",
+    obj._e_event188 = obj.button26:addEventListener("onClick",
         function (event)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             			function(arquivos)
@@ -6843,6 +7683,10 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             					sheet[profissao .. "descri"] = sheet.listaInformacoes[profissao .. "descri"]
             				end
             				
+            				for _, est in ipairs(EdLSemCaracteresEspeciais) do
+            					sheet[est] = sheet.listaInformacoes[est]
+            				end
+            				
             				sheet.Armamento = sheet.listaInformacoes.Armamento
             				sheet.Observacao = sheet.listaInformacoes.Observacao
             				sheet.Conquistador = sheet.listaInformacoes.Conquistador
@@ -6850,6 +7694,15 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         end);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event188);
+        __o_rrpgObjs.removeEventListenerById(self._e_event187);
+        __o_rrpgObjs.removeEventListenerById(self._e_event186);
+        __o_rrpgObjs.removeEventListenerById(self._e_event185);
+        __o_rrpgObjs.removeEventListenerById(self._e_event184);
+        __o_rrpgObjs.removeEventListenerById(self._e_event183);
+        __o_rrpgObjs.removeEventListenerById(self._e_event182);
+        __o_rrpgObjs.removeEventListenerById(self._e_event181);
+        __o_rrpgObjs.removeEventListenerById(self._e_event180);
         __o_rrpgObjs.removeEventListenerById(self._e_event179);
         __o_rrpgObjs.removeEventListenerById(self._e_event178);
         __o_rrpgObjs.removeEventListenerById(self._e_event177);
@@ -7047,33 +7900,38 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle95 ~= nil then self.rectangle95:destroy(); self.rectangle95 = nil; end;
         if self.PrecisaoPassivo ~= nil then self.PrecisaoPassivo:destroy(); self.PrecisaoPassivo = nil; end;
         if self.rectangle71 ~= nil then self.rectangle71:destroy(); self.rectangle71 = nil; end;
+        if self.rectangle160 ~= nil then self.rectangle160:destroy(); self.rectangle160 = nil; end;
+        if self.rectangle176 ~= nil then self.rectangle176:destroy(); self.rectangle176 = nil; end;
         if self.ForcaPassivo ~= nil then self.ForcaPassivo:destroy(); self.ForcaPassivo = nil; end;
         if self.rectangle82 ~= nil then self.rectangle82:destroy(); self.rectangle82 = nil; end;
         if self.rectangle90 ~= nil then self.rectangle90:destroy(); self.rectangle90 = nil; end;
         if self.ComboRaca ~= nil then self.ComboRaca:destroy(); self.ComboRaca = nil; end;
         if self.ForcaDeVontadeBase ~= nil then self.ForcaDeVontadeBase:destroy(); self.ForcaDeVontadeBase = nil; end;
         if self.ForcaDeVontadeTotal ~= nil then self.ForcaDeVontadeTotal:destroy(); self.ForcaDeVontadeTotal = nil; end;
+        if self.tabControl6 ~= nil then self.tabControl6:destroy(); self.tabControl6 = nil; end;
         if self.rectangle74 ~= nil then self.rectangle74:destroy(); self.rectangle74 = nil; end;
         if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
         if self.rectangle126 ~= nil then self.rectangle126:destroy(); self.rectangle126 = nil; end;
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
         if self.VigorEquips ~= nil then self.VigorEquips:destroy(); self.VigorEquips = nil; end;
-        if self.comboBox6 ~= nil then self.comboBox6:destroy(); self.comboBox6 = nil; end;
         if self.dataLink32 ~= nil then self.dataLink32:destroy(); self.dataLink32 = nil; end;
         if self.rectangle151 ~= nil then self.rectangle151:destroy(); self.rectangle151 = nil; end;
         if self.NomeRaca ~= nil then self.NomeRaca:destroy(); self.NomeRaca = nil; end;
         if self.rectangle32 ~= nil then self.rectangle32:destroy(); self.rectangle32 = nil; end;
         if self.rectangle121 ~= nil then self.rectangle121:destroy(); self.rectangle121 = nil; end;
-        if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.label62 ~= nil then self.label62:destroy(); self.label62 = nil; end;
-        if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
+        if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.image19 ~= nil then self.image19:destroy(); self.image19 = nil; end;
+        if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
+        if self.tab11 ~= nil then self.tab11:destroy(); self.tab11 = nil; end;
+        if self.richEdit10 ~= nil then self.richEdit10:destroy(); self.richEdit10 = nil; end;
         if self.ImagemRaca ~= nil then self.ImagemRaca:destroy(); self.ImagemRaca = nil; end;
         if self.rectangle156 ~= nil then self.rectangle156:destroy(); self.rectangle156 = nil; end;
         if self.NomeProfissaoSecundaria ~= nil then self.NomeProfissaoSecundaria:destroy(); self.NomeProfissaoSecundaria = nil; end;
         if self.Atributos ~= nil then self.Atributos:destroy(); self.Atributos = nil; end;
         if self.label69 ~= nil then self.label69:destroy(); self.label69 = nil; end;
         if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
+        if self.tab14 ~= nil then self.tab14:destroy(); self.tab14 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.rectangle106 ~= nil then self.rectangle106:destroy(); self.rectangle106 = nil; end;
         if self.rectangle110 ~= nil then self.rectangle110:destroy(); self.rectangle110 = nil; end;
@@ -7103,6 +7961,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
         if self.TierSecundaria ~= nil then self.TierSecundaria:destroy(); self.TierSecundaria = nil; end;
         if self.rectangle64 ~= nil then self.rectangle64:destroy(); self.rectangle64 = nil; end;
+        if self.estadoArmamento ~= nil then self.estadoArmamento:destroy(); self.estadoArmamento = nil; end;
         if self.button21 ~= nil then self.button21:destroy(); self.button21 = nil; end;
         if self.rectangle132 ~= nil then self.rectangle132:destroy(); self.rectangle132 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
@@ -7113,10 +7972,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.ForcaEquips ~= nil then self.ForcaEquips:destroy(); self.ForcaEquips = nil; end;
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
+        if self.button24 ~= nil then self.button24:destroy(); self.button24 = nil; end;
         if self.rectangle43 ~= nil then self.rectangle43:destroy(); self.rectangle43 = nil; end;
+        if self.estLSecundario ~= nil then self.estLSecundario:destroy(); self.estLSecundario = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.dataLink63 ~= nil then self.dataLink63:destroy(); self.dataLink63 = nil; end;
         if self.dataLink73 ~= nil then self.dataLink73:destroy(); self.dataLink73 = nil; end;
+        if self.label81 ~= nil then self.label81:destroy(); self.label81 = nil; end;
+        if self.richEdit4 ~= nil then self.richEdit4:destroy(); self.richEdit4 = nil; end;
         if self.rectangle138 ~= nil then self.rectangle138:destroy(); self.rectangle138 = nil; end;
         if self.tripulacao ~= nil then self.tripulacao:destroy(); self.tripulacao = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
@@ -7131,11 +7994,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
         if self.rectangle141 ~= nil then self.rectangle141:destroy(); self.rectangle141 = nil; end;
+        if self.MiscLayout ~= nil then self.MiscLayout:destroy(); self.MiscLayout = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.ComboProfissaoSecundaria ~= nil then self.ComboProfissaoSecundaria:destroy(); self.ComboProfissaoSecundaria = nil; end;
         if self.rectangle55 ~= nil then self.rectangle55:destroy(); self.rectangle55 = nil; end;
         if self.rectangle144 ~= nil then self.rectangle144:destroy(); self.rectangle144 = nil; end;
+        if self.Akuma ~= nil then self.Akuma:destroy(); self.Akuma = nil; end;
         if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
         if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
         if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
@@ -7146,17 +8011,23 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.ForcaDeVontadePassivo ~= nil then self.ForcaDeVontadePassivo:destroy(); self.ForcaDeVontadePassivo = nil; end;
         if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.tituloDoPersonagem ~= nil then self.tituloDoPersonagem:destroy(); self.tituloDoPersonagem = nil; end;
+        if self.rectangle168 ~= nil then self.rectangle168:destroy(); self.rectangle168 = nil; end;
         if self.rectangle98 ~= nil then self.rectangle98:destroy(); self.rectangle98 = nil; end;
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.AgilidadeTotal ~= nil then self.AgilidadeTotal:destroy(); self.AgilidadeTotal = nil; end;
+        if self.rectangle163 ~= nil then self.rectangle163:destroy(); self.rectangle163 = nil; end;
+        if self.rectangle173 ~= nil then self.rectangle173:destroy(); self.rectangle173 = nil; end;
         if self.rectangle97 ~= nil then self.rectangle97:destroy(); self.rectangle97 = nil; end;
         if self.rectangle87 ~= nil then self.rectangle87:destroy(); self.rectangle87 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
         if self.buttonExit ~= nil then self.buttonExit:destroy(); self.buttonExit = nil; end;
+        if self.tabControl5 ~= nil then self.tabControl5:destroy(); self.tabControl5 = nil; end;
         if self.rectangle77 ~= nil then self.rectangle77:destroy(); self.rectangle77 = nil; end;
+        if self.rectangle166 ~= nil then self.rectangle166:destroy(); self.rectangle166 = nil; end;
         if self.rectangle129 ~= nil then self.rectangle129:destroy(); self.rectangle129 = nil; end;
         if self.rectangle92 ~= nil then self.rectangle92:destroy(); self.rectangle92 = nil; end;
+        if self.rectangle174 ~= nil then self.rectangle174:destroy(); self.rectangle174 = nil; end;
         if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
         if self.XpMaxSecundaria ~= nil then self.XpMaxSecundaria:destroy(); self.XpMaxSecundaria = nil; end;
         if self.rectangle35 ~= nil then self.rectangle35:destroy(); self.rectangle35 = nil; end;
@@ -7164,12 +8035,16 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
         if self.rectangle89 ~= nil then self.rectangle89:destroy(); self.rectangle89 = nil; end;
         if self.dataLink30 ~= nil then self.dataLink30:destroy(); self.dataLink30 = nil; end;
+        if self.rectangle179 ~= nil then self.rectangle179:destroy(); self.rectangle179 = nil; end;
         if self.rectangle153 ~= nil then self.rectangle153:destroy(); self.rectangle153 = nil; end;
+        if self.rectangle180 ~= nil then self.rectangle180:destroy(); self.rectangle180 = nil; end;
         if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
+        if self.tab17 ~= nil then self.tab17:destroy(); self.tab17 = nil; end;
         if self.CarismaBase ~= nil then self.CarismaBase:destroy(); self.CarismaBase = nil; end;
         if self.rectangle105 ~= nil then self.rectangle105:destroy(); self.rectangle105 = nil; end;
         if self.rectangle115 ~= nil then self.rectangle115:destroy(); self.rectangle115 = nil; end;
         if self.Equipamento ~= nil then self.Equipamento:destroy(); self.Equipamento = nil; end;
+        if self.rectangle158 ~= nil then self.rectangle158:destroy(); self.rectangle158 = nil; end;
         if self.tab9 ~= nil then self.tab9:destroy(); self.tab9 = nil; end;
         if self.TierPrincipal ~= nil then self.TierPrincipal:destroy(); self.TierPrincipal = nil; end;
         if self.dataLink49 ~= nil then self.dataLink49:destroy(); self.dataLink49 = nil; end;
@@ -7203,28 +8078,31 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.image8 ~= nil then self.image8:destroy(); self.image8 = nil; end;
         if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
         if self.rectangle137 ~= nil then self.rectangle137:destroy(); self.rectangle137 = nil; end;
-        if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
+        if self.estadoConquistador ~= nil then self.estadoConquistador:destroy(); self.estadoConquistador = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.LayoutProfissaoPrincipal ~= nil then self.LayoutProfissaoPrincipal:destroy(); self.LayoutProfissaoPrincipal = nil; end;
         if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
+        if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
         if self.dataLink58 ~= nil then self.dataLink58:destroy(); self.dataLink58 = nil; end;
-        if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
         if self.rectangle130 ~= nil then self.rectangle130:destroy(); self.rectangle130 = nil; end;
+        if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
         if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.ForDVonButton ~= nil then self.ForDVonButton:destroy(); self.ForDVonButton = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.AbaAnotacoes ~= nil then self.AbaAnotacoes:destroy(); self.AbaAnotacoes = nil; end;
+        if self.button26 ~= nil then self.button26:destroy(); self.button26 = nil; end;
         if self.ForcaButton ~= nil then self.ForcaButton:destroy(); self.ForcaButton = nil; end;
+        if self.richEdit3 ~= nil then self.richEdit3:destroy(); self.richEdit3 = nil; end;
         if self.rectangle45 ~= nil then self.rectangle45:destroy(); self.rectangle45 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.FotoProfissaoPrincipal ~= nil then self.FotoProfissaoPrincipal:destroy(); self.FotoProfissaoPrincipal = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
-        if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.dataLink61 ~= nil then self.dataLink61:destroy(); self.dataLink61 = nil; end;
         if self.dataLink71 ~= nil then self.dataLink71:destroy(); self.dataLink71 = nil; end;
         if self.AgilidadeBase ~= nil then self.AgilidadeBase:destroy(); self.AgilidadeBase = nil; end;
+        if self.richEdit6 ~= nil then self.richEdit6:destroy(); self.richEdit6 = nil; end;
         if self.rectangle149 ~= nil then self.rectangle149:destroy(); self.rectangle149 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.FotoRaca ~= nil then self.FotoRaca:destroy(); self.FotoRaca = nil; end;
@@ -7248,14 +8126,19 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
         if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
+        if self.estiloDeLutaSec ~= nil then self.estiloDeLutaSec:destroy(); self.estiloDeLutaSec = nil; end;
         if self.ForcaBase ~= nil then self.ForcaBase:destroy(); self.ForcaBase = nil; end;
         if self.rectangle84 ~= nil then self.rectangle84:destroy(); self.rectangle84 = nil; end;
         if self.VigorTotal ~= nil then self.VigorTotal:destroy(); self.VigorTotal = nil; end;
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
         if self.rectangle72 ~= nil then self.rectangle72:destroy(); self.rectangle72 = nil; end;
+        if self.rectangle161 ~= nil then self.rectangle161:destroy(); self.rectangle161 = nil; end;
+        if self.EstLuta ~= nil then self.EstLuta:destroy(); self.EstLuta = nil; end;
         if self.rectangle91 ~= nil then self.rectangle91:destroy(); self.rectangle91 = nil; end;
         if self.rectangle81 ~= nil then self.rectangle81:destroy(); self.rectangle81 = nil; end;
+        if self.rectangle171 ~= nil then self.rectangle171:destroy(); self.rectangle171 = nil; end;
         if self.CarismaPassivo ~= nil then self.CarismaPassivo:destroy(); self.CarismaPassivo = nil; end;
+        if self.tabControl7 ~= nil then self.tabControl7:destroy(); self.tabControl7 = nil; end;
         if self.ExpAtual ~= nil then self.ExpAtual:destroy(); self.ExpAtual = nil; end;
         if self.rectangle75 ~= nil then self.rectangle75:destroy(); self.rectangle75 = nil; end;
         if self.ForcaDeVontadeTreino ~= nil then self.ForcaDeVontadeTreino:destroy(); self.ForcaDeVontadeTreino = nil; end;
@@ -7263,21 +8146,24 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle127 ~= nil then self.rectangle127:destroy(); self.rectangle127 = nil; end;
         if self.editHistoria ~= nil then self.editHistoria:destroy(); self.editHistoria = nil; end;
         if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
-        if self.comboBox5 ~= nil then self.comboBox5:destroy(); self.comboBox5 = nil; end;
         if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
+        if self.rectangle164 ~= nil then self.rectangle164:destroy(); self.rectangle164 = nil; end;
+        if self.estLPrincipal ~= nil then self.estLPrincipal:destroy(); self.estLPrincipal = nil; end;
         if self.tabControl2 ~= nil then self.tabControl2:destroy(); self.tabControl2 = nil; end;
         if self.rectangle150 ~= nil then self.rectangle150:destroy(); self.rectangle150 = nil; end;
         if self.NomeProfissaoPrincipal ~= nil then self.NomeProfissaoPrincipal:destroy(); self.NomeProfissaoPrincipal = nil; end;
         if self.rectangle78 ~= nil then self.rectangle78:destroy(); self.rectangle78 = nil; end;
         if self.rectangle33 ~= nil then self.rectangle33:destroy(); self.rectangle33 = nil; end;
         if self.rectangle122 ~= nil then self.rectangle122:destroy(); self.rectangle122 = nil; end;
-        if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
         if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
+        if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
         if self.VigorPassivo ~= nil then self.VigorPassivo:destroy(); self.VigorPassivo = nil; end;
         if self.AgilidadePassivo ~= nil then self.AgilidadePassivo:destroy(); self.AgilidadePassivo = nil; end;
+        if self.tab12 ~= nil then self.tab12:destroy(); self.tab12 = nil; end;
         if self.rectangle108 ~= nil then self.rectangle108:destroy(); self.rectangle108 = nil; end;
         if self.DetalhamentoSecundario ~= nil then self.DetalhamentoSecundario:destroy(); self.DetalhamentoSecundario = nil; end;
         if self.rectangle155 ~= nil then self.rectangle155:destroy(); self.rectangle155 = nil; end;
+        if self.tab15 ~= nil then self.tab15:destroy(); self.tab15 = nil; end;
         if self.CarisButton ~= nil then self.CarisButton:destroy(); self.CarisButton = nil; end;
         if self.rectangle107 ~= nil then self.rectangle107:destroy(); self.rectangle107 = nil; end;
         if self.rectangle117 ~= nil then self.rectangle117:destroy(); self.rectangle117 = nil; end;
@@ -7289,6 +8175,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
         if self.rectangle102 ~= nil then self.rectangle102:destroy(); self.rectangle102 = nil; end;
+        if self.tab18 ~= nil then self.tab18:destroy(); self.tab18 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
         if self.estluta ~= nil then self.estluta:destroy(); self.estluta = nil; end;
         if self.rectangle69 ~= nil then self.rectangle69:destroy(); self.rectangle69 = nil; end;
@@ -7308,31 +8195,42 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle48 ~= nil then self.rectangle48:destroy(); self.rectangle48 = nil; end;
         if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.dataLink55 ~= nil then self.dataLink55:destroy(); self.dataLink55 = nil; end;
+        if self.image21 ~= nil then self.image21:destroy(); self.image21 = nil; end;
         if self.rectangle67 ~= nil then self.rectangle67:destroy(); self.rectangle67 = nil; end;
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
+        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.InteligenciaEquips ~= nil then self.InteligenciaEquips:destroy(); self.InteligenciaEquips = nil; end;
         if self.listaOrganizacoes ~= nil then self.listaOrganizacoes:destroy(); self.listaOrganizacoes = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.CombateEquips ~= nil then self.CombateEquips:destroy(); self.CombateEquips = nil; end;
         if self.rectangle135 ~= nil then self.rectangle135:destroy(); self.rectangle135 = nil; end;
+        if self.imagemEdL ~= nil then self.imagemEdL:destroy(); self.imagemEdL = nil; end;
         if self.dataLink69 ~= nil then self.dataLink69:destroy(); self.dataLink69 = nil; end;
         if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
+        if self.button25 ~= nil then self.button25:destroy(); self.button25 = nil; end;
         if self.imagem ~= nil then self.imagem:destroy(); self.imagem = nil; end;
         if self.rectangle42 ~= nil then self.rectangle42:destroy(); self.rectangle42 = nil; end;
         if self.DescricaoProfissionalSecundaria ~= nil then self.DescricaoProfissionalSecundaria:destroy(); self.DescricaoProfissionalSecundaria = nil; end;
         if self.dataLink72 ~= nil then self.dataLink72:destroy(); self.dataLink72 = nil; end;
+        if self.label82 ~= nil then self.label82:destroy(); self.label82 = nil; end;
         if self.InteligenciaTreino ~= nil then self.InteligenciaTreino:destroy(); self.InteligenciaTreino = nil; end;
+        if self.richEdit5 ~= nil then self.richEdit5:destroy(); self.richEdit5 = nil; end;
         if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
         if self.ImagemProfissaoPrincipal ~= nil then self.ImagemProfissaoPrincipal:destroy(); self.ImagemProfissaoPrincipal = nil; end;
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
         if self.dataLink67 ~= nil then self.dataLink67:destroy(); self.dataLink67 = nil; end;
+        if self.dataLink77 ~= nil then self.dataLink77:destroy(); self.dataLink77 = nil; end;
+        if self.estiloDeLuta ~= nil then self.estiloDeLuta:destroy(); self.estiloDeLuta = nil; end;
+        if self.richEdit8 ~= nil then self.richEdit8:destroy(); self.richEdit8 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
         if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
         if self.ProfissaoPrincipal ~= nil then self.ProfissaoPrincipal:destroy(); self.ProfissaoPrincipal = nil; end;
         if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
+        if self.tierArmamento ~= nil then self.tierArmamento:destroy(); self.tierArmamento = nil; end;
+        if self.dataLink78 ~= nil then self.dataLink78:destroy(); self.dataLink78 = nil; end;
         if self.CarismaEquips ~= nil then self.CarismaEquips:destroy(); self.CarismaEquips = nil; end;
         if self.moedas ~= nil then self.moedas:destroy(); self.moedas = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
@@ -7353,6 +8251,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle59 ~= nil then self.rectangle59:destroy(); self.rectangle59 = nil; end;
         if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
+        if self.rectangle169 ~= nil then self.rectangle169:destroy(); self.rectangle169 = nil; end;
         if self.XpMaxPrincipal ~= nil then self.XpMaxPrincipal:destroy(); self.XpMaxPrincipal = nil; end;
         if self.rectangle99 ~= nil then self.rectangle99:destroy(); self.rectangle99 = nil; end;
         if self.rectangle23 ~= nil then self.rectangle23:destroy(); self.rectangle23 = nil; end;
@@ -7360,10 +8259,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.PrecButton ~= nil then self.PrecButton:destroy(); self.PrecButton = nil; end;
         if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
         if self.Haki ~= nil then self.Haki:destroy(); self.Haki = nil; end;
+        if self.rectangle172 ~= nil then self.rectangle172:destroy(); self.rectangle172 = nil; end;
         if self.rectangle94 ~= nil then self.rectangle94:destroy(); self.rectangle94 = nil; end;
         if self.rectangle86 ~= nil then self.rectangle86:destroy(); self.rectangle86 = nil; end;
         if self.CarismaTreino ~= nil then self.CarismaTreino:destroy(); self.CarismaTreino = nil; end;
         if self.rectangle70 ~= nil then self.rectangle70:destroy(); self.rectangle70 = nil; end;
+        if self.rectangle167 ~= nil then self.rectangle167:destroy(); self.rectangle167 = nil; end;
+        if self.rectangle177 ~= nil then self.rectangle177:destroy(); self.rectangle177 = nil; end;
         if self.rectangle93 ~= nil then self.rectangle93:destroy(); self.rectangle93 = nil; end;
         if self.rectangle83 ~= nil then self.rectangle83:destroy(); self.rectangle83 = nil; end;
         if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
@@ -7375,12 +8277,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle88 ~= nil then self.rectangle88:destroy(); self.rectangle88 = nil; end;
         if self.dataLink33 ~= nil then self.dataLink33:destroy(); self.dataLink33 = nil; end;
         if self.VigorButton ~= nil then self.VigorButton:destroy(); self.VigorButton = nil; end;
+        if self.rectangle178 ~= nil then self.rectangle178:destroy(); self.rectangle178 = nil; end;
         if self.rectangle152 ~= nil then self.rectangle152:destroy(); self.rectangle152 = nil; end;
         if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
         if self.rectangle120 ~= nil then self.rectangle120:destroy(); self.rectangle120 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.image18 ~= nil then self.image18:destroy(); self.image18 = nil; end;
         if self.tab10 ~= nil then self.tab10:destroy(); self.tab10 = nil; end;
+        if self.estadoObservacao ~= nil then self.estadoObservacao:destroy(); self.estadoObservacao = nil; end;
         if self.rectangle157 ~= nil then self.rectangle157:destroy(); self.rectangle157 = nil; end;
         if self.rectangle114 ~= nil then self.rectangle114:destroy(); self.rectangle114 = nil; end;
         if self.tab8 ~= nil then self.tab8:destroy(); self.tab8 = nil; end;
@@ -7423,10 +8327,10 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
         if self.rectangle44 ~= nil then self.rectangle44:destroy(); self.rectangle44 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
-        if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
         if self.dataLink62 ~= nil then self.dataLink62:destroy(); self.dataLink62 = nil; end;
-        if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
         if self.dataLink70 ~= nil then self.dataLink70:destroy(); self.dataLink70 = nil; end;
+        if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
+        if self.richEdit7 ~= nil then self.richEdit7:destroy(); self.richEdit7 = nil; end;
         if self.rectangle139 ~= nil then self.rectangle139:destroy(); self.rectangle139 = nil; end;
         if self.VigorTreino ~= nil then self.VigorTreino:destroy(); self.VigorTreino = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
@@ -7443,29 +8347,35 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.ForcaTotal ~= nil then self.ForcaTotal:destroy(); self.ForcaTotal = nil; end;
         if self.rectangle51 ~= nil then self.rectangle51:destroy(); self.rectangle51 = nil; end;
         if self.rectangle140 ~= nil then self.rectangle140:destroy(); self.rectangle140 = nil; end;
+        if self.Misc ~= nil then self.Misc:destroy(); self.Misc = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
+        if self.tierObservacao ~= nil then self.tierObservacao:destroy(); self.tierObservacao = nil; end;
         if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
         if self.rectangle147 ~= nil then self.rectangle147:destroy(); self.rectangle147 = nil; end;
         if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
         if self.ComButton ~= nil then self.ComButton:destroy(); self.ComButton = nil; end;
-        if self.ImagemProfissaoSecundaria ~= nil then self.ImagemProfissaoSecundaria:destroy(); self.ImagemProfissaoSecundaria = nil; end;
-        if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
+        if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
+        if self.ImagemProfissaoSecundaria ~= nil then self.ImagemProfissaoSecundaria:destroy(); self.ImagemProfissaoSecundaria = nil; end;
         if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
+        if self.Inventario ~= nil then self.Inventario:destroy(); self.Inventario = nil; end;
         if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.fotoEquip ~= nil then self.fotoEquip:destroy(); self.fotoEquip = nil; end;
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
         if self.rectangle73 ~= nil then self.rectangle73:destroy(); self.rectangle73 = nil; end;
+        if self.rectangle162 ~= nil then self.rectangle162:destroy(); self.rectangle162 = nil; end;
+        if self.rectangle170 ~= nil then self.rectangle170:destroy(); self.rectangle170 = nil; end;
         if self.rectangle96 ~= nil then self.rectangle96:destroy(); self.rectangle96 = nil; end;
         if self.rectangle80 ~= nil then self.rectangle80:destroy(); self.rectangle80 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
         if self.tabControl4 ~= nil then self.tabControl4:destroy(); self.tabControl4 = nil; end;
         if self.rectangle76 ~= nil then self.rectangle76:destroy(); self.rectangle76 = nil; end;
+        if self.rectangle165 ~= nil then self.rectangle165:destroy(); self.rectangle165 = nil; end;
         if self.rectangle128 ~= nil then self.rectangle128:destroy(); self.rectangle128 = nil; end;
         if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
-        if self.comboBox4 ~= nil then self.comboBox4:destroy(); self.comboBox4 = nil; end;
+        if self.rectangle175 ~= nil then self.rectangle175:destroy(); self.rectangle175 = nil; end;
         if self.dataLink34 ~= nil then self.dataLink34:destroy(); self.dataLink34 = nil; end;
         if self.tabControl3 ~= nil then self.tabControl3:destroy(); self.tabControl3 = nil; end;
         if self.rectangle79 ~= nil then self.rectangle79:destroy(); self.rectangle79 = nil; end;
@@ -7474,16 +8384,21 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
         if self.dataLink31 ~= nil then self.dataLink31:destroy(); self.dataLink31 = nil; end;
+        if self.tab13 ~= nil then self.tab13:destroy(); self.tab13 = nil; end;
         if self.InteligenciaTotal ~= nil then self.InteligenciaTotal:destroy(); self.InteligenciaTotal = nil; end;
         if self.rectangle109 ~= nil then self.rectangle109:destroy(); self.rectangle109 = nil; end;
         if self.rectangle154 ~= nil then self.rectangle154:destroy(); self.rectangle154 = nil; end;
         if self.AgilidadeEquips ~= nil then self.AgilidadeEquips:destroy(); self.AgilidadeEquips = nil; end;
+        if self.tab16 ~= nil then self.tab16:destroy(); self.tab16 = nil; end;
         if self.rectangle104 ~= nil then self.rectangle104:destroy(); self.rectangle104 = nil; end;
         if self.rectangle116 ~= nil then self.rectangle116:destroy(); self.rectangle116 = nil; end;
+        if self.rectangle159 ~= nil then self.rectangle159:destroy(); self.rectangle159 = nil; end;
+        if self.EstilosDeLuta ~= nil then self.EstilosDeLuta:destroy(); self.EstilosDeLuta = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.dataLink48 ~= nil then self.dataLink48:destroy(); self.dataLink48 = nil; end;
         if self.image11 ~= nil then self.image11:destroy(); self.image11 = nil; end;
         if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
+        if self.tab19 ~= nil then self.tab19:destroy(); self.tab19 = nil; end;
         if self.rectangle103 ~= nil then self.rectangle103:destroy(); self.rectangle103 = nil; end;
         if self.rectangle113 ~= nil then self.rectangle113:destroy(); self.rectangle113 = nil; end;
         if self.InfoGerais ~= nil then self.InfoGerais:destroy(); self.InfoGerais = nil; end;
@@ -7497,6 +8412,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle118 ~= nil then self.rectangle118:destroy(); self.rectangle118 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
         if self.tab4 ~= nil then self.tab4:destroy(); self.tab4 = nil; end;
+        if self.image20 ~= nil then self.image20:destroy(); self.image20 = nil; end;
         if self.label31 ~= nil then self.label31:destroy(); self.label31 = nil; end;
         if self.dataLink42 ~= nil then self.dataLink42:destroy(); self.dataLink42 = nil; end;
         if self.dataLink54 ~= nil then self.dataLink54:destroy(); self.dataLink54 = nil; end;
@@ -7506,6 +8422,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
         if self.rectangle66 ~= nil then self.rectangle66:destroy(); self.rectangle66 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
+        if self.tierConquistador ~= nil then self.tierConquistador:destroy(); self.tierConquistador = nil; end;
+        if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
         if self.dataLink59 ~= nil then self.dataLink59:destroy(); self.dataLink59 = nil; end;
         if self.rectangle134 ~= nil then self.rectangle134:destroy(); self.rectangle134 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
@@ -7520,32 +8438,35 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle41 ~= nil then self.rectangle41:destroy(); self.rectangle41 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button15 ~= nil then self.button15:destroy(); self.button15 = nil; end;
+        if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
         if self.sex ~= nil then self.sex:destroy(); self.sex = nil; end;
         if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
         if self.rectangle46 ~= nil then self.rectangle46:destroy(); self.rectangle46 = nil; end;
         if self.AgilidadeTreino ~= nil then self.AgilidadeTreino:destroy(); self.AgilidadeTreino = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
-        if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.editHaki ~= nil then self.editHaki:destroy(); self.editHaki = nil; end;
         if self.dataLink60 ~= nil then self.dataLink60:destroy(); self.dataLink60 = nil; end;
         if self.dataLink76 ~= nil then self.dataLink76:destroy(); self.dataLink76 = nil; end;
+        if self.richEdit9 ~= nil then self.richEdit9:destroy(); self.richEdit9 = nil; end;
         if self.rectangle148 ~= nil then self.rectangle148:destroy(); self.rectangle148 = nil; end;
         if self.PercepcaoEquips ~= nil then self.PercepcaoEquips:destroy(); self.PercepcaoEquips = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.dataLink26 ~= nil then self.dataLink26:destroy(); self.dataLink26 = nil; end;
+        if self.LabelEdL ~= nil then self.LabelEdL:destroy(); self.LabelEdL = nil; end;
         if self.PrecisaoTreino ~= nil then self.PrecisaoTreino:destroy(); self.PrecisaoTreino = nil; end;
         if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
         if self.dataLink21 ~= nil then self.dataLink21:destroy(); self.dataLink21 = nil; end;
         if self.rectangle53 ~= nil then self.rectangle53:destroy(); self.rectangle53 = nil; end;
         if self.rectangle142 ~= nil then self.rectangle142:destroy(); self.rectangle142 = nil; end;
         if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
+        if self.AkumaLayout ~= nil then self.AkumaLayout:destroy(); self.AkumaLayout = nil; end;
         if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
         if self.rectangle15 ~= nil then self.rectangle15:destroy(); self.rectangle15 = nil; end;
-        if self.AgilButton ~= nil then self.AgilButton:destroy(); self.AgilButton = nil; end;
         if self.rectangle56 ~= nil then self.rectangle56:destroy(); self.rectangle56 = nil; end;
+        if self.AgilButton ~= nil then self.AgilButton:destroy(); self.AgilButton = nil; end;
         if self.label75 ~= nil then self.label75:destroy(); self.label75 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.ForcaTreino ~= nil then self.ForcaTreino:destroy(); self.ForcaTreino = nil; end;
