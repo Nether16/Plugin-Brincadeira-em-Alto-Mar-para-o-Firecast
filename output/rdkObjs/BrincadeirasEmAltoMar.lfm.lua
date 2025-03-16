@@ -6491,17 +6491,25 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.tab15 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab15:setParent(obj.tabControl1);
-    obj.tab15:setTitle("Inventario");
+    obj.tab15:setTitle("Vinculos");
     obj.tab15:setName("tab15");
 
-    obj.Inventario = GUI.fromHandle(_obj_newObject("form"));
-    obj.Inventario:setParent(obj.tab15);
-    obj.Inventario:setFormType("sheetTemplate");
-    obj.Inventario:setTitle("Brincadeiras Em Alto Mar");
-    obj.Inventario:setName("Inventario");
+    obj.Vinculos = GUI.fromHandle(_obj_newObject("form"));
+    obj.Vinculos:setParent(obj.tab15);
+    obj.Vinculos:setFormType("sheetTemplate");
+    obj.Vinculos:setTitle("Brincadeiras Em Alto Mar");
+    obj.Vinculos:setName("Vinculos");
+
+
+		function criarListagem(nodo)
+			local node = self[nodo]:append()
+			node.id = tostring(node)
+		end
+	
+
 
     obj.rectangle178 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle178:setParent(obj.Inventario);
+    obj.rectangle178:setParent(obj.Vinculos);
     obj.rectangle178:setLeft(0);
     obj.rectangle178:setTop(0);
     obj.rectangle178:setWidth(5000);
@@ -6510,10 +6518,10 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle178:setName("rectangle178");
 
     obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout11:setParent(obj.Inventario);
+    obj.layout11:setParent(obj.Vinculos);
     obj.layout11:setLeft(12);
     obj.layout11:setTop(12);
-    obj.layout11:setWidth(1185);
+    obj.layout11:setWidth(200);
     obj.layout11:setHeight(525);
     obj.layout11:setName("layout11");
 
@@ -6521,7 +6529,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle179:setParent(obj.layout11);
     obj.rectangle179:setLeft(0);
     obj.rectangle179:setTop(0);
-    obj.rectangle179:setWidth(1185);
+    obj.rectangle179:setWidth(200);
     obj.rectangle179:setHeight(525);
     obj.rectangle179:setColor("#4169E1");
     obj.rectangle179:setName("rectangle179");
@@ -6530,97 +6538,669 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.rectangle180:setParent(obj.layout11);
     obj.rectangle180:setLeft(2);
     obj.rectangle180:setTop(2);
-    obj.rectangle180:setWidth(1181);
+    obj.rectangle180:setWidth(196);
     obj.rectangle180:setHeight(521);
     obj.rectangle180:setColor("black");
     obj.rectangle180:setName("rectangle180");
 
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label84:setParent(obj.layout11);
+    obj.label84:setLeft(10);
+    obj.label84:setTop(10);
+    obj.label84:setWidth(180);
+    obj.label84:setHeight(25);
+    obj.label84:setText("Vinculos");
+    obj.label84:setFontSize(18);
+    lfm_setPropAsString(obj.label84, "fontStyle", "bold underline");
+    obj.label84:setFontColor("#5F9EA0");
+    obj.label84:setHorzTextAlign("center");
+    obj.label84:setName("label84");
+
+    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button25:setParent(obj.layout11);
+    obj.button25:setLeft(50);
+    obj.button25:setTop(40);
+    obj.button25:setHeight(25);
+    obj.button25:setText("Nova Listagem");
+    obj.button25:setWidth(100);
+    obj.button25:setName("button25");
+
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1:setParent(obj.layout11);
+    obj.scrollBox1:setLeft(5);
+    obj.scrollBox1:setTop(70);
+    obj.scrollBox1:setWidth(193);
+    obj.scrollBox1:setHeight(460);
+    obj.scrollBox1:setName("scrollBox1");
+
+    obj.Vinculo = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.Vinculo:setParent(obj.scrollBox1);
+    obj.Vinculo:setName("Vinculo");
+    obj.Vinculo:setField("vinculos");
+    obj.Vinculo:setTemplateForm("ListagemVinculos");
+    obj.Vinculo:setWidth(190);
+    obj.Vinculo:setAutoHeight(true);
+    obj.Vinculo:setSelectable(true);
+
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout12:setParent(obj.Vinculos);
+    obj.layout12:setLeft(222);
+    obj.layout12:setTop(12);
+    obj.layout12:setWidth(620);
+    obj.layout12:setHeight(525);
+    obj.layout12:setName("layout12");
+
+    obj.rectangle181 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle181:setParent(obj.layout12);
+    obj.rectangle181:setLeft(0);
+    obj.rectangle181:setTop(0);
+    obj.rectangle181:setWidth(600);
+    obj.rectangle181:setHeight(525);
+    obj.rectangle181:setColor("#4169E1");
+    obj.rectangle181:setName("rectangle181");
+
+    obj.rectangle182 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle182:setParent(obj.layout12);
+    obj.rectangle182:setLeft(2);
+    obj.rectangle182:setTop(2);
+    obj.rectangle182:setWidth(596);
+    obj.rectangle182:setHeight(521);
+    obj.rectangle182:setColor("black");
+    obj.rectangle182:setName("rectangle182");
+
+    obj.labelListagem = GUI.fromHandle(_obj_newObject("label"));
+    obj.labelListagem:setParent(obj.layout12);
+    obj.labelListagem:setName("labelListagem");
+    obj.labelListagem:setLeft(95);
+    obj.labelListagem:setTop(9);
+    obj.labelListagem:setWidth(501);
+    obj.labelListagem:setHeight(40);
+    obj.labelListagem:setFontColor("#D1B27E");
+    obj.labelListagem:setFontSize(22);
+    lfm_setPropAsString(obj.labelListagem, "fontStyle", "bold");
+    obj.labelListagem:setHorzTextAlign("center");
+    obj.labelListagem:setVertTextAlign("center");
+
+    obj.nomeListagem = GUI.fromHandle(_obj_newObject("edit"));
+    obj.nomeListagem:setParent(obj.layout12);
+    obj.nomeListagem:setName("nomeListagem");
+    obj.nomeListagem:setReadOnly(true);
+    obj.nomeListagem:setLeft(95);
+    obj.nomeListagem:setTop(9);
+    obj.nomeListagem:setWidth(521);
+    obj.nomeListagem:setHeight(40);
+    obj.nomeListagem:setFontSize(22);
+    lfm_setPropAsString(obj.nomeListagem, "fontStyle", "bold");
+    obj.nomeListagem:setHorzTextAlign("center");
+    obj.nomeListagem:setTransparent(true);
+    obj.nomeListagem:setVertTextAlign("center");
+
+    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button26:setParent(obj.layout12);
+    obj.button26:setLeft(15);
+    obj.button26:setTop(15);
+    obj.button26:setText("Novo Npc");
+    obj.button26:setWidth(80);
+    obj.button26:setHeight(30);
+    obj.button26:setName("button26");
+
+    obj.Npcs = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.Npcs:setParent(obj.layout12);
+    obj.Npcs:setName("Npcs");
+    obj.Npcs:setLeft(5);
+    obj.Npcs:setTop(60);
+    obj.Npcs:setWidth(590);
+    obj.Npcs:setHeight(431);
+    obj.Npcs:setTemplateForm("ListagemNpcs");
+    obj.Npcs:setAutoHeight(false);
+    obj.Npcs:setSelectable(true);
+    obj.Npcs:setLayout("horizontalTiles");
+
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout13:setParent(obj.Vinculos);
+    obj.layout13:setLeft(832);
+    obj.layout13:setTop(12);
+    obj.layout13:setWidth(300);
+    obj.layout13:setHeight(525);
+    obj.layout13:setName("layout13");
+
+    obj.rectangle183 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle183:setParent(obj.layout13);
+    obj.rectangle183:setLeft(0);
+    obj.rectangle183:setTop(0);
+    obj.rectangle183:setWidth(300);
+    obj.rectangle183:setHeight(525);
+    obj.rectangle183:setColor("#4169E1");
+    obj.rectangle183:setName("rectangle183");
+
+    obj.rectangle184 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle184:setParent(obj.layout13);
+    obj.rectangle184:setLeft(2);
+    obj.rectangle184:setTop(2);
+    obj.rectangle184:setWidth(296);
+    obj.rectangle184:setHeight(521);
+    obj.rectangle184:setColor("black");
+    obj.rectangle184:setName("rectangle184");
+
+    obj.LayoutNpc = GUI.fromHandle(_obj_newObject("layout"));
+    obj.LayoutNpc:setParent(obj.layout13);
+    obj.LayoutNpc:setName("LayoutNpc");
+    obj.LayoutNpc:setLeft(0);
+    obj.LayoutNpc:setTop(0);
+    obj.LayoutNpc:setWidth(300);
+    obj.LayoutNpc:setHeight(525);
+    obj.LayoutNpc:setVisible(false);
+
+    obj.NomeNpc = GUI.fromHandle(_obj_newObject("edit"));
+    obj.NomeNpc:setParent(obj.LayoutNpc);
+    obj.NomeNpc:setName("NomeNpc");
+    obj.NomeNpc:setAlign("top");
+    obj.NomeNpc:setFontSize(25);
+    lfm_setPropAsString(obj.NomeNpc, "fontStyle", "bold");
+    obj.NomeNpc:setMargins({top=18,left=3,right=3});
+    obj.NomeNpc:setText("Nome");
+    obj.NomeNpc:setTransparent(true);
+    obj.NomeNpc:setHorzTextAlign("center");
+
+    obj.rectangle185 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle185:setParent(obj.LayoutNpc);
+    obj.rectangle185:setLeft(28);
+    obj.rectangle185:setTop(77);
+    obj.rectangle185:setWidth(244);
+    obj.rectangle185:setHeight(144);
+    obj.rectangle185:setColor("#D1B27E");
+    obj.rectangle185:setName("rectangle185");
+
+    obj.rectangle186 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle186:setParent(obj.LayoutNpc);
+    obj.rectangle186:setLeft(30);
+    obj.rectangle186:setTop(78);
+    obj.rectangle186:setWidth(240);
+    obj.rectangle186:setHeight(140);
+    obj.rectangle186:setColor("black");
+    obj.rectangle186:setName("rectangle186");
+
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label85:setParent(obj.LayoutNpc);
+    obj.label85:setLeft(30);
+    obj.label85:setTop(78);
+    obj.label85:setWidth(240);
+    obj.label85:setHeight(140);
+    obj.label85:setHorzTextAlign("center");
+    obj.label85:setText("Clique para adicionar imagem");
+    obj.label85:setFontSize(14);
+    obj.label85:setFontColor("#D1B27E");
+    obj.label85:setName("label85");
+
+    obj.ImagemNpc = GUI.fromHandle(_obj_newObject("image"));
+    obj.ImagemNpc:setParent(obj.LayoutNpc);
+    obj.ImagemNpc:setName("ImagemNpc");
+    obj.ImagemNpc:setLeft(30);
+    obj.ImagemNpc:setTop(78);
+    obj.ImagemNpc:setWidth(240);
+    obj.ImagemNpc:setHeight(140);
+    obj.ImagemNpc:setStyle("autoFit");
+    obj.ImagemNpc:setEditable(true);
+
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label86:setParent(obj.LayoutNpc);
+    obj.label86:setLeft(10);
+    obj.label86:setTop(230);
+    obj.label86:setWidth(280);
+    obj.label86:setHeight(270);
+    obj.label86:setHorzTextAlign("center");
+    obj.label86:setText("Descrição");
+    obj.label86:setFontSize(15);
+    obj.label86:setFontColor("#D1B27E");
+    obj.label86:setName("label86");
+
+    obj.DescriNpc = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.DescriNpc:setParent(obj.LayoutNpc);
+    obj.DescriNpc:setName("DescriNpc");
+    obj.DescriNpc:setField("");
+    obj.DescriNpc:setLeft(10);
+    obj.DescriNpc:setTop(245);
+    obj.DescriNpc:setWidth(280);
+    obj.DescriNpc:setHeight(270);
+    obj.DescriNpc:setFontSize(14);
+
+    obj.tab16 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab16:setParent(obj.tabControl1);
+    obj.tab16:setTitle("Inventario");
+    obj.tab16:setName("tab16");
+
+    obj.Inventario = GUI.fromHandle(_obj_newObject("form"));
+    obj.Inventario:setParent(obj.tab16);
+    obj.Inventario:setFormType("sheetTemplate");
+    obj.Inventario:setTitle("Brincadeiras Em Alto Mar");
+    obj.Inventario:setName("Inventario");
+
+    obj.rectangle187 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle187:setParent(obj.Inventario);
+    obj.rectangle187:setLeft(0);
+    obj.rectangle187:setTop(0);
+    obj.rectangle187:setWidth(5000);
+    obj.rectangle187:setHeight(3000);
+    obj.rectangle187:setColor("black");
+    obj.rectangle187:setName("rectangle187");
+
+
+		function criarListagem(nodo)
+			local node = self[nodo]:append()
+			node.id = tostring(node)
+		end
+	
+
+
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout14:setParent(obj.Inventario);
+    obj.layout14:setLeft(12);
+    obj.layout14:setTop(12);
+    obj.layout14:setWidth(1185);
+    obj.layout14:setHeight(525);
+    obj.layout14:setName("layout14");
+
+    obj.rectangle188 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle188:setParent(obj.layout14);
+    obj.rectangle188:setLeft(0);
+    obj.rectangle188:setTop(0);
+    obj.rectangle188:setWidth(1185);
+    obj.rectangle188:setHeight(525);
+    obj.rectangle188:setColor("#4169E1");
+    obj.rectangle188:setName("rectangle188");
+
+    obj.rectangle189 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle189:setParent(obj.layout14);
+    obj.rectangle189:setLeft(2);
+    obj.rectangle189:setTop(2);
+    obj.rectangle189:setWidth(1181);
+    obj.rectangle189:setHeight(521);
+    obj.rectangle189:setColor("black");
+    obj.rectangle189:setName("rectangle189");
+
     obj.tabControl7 = GUI.fromHandle(_obj_newObject("tabControl"));
-    obj.tabControl7:setParent(obj.layout11);
+    obj.tabControl7:setParent(obj.layout14);
     obj.tabControl7:setLeft(2);
     obj.tabControl7:setTop(3);
     obj.tabControl7:setWidth(1180);
-    obj.tabControl7:setHeight(506);
+    obj.tabControl7:setHeight(519);
     obj.tabControl7:setName("tabControl7");
-
-    obj.tab16 = GUI.fromHandle(_obj_newObject("tab"));
-    obj.tab16:setParent(obj.tabControl7);
-    obj.tab16:setTitle("Diversos");
-    obj.tab16:setName("tab16");
-
-    obj.richEdit7 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit7:setParent(obj.tab16);
-    obj.richEdit7:setField("diversos");
-    obj.richEdit7:setAlign("client");
-    obj.richEdit7.backgroundColor = "black";
-    obj.richEdit7.defaultFontColor = "white";
-    obj.richEdit7.animateImages = true;
-    obj.richEdit7:setName("richEdit7");
 
     obj.tab17 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab17:setParent(obj.tabControl7);
-    obj.tab17:setTitle("Consumiveis");
+    obj.tab17:setTitle("Diversos");
     obj.tab17:setName("tab17");
 
-    obj.richEdit8 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit8:setParent(obj.tab17);
-    obj.richEdit8:setField("consumiveis");
-    obj.richEdit8:setAlign("client");
-    obj.richEdit8.backgroundColor = "black";
-    obj.richEdit8.defaultFontColor = "white";
-    obj.richEdit8.animateImages = true;
-    obj.richEdit8:setName("richEdit8");
+    obj.rectangle190 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle190:setParent(obj.tab17);
+    obj.rectangle190:setLeft(2);
+    obj.rectangle190:setTop(2);
+    obj.rectangle190:setWidth(1181);
+    obj.rectangle190:setHeight(521);
+    obj.rectangle190:setColor("black");
+    obj.rectangle190:setName("rectangle190");
+
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label87:setParent(obj.tab17);
+    obj.label87:setLeft(10);
+    obj.label87:setTop(10);
+    obj.label87:setWidth(200);
+    obj.label87:setHeight(25);
+    obj.label87:setText("Diversos");
+    obj.label87:setFontSize(18);
+    lfm_setPropAsString(obj.label87, "fontStyle", "bold underline");
+    obj.label87:setFontColor("#5F9EA0");
+    obj.label87:setHorzTextAlign("center");
+    obj.label87:setName("label87");
+
+    obj.button27 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button27:setParent(obj.tab17);
+    obj.button27:setLeft(60);
+    obj.button27:setTop(40);
+    obj.button27:setHeight(25);
+    obj.button27:setText("Novo Item");
+    obj.button27:setWidth(100);
+    obj.button27:setName("button27");
+
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2:setParent(obj.tab17);
+    obj.scrollBox2:setLeft(5);
+    obj.scrollBox2:setTop(70);
+    obj.scrollBox2:setWidth(205);
+    obj.scrollBox2:setHeight(460);
+    obj.scrollBox2:setName("scrollBox2");
+
+    obj.Diversos = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.Diversos:setParent(obj.scrollBox2);
+    obj.Diversos:setName("Diversos");
+    obj.Diversos:setField("diversos");
+    obj.Diversos:setTemplateForm("Items");
+    obj.Diversos:setWidth(205);
+    obj.Diversos:setAutoHeight(true);
+    obj.Diversos:setSelectable(true);
+
+    obj.rectangle191 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle191:setParent(obj.tab17);
+    obj.rectangle191:setLeft(218);
+    obj.rectangle191:setTop(23);
+    obj.rectangle191:setWidth(954);
+    obj.rectangle191:setHeight(465);
+    obj.rectangle191:setColor("#4169E1");
+    obj.rectangle191:setName("rectangle191");
+
+    obj.rectangle192 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle192:setParent(obj.tab17);
+    obj.rectangle192:setLeft(220);
+    obj.rectangle192:setTop(25);
+    obj.rectangle192:setWidth(950);
+    obj.rectangle192:setHeight(461);
+    obj.rectangle192:setColor("black");
+    obj.rectangle192:setName("rectangle192");
+
+    obj.LayoutDiversos = GUI.fromHandle(_obj_newObject("layout"));
+    obj.LayoutDiversos:setParent(obj.tab17);
+    obj.LayoutDiversos:setName("LayoutDiversos");
+    obj.LayoutDiversos:setLeft(220);
+    obj.LayoutDiversos:setTop(25);
+    obj.LayoutDiversos:setWidth(950);
+    obj.LayoutDiversos:setHeight(461);
+    obj.LayoutDiversos:setVisible(false);
+
+    obj.editDiversos = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.editDiversos:setParent(obj.LayoutDiversos);
+    obj.editDiversos:setName("editDiversos");
+    obj.editDiversos:setAlign("client");
+    obj.editDiversos.backgroundColor = "black";
+    obj.editDiversos.defaultFontColor = "white";
+    obj.editDiversos.animateImages = true;
 
     obj.tab18 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab18:setParent(obj.tabControl7);
-    obj.tab18:setTitle("Armamento");
+    obj.tab18:setTitle("Consumíveis");
     obj.tab18:setName("tab18");
 
-    obj.richEdit9 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit9:setParent(obj.tab18);
-    obj.richEdit9:setField("armamentos");
-    obj.richEdit9:setAlign("client");
-    obj.richEdit9.backgroundColor = "black";
-    obj.richEdit9.defaultFontColor = "white";
-    obj.richEdit9.animateImages = true;
-    obj.richEdit9:setName("richEdit9");
+    obj.rectangle193 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle193:setParent(obj.tab18);
+    obj.rectangle193:setLeft(2);
+    obj.rectangle193:setTop(2);
+    obj.rectangle193:setWidth(1181);
+    obj.rectangle193:setHeight(521);
+    obj.rectangle193:setColor("black");
+    obj.rectangle193:setName("rectangle193");
+
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label88:setParent(obj.tab18);
+    obj.label88:setLeft(10);
+    obj.label88:setTop(10);
+    obj.label88:setWidth(200);
+    obj.label88:setHeight(25);
+    obj.label88:setText("Consumíveis");
+    obj.label88:setFontSize(18);
+    lfm_setPropAsString(obj.label88, "fontStyle", "bold underline");
+    obj.label88:setFontColor("#5F9EA0");
+    obj.label88:setHorzTextAlign("center");
+    obj.label88:setName("label88");
+
+    obj.button28 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button28:setParent(obj.tab18);
+    obj.button28:setLeft(60);
+    obj.button28:setTop(40);
+    obj.button28:setHeight(25);
+    obj.button28:setText("Novo Item");
+    obj.button28:setWidth(100);
+    obj.button28:setName("button28");
+
+    obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox3:setParent(obj.tab18);
+    obj.scrollBox3:setLeft(5);
+    obj.scrollBox3:setTop(70);
+    obj.scrollBox3:setWidth(205);
+    obj.scrollBox3:setHeight(460);
+    obj.scrollBox3:setName("scrollBox3");
+
+    obj.Consumiveis = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.Consumiveis:setParent(obj.scrollBox3);
+    obj.Consumiveis:setName("Consumiveis");
+    obj.Consumiveis:setField("consumiveis");
+    obj.Consumiveis:setTemplateForm("Items");
+    obj.Consumiveis:setWidth(205);
+    obj.Consumiveis:setAutoHeight(true);
+    obj.Consumiveis:setSelectable(true);
+
+    obj.rectangle194 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle194:setParent(obj.tab18);
+    obj.rectangle194:setLeft(218);
+    obj.rectangle194:setTop(23);
+    obj.rectangle194:setWidth(954);
+    obj.rectangle194:setHeight(465);
+    obj.rectangle194:setColor("#4169E1");
+    obj.rectangle194:setName("rectangle194");
+
+    obj.rectangle195 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle195:setParent(obj.tab18);
+    obj.rectangle195:setLeft(220);
+    obj.rectangle195:setTop(25);
+    obj.rectangle195:setWidth(950);
+    obj.rectangle195:setHeight(461);
+    obj.rectangle195:setColor("black");
+    obj.rectangle195:setName("rectangle195");
+
+    obj.LayoutConsumiveis = GUI.fromHandle(_obj_newObject("layout"));
+    obj.LayoutConsumiveis:setParent(obj.tab18);
+    obj.LayoutConsumiveis:setName("LayoutConsumiveis");
+    obj.LayoutConsumiveis:setLeft(220);
+    obj.LayoutConsumiveis:setTop(25);
+    obj.LayoutConsumiveis:setWidth(950);
+    obj.LayoutConsumiveis:setHeight(461);
+    obj.LayoutConsumiveis:setVisible(false);
+
+    obj.editConsumiveis = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.editConsumiveis:setParent(obj.LayoutConsumiveis);
+    obj.editConsumiveis:setName("editConsumiveis");
+    obj.editConsumiveis:setAlign("client");
+    obj.editConsumiveis.backgroundColor = "black";
+    obj.editConsumiveis.defaultFontColor = "white";
+    obj.editConsumiveis.animateImages = true;
 
     obj.tab19 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab19:setParent(obj.tabControl7);
-    obj.tab19:setTitle("Equipamentos");
+    obj.tab19:setTitle("Armamentos");
     obj.tab19:setName("tab19");
 
-    obj.richEdit10 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit10:setParent(obj.tab19);
-    obj.richEdit10:setField("equips");
-    obj.richEdit10:setAlign("client");
-    obj.richEdit10.backgroundColor = "black";
-    obj.richEdit10.defaultFontColor = "white";
-    obj.richEdit10.animateImages = true;
-    obj.richEdit10:setName("richEdit10");
+    obj.rectangle196 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle196:setParent(obj.tab19);
+    obj.rectangle196:setLeft(2);
+    obj.rectangle196:setTop(2);
+    obj.rectangle196:setWidth(1181);
+    obj.rectangle196:setHeight(521);
+    obj.rectangle196:setColor("black");
+    obj.rectangle196:setName("rectangle196");
+
+    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label89:setParent(obj.tab19);
+    obj.label89:setLeft(10);
+    obj.label89:setTop(10);
+    obj.label89:setWidth(200);
+    obj.label89:setHeight(25);
+    obj.label89:setText("Armamentos");
+    obj.label89:setFontSize(18);
+    lfm_setPropAsString(obj.label89, "fontStyle", "bold underline");
+    obj.label89:setFontColor("#5F9EA0");
+    obj.label89:setHorzTextAlign("center");
+    obj.label89:setName("label89");
+
+    obj.button29 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button29:setParent(obj.tab19);
+    obj.button29:setLeft(60);
+    obj.button29:setTop(40);
+    obj.button29:setHeight(25);
+    obj.button29:setText("Novo Item");
+    obj.button29:setWidth(100);
+    obj.button29:setName("button29");
+
+    obj.scrollBox4 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox4:setParent(obj.tab19);
+    obj.scrollBox4:setLeft(5);
+    obj.scrollBox4:setTop(70);
+    obj.scrollBox4:setWidth(205);
+    obj.scrollBox4:setHeight(460);
+    obj.scrollBox4:setName("scrollBox4");
+
+    obj.Armamentos = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.Armamentos:setParent(obj.scrollBox4);
+    obj.Armamentos:setName("Armamentos");
+    obj.Armamentos:setField("armamentos");
+    obj.Armamentos:setTemplateForm("Items");
+    obj.Armamentos:setWidth(205);
+    obj.Armamentos:setAutoHeight(true);
+    obj.Armamentos:setSelectable(true);
+
+    obj.rectangle197 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle197:setParent(obj.tab19);
+    obj.rectangle197:setLeft(218);
+    obj.rectangle197:setTop(23);
+    obj.rectangle197:setWidth(954);
+    obj.rectangle197:setHeight(465);
+    obj.rectangle197:setColor("#4169E1");
+    obj.rectangle197:setName("rectangle197");
+
+    obj.rectangle198 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle198:setParent(obj.tab19);
+    obj.rectangle198:setLeft(220);
+    obj.rectangle198:setTop(25);
+    obj.rectangle198:setWidth(950);
+    obj.rectangle198:setHeight(461);
+    obj.rectangle198:setColor("black");
+    obj.rectangle198:setName("rectangle198");
+
+    obj.LayoutArmamentos = GUI.fromHandle(_obj_newObject("layout"));
+    obj.LayoutArmamentos:setParent(obj.tab19);
+    obj.LayoutArmamentos:setName("LayoutArmamentos");
+    obj.LayoutArmamentos:setLeft(220);
+    obj.LayoutArmamentos:setTop(25);
+    obj.LayoutArmamentos:setWidth(950);
+    obj.LayoutArmamentos:setHeight(461);
+    obj.LayoutArmamentos:setVisible(false);
+
+    obj.editArmamentos = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.editArmamentos:setParent(obj.LayoutArmamentos);
+    obj.editArmamentos:setName("editArmamentos");
+    obj.editArmamentos:setAlign("client");
+    obj.editArmamentos.backgroundColor = "black";
+    obj.editArmamentos.defaultFontColor = "white";
+    obj.editArmamentos.animateImages = true;
+
+    obj.tab20 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab20:setParent(obj.tabControl7);
+    obj.tab20:setTitle("Equipamentos");
+    obj.tab20:setName("tab20");
+
+    obj.rectangle199 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle199:setParent(obj.tab20);
+    obj.rectangle199:setLeft(2);
+    obj.rectangle199:setTop(2);
+    obj.rectangle199:setWidth(1181);
+    obj.rectangle199:setHeight(521);
+    obj.rectangle199:setColor("black");
+    obj.rectangle199:setName("rectangle199");
+
+    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label90:setParent(obj.tab20);
+    obj.label90:setLeft(10);
+    obj.label90:setTop(10);
+    obj.label90:setWidth(200);
+    obj.label90:setHeight(25);
+    obj.label90:setText("Equipamentos");
+    obj.label90:setFontSize(18);
+    lfm_setPropAsString(obj.label90, "fontStyle", "bold underline");
+    obj.label90:setFontColor("#5F9EA0");
+    obj.label90:setHorzTextAlign("center");
+    obj.label90:setName("label90");
+
+    obj.button30 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button30:setParent(obj.tab20);
+    obj.button30:setLeft(60);
+    obj.button30:setTop(40);
+    obj.button30:setHeight(25);
+    obj.button30:setText("Novo Item");
+    obj.button30:setWidth(100);
+    obj.button30:setName("button30");
+
+    obj.scrollBox5 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox5:setParent(obj.tab20);
+    obj.scrollBox5:setLeft(5);
+    obj.scrollBox5:setTop(70);
+    obj.scrollBox5:setWidth(205);
+    obj.scrollBox5:setHeight(460);
+    obj.scrollBox5:setName("scrollBox5");
+
+    obj.Equipamentos = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.Equipamentos:setParent(obj.scrollBox5);
+    obj.Equipamentos:setName("Equipamentos");
+    obj.Equipamentos:setField("equipamentos");
+    obj.Equipamentos:setTemplateForm("Items");
+    obj.Equipamentos:setWidth(205);
+    obj.Equipamentos:setAutoHeight(true);
+    obj.Equipamentos:setSelectable(true);
+
+    obj.rectangle200 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle200:setParent(obj.tab20);
+    obj.rectangle200:setLeft(218);
+    obj.rectangle200:setTop(23);
+    obj.rectangle200:setWidth(954);
+    obj.rectangle200:setHeight(465);
+    obj.rectangle200:setColor("#4169E1");
+    obj.rectangle200:setName("rectangle200");
+
+    obj.rectangle201 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle201:setParent(obj.tab20);
+    obj.rectangle201:setLeft(220);
+    obj.rectangle201:setTop(25);
+    obj.rectangle201:setWidth(950);
+    obj.rectangle201:setHeight(461);
+    obj.rectangle201:setColor("black");
+    obj.rectangle201:setName("rectangle201");
+
+    obj.LayoutEquipamentos = GUI.fromHandle(_obj_newObject("layout"));
+    obj.LayoutEquipamentos:setParent(obj.tab20);
+    obj.LayoutEquipamentos:setName("LayoutEquipamentos");
+    obj.LayoutEquipamentos:setLeft(220);
+    obj.LayoutEquipamentos:setTop(25);
+    obj.LayoutEquipamentos:setWidth(950);
+    obj.LayoutEquipamentos:setHeight(461);
+    obj.LayoutEquipamentos:setVisible(false);
+
+    obj.editEquipamentos = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.editEquipamentos:setParent(obj.LayoutEquipamentos);
+    obj.editEquipamentos:setName("editEquipamentos");
+    obj.editEquipamentos:setAlign("client");
+    obj.editEquipamentos.backgroundColor = "black";
+    obj.editEquipamentos.defaultFontColor = "white";
+    obj.editEquipamentos.animateImages = true;
 
     obj.ExportImport = GUI.fromHandle(_obj_newObject("layout"));
     obj.ExportImport:setParent(obj);
     obj.ExportImport:setName("ExportImport");
     obj.ExportImport:setLeft(0);
     obj.ExportImport:setTop(0);
-    obj.ExportImport:setWidth(100);
+    obj.ExportImport:setWidth(300);
     obj.ExportImport:setHeight(1000);
     obj.ExportImport:setVisible(false);
 
-    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button25:setParent(obj.ExportImport);
-    obj.button25:setWidth(100);
-    obj.button25:setTop(800);
-    obj.button25:setText("Exportar Ficha");
-    obj.button25:setName("button25");
+    obj.button31 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button31:setParent(obj.ExportImport);
+    obj.button31:setWidth(100);
+    obj.button31:setTop(570);
+    obj.button31:setText("Exportar Ficha");
+    obj.button31:setName("button31");
 
-    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button26:setParent(obj.ExportImport);
-    obj.button26:setWidth(100);
-    obj.button26:setTop(830);
-    obj.button26:setText("Importar Ficha");
-    obj.button26:setName("button26");
+    obj.button32 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button32:setParent(obj.ExportImport);
+    obj.button32:setWidth(100);
+    obj.button32:setLeft(110);
+    obj.button32:setTop(570);
+    obj.button32:setText("Importar Ficha");
+    obj.button32:setName("button32");
 
 
 		mesas = Firecast.getMesas()
@@ -7620,6 +8200,137 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj._e_event187 = obj.button25:addEventListener("onClick",
         function (event)
+            criarListagem('Vinculo'); self.Npcs.field = self.Vinculo.selectedNode
+        end);
+
+    obj._e_event188 = obj.Vinculo:addEventListener("onSelect",
+        function ()
+            
+            					if self.Vinculo.selectedNode then
+            						self.nomeListagem.readOnly = false;
+            						self.LayoutNpc.visible=false
+            						
+            						local Field = tostring(self.Vinculo.selectedNode.id)
+            						
+            						self.nomeListagem.field = self.Vinculo.selectedNode;
+            						self.Npcs.field = Field;
+            						
+            						self.nomeListagem.text = self.Vinculo.selectedNode.nomeListagem;
+            					end
+        end);
+
+    obj._e_event189 = obj.Vinculo:addEventListener("onItemRemoved",
+        function (node, form)
+            self.nomeListagem.text = nil; self.nomeListagem.readOnly = true; self.Npcs.field = ''; self.LayoutNpc.visible=false
+        end);
+
+    obj._e_event190 = obj.Vinculo:addEventListener("onItemAdded",
+        function (node, form)
+            self.Vinculo.selectedNode = nil; self.LayoutNpc.visible=false
+        end);
+
+    obj._e_event191 = obj.nomeListagem:addEventListener("onChange",
+        function ()
+        end);
+
+    obj._e_event192 = obj.button26:addEventListener("onClick",
+        function (event)
+            if (self.Vinculo.selectedNode) then criarListagem('Npcs') end
+        end);
+
+    obj._e_event193 = obj.Npcs:addEventListener("onSelect",
+        function ()
+            
+            							if (self.Npcs.selectedNode) then
+            								local Field = tostring(self.Npcs.selectedNode.id)
+            								self.Npcs.selectedNode.id = Field;
+            								
+            								self.LayoutNpc.visible=true
+            								
+            								self.ImagemNpc.src = self.Npcs.selectedNode.imagemNpc
+            								self.NomeNpc.text = self.Npcs.selectedNode.nomeNpc
+            								self.DescriNpc.text = self.Npcs.selectedNode.descriNpc
+            							end
+        end);
+
+    obj._e_event194 = obj.Npcs:addEventListener("onItemRemoved",
+        function (node, form)
+            self.LayoutNpc.visible=false
+        end);
+
+    obj._e_event195 = obj.NomeNpc:addEventListener("onChange",
+        function ()
+            self.Npcs.selectedNode.nomeNpc = self.NomeNpc.text
+        end);
+
+    obj._e_event196 = obj.ImagemNpc:addEventListener("onPictureLoadedChange",
+        function ()
+            self.Npcs.selectedNode.imagemNpc = self.ImagemNpc.src
+        end);
+
+    obj._e_event197 = obj.DescriNpc:addEventListener("onChange",
+        function ()
+            self.Npcs.selectedNode.descriNpc = self.DescriNpc.text
+        end);
+
+    obj._e_event198 = obj.button27:addEventListener("onClick",
+        function (event)
+            criarListagem('Diversos');
+        end);
+
+    obj._e_event199 = obj.Diversos:addEventListener("onSelect",
+        function ()
+            
+            						if self.Diversos.selectedNode then
+            							self.LayoutDiversos.visible = true
+            							self.editDiversos.field = self.Diversos.selectedNode.id
+            						end
+        end);
+
+    obj._e_event200 = obj.button28:addEventListener("onClick",
+        function (event)
+            criarListagem('Consumiveis');
+        end);
+
+    obj._e_event201 = obj.Consumiveis:addEventListener("onSelect",
+        function ()
+            
+            						if self.Consumiveis.selectedNode then
+            							self.LayoutConsumiveis.visible = true
+            							self.editConsumiveis.field = self.Consumiveis.selectedNode.id
+            						end
+        end);
+
+    obj._e_event202 = obj.button29:addEventListener("onClick",
+        function (event)
+            criarListagem('Armamentos');
+        end);
+
+    obj._e_event203 = obj.Armamentos:addEventListener("onSelect",
+        function ()
+            
+            						if self.Armamentos.selectedNode then
+            							self.LayoutArmamentos.visible = true
+            							self.editArmamentos.field = self.Armamentos.selectedNode.id
+            						end
+        end);
+
+    obj._e_event204 = obj.button30:addEventListener("onClick",
+        function (event)
+            criarListagem('Equipamentos');
+        end);
+
+    obj._e_event205 = obj.Equipamentos:addEventListener("onSelect",
+        function ()
+            
+            						if self.Equipamentos.selectedNode then
+            							self.LayoutEquipamentos.visible = true
+            							self.editEquipamentos.field = self.Equipamentos.selectedNode.id
+            						end
+        end);
+
+    obj._e_event206 = obj.button31:addEventListener("onClick",
+        function (event)
             -- Criar uma tabela com as informações específicas
             				local node = NDB.createChildNode(sheet, "listaNodes")
             
@@ -7658,7 +8369,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             				end)
         end);
 
-    obj._e_event188 = obj.button26:addEventListener("onClick",
+    obj._e_event207 = obj.button32:addEventListener("onClick",
         function (event)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             			function(arquivos)
@@ -7694,6 +8405,25 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         end);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event207);
+        __o_rrpgObjs.removeEventListenerById(self._e_event206);
+        __o_rrpgObjs.removeEventListenerById(self._e_event205);
+        __o_rrpgObjs.removeEventListenerById(self._e_event204);
+        __o_rrpgObjs.removeEventListenerById(self._e_event203);
+        __o_rrpgObjs.removeEventListenerById(self._e_event202);
+        __o_rrpgObjs.removeEventListenerById(self._e_event201);
+        __o_rrpgObjs.removeEventListenerById(self._e_event200);
+        __o_rrpgObjs.removeEventListenerById(self._e_event199);
+        __o_rrpgObjs.removeEventListenerById(self._e_event198);
+        __o_rrpgObjs.removeEventListenerById(self._e_event197);
+        __o_rrpgObjs.removeEventListenerById(self._e_event196);
+        __o_rrpgObjs.removeEventListenerById(self._e_event195);
+        __o_rrpgObjs.removeEventListenerById(self._e_event194);
+        __o_rrpgObjs.removeEventListenerById(self._e_event193);
+        __o_rrpgObjs.removeEventListenerById(self._e_event192);
+        __o_rrpgObjs.removeEventListenerById(self._e_event191);
+        __o_rrpgObjs.removeEventListenerById(self._e_event190);
+        __o_rrpgObjs.removeEventListenerById(self._e_event189);
         __o_rrpgObjs.removeEventListenerById(self._e_event188);
         __o_rrpgObjs.removeEventListenerById(self._e_event187);
         __o_rrpgObjs.removeEventListenerById(self._e_event186);
@@ -7894,6 +8624,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
           self:setNodeDatabase(nil);
         end;
 
+        if self.rectangle193 ~= nil then self.rectangle193:destroy(); self.rectangle193 = nil; end;
         if self.Exp ~= nil then self.Exp:destroy(); self.Exp = nil; end;
         if self.genero ~= nil then self.genero:destroy(); self.genero = nil; end;
         if self.rectangle85 ~= nil then self.rectangle85:destroy(); self.rectangle85 = nil; end;
@@ -7906,6 +8637,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle82 ~= nil then self.rectangle82:destroy(); self.rectangle82 = nil; end;
         if self.rectangle90 ~= nil then self.rectangle90:destroy(); self.rectangle90 = nil; end;
         if self.ComboRaca ~= nil then self.ComboRaca:destroy(); self.ComboRaca = nil; end;
+        if self.editEquipamentos ~= nil then self.editEquipamentos:destroy(); self.editEquipamentos = nil; end;
         if self.ForcaDeVontadeBase ~= nil then self.ForcaDeVontadeBase:destroy(); self.ForcaDeVontadeBase = nil; end;
         if self.ForcaDeVontadeTotal ~= nil then self.ForcaDeVontadeTotal:destroy(); self.ForcaDeVontadeTotal = nil; end;
         if self.tabControl6 ~= nil then self.tabControl6:destroy(); self.tabControl6 = nil; end;
@@ -7916,6 +8648,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.VigorEquips ~= nil then self.VigorEquips:destroy(); self.VigorEquips = nil; end;
         if self.dataLink32 ~= nil then self.dataLink32:destroy(); self.dataLink32 = nil; end;
         if self.rectangle151 ~= nil then self.rectangle151:destroy(); self.rectangle151 = nil; end;
+        if self.rectangle186 ~= nil then self.rectangle186:destroy(); self.rectangle186 = nil; end;
         if self.NomeRaca ~= nil then self.NomeRaca:destroy(); self.NomeRaca = nil; end;
         if self.rectangle32 ~= nil then self.rectangle32:destroy(); self.rectangle32 = nil; end;
         if self.rectangle121 ~= nil then self.rectangle121:destroy(); self.rectangle121 = nil; end;
@@ -7924,7 +8657,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.image19 ~= nil then self.image19:destroy(); self.image19 = nil; end;
         if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
         if self.tab11 ~= nil then self.tab11:destroy(); self.tab11 = nil; end;
-        if self.richEdit10 ~= nil then self.richEdit10:destroy(); self.richEdit10 = nil; end;
+        if self.rectangle200 ~= nil then self.rectangle200:destroy(); self.rectangle200 = nil; end;
         if self.ImagemRaca ~= nil then self.ImagemRaca:destroy(); self.ImagemRaca = nil; end;
         if self.rectangle156 ~= nil then self.rectangle156:destroy(); self.rectangle156 = nil; end;
         if self.NomeProfissaoSecundaria ~= nil then self.NomeProfissaoSecundaria:destroy(); self.NomeProfissaoSecundaria = nil; end;
@@ -7935,6 +8668,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.rectangle106 ~= nil then self.rectangle106:destroy(); self.rectangle106 = nil; end;
         if self.rectangle110 ~= nil then self.rectangle110:destroy(); self.rectangle110 = nil; end;
+        if self.rectangle188 ~= nil then self.rectangle188:destroy(); self.rectangle188 = nil; end;
         if self.rectangle38 ~= nil then self.rectangle38:destroy(); self.rectangle38 = nil; end;
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
@@ -7959,6 +8693,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink56 ~= nil then self.dataLink56:destroy(); self.dataLink56 = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
+        if self.DescriNpc ~= nil then self.DescriNpc:destroy(); self.DescriNpc = nil; end;
         if self.TierSecundaria ~= nil then self.TierSecundaria:destroy(); self.TierSecundaria = nil; end;
         if self.rectangle64 ~= nil then self.rectangle64:destroy(); self.rectangle64 = nil; end;
         if self.estadoArmamento ~= nil then self.estadoArmamento:destroy(); self.estadoArmamento = nil; end;
@@ -7988,6 +8723,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
         if self.dataLink66 ~= nil then self.dataLink66:destroy(); self.dataLink66 = nil; end;
         if self.dataLink74 ~= nil then self.dataLink74:destroy(); self.dataLink74 = nil; end;
+        if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
         if self.ExportImport ~= nil then self.ExportImport:destroy(); self.ExportImport = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
@@ -7995,6 +8731,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
         if self.rectangle141 ~= nil then self.rectangle141:destroy(); self.rectangle141 = nil; end;
         if self.MiscLayout ~= nil then self.MiscLayout:destroy(); self.MiscLayout = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.ComboProfissaoSecundaria ~= nil then self.ComboProfissaoSecundaria:destroy(); self.ComboProfissaoSecundaria = nil; end;
@@ -8012,6 +8749,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.tituloDoPersonagem ~= nil then self.tituloDoPersonagem:destroy(); self.tituloDoPersonagem = nil; end;
         if self.rectangle168 ~= nil then self.rectangle168:destroy(); self.rectangle168 = nil; end;
+        if self.rectangle190 ~= nil then self.rectangle190:destroy(); self.rectangle190 = nil; end;
         if self.rectangle98 ~= nil then self.rectangle98:destroy(); self.rectangle98 = nil; end;
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
@@ -8030,6 +8768,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle174 ~= nil then self.rectangle174:destroy(); self.rectangle174 = nil; end;
         if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
         if self.XpMaxSecundaria ~= nil then self.XpMaxSecundaria:destroy(); self.XpMaxSecundaria = nil; end;
+        if self.rectangle185 ~= nil then self.rectangle185:destroy(); self.rectangle185 = nil; end;
         if self.rectangle35 ~= nil then self.rectangle35:destroy(); self.rectangle35 = nil; end;
         if self.rectangle124 ~= nil then self.rectangle124:destroy(); self.rectangle124 = nil; end;
         if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
@@ -8050,6 +8789,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink49 ~= nil then self.dataLink49:destroy(); self.dataLink49 = nil; end;
         if self.image12 ~= nil then self.image12:destroy(); self.image12 = nil; end;
         if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
+        if self.button31 ~= nil then self.button31:destroy(); self.button31 = nil; end;
         if self.rectangle100 ~= nil then self.rectangle100:destroy(); self.rectangle100 = nil; end;
         if self.DescricaoRacial ~= nil then self.DescricaoRacial:destroy(); self.DescricaoRacial = nil; end;
         if self.rectangle112 ~= nil then self.rectangle112:destroy(); self.rectangle112 = nil; end;
@@ -8062,6 +8802,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.Nivel ~= nil then self.Nivel:destroy(); self.Nivel = nil; end;
         if self.tab7 ~= nil then self.tab7:destroy(); self.tab7 = nil; end;
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
+        if self.Vinculo ~= nil then self.Vinculo:destroy(); self.Vinculo = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.dataLink43 ~= nil then self.dataLink43:destroy(); self.dataLink43 = nil; end;
         if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
@@ -8069,6 +8810,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink53 ~= nil then self.dataLink53:destroy(); self.dataLink53 = nil; end;
         if self.rectangle61 ~= nil then self.rectangle61:destroy(); self.rectangle61 = nil; end;
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
+        if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.idade ~= nil then self.idade:destroy(); self.idade = nil; end;
         if self.CarismaTotal ~= nil then self.CarismaTotal:destroy(); self.CarismaTotal = nil; end;
@@ -8087,6 +8829,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle130 ~= nil then self.rectangle130:destroy(); self.rectangle130 = nil; end;
         if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
         if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
+        if self.label89 ~= nil then self.label89:destroy(); self.label89 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.ForDVonButton ~= nil then self.ForDVonButton:destroy(); self.ForDVonButton = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
@@ -8101,9 +8844,11 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.dataLink61 ~= nil then self.dataLink61:destroy(); self.dataLink61 = nil; end;
         if self.dataLink71 ~= nil then self.dataLink71:destroy(); self.dataLink71 = nil; end;
+        if self.label87 ~= nil then self.label87:destroy(); self.label87 = nil; end;
         if self.AgilidadeBase ~= nil then self.AgilidadeBase:destroy(); self.AgilidadeBase = nil; end;
         if self.richEdit6 ~= nil then self.richEdit6:destroy(); self.richEdit6 = nil; end;
         if self.rectangle149 ~= nil then self.rectangle149:destroy(); self.rectangle149 = nil; end;
+        if self.LayoutEquipamentos ~= nil then self.LayoutEquipamentos:destroy(); self.LayoutEquipamentos = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.FotoRaca ~= nil then self.FotoRaca:destroy(); self.FotoRaca = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
@@ -8111,25 +8856,32 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink27 ~= nil then self.dataLink27:destroy(); self.dataLink27 = nil; end;
         if self.buttonSair ~= nil then self.buttonSair:destroy(); self.buttonSair = nil; end;
         if self.dataLink64 ~= nil then self.dataLink64:destroy(); self.dataLink64 = nil; end;
+        if self.tab20 ~= nil then self.tab20:destroy(); self.tab20 = nil; end;
+        if self.scrollBox4 ~= nil then self.scrollBox4:destroy(); self.scrollBox4 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.label55 ~= nil then self.label55:destroy(); self.label55 = nil; end;
         if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
         if self.rectangle50 ~= nil then self.rectangle50:destroy(); self.rectangle50 = nil; end;
         if self.rectangle143 ~= nil then self.rectangle143:destroy(); self.rectangle143 = nil; end;
+        if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
+        if self.rectangle198 ~= nil then self.rectangle198:destroy(); self.rectangle198 = nil; end;
         if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
         if self.rectangle57 ~= nil then self.rectangle57:destroy(); self.rectangle57 = nil; end;
         if self.rectangle146 ~= nil then self.rectangle146:destroy(); self.rectangle146 = nil; end;
         if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
         if self.EdLeAkuma ~= nil then self.EdLeAkuma:destroy(); self.EdLeAkuma = nil; end;
         if self.dataLink17 ~= nil then self.dataLink17:destroy(); self.dataLink17 = nil; end;
+        if self.rectangle195 ~= nil then self.rectangle195:destroy(); self.rectangle195 = nil; end;
         if self.AbaProfissaoSecundaria ~= nil then self.AbaProfissaoSecundaria:destroy(); self.AbaProfissaoSecundaria = nil; end;
         if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
         if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
         if self.estiloDeLutaSec ~= nil then self.estiloDeLutaSec:destroy(); self.estiloDeLutaSec = nil; end;
         if self.ForcaBase ~= nil then self.ForcaBase:destroy(); self.ForcaBase = nil; end;
+        if self.rectangle192 ~= nil then self.rectangle192:destroy(); self.rectangle192 = nil; end;
         if self.rectangle84 ~= nil then self.rectangle84:destroy(); self.rectangle84 = nil; end;
         if self.VigorTotal ~= nil then self.VigorTotal:destroy(); self.VigorTotal = nil; end;
+        if self.label90 ~= nil then self.label90:destroy(); self.label90 = nil; end;
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
         if self.rectangle72 ~= nil then self.rectangle72:destroy(); self.rectangle72 = nil; end;
         if self.rectangle161 ~= nil then self.rectangle161:destroy(); self.rectangle161 = nil; end;
@@ -8157,16 +8909,20 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle122 ~= nil then self.rectangle122:destroy(); self.rectangle122 = nil; end;
         if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
         if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
+        if self.rectangle187 ~= nil then self.rectangle187:destroy(); self.rectangle187 = nil; end;
         if self.VigorPassivo ~= nil then self.VigorPassivo:destroy(); self.VigorPassivo = nil; end;
         if self.AgilidadePassivo ~= nil then self.AgilidadePassivo:destroy(); self.AgilidadePassivo = nil; end;
         if self.tab12 ~= nil then self.tab12:destroy(); self.tab12 = nil; end;
         if self.rectangle108 ~= nil then self.rectangle108:destroy(); self.rectangle108 = nil; end;
         if self.DetalhamentoSecundario ~= nil then self.DetalhamentoSecundario:destroy(); self.DetalhamentoSecundario = nil; end;
         if self.rectangle155 ~= nil then self.rectangle155:destroy(); self.rectangle155 = nil; end;
+        if self.rectangle182 ~= nil then self.rectangle182:destroy(); self.rectangle182 = nil; end;
         if self.tab15 ~= nil then self.tab15:destroy(); self.tab15 = nil; end;
+        if self.LayoutArmamentos ~= nil then self.LayoutArmamentos:destroy(); self.LayoutArmamentos = nil; end;
         if self.CarisButton ~= nil then self.CarisButton:destroy(); self.CarisButton = nil; end;
         if self.rectangle107 ~= nil then self.rectangle107:destroy(); self.rectangle107 = nil; end;
         if self.rectangle117 ~= nil then self.rectangle117:destroy(); self.rectangle117 = nil; end;
+        if self.rectangle189 ~= nil then self.rectangle189:destroy(); self.rectangle189 = nil; end;
         if self.rectangle39 ~= nil then self.rectangle39:destroy(); self.rectangle39 = nil; end;
         if self.label38 ~= nil then self.label38:destroy(); self.label38 = nil; end;
         if self.PercepcaoTreino ~= nil then self.PercepcaoTreino:destroy(); self.PercepcaoTreino = nil; end;
@@ -8175,10 +8931,12 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
         if self.rectangle102 ~= nil then self.rectangle102:destroy(); self.rectangle102 = nil; end;
-        if self.tab18 ~= nil then self.tab18:destroy(); self.tab18 = nil; end;
+        if self.Diversos ~= nil then self.Diversos:destroy(); self.Diversos = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
+        if self.Vinculos ~= nil then self.Vinculos:destroy(); self.Vinculos = nil; end;
         if self.estluta ~= nil then self.estluta:destroy(); self.estluta = nil; end;
         if self.rectangle69 ~= nil then self.rectangle69:destroy(); self.rectangle69 = nil; end;
+        if self.tab18 ~= nil then self.tab18:destroy(); self.tab18 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.dataLink50 ~= nil then self.dataLink50:destroy(); self.dataLink50 = nil; end;
         if self.rectangle119 ~= nil then self.rectangle119:destroy(); self.rectangle119 = nil; end;
@@ -8196,6 +8954,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.dataLink55 ~= nil then self.dataLink55:destroy(); self.dataLink55 = nil; end;
         if self.image21 ~= nil then self.image21:destroy(); self.image21 = nil; end;
+        if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.rectangle67 ~= nil then self.rectangle67:destroy(); self.rectangle67 = nil; end;
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
@@ -8214,6 +8973,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink72 ~= nil then self.dataLink72:destroy(); self.dataLink72 = nil; end;
         if self.label82 ~= nil then self.label82:destroy(); self.label82 = nil; end;
         if self.InteligenciaTreino ~= nil then self.InteligenciaTreino:destroy(); self.InteligenciaTreino = nil; end;
+        if self.button28 ~= nil then self.button28:destroy(); self.button28 = nil; end;
         if self.richEdit5 ~= nil then self.richEdit5:destroy(); self.richEdit5 = nil; end;
         if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
         if self.ImagemProfissaoPrincipal ~= nil then self.ImagemProfissaoPrincipal:destroy(); self.ImagemProfissaoPrincipal = nil; end;
@@ -8221,8 +8981,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
         if self.dataLink67 ~= nil then self.dataLink67:destroy(); self.dataLink67 = nil; end;
         if self.dataLink77 ~= nil then self.dataLink77:destroy(); self.dataLink77 = nil; end;
+        if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
         if self.estiloDeLuta ~= nil then self.estiloDeLuta:destroy(); self.estiloDeLuta = nil; end;
-        if self.richEdit8 ~= nil then self.richEdit8:destroy(); self.richEdit8 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
@@ -8231,6 +8991,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
         if self.tierArmamento ~= nil then self.tierArmamento:destroy(); self.tierArmamento = nil; end;
         if self.dataLink78 ~= nil then self.dataLink78:destroy(); self.dataLink78 = nil; end;
+        if self.nomeListagem ~= nil then self.nomeListagem:destroy(); self.nomeListagem = nil; end;
         if self.CarismaEquips ~= nil then self.CarismaEquips:destroy(); self.CarismaEquips = nil; end;
         if self.moedas ~= nil then self.moedas:destroy(); self.moedas = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
@@ -8258,11 +9019,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.PrecButton ~= nil then self.PrecButton:destroy(); self.PrecButton = nil; end;
         if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
+        if self.rectangle197 ~= nil then self.rectangle197:destroy(); self.rectangle197 = nil; end;
         if self.Haki ~= nil then self.Haki:destroy(); self.Haki = nil; end;
         if self.rectangle172 ~= nil then self.rectangle172:destroy(); self.rectangle172 = nil; end;
         if self.rectangle94 ~= nil then self.rectangle94:destroy(); self.rectangle94 = nil; end;
         if self.rectangle86 ~= nil then self.rectangle86:destroy(); self.rectangle86 = nil; end;
         if self.CarismaTreino ~= nil then self.CarismaTreino:destroy(); self.CarismaTreino = nil; end;
+        if self.NomeNpc ~= nil then self.NomeNpc:destroy(); self.NomeNpc = nil; end;
         if self.rectangle70 ~= nil then self.rectangle70:destroy(); self.rectangle70 = nil; end;
         if self.rectangle167 ~= nil then self.rectangle167:destroy(); self.rectangle167 = nil; end;
         if self.rectangle177 ~= nil then self.rectangle177:destroy(); self.rectangle177 = nil; end;
@@ -8279,11 +9042,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.VigorButton ~= nil then self.VigorButton:destroy(); self.VigorButton = nil; end;
         if self.rectangle178 ~= nil then self.rectangle178:destroy(); self.rectangle178 = nil; end;
         if self.rectangle152 ~= nil then self.rectangle152:destroy(); self.rectangle152 = nil; end;
+        if self.rectangle181 ~= nil then self.rectangle181:destroy(); self.rectangle181 = nil; end;
         if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
         if self.rectangle120 ~= nil then self.rectangle120:destroy(); self.rectangle120 = nil; end;
+        if self.rectangle201 ~= nil then self.rectangle201:destroy(); self.rectangle201 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.image18 ~= nil then self.image18:destroy(); self.image18 = nil; end;
         if self.tab10 ~= nil then self.tab10:destroy(); self.tab10 = nil; end;
+        if self.LayoutDiversos ~= nil then self.LayoutDiversos:destroy(); self.LayoutDiversos = nil; end;
         if self.estadoObservacao ~= nil then self.estadoObservacao:destroy(); self.estadoObservacao = nil; end;
         if self.rectangle157 ~= nil then self.rectangle157:destroy(); self.rectangle157 = nil; end;
         if self.rectangle114 ~= nil then self.rectangle114:destroy(); self.rectangle114 = nil; end;
@@ -8293,8 +9059,10 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink39 ~= nil then self.dataLink39:destroy(); self.dataLink39 = nil; end;
         if self.image13 ~= nil then self.image13:destroy(); self.image13 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
+        if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
         if self.rectangle101 ~= nil then self.rectangle101:destroy(); self.rectangle101 = nil; end;
         if self.rectangle111 ~= nil then self.rectangle111:destroy(); self.rectangle111 = nil; end;
+        if self.labelListagem ~= nil then self.labelListagem:destroy(); self.labelListagem = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.image16 ~= nil then self.image16:destroy(); self.image16 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
@@ -8315,6 +9083,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle136 ~= nil then self.rectangle136:destroy(); self.rectangle136 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
         if self.dataLink57 ~= nil then self.dataLink57:destroy(); self.dataLink57 = nil; end;
+        if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.VigorBase ~= nil then self.VigorBase:destroy(); self.VigorBase = nil; end;
         if self.rectangle65 ~= nil then self.rectangle65:destroy(); self.rectangle65 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
@@ -8325,12 +9094,14 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
+        if self.button27 ~= nil then self.button27:destroy(); self.button27 = nil; end;
+        if self.editDiversos ~= nil then self.editDiversos:destroy(); self.editDiversos = nil; end;
         if self.rectangle44 ~= nil then self.rectangle44:destroy(); self.rectangle44 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.dataLink62 ~= nil then self.dataLink62:destroy(); self.dataLink62 = nil; end;
         if self.dataLink70 ~= nil then self.dataLink70:destroy(); self.dataLink70 = nil; end;
         if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
-        if self.richEdit7 ~= nil then self.richEdit7:destroy(); self.richEdit7 = nil; end;
+        if self.Npcs ~= nil then self.Npcs:destroy(); self.Npcs = nil; end;
         if self.rectangle139 ~= nil then self.rectangle139:destroy(); self.rectangle139 = nil; end;
         if self.VigorTreino ~= nil then self.VigorTreino:destroy(); self.VigorTreino = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
@@ -8340,10 +9111,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.dataLink28 ~= nil then self.dataLink28:destroy(); self.dataLink28 = nil; end;
         if self.dataLink65 ~= nil then self.dataLink65:destroy(); self.dataLink65 = nil; end;
         if self.dataLink75 ~= nil then self.dataLink75:destroy(); self.dataLink75 = nil; end;
+        if self.LayoutNpc ~= nil then self.LayoutNpc:destroy(); self.LayoutNpc = nil; end;
         if self.PrecisaoBase ~= nil then self.PrecisaoBase:destroy(); self.PrecisaoBase = nil; end;
+        if self.scrollBox5 ~= nil then self.scrollBox5:destroy(); self.scrollBox5 = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
         if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
+        if self.Equipamentos ~= nil then self.Equipamentos:destroy(); self.Equipamentos = nil; end;
         if self.ForcaTotal ~= nil then self.ForcaTotal:destroy(); self.ForcaTotal = nil; end;
         if self.rectangle51 ~= nil then self.rectangle51:destroy(); self.rectangle51 = nil; end;
         if self.rectangle140 ~= nil then self.rectangle140:destroy(); self.rectangle140 = nil; end;
@@ -8355,21 +9129,25 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle147 ~= nil then self.rectangle147:destroy(); self.rectangle147 = nil; end;
         if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
         if self.ComButton ~= nil then self.ComButton:destroy(); self.ComButton = nil; end;
+        if self.rectangle194 ~= nil then self.rectangle194:destroy(); self.rectangle194 = nil; end;
         if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
         if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.ImagemProfissaoSecundaria ~= nil then self.ImagemProfissaoSecundaria:destroy(); self.ImagemProfissaoSecundaria = nil; end;
         if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
         if self.Inventario ~= nil then self.Inventario:destroy(); self.Inventario = nil; end;
         if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
+        if self.rectangle191 ~= nil then self.rectangle191:destroy(); self.rectangle191 = nil; end;
         if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.fotoEquip ~= nil then self.fotoEquip:destroy(); self.fotoEquip = nil; end;
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
+        if self.Armamentos ~= nil then self.Armamentos:destroy(); self.Armamentos = nil; end;
         if self.rectangle73 ~= nil then self.rectangle73:destroy(); self.rectangle73 = nil; end;
         if self.rectangle162 ~= nil then self.rectangle162:destroy(); self.rectangle162 = nil; end;
         if self.rectangle170 ~= nil then self.rectangle170:destroy(); self.rectangle170 = nil; end;
         if self.rectangle96 ~= nil then self.rectangle96:destroy(); self.rectangle96 = nil; end;
         if self.rectangle80 ~= nil then self.rectangle80:destroy(); self.rectangle80 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
+        if self.editConsumiveis ~= nil then self.editConsumiveis:destroy(); self.editConsumiveis = nil; end;
         if self.tabControl4 ~= nil then self.tabControl4:destroy(); self.tabControl4 = nil; end;
         if self.rectangle76 ~= nil then self.rectangle76:destroy(); self.rectangle76 = nil; end;
         if self.rectangle165 ~= nil then self.rectangle165:destroy(); self.rectangle165 = nil; end;
@@ -8378,6 +9156,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle175 ~= nil then self.rectangle175:destroy(); self.rectangle175 = nil; end;
         if self.dataLink34 ~= nil then self.dataLink34:destroy(); self.dataLink34 = nil; end;
         if self.tabControl3 ~= nil then self.tabControl3:destroy(); self.tabControl3 = nil; end;
+        if self.rectangle184 ~= nil then self.rectangle184:destroy(); self.rectangle184 = nil; end;
         if self.rectangle79 ~= nil then self.rectangle79:destroy(); self.rectangle79 = nil; end;
         if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
         if self.rectangle123 ~= nil then self.rectangle123:destroy(); self.rectangle123 = nil; end;
@@ -8388,7 +9167,9 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.InteligenciaTotal ~= nil then self.InteligenciaTotal:destroy(); self.InteligenciaTotal = nil; end;
         if self.rectangle109 ~= nil then self.rectangle109:destroy(); self.rectangle109 = nil; end;
         if self.rectangle154 ~= nil then self.rectangle154:destroy(); self.rectangle154 = nil; end;
+        if self.rectangle183 ~= nil then self.rectangle183:destroy(); self.rectangle183 = nil; end;
         if self.AgilidadeEquips ~= nil then self.AgilidadeEquips:destroy(); self.AgilidadeEquips = nil; end;
+        if self.ImagemNpc ~= nil then self.ImagemNpc:destroy(); self.ImagemNpc = nil; end;
         if self.tab16 ~= nil then self.tab16:destroy(); self.tab16 = nil; end;
         if self.rectangle104 ~= nil then self.rectangle104:destroy(); self.rectangle104 = nil; end;
         if self.rectangle116 ~= nil then self.rectangle116:destroy(); self.rectangle116 = nil; end;
@@ -8399,6 +9180,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.image11 ~= nil then self.image11:destroy(); self.image11 = nil; end;
         if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.tab19 ~= nil then self.tab19:destroy(); self.tab19 = nil; end;
+        if self.button32 ~= nil then self.button32:destroy(); self.button32 = nil; end;
         if self.rectangle103 ~= nil then self.rectangle103:destroy(); self.rectangle103 = nil; end;
         if self.rectangle113 ~= nil then self.rectangle113:destroy(); self.rectangle113 = nil; end;
         if self.InfoGerais ~= nil then self.InfoGerais:destroy(); self.InfoGerais = nil; end;
@@ -8434,11 +9216,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.button10 ~= nil then self.button10:destroy(); self.button10 = nil; end;
         if self.CombateTotal ~= nil then self.CombateTotal:destroy(); self.CombateTotal = nil; end;
         if self.button22 ~= nil then self.button22:destroy(); self.button22 = nil; end;
+        if self.label88 ~= nil then self.label88:destroy(); self.label88 = nil; end;
         if self.rectangle131 ~= nil then self.rectangle131:destroy(); self.rectangle131 = nil; end;
         if self.rectangle41 ~= nil then self.rectangle41:destroy(); self.rectangle41 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button15 ~= nil then self.button15:destroy(); self.button15 = nil; end;
         if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
+        if self.button29 ~= nil then self.button29:destroy(); self.button29 = nil; end;
         if self.sex ~= nil then self.sex:destroy(); self.sex = nil; end;
         if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
         if self.rectangle46 ~= nil then self.rectangle46:destroy(); self.rectangle46 = nil; end;
@@ -8448,7 +9232,8 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.editHaki ~= nil then self.editHaki:destroy(); self.editHaki = nil; end;
         if self.dataLink60 ~= nil then self.dataLink60:destroy(); self.dataLink60 = nil; end;
         if self.dataLink76 ~= nil then self.dataLink76:destroy(); self.dataLink76 = nil; end;
-        if self.richEdit9 ~= nil then self.richEdit9:destroy(); self.richEdit9 = nil; end;
+        if self.label86 ~= nil then self.label86:destroy(); self.label86 = nil; end;
+        if self.editArmamentos ~= nil then self.editArmamentos:destroy(); self.editArmamentos = nil; end;
         if self.rectangle148 ~= nil then self.rectangle148:destroy(); self.rectangle148 = nil; end;
         if self.PercepcaoEquips ~= nil then self.PercepcaoEquips:destroy(); self.PercepcaoEquips = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
@@ -8462,7 +9247,11 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.rectangle53 ~= nil then self.rectangle53:destroy(); self.rectangle53 = nil; end;
         if self.rectangle142 ~= nil then self.rectangle142:destroy(); self.rectangle142 = nil; end;
         if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
+        if self.LayoutConsumiveis ~= nil then self.LayoutConsumiveis:destroy(); self.LayoutConsumiveis = nil; end;
+        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.AkumaLayout ~= nil then self.AkumaLayout:destroy(); self.AkumaLayout = nil; end;
+        if self.Consumiveis ~= nil then self.Consumiveis:destroy(); self.Consumiveis = nil; end;
+        if self.rectangle199 ~= nil then self.rectangle199:destroy(); self.rectangle199 = nil; end;
         if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
         if self.rectangle15 ~= nil then self.rectangle15:destroy(); self.rectangle15 = nil; end;
         if self.rectangle56 ~= nil then self.rectangle56:destroy(); self.rectangle56 = nil; end;
@@ -8470,6 +9259,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label75 ~= nil then self.label75:destroy(); self.label75 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.ForcaTreino ~= nil then self.ForcaTreino:destroy(); self.ForcaTreino = nil; end;
+        if self.rectangle196 ~= nil then self.rectangle196:destroy(); self.rectangle196 = nil; end;
         if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
         if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;

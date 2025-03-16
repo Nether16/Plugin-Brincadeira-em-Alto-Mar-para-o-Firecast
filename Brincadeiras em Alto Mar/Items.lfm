@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form name="Items" width="205" height="30" margins="{left=5,top=5}">       
+	
+	<label field="id" opacity="0"/>
+
+	<edit align="client" field="nome" margins="{right=2}"/>
+	<button align="left" text="X" fontColor="white" width="20" onClick="NDB.deleteNode(sheet); "/>
+
+</form>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" title="Brincadeiras Em Alto Mar" name="Vinculos">	
+	<script>
+		function criarListagem(nodo)
+			local node = self[nodo]:append()
+			node.id = tostring(node)
+		end
+	</script>
+	
+	<rectangle left="0" top="0" width="5000" height="3000" color="black"/>
+	
+	<layout left="12" top="12" width="200" height="525"> --Vinculos
+		<rectangle left="0" top="0" width="200" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="196" height="521" color="black"/>
+	
+		<label left="10" top="10" width="180" height="25" text="Vinculos" fontSize="18" fontStyle="bold underline" fontColor="#5F9EA0" horzTextAlign="center"/>
+		
+		<button left="50" top="40" height="25" text="Nova Listagem" width="100"
+			onClick="criarListagem('Vinculo'); self.Npcs.field = self.Vinculo.selectedNode"/>
+		
+		<scrollBox left="5" top="70" width="193" height="460">
+			<recordList name="Vinculo" field="vinculos" templateForm="ListagemVinculos" width="190" autoHeight="true" selectable="true" 
+				onSelect="
+					if self.Vinculo.selectedNode then
+						self.nomeListagem.readOnly = false;
+						self.LayoutNpc.visible=false
+						
+						local Field = tostring(self.Vinculo.selectedNode.id)
+						
+						self.nomeListagem.field = self.Vinculo.selectedNode;
+						self.Npcs.field = Field;
+						
+						self.nomeListagem.text = self.Vinculo.selectedNode.nomeListagem;
+					end"
+				onItemRemoved="self.nomeListagem.text = nil; self.nomeListagem.readOnly = true; self.Npcs.field = ''; self.LayoutNpc.visible=false"
+				onItemAdded="self.Vinculo.selectedNode = nil; self.LayoutNpc.visible=false"/>
+		</scrollBox>
+	</layout>
+
+	<layout left="222" top="12" width="620" height="525"> --Npcs    
+		<rectangle left="0" top="0" width="600" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="596" height="521" color="black"/>
+		
+		<label name="labelListagem" left="95" top="9" width="501" height="40" fontColor="#D1B27E" fontSize="22" fontStyle="bold" horzTextAlign="center" vertTextAlign="center"/>
+		<edit name="nomeListagem" readOnly="true" left="95" top="9" width="521" height="40" fontSize="22" fontStyle="bold" horzTextAlign="center" transparent="true" vertTextAlign="center"
+			onChange=""/>
+		
+		<button left="15" top="15" text="Novo Npc" width="80" height="30" onClick="if (self.Vinculo.selectedNode) then criarListagem('Npcs') end"/>	
+
+		<recordList name="Npcs" left="5" top="60" width="590" height="431" templateForm="ListagemNpcs" autoHeight="false" selectable="true" layout="horizontalTiles"
+					onSelect="
+							if (self.Npcs.selectedNode) then
+								local Field = tostring(self.Npcs.selectedNode.id)
+								self.Npcs.selectedNode.id = Field;
+								
+								self.LayoutNpc.visible=true
+								
+								self.ImagemNpc.src = self.Npcs.selectedNode.imagemNpc
+								self.NomeNpc.text = self.Npcs.selectedNode.nomeNpc
+								self.DescriNpc.text = self.Npcs.selectedNode.descriNpc
+							end"
+							onItemRemoved="self.LayoutNpc.visible=false"/>
+	</layout>
+	
+	<layout left="832" top="12" width="300" height="525"> --Npc
+		<rectangle left="0" top="0" width="300" height="525" color="#4169E1"/>
+		<rectangle left="2" top="2" width="296" height="521" color="black"/>
+		
+		<layout name="LayoutNpc" left="0" top="0" width="300" height="525" visible="false">
+			<edit name="NomeNpc" align="top" fontSize="25" fontStyle="bold" margins="{top=18,left=3,right=3}" text="Nome" transparent="true" horzTextAlign="center"
+				  onChange="self.Npcs.selectedNode.nomeNpc = self.NomeNpc.text"/>
+			
+			<rectangle left="28" top="77" width="244" height="144" color="#D1B27E"/>
+			<rectangle left="30" top="78" width="240" height="140" color="black"/>
+			<label left="30" top="78" width="240" height="140" horzTextAlign="center" text="Clique para adicionar imagem" fontSize="14" fontColor="#D1B27E"/>
+			<image name="ImagemNpc" left="30" top="78" width="240" height="140" style="autoFit" editable="true" onPictureLoadedChange="self.Npcs.selectedNode.imagemNpc = self.ImagemNpc.src"/>
+			
+			<label left="10" top="230" width="280" height="270" horzTextAlign="center" text="Descrição" fontSize="15" fontColor="#D1B27E"/>
+			<textEditor name="DescriNpc" field="" left="10" top="245" width="280" height="270" fontSize="14" onChange="self.Npcs.selectedNode.descriNpc = self.DescriNpc.text"/>
+		</layout>
+	</layout>
+</form>

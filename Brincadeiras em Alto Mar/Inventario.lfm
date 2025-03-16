@@ -3,21 +3,112 @@
 <form formType="sheetTemplate" title="Brincadeiras Em Alto Mar" name="Inventario">
 	<rectangle left="0" top="0" width="5000" height="3000" color="black"/>
 	
+	<script>
+		function criarListagem(nodo)
+			local node = self[nodo]:append()
+			node.id = tostring(node)
+		end
+	</script>
+	
 	<layout left="12" top="12" width="1185" height="525">
 		<rectangle left="0" top="0" width="1185" height="525" color="#4169E1"/>
 		<rectangle left="2" top="2" width="1181" height="521" color="black"/>
-		<tabControl left="2" top="3" width="1180" height="506">
-			<tab title="Diversos"> 
-				<richEdit field="diversos" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+		<tabControl left="2" top="3" width="1180" height="519">
+			<tab title="Diversos">
+				<rectangle left="2" top="2" width="1181" height="521" color="black"/>
+				<label left="10" top="10" width="200" height="25" text="Diversos" fontSize="18" fontStyle="bold underline" fontColor="#5F9EA0" horzTextAlign="center"/>
+		
+				<button left="60" top="40" height="25" text="Novo Item" width="100"
+					onClick="criarListagem('Diversos');"/>
+
+				<scrollBox left="5" top="70" width="205" height="460">
+					<recordList name="Diversos" field="diversos" templateForm="Items" width="205" autoHeight="true" selectable="true" 
+					onSelect="
+						if self.Diversos.selectedNode then
+							self.LayoutDiversos.visible = true
+							self.editDiversos.field = self.Diversos.selectedNode.id
+						end"/> 
+				</scrollBox>
+				
+				<rectangle left="218" top="23" width="954" height="465" color="#4169E1"/>
+				<rectangle left="220" top="25" width="950" height="461" color="black"/>
+				
+				<layout name="LayoutDiversos" left="220" top="25" width="950" height="461" visible="false">
+					<richEdit name="editDiversos" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+				</layout>
+				
 			</tab>
-			<tab title="Consumiveis"> 
-				<richEdit field="consumiveis" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+			<tab title="Consumíveis"> 
+				<rectangle left="2" top="2" width="1181" height="521" color="black"/>
+				<label left="10" top="10" width="200" height="25" text="Consumíveis" fontSize="18" fontStyle="bold underline" fontColor="#5F9EA0" horzTextAlign="center"/>
+		
+				<button left="60" top="40" height="25" text="Novo Item" width="100"
+					onClick="criarListagem('Consumiveis');"/>
+
+				<scrollBox left="5" top="70" width="205" height="460">
+					<recordList name="Consumiveis" field="consumiveis" templateForm="Items" width="205" autoHeight="true" selectable="true" 
+					onSelect="
+						if self.Consumiveis.selectedNode then
+							self.LayoutConsumiveis.visible = true
+							self.editConsumiveis.field = self.Consumiveis.selectedNode.id
+						end"/> 
+				</scrollBox>
+				
+				<rectangle left="218" top="23" width="954" height="465" color="#4169E1"/>
+				<rectangle left="220" top="25" width="950" height="461" color="black"/>
+				
+				<layout name="LayoutConsumiveis" left="220" top="25" width="950" height="461" visible="false">
+					<richEdit name="editConsumiveis" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+				</layout>
+				
 			</tab>
-			<tab title="Armamento"> 
-				<richEdit field="armamentos" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+			<tab title="Armamentos"> 
+				<rectangle left="2" top="2" width="1181" height="521" color="black"/>
+				<label left="10" top="10" width="200" height="25" text="Armamentos" fontSize="18" fontStyle="bold underline" fontColor="#5F9EA0" horzTextAlign="center"/>
+		
+				<button left="60" top="40" height="25" text="Novo Item" width="100"
+					onClick="criarListagem('Armamentos');"/>
+
+				<scrollBox left="5" top="70" width="205" height="460">
+					<recordList name="Armamentos" field="armamentos" templateForm="Items" width="205" autoHeight="true" selectable="true" 
+					onSelect="
+						if self.Armamentos.selectedNode then
+							self.LayoutArmamentos.visible = true
+							self.editArmamentos.field = self.Armamentos.selectedNode.id
+						end"/> 
+				</scrollBox>
+				
+				<rectangle left="218" top="23" width="954" height="465" color="#4169E1"/>
+				<rectangle left="220" top="25" width="950" height="461" color="black"/>
+				
+				<layout name="LayoutArmamentos" left="220" top="25" width="950" height="461" visible="false">
+					<richEdit name="editArmamentos" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+				</layout>
+				
 			</tab>
 			<tab title="Equipamentos"> 
-				<richEdit field="equips" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+				<rectangle left="2" top="2" width="1181" height="521" color="black"/>
+				<label left="10" top="10" width="200" height="25" text="Equipamentos" fontSize="18" fontStyle="bold underline" fontColor="#5F9EA0" horzTextAlign="center"/>
+		
+				<button left="60" top="40" height="25" text="Novo Item" width="100"
+					onClick="criarListagem('Equipamentos');"/>
+
+				<scrollBox left="5" top="70" width="205" height="460">
+					<recordList name="Equipamentos" field="equipamentos" templateForm="Items" width="205" autoHeight="true" selectable="true" 
+					onSelect="
+						if self.Equipamentos.selectedNode then
+							self.LayoutEquipamentos.visible = true
+							self.editEquipamentos.field = self.Equipamentos.selectedNode.id
+						end"/> 
+				</scrollBox>
+				
+				<rectangle left="218" top="23" width="954" height="465" color="#4169E1"/>
+				<rectangle left="220" top="25" width="950" height="461" color="black"/>
+				
+				<layout name="LayoutEquipamentos" left="220" top="25" width="950" height="461" visible="false">
+					<richEdit name="editEquipamentos" align="client" backgroundColor="black" defaultFontColor="white" animateImages="true"/>	
+				</layout>
+				
 			</tab>
 		</tabControl>
 	</layout>

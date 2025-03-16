@@ -17,14 +17,18 @@
 			<import file="Brincadeiras em Alto Mar/EdLAkuma.lfm"/>
 		</tab>
 		
+		<tab title="Vinculos"> 
+			<import file="Brincadeiras em Alto Mar/Vinculos.lfm"/>
+		</tab>
+		
 		<tab title="Inventario"> 
 			<import file="Brincadeiras em Alto Mar/Inventario.lfm"/>
 		</tab>
 		
 	</tabControl>
 	
-	<layout name="ExportImport" left="0" top="0" width="100" height="1000" visible="false">
-		<button width="100" top="800" text="Exportar Ficha">
+	<layout name="ExportImport" left="0" top="0" width="300" height="1000" visible="false">
+		<button width="100" top="570" text="Exportar Ficha">
 			<event name="onClick">
 				-- Criar uma tabela com as informações específicas
 				local node = NDB.createChildNode(sheet, "listaNodes")
@@ -65,7 +69,7 @@
 			</event>
 		</button>
 		
-		<button width="100" top="830" text="Importar Ficha">
+		<button width="100" left="110" top="570" text="Importar Ficha">
 			<event name="onClick">
 			Dialogs.openFile("Importar Ficha", "application/xml", false, 
 			function(arquivos)

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form name="ListagemNpcs" width="135" height="204" align="left" margins="{left=5,top=10}">       
+	
+	<label field="id" opacity="0"/>
+
+	<button align="client" onClick=""/>
+	<image field="imagemNpc" left="10" top="10" width="115" height="170" src="https://blob.firecast.com.br/blobs/OLFOQNDS_3741769/user-icon-2046x2048-9pwm22pp__1_.png" style="autoFit"/>
+	<button width="20" height="20" text="X" onClick="NDB.deleteNode(sheet);"/>
+	<label field="nomeNpc" left="2" top="180" width="131" height="24" text="Nome" fontColor="white" fontStyle="bold" fontSize="11" horzTextAlign="center" margins="{left=2,right=2,bottom=10}"/>
+	
+	<dataLink field="nomeNpc" defaultValue="Nome"/>
+</form>
