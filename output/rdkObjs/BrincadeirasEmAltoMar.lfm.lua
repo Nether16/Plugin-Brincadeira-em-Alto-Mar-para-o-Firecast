@@ -793,7 +793,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.moedas:setField("moedas");
     obj.moedas:setName("moedas");
     obj.moedas:setLeft(275);
-    obj.moedas:setTop(232);
+    obj.moedas:setTop(234);
     obj.moedas:setWidth(120);
     obj.moedas:setHeight(20);
     obj.moedas:setTransparent(true);
@@ -4757,7 +4757,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.edit8:setFontSize(15);
     obj.edit8:setHorzTextAlign("center");
     obj.edit8:setType("number");
-    obj.edit8:setReadOnly(true);
+    obj.edit8:setReadOnly(false);
     obj.edit8:setName("edit8");
 
     obj.label55 = GUI.fromHandle(_obj_newObject("label"));
@@ -4996,7 +4996,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.edit9:setFontSize(15);
     obj.edit9:setHorzTextAlign("center");
     obj.edit9:setType("number");
-    obj.edit9:setReadOnly(true);
+    obj.edit9:setReadOnly(false);
     obj.edit9:setName("edit9");
 
     obj.label64 = GUI.fromHandle(_obj_newObject("label"));
@@ -5243,7 +5243,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.edit10:setFontSize(15);
     obj.edit10:setHorzTextAlign("center");
     obj.edit10:setType("number");
-    obj.edit10:setReadOnly(true);
+    obj.edit10:setReadOnly(false);
     obj.edit10:setName("edit10");
 
     obj.label73 = GUI.fromHandle(_obj_newObject("label"));
@@ -6088,6 +6088,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.EstLuta = GUI.fromHandle(_obj_newObject("edit"));
     obj.EstLuta:setParent(obj.layout10);
     obj.EstLuta:setName("EstLuta");
+    obj.EstLuta:setField("EstLuta");
     obj.EstLuta:setLeft(12);
     obj.EstLuta:setTop(119);
     obj.EstLuta:setWidth(151);
@@ -6403,8 +6404,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.richEdit3 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit3:setParent(obj.tab12);
     obj.richEdit3:setField("editDescri");
-    obj.richEdit3:setWidth(996);
-    obj.richEdit3:setHeight(521);
+    obj.richEdit3:setAlign("client");
     obj.richEdit3.backgroundColor = "black";
     obj.richEdit3.defaultFontColor = "white";
     obj.richEdit3.animateImages = true;
@@ -6412,14 +6412,13 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.tab13 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab13:setParent(obj.tabControl6);
-    obj.tab13:setTitle("Formas");
+    obj.tab13:setTitle("Formas ou Habilidades");
     obj.tab13:setName("tab13");
 
     obj.richEdit4 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit4:setParent(obj.tab13);
     obj.richEdit4:setField("editFormas");
-    obj.richEdit4:setWidth(996);
-    obj.richEdit4:setHeight(521);
+    obj.richEdit4:setAlign("client");
     obj.richEdit4.backgroundColor = "black";
     obj.richEdit4.defaultFontColor = "white";
     obj.richEdit4.animateImages = true;
@@ -6433,8 +6432,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.richEdit5 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit5:setParent(obj.tab14);
     obj.richEdit5:setField("editGolpes");
-    obj.richEdit5:setWidth(996);
-    obj.richEdit5:setHeight(521);
+    obj.richEdit5:setAlign("client");
     obj.richEdit5.backgroundColor = "black";
     obj.richEdit5.defaultFontColor = "white";
     obj.richEdit5.animateImages = true;
@@ -6472,8 +6470,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
     obj.richEdit6:setField("MiscAkuma");
     obj.richEdit6:setLeft(2);
     obj.richEdit6:setTop(2);
-    obj.richEdit6:setWidth(996);
-    obj.richEdit6:setHeight(521);
+    obj.richEdit6:setAlign("client");
     obj.richEdit6.backgroundColor = "black";
     obj.richEdit6.defaultFontColor = "white";
     obj.richEdit6.animateImages = true;
@@ -6486,8 +6483,12 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj.dataLink78 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink78:setParent(obj.EdLeAkuma);
-    obj.dataLink78:setField("estiloDeLutaSec");
     obj.dataLink78:setName("dataLink78");
+
+    obj.dataLink79 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink79:setParent(obj.EdLeAkuma);
+    obj.dataLink79:setField("estiloDeLutaSec");
+    obj.dataLink79:setName("dataLink79");
 
     obj.tab15 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab15:setParent(obj.tabControl1);
@@ -7226,7 +7227,11 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
 
     obj._e_event2 = obj.estluta:addEventListener("onChange",
         function ()
-            self.LabelEdL.text = self.estluta.text
+            
+            																		self.LabelEdL.text = self.estluta.text
+            																		self.EstLuta.text = self.estiloDeLuta.text
+            																		self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+            			
         end);
 
     obj._e_event3 = obj.listaOrganizacoes:addEventListener("onChange",
@@ -8185,25 +8190,32 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             self.EstilosDeLuta.visible = false; self.AkumaLayout.visible = false; self.MiscLayout.visible = true
         end);
 
-    obj._e_event185 = obj.dataLink77:addEventListener("onChange",
-        function (field, oldValue, newValue)
+    obj._e_event185 = obj.estiloDeLuta:addEventListener("onChange",
+        function ()
             self.EstLuta.text = self.estiloDeLuta.text
-            			self.estLPrincipal.field = self.estiloDeLuta.value
-            			self.LabelEdL.text = self.estluta.text
-            			self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+            									self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
         end);
 
-    obj._e_event186 = obj.dataLink78:addEventListener("onChange",
+    obj._e_event186 = obj.dataLink77:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            self.estLPrincipal.field = self.estiloDeLuta.value
+            			self.LabelEdL.text = self.estluta.text
+            			if (self.imagemEdL.src == "") then
+            				self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+            			end
+        end);
+
+    obj._e_event187 = obj.dataLink79:addEventListener("onChange",
         function (field, oldValue, newValue)
             self.estLSecundario.field = self.estiloDeLutaSec.value
         end);
 
-    obj._e_event187 = obj.button25:addEventListener("onClick",
+    obj._e_event188 = obj.button25:addEventListener("onClick",
         function (event)
             criarListagem('Vinculo'); self.Npcs.field = self.Vinculo.selectedNode
         end);
 
-    obj._e_event188 = obj.Vinculo:addEventListener("onSelect",
+    obj._e_event189 = obj.Vinculo:addEventListener("onSelect",
         function ()
             
             					if self.Vinculo.selectedNode then
@@ -8219,26 +8231,27 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             					end
         end);
 
-    obj._e_event189 = obj.Vinculo:addEventListener("onItemRemoved",
+    obj._e_event190 = obj.Vinculo:addEventListener("onItemRemoved",
         function (node, form)
             self.nomeListagem.text = nil; self.nomeListagem.readOnly = true; self.Npcs.field = ''; self.LayoutNpc.visible=false
         end);
 
-    obj._e_event190 = obj.Vinculo:addEventListener("onItemAdded",
+    obj._e_event191 = obj.Vinculo:addEventListener("onItemAdded",
         function (node, form)
             self.Vinculo.selectedNode = nil; self.LayoutNpc.visible=false
         end);
 
-    obj._e_event191 = obj.nomeListagem:addEventListener("onChange",
+    obj._e_event192 = obj.nomeListagem:addEventListener("onChange",
         function ()
+            self.Vinculo.selectedNode.nomeListagem = self.nomeListagem.text
         end);
 
-    obj._e_event192 = obj.button26:addEventListener("onClick",
+    obj._e_event193 = obj.button26:addEventListener("onClick",
         function (event)
             if (self.Vinculo.selectedNode) then criarListagem('Npcs') end
         end);
 
-    obj._e_event193 = obj.Npcs:addEventListener("onSelect",
+    obj._e_event194 = obj.Npcs:addEventListener("onSelect",
         function ()
             
             							if (self.Npcs.selectedNode) then
@@ -8253,32 +8266,32 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             							end
         end);
 
-    obj._e_event194 = obj.Npcs:addEventListener("onItemRemoved",
+    obj._e_event195 = obj.Npcs:addEventListener("onItemRemoved",
         function (node, form)
             self.LayoutNpc.visible=false
         end);
 
-    obj._e_event195 = obj.NomeNpc:addEventListener("onChange",
+    obj._e_event196 = obj.NomeNpc:addEventListener("onChange",
         function ()
             self.Npcs.selectedNode.nomeNpc = self.NomeNpc.text
         end);
 
-    obj._e_event196 = obj.ImagemNpc:addEventListener("onPictureLoadedChange",
+    obj._e_event197 = obj.ImagemNpc:addEventListener("onPictureLoadedChange",
         function ()
             self.Npcs.selectedNode.imagemNpc = self.ImagemNpc.src
         end);
 
-    obj._e_event197 = obj.DescriNpc:addEventListener("onChange",
+    obj._e_event198 = obj.DescriNpc:addEventListener("onChange",
         function ()
             self.Npcs.selectedNode.descriNpc = self.DescriNpc.text
         end);
 
-    obj._e_event198 = obj.button27:addEventListener("onClick",
+    obj._e_event199 = obj.button27:addEventListener("onClick",
         function (event)
             criarListagem('Diversos');
         end);
 
-    obj._e_event199 = obj.Diversos:addEventListener("onSelect",
+    obj._e_event200 = obj.Diversos:addEventListener("onSelect",
         function ()
             
             						if self.Diversos.selectedNode then
@@ -8287,12 +8300,12 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             						end
         end);
 
-    obj._e_event200 = obj.button28:addEventListener("onClick",
+    obj._e_event201 = obj.button28:addEventListener("onClick",
         function (event)
             criarListagem('Consumiveis');
         end);
 
-    obj._e_event201 = obj.Consumiveis:addEventListener("onSelect",
+    obj._e_event202 = obj.Consumiveis:addEventListener("onSelect",
         function ()
             
             						if self.Consumiveis.selectedNode then
@@ -8301,12 +8314,12 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             						end
         end);
 
-    obj._e_event202 = obj.button29:addEventListener("onClick",
+    obj._e_event203 = obj.button29:addEventListener("onClick",
         function (event)
             criarListagem('Armamentos');
         end);
 
-    obj._e_event203 = obj.Armamentos:addEventListener("onSelect",
+    obj._e_event204 = obj.Armamentos:addEventListener("onSelect",
         function ()
             
             						if self.Armamentos.selectedNode then
@@ -8315,12 +8328,12 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             						end
         end);
 
-    obj._e_event204 = obj.button30:addEventListener("onClick",
+    obj._e_event205 = obj.button30:addEventListener("onClick",
         function (event)
             criarListagem('Equipamentos');
         end);
 
-    obj._e_event205 = obj.Equipamentos:addEventListener("onSelect",
+    obj._e_event206 = obj.Equipamentos:addEventListener("onSelect",
         function ()
             
             						if self.Equipamentos.selectedNode then
@@ -8329,7 +8342,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             						end
         end);
 
-    obj._e_event206 = obj.button31:addEventListener("onClick",
+    obj._e_event207 = obj.button31:addEventListener("onClick",
         function (event)
             -- Criar uma tabela com as informações específicas
             				local node = NDB.createChildNode(sheet, "listaNodes")
@@ -8369,7 +8382,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
             				end)
         end);
 
-    obj._e_event207 = obj.button32:addEventListener("onClick",
+    obj._e_event208 = obj.button32:addEventListener("onClick",
         function (event)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             			function(arquivos)
@@ -8405,6 +8418,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         end);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event208);
         __o_rrpgObjs.removeEventListenerById(self._e_event207);
         __o_rrpgObjs.removeEventListenerById(self._e_event206);
         __o_rrpgObjs.removeEventListenerById(self._e_event205);
@@ -8729,6 +8743,7 @@ local function constructNew_fmlBrincadeirasEmAltoMar()
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
+        if self.dataLink79 ~= nil then self.dataLink79:destroy(); self.dataLink79 = nil; end;
         if self.rectangle141 ~= nil then self.rectangle141:destroy(); self.rectangle141 = nil; end;
         if self.MiscLayout ~= nil then self.MiscLayout:destroy(); self.MiscLayout = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;

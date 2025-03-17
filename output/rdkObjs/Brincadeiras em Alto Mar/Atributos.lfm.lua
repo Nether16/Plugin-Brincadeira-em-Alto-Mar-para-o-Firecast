@@ -2494,7 +2494,7 @@ local function constructNew_Atributos()
     obj.edit1:setFontSize(15);
     obj.edit1:setHorzTextAlign("center");
     obj.edit1:setType("number");
-    obj.edit1:setReadOnly(true);
+    obj.edit1:setReadOnly(false);
     obj.edit1:setName("edit1");
 
     obj.label29 = GUI.fromHandle(_obj_newObject("label"));
@@ -2733,7 +2733,7 @@ local function constructNew_Atributos()
     obj.edit2:setFontSize(15);
     obj.edit2:setHorzTextAlign("center");
     obj.edit2:setType("number");
-    obj.edit2:setReadOnly(true);
+    obj.edit2:setReadOnly(false);
     obj.edit2:setName("edit2");
 
     obj.label38 = GUI.fromHandle(_obj_newObject("label"));
@@ -2980,7 +2980,7 @@ local function constructNew_Atributos()
     obj.edit3:setFontSize(15);
     obj.edit3:setHorzTextAlign("center");
     obj.edit3:setType("number");
-    obj.edit3:setReadOnly(true);
+    obj.edit3:setReadOnly(false);
     obj.edit3:setName("edit3");
 
     obj.label47 = GUI.fromHandle(_obj_newObject("label"));

@@ -66,14 +66,6 @@ local function constructNew_ListagemVinculos()
     obj.label3:setTextTrimming("character");
     obj.label3:setName("label3");
 
-    obj.descriNpc = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.descriNpc:setParent(obj);
-    obj.descriNpc:setName("descriNpc");
-    obj.descriNpc:setText("Descrição");
-    obj.descriNpc:setVisible(false);
-    obj.descriNpc:setFontSize(14);
-    obj.descriNpc:setTransparent(true);
-
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("nomeListagem");
@@ -116,7 +108,6 @@ local function constructNew_ListagemVinculos()
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.descriNpc ~= nil then self.descriNpc:destroy(); self.descriNpc = nil; end;
         self:_oldLFMDestroy();
     end;
 

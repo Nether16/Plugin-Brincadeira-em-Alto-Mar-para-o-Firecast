@@ -44,7 +44,7 @@
 		
 		<label name="labelListagem" left="95" top="9" width="501" height="40" fontColor="#D1B27E" fontSize="22" fontStyle="bold" horzTextAlign="center" vertTextAlign="center"/>
 		<edit name="nomeListagem" readOnly="true" left="95" top="9" width="521" height="40" fontSize="22" fontStyle="bold" horzTextAlign="center" transparent="true" vertTextAlign="center"
-			onChange=""/>
+			onChange="self.Vinculo.selectedNode.nomeListagem = self.nomeListagem.text"/>
 		
 		<button left="15" top="15" text="Novo Npc" width="80" height="30" onClick="if (self.Vinculo.selectedNode) then criarListagem('Npcs') end"/>	
 

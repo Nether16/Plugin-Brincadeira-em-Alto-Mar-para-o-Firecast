@@ -764,7 +764,7 @@ local function constructNew_InfoGerais()
     obj.moedas:setField("moedas");
     obj.moedas:setName("moedas");
     obj.moedas:setLeft(275);
-    obj.moedas:setTop(232);
+    obj.moedas:setTop(234);
     obj.moedas:setWidth(120);
     obj.moedas:setHeight(20);
     obj.moedas:setTransparent(true);
@@ -2265,7 +2265,11 @@ local function constructNew_InfoGerais()
 
     obj._e_event2 = obj.estluta:addEventListener("onChange",
         function ()
-            self.LabelEdL.text = self.estluta.text
+            
+            																		self.LabelEdL.text = self.estluta.text
+            																		self.EstLuta.text = self.estiloDeLuta.text
+            																		self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+            			
         end);
 
     obj._e_event3 = obj.listaOrganizacoes:addEventListener("onChange",

@@ -289,7 +289,7 @@
 			
 			--%UP
 			<label left="156" top="65" width="256" text="%UP:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="66" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upArmamento" left="199" top="65" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
+			<rectangle left="199" top="66" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upArmamento" left="199" top="65" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="false"/>
 			
 			--Estado
 			<label left="260" top="40" width="256" text="     Estado:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
@@ -322,7 +322,7 @@
 			
 			--%UP
 			<label left="156" top="235" width="256" text="%UP:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="236" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upObsevacao" left="199" top="235" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
+			<rectangle left="199" top="236" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upObsevacao" left="199" top="235" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="false"/>
 			
 			--Estado
 			<label left="260" top="210" width="256" text="     Estado:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
@@ -356,7 +356,7 @@
 			
 			--%UP
 			<label left="156" top="423" width="256" text="%UP:" fontColor="#5F9EA0" fontStyle="bold" fontSize="16"/>
-			<rectangle left="199" top="424" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upConquistador" left="199" top="423" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="true"/>
+			<rectangle left="199" top="424" width="35" height="18" color="#F5F5DC" xradius="7" yradius="7"/> <edit field="upConquistador" left="199" top="423" width="35" height="18" transparent="true" fontColor="black" fontSize="15" horzTextAlign="center" type="number" readOnly="false"/>
 			
 			--Estado
 			<label left="260" top="398" width="256" text="     Estado:" fontColor="#5F9EA0" fontStyle="bold" fontSize="15"/>
@@ -512,6 +512,7 @@
 		<dataLink field="ForcaDeVontadePassivo" defaultValue="0">
 			<event name="onChange">
 				if sheet.ForcaDeVontadePassivo == "" then sheet.ForcaDeVontadePassivo = 0 end
+				sheet.BonusConquistador = "Numa área de 12m, todos fazem um teste de resistência (DT 1d20+ FdV("..sheet.ForcaDeVontadeTotal..")+ ".. sheet.tierConquistador .."). Se passarem ficam acordados; se falharem desmaiam."
 			</event>
 		</dataLink>
 		
@@ -616,6 +617,12 @@
 		<dataLink field="PrecisaoTreino" defaultValue="0">
 			<event name="onChange">
 				if sheet.PrecisaoTreino == "" then sheet.PrecisaoTreino = 0 end
+			</event>
+		</dataLink>
+		
+		<dataLink field="ForcaDeVontadeTreino" defaultValue="0">
+			<event name="onChange">
+				if sheet.ForcaDeVontadeTreino == "" then sheet.ForcaDeVontadeTreino = 0 end
 			</event>
 		</dataLink>
 		

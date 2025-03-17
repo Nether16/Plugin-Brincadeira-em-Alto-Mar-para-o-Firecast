@@ -7,7 +7,6 @@
 	<button align="left" text="X" fontColor="white" width="20" onClick="NDB.deleteNode(sheet); "/>
 	<label field="id" opacity="0"/> 
 	<label field="nomeListagem" text="Nome Listagem" left="23" top="5" width="162" fontColor="white" textTrimming="character"/>
-	<textEditor name="descriNpc" text="Descrição" visible="false" fontSize="14" transparent="true"/>
 	
 	<dataLink field="nomeListagem" defaultValue="Nome Listagem"/>
 	<dataLink field="descriNpc" defaultValue="Descrição"/>

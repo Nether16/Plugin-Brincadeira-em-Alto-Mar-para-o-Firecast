@@ -237,6 +237,7 @@ local function constructNew_EdLeAkuma()
     obj.EstLuta = GUI.fromHandle(_obj_newObject("edit"));
     obj.EstLuta:setParent(obj.layout1);
     obj.EstLuta:setName("EstLuta");
+    obj.EstLuta:setField("EstLuta");
     obj.EstLuta:setLeft(12);
     obj.EstLuta:setTop(119);
     obj.EstLuta:setWidth(151);
@@ -552,8 +553,7 @@ local function constructNew_EdLeAkuma()
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj.tab3);
     obj.richEdit1:setField("editDescri");
-    obj.richEdit1:setWidth(996);
-    obj.richEdit1:setHeight(521);
+    obj.richEdit1:setAlign("client");
     obj.richEdit1.backgroundColor = "black";
     obj.richEdit1.defaultFontColor = "white";
     obj.richEdit1.animateImages = true;
@@ -561,14 +561,13 @@ local function constructNew_EdLeAkuma()
 
     obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl2);
-    obj.tab4:setTitle("Formas");
+    obj.tab4:setTitle("Formas ou Habilidades");
     obj.tab4:setName("tab4");
 
     obj.richEdit2 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit2:setParent(obj.tab4);
     obj.richEdit2:setField("editFormas");
-    obj.richEdit2:setWidth(996);
-    obj.richEdit2:setHeight(521);
+    obj.richEdit2:setAlign("client");
     obj.richEdit2.backgroundColor = "black";
     obj.richEdit2.defaultFontColor = "white";
     obj.richEdit2.animateImages = true;
@@ -582,8 +581,7 @@ local function constructNew_EdLeAkuma()
     obj.richEdit3 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit3:setParent(obj.tab5);
     obj.richEdit3:setField("editGolpes");
-    obj.richEdit3:setWidth(996);
-    obj.richEdit3:setHeight(521);
+    obj.richEdit3:setAlign("client");
     obj.richEdit3.backgroundColor = "black";
     obj.richEdit3.defaultFontColor = "white";
     obj.richEdit3.animateImages = true;
@@ -621,8 +619,7 @@ local function constructNew_EdLeAkuma()
     obj.richEdit4:setField("MiscAkuma");
     obj.richEdit4:setLeft(2);
     obj.richEdit4:setTop(2);
-    obj.richEdit4:setWidth(996);
-    obj.richEdit4:setHeight(521);
+    obj.richEdit4:setAlign("client");
     obj.richEdit4.backgroundColor = "black";
     obj.richEdit4.defaultFontColor = "white";
     obj.richEdit4.animateImages = true;
@@ -635,8 +632,12 @@ local function constructNew_EdLeAkuma()
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
-    obj.dataLink2:setField("estiloDeLutaSec");
     obj.dataLink2:setName("dataLink2");
+
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj);
+    obj.dataLink3:setField("estiloDeLutaSec");
+    obj.dataLink3:setName("dataLink3");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (event)
@@ -653,20 +654,28 @@ local function constructNew_EdLeAkuma()
             self.EstilosDeLuta.visible = false; self.AkumaLayout.visible = false; self.MiscLayout.visible = true
         end);
 
-    obj._e_event3 = obj.dataLink1:addEventListener("onChange",
-        function (field, oldValue, newValue)
+    obj._e_event3 = obj.estiloDeLuta:addEventListener("onChange",
+        function ()
             self.EstLuta.text = self.estiloDeLuta.text
-            			self.estLPrincipal.field = self.estiloDeLuta.value
-            			self.LabelEdL.text = self.estluta.text
-            			self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+            									self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
         end);
 
-    obj._e_event4 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink1:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            self.estLPrincipal.field = self.estiloDeLuta.value
+            			self.LabelEdL.text = self.estluta.text
+            			if (self.imagemEdL.src == "") then
+            				self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+            			end
+        end);
+
+    obj._e_event5 = obj.dataLink3:addEventListener("onChange",
         function (field, oldValue, newValue)
             self.estLSecundario.field = self.estiloDeLutaSec.value
         end);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
@@ -708,6 +717,7 @@ local function constructNew_EdLeAkuma()
         if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.estiloDeLuta ~= nil then self.estiloDeLuta:destroy(); self.estiloDeLuta = nil; end;
         if self.Akuma ~= nil then self.Akuma:destroy(); self.Akuma = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.estLPrincipal ~= nil then self.estLPrincipal:destroy(); self.estLPrincipal = nil; end;
         if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;

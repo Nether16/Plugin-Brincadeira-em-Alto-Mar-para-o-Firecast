@@ -327,6 +327,7 @@ local function constructNew_Vinculos()
 
     obj._e_event4 = obj.nomeListagem:addEventListener("onChange",
         function ()
+            self.Vinculo.selectedNode.nomeListagem = self.nomeListagem.text
         end);
 
     obj._e_event5 = obj.button2:addEventListener("onClick",

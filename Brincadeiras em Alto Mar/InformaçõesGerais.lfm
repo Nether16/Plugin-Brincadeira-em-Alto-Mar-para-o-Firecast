@@ -422,7 +422,7 @@
 			-- Moedas
 			<label left="215" top="218" width="100" height="50" text="Moedas:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
 			<rectangle left="275" top="236" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
-			<edit field="moedas" name="moedas" left="275" top="232" width="120" height="20" transparent="true" text="0" fontColor="black" fontSize="12" horzTextAlign="center" keyboardType="numbersAndPunctuation"/>
+			<edit field="moedas" name="moedas" left="275" top="234" width="120" height="20" transparent="true" text="0" fontColor="black" fontSize="12" horzTextAlign="center" keyboardType="numbersAndPunctuation"/>
 			
 			-- Tripulação
 			<label left="415" top="128" width="100" height="50" text="Tripulação:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
@@ -434,7 +434,11 @@
 			<rectangle left="505" top="176" width="120" height="17" color="#F5F5DC" xradius="7" yradius="7" cornerType="Round"/>
 			<label name="LabelEdL" left="505" top="176" width="120" height="17" fontSize="12" fontColor="black" horzTextAlign="center" />
 			<comboBox field="estiloDeLuta" name="estluta" left="505" top="176" width="120" height="19" opacity="0" fontColor="white" fontSize="12" horzTextAlign="center"
-			items="EstilosDeLuta" values="EdLSemCaracteresEspeciais" onChange="self.LabelEdL.text = self.estluta.text"/>
+			items="EstilosDeLuta" values="EdLSemCaracteresEspeciais" onChange="
+																		self.LabelEdL.text = self.estluta.text
+																		self.EstLuta.text = self.estiloDeLuta.text
+																		self.imagemEdL.src = EdLImagens[self.estiloDeLuta.value].imagem
+			"/>
 			
 			-- Sexualidade
 			<label left="415" top="188" width="100" height="50" text="Sexualidade:" fontColor="#5F9EA0" fontSize="14" fontStyle="bold"/>
